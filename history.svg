@@ -22,11 +22,8 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 <text class="t2" x="52" y="288" font-size="13">20 November 2026</text>
 <text class="t2" x="680" y="288" font-size="13" text-anchor="end">20 November 2026</text>
 <path class="s1" d="M52.0,199.4 L680.0,199.1" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s2" d="M680.0,113.0" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 <path class="s3" d="M52.0,220.1 L680.0,219.4" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 <path class="s4" d="M52.0,202.9 L680.0,202.0" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<rect class="d2" x="688" y="109.0" width="8" height="8" rx="2"/>
-<text class="t1" x="700" y="118.0" font-size="14">Linking</text>
 <rect class="d1" x="688" y="195.1" width="8" height="8" rx="2"/>
 <text class="t1" x="700" y="204.1" font-size="14">Byte match</text>
 <rect class="d4" x="688" y="213.1" width="8" height="8" rx="2"/>
