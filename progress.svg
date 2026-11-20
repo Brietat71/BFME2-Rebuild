@@ -33,7 +33,7 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 <text class="strong" x="310" y="286" font-size="24" font-weight="700">—</text>
 <text class="muted" x="310" y="306" font-size="12">rebuilt files play identically</text>
 <text class="muted" x="310" y="322" font-size="12">inside the original game (not run yet)</text>
-<text class="strong" x="592" y="286" font-size="24" font-weight="700">0</text>
+<text class="strong" x="592" y="286" font-size="24" font-weight="700">3,253</text>
 <text class="muted" x="592" y="306" font-size="12">source files compiled and</text>
 <text class="muted" x="592" y="322" font-size="12">compared with the game every day</text>
 </svg>
