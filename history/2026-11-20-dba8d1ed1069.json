@@ -1,0 +1,72 @@
+{
+ "checks": {
+  "control": "not run",
+  "maps": "not run",
+  "menu": "not run",
+  "save_load": "not run",
+  "starts": "not run"
+ },
+ "commit": "dba8d1ed10698be428863fa298262fed6b1ceaa6",
+ "compile": {
+  "compile_errors": 0,
+  "compiled": 0,
+  "expected_shards": 16,
+  "fastest_shard_s": null,
+  "files": 0,
+  "fully_matching": 0,
+  "per_shard": [],
+  "problem": "expected 16 compile shard summaries from this run; found none",
+  "shards": 0,
+  "slowest_shard_s": null
+ },
+ "compile_ok": false,
+ "control_caught": null,
+ "date": "2026-11-20",
+ "equal_frames": null,
+ "event": "workflow_dispatch",
+ "files_substituted": null,
+ "frames": {
+  "compared": 0,
+  "equal": 0,
+  "first_divergent": {}
+ },
+ "functions": null,
+ "games_skipped": false,
+ "headline": "compile stage failed: expected 16 compile shard summaries from this run; found none",
+ "image_manifest_sha256": null,
+ "image_sha256": null,
+ "link": null,
+ "link_census": null,
+ "linking_headline": "referenced",
+ "linking_unit": "names",
+ "menu": null,
+ "plan": null,
+ "provided_required_symbols": null,
+ "result": "fail",
+ "run_id": "44832153876",
+ "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/44832153876",
+ "save_load": null,
+ "schema": "bfme2-nightly/1",
+ "sha": "dba8d1ed10698be428863fa298262fed6b1ceaa6",
+ "simulation_equal": null,
+ "size_check": null,
+ "skirmish": null,
+ "stages": {
+  "compile": "failure",
+  "link_and_play": "not live"
+ },
+ "starts": null,
+ "stopped": null,
+ "tests": {},
+ "timings": {
+  "compile_slowest_shard_s": null,
+  "link_and_play": null,
+  "run": {
+   "jobs": 18,
+   "runner_minutes": {
+    "compile": 6.0
+   },
+   "wall_minutes": 1.3
+  }
+ }
+}

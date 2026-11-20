@@ -6,181 +6,20 @@
   "save_load": "not run",
   "starts": "not run"
  },
- "commit": "74a8dac0939d669d7a9050a1a951d5451fc3e741",
+ "commit": "dba8d1ed10698be428863fa298262fed6b1ceaa6",
  "compile": {
   "compile_errors": 0,
-  "compiled": 3253,
+  "compiled": 0,
   "expected_shards": 16,
-  "fastest_shard_s": 618.3,
-  "files": 3253,
-  "fully_matching": 409,
-  "per_shard": [
-   {
-    "batch_median_s": 29.5,
-    "busy_pct": 50.1,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 202,
-    "seconds": 869.9,
-    "shard": 0,
-    "steal_pct": 3.1
-   },
-   {
-    "batch_median_s": 30.7,
-    "busy_pct": 47.6,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 203,
-    "seconds": 812.6,
-    "shard": 1,
-    "steal_pct": 0.3
-   },
-   {
-    "batch_median_s": 29.9,
-    "busy_pct": 48.3,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 202,
-    "seconds": 799.4,
-    "shard": 2,
-    "steal_pct": 0.4
-   },
-   {
-    "batch_median_s": 29.9,
-    "busy_pct": 50.0,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 203,
-    "seconds": 861.0,
-    "shard": 3,
-    "steal_pct": 3.3
-   },
-   {
-    "batch_median_s": 32.0,
-    "busy_pct": 49.4,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 202,
-    "seconds": 859.3,
-    "shard": 4,
-    "steal_pct": 2.1
-   },
-   {
-    "batch_median_s": 63.3,
-    "busy_pct": 50.5,
-    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
-    "cpus": 2,
-    "files": 203,
-    "seconds": 1645.7,
-    "shard": 5,
-    "steal_pct": 0.1
-   },
-   {
-    "batch_median_s": 31.4,
-    "busy_pct": 49.9,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 204,
-    "seconds": 865.8,
-    "shard": 6,
-    "steal_pct": 1.9
-   },
-   {
-    "batch_median_s": 38.3,
-    "busy_pct": 49.2,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 204,
-    "seconds": 962.2,
-    "shard": 7,
-    "steal_pct": 3.6
-   },
-   {
-    "batch_median_s": 32.2,
-    "busy_pct": 49.8,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 204,
-    "seconds": 849.0,
-    "shard": 8,
-    "steal_pct": 1.8
-   },
-   {
-    "batch_median_s": 26.7,
-    "busy_pct": 49.8,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 204,
-    "seconds": 730.7,
-    "shard": 9,
-    "steal_pct": 0.5
-   },
-   {
-    "batch_median_s": 24.0,
-    "busy_pct": 50.3,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 204,
-    "seconds": 618.3,
-    "shard": 10,
-    "steal_pct": 0.1
-   },
-   {
-    "batch_median_s": 30.3,
-    "busy_pct": 45.0,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 204,
-    "seconds": 808.9,
-    "shard": 11,
-    "steal_pct": 0.3
-   },
-   {
-    "batch_median_s": 59.7,
-    "busy_pct": 51.5,
-    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
-    "cpus": 2,
-    "files": 204,
-    "seconds": 1558.0,
-    "shard": 12,
-    "steal_pct": 0.0
-   },
-   {
-    "batch_median_s": 64.1,
-    "busy_pct": 50.6,
-    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
-    "cpus": 2,
-    "files": 203,
-    "seconds": 1648.1,
-    "shard": 13,
-    "steal_pct": 0.1
-   },
-   {
-    "batch_median_s": 31.6,
-    "busy_pct": 48.2,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 203,
-    "seconds": 795.0,
-    "shard": 14,
-    "steal_pct": 0.5
-   },
-   {
-    "batch_median_s": 27.8,
-    "busy_pct": 49.4,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 204,
-    "seconds": 732.4,
-    "shard": 15,
-    "steal_pct": 0.3
-   }
-  ],
-  "problem": null,
-  "shards": 16,
-  "slowest_shard_s": 1648.1
+  "fastest_shard_s": null,
+  "files": 0,
+  "fully_matching": 0,
+  "per_shard": [],
+  "problem": "expected 16 compile shard summaries from this run; found none",
+  "shards": 0,
+  "slowest_shard_s": null
  },
- "compile_ok": true,
+ "compile_ok": false,
  "control_caught": null,
  "date": "2026-11-20",
  "equal_frames": null,
@@ -193,53 +32,41 @@
  },
  "functions": null,
  "games_skipped": false,
- "headline": "compiles (3253 of 3253 files compile, 409 match completely); game run not live yet",
+ "headline": "compile stage failed: expected 16 compile shard summaries from this run; found none",
  "image_manifest_sha256": null,
  "image_sha256": null,
  "link": null,
- "link_census": {
-  "duplicates": 7,
-  "missing": 3136,
-  "missing_by_kind": {
-   "c": 34,
-   "c++": 3100,
-   "import": 2
-  },
-  "needed": 8317,
-  "objects": 3253,
-  "provided": 5181
- },
+ "link_census": null,
+ "linking_headline": "referenced",
+ "linking_unit": "names",
  "menu": null,
  "plan": null,
- "provided_required_symbols": [
-  5181,
-  8317
- ],
- "result": "partial",
- "run_id": "44807137918",
- "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/44807137918",
+ "provided_required_symbols": null,
+ "result": "fail",
+ "run_id": "44832153876",
+ "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/44832153876",
  "save_load": null,
  "schema": "bfme2-nightly/1",
- "sha": "74a8dac0939d669d7a9050a1a951d5451fc3e741",
+ "sha": "dba8d1ed10698be428863fa298262fed6b1ceaa6",
  "simulation_equal": null,
  "size_check": null,
  "skirmish": null,
  "stages": {
-  "compile": "success",
+  "compile": "failure",
   "link_and_play": "not live"
  },
  "starts": null,
  "stopped": null,
  "tests": {},
  "timings": {
-  "compile_slowest_shard_s": 1648.1,
+  "compile_slowest_shard_s": null,
   "link_and_play": null,
   "run": {
    "jobs": 18,
    "runner_minutes": {
-    "compile": 302.0
+    "compile": 6.0
    },
-   "wall_minutes": 31.3
+   "wall_minutes": 1.3
   }
  }
 }
