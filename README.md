@@ -13,9 +13,9 @@ Measured **21 November 2026**. The code figures describe commit [`a8ba9aee59d9`]
 **Byte match**: `█████░░░░░░░░░░░░░░░` 26.1% (1,656,093 of 6,333,616 bytes)  
 How much of the original game's code, by size, our source code compiles back to byte for byte.
 
-**Linking**: `████████████░░░░░░░░` 62.3% (5,181 of 8,317 names)  
+**Linking**: `███████████░░░░░░░░░` 56.4% (4,679 of 8,296 names)  
 How many of the names the game needs to be assembled into one program our source already provides.
-Measured by the daily build of commit [`5f2f839c0780`](https://github.com/Open-BFME/BFME2-Rebuild/commit/5f2f839c078003a5be5d71a98107d6c587d654db) (21 November 2026), which can be newer or older than the commit the other figures describe.
+Measured by the daily build of commit [`9fa818c2b335`](https://github.com/Open-BFME/BFME2-Rebuild/commit/9fa818c2b335503f6988214ed1a9783b9d9da2a7) (21 November 2026), which can be newer or older than the commit the other figures describe.
 
 **Code proven**: `███░░░░░░░░░░░░░░░░░` 17.4% (1,101,220 of 6,333,616 bytes)  
 How much of the code, by size, is byte-matched and also confirmed at every place it refers to other code or data, so the match cannot be a coincidence.
@@ -25,7 +25,7 @@ Functions that are proven, sit in a properly named source file, and belong to a 
 
 ## Does the rebuilt game run?
 
-Nightly build of commit [`5f2f839c0780`](https://github.com/Open-BFME/BFME2-Rebuild/commit/5f2f839c078003a5be5d71a98107d6c587d654db) (21 November 2026): Compiles; the game run is not live yet (3,253 of 3,253 source files compile, 409 of them match the original completely).
+Nightly build of commit [`9fa818c2b335`](https://github.com/Open-BFME/BFME2-Rebuild/commit/9fa818c2b335503f6988214ed1a9783b9d9da2a7) (21 November 2026): The nightly build failed (2,640 of 2,640 source files compile, 420 of them match the original completely).
 
 - Starts: not run yet
 - Reaches the main menu: not run yet
@@ -67,7 +67,7 @@ Provisional class declarations still in use (files under `include/Draft/` that s
 
 | Commit | Date | Byte match | Linking | Proven | Finished |
 | --- | --- | ---: | ---: | ---: | ---: |
-| [`a8ba9aee59d9`](https://github.com/Open-BFME/BFME2-Rebuild/commit/a8ba9aee59d9634cf44fba99f4652f4e5b596314) | 20 November 2026, 23:55 UTC | 26.15% | 62.29% (build `5f2f839`) | 17.39% | 25.07% |
+| [`a8ba9aee59d9`](https://github.com/Open-BFME/BFME2-Rebuild/commit/a8ba9aee59d9634cf44fba99f4652f4e5b596314) | 20 November 2026, 23:55 UTC | 26.15% | 56.40% (build `9fa818c`) | 17.39% | 25.07% |
 | [`69da5d735238`](https://github.com/Open-BFME/BFME2-Rebuild/commit/69da5d7352386882778ba9c6ba4a5934ffdd3be5) | 20 November 2026, 19:03 UTC | 25.79% | 62.29% (build `5f2f839`) | 17.19% | 24.59% |
 | [`64fce00c1ee6`](https://github.com/Open-BFME/BFME2-Rebuild/commit/64fce00c1ee661f0ee508ad724887717cd302ecb) | 20 November 2026, 18:29 UTC | 25.69% | — | 16.91% | 24.19% |
 
