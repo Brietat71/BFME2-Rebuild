@@ -129,6 +129,20 @@
    "kind": "trusted-narrow",
    "number": 21,
    "tree": "b43d84ecf7ea207effd5b4204c83955124fe7989"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "44938320538"
+   },
+   "author": 1760627,
+   "base": "8c24effe0da90a13622152097660118b67ebd69c",
+   "claimed_by": null,
+   "day": "2026-11-21",
+   "head": "c58ca59589b1eca9b42f606cba756c58869e4a0c",
+   "kind": "trusted-narrow",
+   "number": 27,
+   "tree": "e8e71ccf321d1e9c3de285c28154cc98066db813"
   }
  ],
  "version": 2
