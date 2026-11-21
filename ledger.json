@@ -3,9 +3,9 @@
   "2026-11-21": {
    "authors": {
     "44365026": 5,
-    "64750076": 2
+    "64750076": 3
    },
-   "total": 7,
+   "total": 8,
    "wide_authors": {},
    "wide_total": 0
   }
@@ -211,6 +211,20 @@
    "kind": "trusted-narrow",
    "number": 27,
    "tree": "5cb5bc769e9bc987a200e0c8e733f66d3ea69e5b"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "44941427298"
+   },
+   "author": 64750076,
+   "base": "1c8f9c96b5c424328120e72f309b724d56d11b72",
+   "claimed_by": null,
+   "day": "2026-11-21",
+   "head": "87ce70642ac08cfe461820c7891a25e191c57372",
+   "kind": "narrow",
+   "number": 30,
+   "tree": "08c00b4a8d375f6783c7c1f65a9a7df4c5cabff3"
   }
  ],
  "version": 2
