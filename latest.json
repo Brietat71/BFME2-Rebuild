@@ -6,183 +6,183 @@
   "save_load": "not run",
   "starts": "not run"
  },
- "commit": "fb0d281c946e5c20b0602a6269515890de163ae1",
+ "commit": "5f2f839c078003a5be5d71a98107d6c587d654db",
  "compile": {
   "compile_errors": 0,
   "compiled": 3253,
   "expected_shards": 16,
-  "fastest_shard_s": 599.9,
+  "fastest_shard_s": 691.7,
   "files": 3253,
   "fully_matching": 409,
   "per_shard": [
    {
-    "batch_median_s": 34.9,
-    "busy_pct": 47.4,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 201,
-    "seconds": 918.7,
-    "shard": 0,
-    "steal_pct": 0.9
-   },
-   {
-    "batch_median_s": 57.5,
+    "batch_median_s": 56.4,
     "busy_pct": 51.7,
     "cpu_model": "AMD EPYC 8224P 24-Core Processor",
     "cpus": 2,
-    "files": 203,
-    "seconds": 1563.4,
-    "shard": 1,
+    "files": 201,
+    "seconds": 1513.4,
+    "shard": 0,
     "steal_pct": 0.0
    },
    {
-    "batch_median_s": 59.2,
-    "busy_pct": 51.6,
+    "batch_median_s": 31.8,
+    "busy_pct": 46.5,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 857.7,
+    "shard": 1,
+    "steal_pct": 0.6
+   },
+   {
+    "batch_median_s": 57.5,
+    "busy_pct": 51.2,
     "cpu_model": "AMD EPYC 8224P 24-Core Processor",
     "cpus": 2,
     "files": 203,
-    "seconds": 1565.3,
+    "seconds": 1526.5,
     "shard": 2,
     "steal_pct": 0.0
    },
    {
-    "batch_median_s": 59.5,
-    "busy_pct": 51.3,
-    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
+    "batch_median_s": 28.4,
+    "busy_pct": 48.4,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
     "cpus": 2,
     "files": 203,
-    "seconds": 1555.5,
+    "seconds": 739.8,
     "shard": 3,
-    "steal_pct": 0.0
+    "steal_pct": 0.4
    },
    {
-    "batch_median_s": 34.5,
-    "busy_pct": 47.9,
+    "batch_median_s": 27.3,
+    "busy_pct": 50.0,
     "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
     "cpus": 2,
     "files": 203,
-    "seconds": 896.0,
+    "seconds": 725.7,
     "shard": 4,
-    "steal_pct": 0.9
+    "steal_pct": 0.5
    },
    {
-    "batch_median_s": 23.2,
-    "busy_pct": 50.9,
+    "batch_median_s": 28.5,
+    "busy_pct": 48.5,
     "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
     "cpus": 2,
     "files": 203,
-    "seconds": 599.9,
+    "seconds": 739.4,
     "shard": 5,
-    "steal_pct": 0.1
+    "steal_pct": 0.4
    },
    {
-    "batch_median_s": 34.8,
-    "busy_pct": 46.6,
+    "batch_median_s": 24.9,
+    "busy_pct": 50.8,
     "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
     "cpus": 2,
     "files": 204,
-    "seconds": 924.9,
+    "seconds": 691.7,
     "shard": 6,
-    "steal_pct": 0.9
+    "steal_pct": 0.4
    },
    {
-    "batch_median_s": 57.9,
-    "busy_pct": 51.2,
-    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
+    "batch_median_s": 25.6,
+    "busy_pct": 50.4,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
     "cpus": 2,
     "files": 204,
-    "seconds": 1526.0,
+    "seconds": 693.7,
     "shard": 7,
-    "steal_pct": 0.0
+    "steal_pct": 0.4
    },
    {
-    "batch_median_s": 60.8,
-    "busy_pct": 50.9,
-    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
+    "batch_median_s": 29.0,
+    "busy_pct": 47.5,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
     "cpus": 2,
     "files": 204,
-    "seconds": 1570.8,
+    "seconds": 801.8,
     "shard": 8,
+    "steal_pct": 0.7
+   },
+   {
+    "batch_median_s": 26.9,
+    "busy_pct": 50.1,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 715.3,
+    "shard": 9,
+    "steal_pct": 0.5
+   },
+   {
+    "batch_median_s": 58.5,
+    "busy_pct": 51.4,
+    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 1519.6,
+    "shard": 10,
     "steal_pct": 0.0
    },
    {
     "batch_median_s": 58.6,
-    "busy_pct": 51.2,
-    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
-    "cpus": 2,
-    "files": 203,
-    "seconds": 1536.8,
-    "shard": 9,
-    "steal_pct": 0.0
-   },
-   {
-    "batch_median_s": 34.1,
-    "busy_pct": 47.3,
-    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
-    "cpus": 2,
-    "files": 203,
-    "seconds": 892.4,
-    "shard": 10,
-    "steal_pct": 1.0
-   },
-   {
-    "batch_median_s": 61.3,
-    "busy_pct": 51.7,
+    "busy_pct": 51.5,
     "cpu_model": "AMD EPYC 8224P 24-Core Processor",
     "cpus": 2,
     "files": 204,
-    "seconds": 1559.1,
+    "seconds": 1510.4,
     "shard": 11,
     "steal_pct": 0.0
    },
    {
-    "batch_median_s": 59.4,
-    "busy_pct": 51.3,
-    "cpu_model": "AMD EPYC 8224P 24-Core Processor",
+    "batch_median_s": 28.7,
+    "busy_pct": 48.8,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
     "cpus": 2,
     "files": 204,
-    "seconds": 1573.7,
+    "seconds": 739.4,
     "shard": 12,
-    "steal_pct": 0.0
+    "steal_pct": 0.4
    },
    {
-    "batch_median_s": 61.0,
-    "busy_pct": 51.0,
+    "batch_median_s": 60.1,
+    "busy_pct": 51.2,
     "cpu_model": "AMD EPYC 8224P 24-Core Processor",
     "cpus": 2,
     "files": 204,
-    "seconds": 1586.9,
+    "seconds": 1554.9,
     "shard": 13,
     "steal_pct": 0.0
    },
    {
-    "batch_median_s": 59.0,
-    "busy_pct": 51.0,
+    "batch_median_s": 58.6,
+    "busy_pct": 51.6,
     "cpu_model": "AMD EPYC 8224P 24-Core Processor",
     "cpus": 2,
     "files": 203,
-    "seconds": 1560.1,
+    "seconds": 1533.7,
     "shard": 14,
     "steal_pct": 0.0
    },
    {
-    "batch_median_s": 59.7,
-    "busy_pct": 51.9,
+    "batch_median_s": 57.0,
+    "busy_pct": 51.6,
     "cpu_model": "AMD EPYC 8224P 24-Core Processor",
     "cpus": 2,
     "files": 204,
-    "seconds": 1569.9,
+    "seconds": 1522.0,
     "shard": 15,
     "steal_pct": 0.0
    }
   ],
   "problem": null,
   "shards": 16,
-  "slowest_shard_s": 1586.9
+  "slowest_shard_s": 1554.9
  },
  "compile_ok": true,
  "control_caught": null,
- "date": "2026-11-20",
+ "date": "2026-11-21",
  "equal_frames": null,
  "event": "workflow_dispatch",
  "files_substituted": null,
@@ -198,6 +198,15 @@
  "image_sha256": null,
  "link": null,
  "link_census": {
+  "duplicate_names": [
+   "?Equals@EAStringC@@QBE_NPBV1@@Z",
+   "?GetSnapshotName@RainOfFireUpdate@@MBEPBDXZ",
+   "?getModuleNameKey@RainOfFireUpdate@@UBE?AW4NameKeyType@@XZ",
+   "?loadPostProcess@RainOfFireUpdate@@MAEXXZ",
+   "?rva004AC135@RainOfFireUpdate@@UAEXM@Z",
+   "?rva004AC18D@RainOfFireUpdate@@QAEXM@Z",
+   "?xfer@RainOfFireUpdate@@MAEXPAVXfer@@@Z"
+  ],
   "duplicates": 7,
   "missing": 3136,
   "missing_by_kind": {
@@ -207,8 +216,20 @@
   },
   "needed": 8317,
   "objects": 3253,
+  "program_functions": [
+   14358,
+   41565
+  ],
   "provided": 5181
  },
+ "linking_headline": "referenced",
+ "linking_measured": {
+  "date": "2026-11-21",
+  "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/44838709024",
+  "sha": "5f2f839c078003a5be5d71a98107d6c587d654db",
+  "this_run": true
+ },
+ "linking_unit": "names",
  "menu": null,
  "plan": null,
  "provided_required_symbols": [
@@ -216,11 +237,11 @@
   8317
  ],
  "result": "partial",
- "run_id": "44832958764",
- "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/44832958764",
+ "run_id": "44838709024",
+ "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/44838709024",
  "save_load": null,
  "schema": "bfme2-nightly/1",
- "sha": "fb0d281c946e5c20b0602a6269515890de163ae1",
+ "sha": "5f2f839c078003a5be5d71a98107d6c587d654db",
  "simulation_equal": null,
  "size_check": null,
  "skirmish": null,
@@ -232,14 +253,15 @@
  "stopped": null,
  "tests": {},
  "timings": {
-  "compile_slowest_shard_s": 1586.9,
+  "compile_slowest_shard_s": 1554.9,
   "link_and_play": null,
   "run": {
    "jobs": 18,
    "runner_minutes": {
-    "compile": 365.7
+    "compile": 298.0,
+    "publish": 0.0
    },
-   "wall_minutes": 27.7
+   "wall_minutes": 27.1
   }
  }
 }
