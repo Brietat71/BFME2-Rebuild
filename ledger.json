@@ -1918,6 +1918,20 @@
    "kind": "narrow",
    "number": 55,
    "tree": "ab16c4b203c90873d3f5dfab7caf286c5817fcb6"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45085465709"
+   },
+   "author": 1399571,
+   "base": "85af5809f5e23f8450d0f6b706e2f9cfefdc226f",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "2eff9f2efa0e60de348cdfc2c0c125bd0e152f82",
+   "kind": "wide",
+   "number": 13,
+   "tree": "00349e7447994a0cf7ec7eeb5147aab3b5084a1c"
   }
  ],
  "version": 2
