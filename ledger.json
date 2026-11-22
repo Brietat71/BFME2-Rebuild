@@ -1860,6 +1860,20 @@
    "kind": "narrow",
    "number": 50,
    "tree": "7ef5d0ba31c26f45a19314c741ea728a4e182fe9"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45081470860"
+   },
+   "author": 1399571,
+   "base": "a13dbd4f83c8115b42919e02b1069c2138c23172",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "58ac49ff875792d8462ff5be559d4e3c13894594",
+   "kind": "wide",
+   "number": 17,
+   "tree": "3094bf10dfec468f56c73bda4756b5b1a2ac53dd"
   }
  ],
  "version": 2
