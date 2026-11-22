@@ -24,9 +24,9 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 <rect class="box" x="452" y="92" width="400" height="150" rx="10"/>
 <text class="muted" x="476" y="122" font-size="12" font-weight="600" letter-spacing="1.4">LINKING</text>
 <text class="strong" x="476" y="178" font-size="54" font-weight="700">64.7%</text>
-<text class="muted" x="476" y="204" font-size="13">of the names a full game needs: 6,021 of 9,306</text>
+<text class="muted" x="476" y="204" font-size="13">of the names a full game needs: 6,021 of 9,305</text>
 <rect class="track" x="476" y="216" width="352" height="10" rx="5"/>
-<rect class="blue" x="476" y="216" width="227.7" height="10" rx="5"/>
+<rect class="blue" x="476" y="216" width="227.8" height="10" rx="5"/>
 <text class="strong" x="28" y="286" font-size="24" font-weight="700">11,030</text>
 <text class="muted" x="28" y="306" font-size="12">functions finished,</text>
 <text class="muted" x="28" y="322" font-size="12">of 41,565</text>
