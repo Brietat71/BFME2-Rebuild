@@ -1,4 +1,4 @@
-# measured_utc=2026-11-21 revision=9fa818c2b335503f6988214ed1a9783b9d9da2a7 body_checked_against=439e43d7c5 left_out_written=695
+# measured_utc=2026-11-21 revision=9fa818c2b335503f6988214ed1a9783b9d9da2a7 body_checked_against=275e5bc86e left_out_written=695
 referrers	state	rva	file	symbol	first_referrer	body_check
 52	owned:MISSING	0x00253390	src/unk/O0024EEBB.cpp	??0UpdateModule@@QAE@PAVThing@@PBVModuleData@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehavior.cpp	none-found
 14	owned:MISSING	0x0004233A	src/unk/G000421F2.cpp	?Inv_Sqrt@WWMath@@SIMM@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowMapManager.cpp	none-found

@@ -2,7 +2,7 @@
 
 How much of the original game (version 1.06) has been rebuilt as source code that compiles back to the same machine code. Measured automatically after every change; nobody edits this page.
 
-Measured **22 November 2026**. The code figures describe commit [`439e43d7c563`](https://github.com/Open-BFME/BFME2-Rebuild/commit/439e43d7c56323576005221fe6ffd4c0ca71ca2c) (22 November 2026, 07:36 UTC); the build checks run every day.
+Measured **22 November 2026**. The code figures describe commit [`275e5bc86e6c`](https://github.com/Open-BFME/BFME2-Rebuild/commit/275e5bc86e6c35cbf28c1c173eafe8dc772c5fdc) (22 November 2026, 14:00 UTC); the build checks run every day.
 
 ![Progress](progress.svg)
 
@@ -67,6 +67,7 @@ Provisional class declarations still in use (files under `include/Draft/` that s
 
 | Commit | Date | Byte match | Linking | Proven | Finished |
 | --- | --- | ---: | ---: | ---: | ---: |
+| [`275e5bc86e6c`](https://github.com/Open-BFME/BFME2-Rebuild/commit/275e5bc86e6c35cbf28c1c173eafe8dc772c5fdc) | 22 November 2026, 14:00 UTC | 27.61% | 56.40% (build `9fa818c`) | 19.39% | 26.52% |
 | [`439e43d7c563`](https://github.com/Open-BFME/BFME2-Rebuild/commit/439e43d7c56323576005221fe6ffd4c0ca71ca2c) | 22 November 2026, 07:36 UTC | 27.61% | 56.40% (build `9fa818c`) | 19.39% | 26.52% |
 | [`a8ba9aee59d9`](https://github.com/Open-BFME/BFME2-Rebuild/commit/a8ba9aee59d9634cf44fba99f4652f4e5b596314) | 20 November 2026, 23:55 UTC | 26.15% | 56.40% (build `9fa818c`) | 17.39% | 25.07% |
 | [`69da5d735238`](https://github.com/Open-BFME/BFME2-Rebuild/commit/69da5d7352386882778ba9c6ba4a5934ffdd3be5) | 20 November 2026, 19:03 UTC | 25.79% | 62.29% (build `5f2f839`) | 17.19% | 24.59% |
