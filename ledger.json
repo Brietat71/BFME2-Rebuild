@@ -1946,6 +1946,20 @@
    "kind": "narrow",
    "number": 55,
    "tree": "6e26c6aa9284c0d0c453852ce7de671b74441d87"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45085489941"
+   },
+   "author": 44365026,
+   "base": "85af5809f5e23f8450d0f6b706e2f9cfefdc226f",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "931672ab99c1c9801bafc37d4999ea23f96bcf1c",
+   "kind": "narrow",
+   "number": 50,
+   "tree": "f960d91fa14bc7cdf77b032f70a7426fc72d84e1"
   }
  ],
  "version": 2
