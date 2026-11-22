@@ -9,6 +9,14 @@
    "total": 16,
    "wide_authors": {},
    "wide_total": 0
+  },
+  "2026-11-22": {
+   "authors": {},
+   "total": 0,
+   "wide_authors": {
+    "1399571": 1
+   },
+   "wide_total": 1
   }
  },
  "reservations": [
@@ -353,6 +361,20 @@
    "kind": "narrow",
    "number": 34,
    "tree": "ef61142a7a8e133bcf7a85edaa5c579064fa2ee6"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "44992736796"
+   },
+   "author": 1399571,
+   "base": "7dd9a812d38774bd290195d4b1b9409c93832fe5",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "e1aa983640971c0533f5be59f69d480ddaf8fe1d",
+   "kind": "wide",
+   "number": 14,
+   "tree": "37d723a756f425ef0294287811f956549ac0531b"
   }
  ],
  "version": 2
