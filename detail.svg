@@ -15,7 +15,7 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 <text class="t1" x="806" y="92" font-size="30" font-weight="600" text-anchor="end">27.6%</text>
 <rect class="track" x="24" y="102" width="782" height="20" rx="10"/>
 <rect class="fill" x="24" y="102" width="216.0" height="20" rx="10"/>
-<text class="t2" x="24" y="141" font-size="15">1,749,066 of 6,333,616 bytes</text>
+<text class="t2" x="24" y="141" font-size="15">1,749,190 of 6,333,616 bytes</text>
 <text class="t1" x="24" y="182" font-size="24" font-weight="600">Linking</text>
 <text class="t1" x="806" y="182" font-size="30" font-weight="600" text-anchor="end">64.7%</text>
 <rect class="track" x="24" y="192" width="782" height="20" rx="10"/>
@@ -28,5 +28,5 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 <text class="t1" x="24" y="325" font-size="19" font-weight="600">Finished functions</text>
 <text class="t1" x="806" y="325" font-size="19" font-weight="600" text-anchor="end">26.5%</text>
 <rect class="track" x="24" y="335" width="782" height="12" rx="6"/>
-<rect class="fill" x="24" y="335" width="207.4" height="12" rx="6"/>
+<rect class="fill" x="24" y="335" width="207.5" height="12" rx="6"/>
 </svg>

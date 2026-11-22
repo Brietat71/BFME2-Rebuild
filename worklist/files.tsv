@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22T18:10:42Z revision=0e08e2d5b5 finished_files=525
+# measured_utc=2026-11-22T19:21:52Z revision=531d47ed71 finished_files=525
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -646,13 +646,13 @@ src/Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdate.cpp	62	41	10
 src/Code/Libraries/Source/partitionmanager/partitionmanager_impl.cpp	41	41	6444	1	none	0
 src/Code/GameEngine/Source/Common/MapObject.cpp	41	41	3437	0	none	0
 src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptSaveLoad.cpp	65	42	10202	7	real	2
+src/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTreeBuffer.cpp	44	42	17874	0	real	0
 src/Code/GameEngine/Source/GameLogic/AI/AIGroup.cpp	135	43	15706	7	real	15
 src/Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder_path.cpp	54	43	12609	1	real	0
 src/Code/GameEngine/Source/GameClient/Gui/InGame/Strategic/StrategicHUDRegionDetailsStructuresMovieClip.cpp	43	43	2155	0	none	0
 src/Code/GameEngine/Source/GameClient/Gui/InGame/Strategic/StrategicHUDPalantir.cpp	43	43	3572	0	none	0
 src/Code/GameEngine/Source/GameClient/Gui/InGame/Strategic/StrategicHUDArmyDetailsMovieClip.cpp	45	43	6136	0	real	0
 src/Code/GameEngine/Source/GameLogic/Map/StandingWaterArea.cpp	43	43	6219	0	none	0
-src/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTreeBuffer.cpp	44	43	17998	0	real	0
 src/Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldRegionEffectsManager.cpp	44	44	3116	0	draft	0
 src/Code/GameEngine/Source/GameClient/Gui/InGame/Tactical/PalantirCommandInterface.cpp	46	44	4818	0	none	5
 src/fesl/source/gamebrowser/lantheateremulator.cpp	44	44	7792	0	none	0
