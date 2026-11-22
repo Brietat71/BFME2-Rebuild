@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x004C2389":["MISSING",0,false],"0x004C23A4":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/G004C2389.cpp","verified":false}
+{"error":false,"functions":{"0x004C2389":["MATCH",100,true],"0x004C23A4":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/G004C2389.cpp","verified":false}

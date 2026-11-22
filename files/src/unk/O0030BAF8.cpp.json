@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x0030BAF8":["MISSING",0,false],"0x0030BB87":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/O0030BAF8.cpp","verified":false}
+{"error":false,"functions":{"0x0030BAF8":["MATCH",100,false],"0x0030BB87":["MATCH",100,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/O0030BAF8.cpp","verified":false}

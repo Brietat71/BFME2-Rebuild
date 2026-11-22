@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x0013C880":["MISSING",0,false],"0x0013C8E0":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/Code/Libraries/Source/WWVegas/WWLib/xstraw.cpp","verified":false}
+{"error":false,"functions":{"0x0013C880":["MATCH",100,true],"0x0013C8E0":["MATCH",100,true]},"gate_sha256":[],"schema":1,"tu":"src/Code/Libraries/Source/WWVegas/WWLib/xstraw.cpp","verified":false}

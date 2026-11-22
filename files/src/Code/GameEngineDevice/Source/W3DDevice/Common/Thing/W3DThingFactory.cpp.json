@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x0004CA01":["MISSING",0,false],"0x0004CA13":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/Code/GameEngineDevice/Source/W3DDevice/Common/Thing/W3DThingFactory.cpp","verified":false}
+{"error":false,"functions":{"0x0004CA01":["MATCH",100,false],"0x0004CA13":["MATCH",100,false]},"gate_sha256":[],"schema":1,"tu":"src/Code/GameEngineDevice/Source/W3DDevice/Common/Thing/W3DThingFactory.cpp","verified":false}

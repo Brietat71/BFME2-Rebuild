@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x001EF361":["MISSING",0,false],"0x001EF367":["MATCH",100,true],"0x001EF3BF":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/Code/GameEngine/Source/Common/INI/INIMultiplayer.cpp","verified":false}
+{"error":false,"functions":{"0x001EF361":["MATCH",100,true],"0x001EF367":["MATCH",100,true],"0x001EF3BF":["MATCH",100,false]},"gate_sha256":[],"schema":1,"tu":"src/Code/GameEngine/Source/Common/INI/INIMultiplayer.cpp","verified":false}

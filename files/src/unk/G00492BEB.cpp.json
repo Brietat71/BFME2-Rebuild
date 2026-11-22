@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x00492BEB":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/G00492BEB.cpp","verified":false}
+{"error":false,"functions":{"0x00492BEB":["MATCH",100,true]},"gate_sha256":[],"schema":1,"tu":"src/unk/G00492BEB.cpp","verified":false}

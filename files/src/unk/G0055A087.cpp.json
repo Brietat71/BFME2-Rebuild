@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x0055A087":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/G0055A087.cpp","verified":false}
+{"error":false,"functions":{"0x0055A087":["MATCH",100,true]},"gate_sha256":[],"schema":1,"tu":"src/unk/G0055A087.cpp","verified":true}

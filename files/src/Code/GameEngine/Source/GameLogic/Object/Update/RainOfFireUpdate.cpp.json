@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x004AC24D":["WRONG_REFERENCE",0,false],"0x004AC2A8":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/Code/GameEngine/Source/GameLogic/Object/Update/RainOfFireUpdate.cpp","verified":false}
+{"error":false,"functions":{"0x004AC24D":["MATCH",100,false],"0x004AC2A8":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/Code/GameEngine/Source/GameLogic/Object/Update/RainOfFireUpdate.cpp","verified":false}

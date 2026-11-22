@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x000D0737":["MISSING",0,false],"0x000D0774":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/G000D0737.cpp","verified":false}
+{"error":false,"functions":{"0x000D0737":["MATCH",100,false],"0x000D0774":["MATCH",100,true]},"gate_sha256":[],"schema":1,"tu":"src/unk/G000D0737.cpp","verified":false}

@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x0058902F":["MISSING",0,false],"0x00589051":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/O0058902F.cpp","verified":false}
+{"error":false,"functions":{"0x0058902F":["MATCH",100,true],"0x00589051":["MISSING",0,false]},"gate_sha256":[],"schema":1,"tu":"src/unk/O0058902F.cpp","verified":false}

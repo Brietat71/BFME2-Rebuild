@@ -1,1 +1,1 @@
-{"error":false,"functions":{"0x000F0B81":["MATCH",100,true],"0x000F0B98":["MATCH",100,true],"0x000F0BAB":["MATCH",100,true],"0x000F0BC2":["MATCH",100,true]},"gate_sha256":[],"schema":1,"tu":"src/Code/Libraries/Source/WWVegas/WW3D2/hanimmgr.cpp","verified":false}
+{"error":false,"functions":{"0x000F0B81":["MATCH",100,true],"0x000F0B98":["MATCH",100,true],"0x000F0BAB":["MATCH",100,true],"0x000F0BC2":["MATCH",100,true]},"gate_sha256":[],"schema":1,"tu":"src/Code/Libraries/Source/WWVegas/WW3D2/hanimmgr.cpp","verified":true}
