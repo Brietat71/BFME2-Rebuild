@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="344" viewBox="0 0 880 344" role="img" aria-label="Byte match 26.1 percent, linking 56.4 percent, 10420 of 41565 functions finished, the game run has not run yet">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="344" viewBox="0 0 880 344" role="img" aria-label="Byte match 27.6 percent, linking 56.4 percent, 11025 of 41565 functions finished, the game run has not run yet">
 <style>
 .card{fill:#0d1117;stroke:#30363d}.box{fill:#161b22;stroke:#30363d}.track{fill:#21262d}
 .strong{fill:#f0f6fc}.muted{fill:#8b949e}.blue{fill:#3987e5}.orange{fill:#d95926}.green{fill:#3fb950}.red{fill:#f85149}
@@ -13,21 +13,21 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 </style>
 <rect class="card" x="0.5" y="0.5" width="879" height="343" rx="12"/>
 <text class="muted" x="28" y="36" font-size="12" font-weight="600" letter-spacing="1.4">BATTLE FOR MIDDLE-EARTH II · REBUILD</text>
-<text class="muted" x="852" y="36" font-size="12" text-anchor="end">21 Nov 2026 · measured by machine, daily at noon ET</text>
+<text class="muted" x="852" y="36" font-size="12" text-anchor="end">22 Nov 2026 · measured by machine, daily at noon ET</text>
 <text class="strong" x="28" y="68" font-size="22" font-weight="700">Road to a game built from source</text>
 <rect class="box" x="28" y="92" width="400" height="150" rx="10"/>
 <text class="muted" x="52" y="122" font-size="12" font-weight="600" letter-spacing="1.4">BYTE MATCH</text>
-<text class="strong" x="52" y="178" font-size="54" font-weight="700">26.1%</text>
+<text class="strong" x="52" y="178" font-size="54" font-weight="700">27.6%</text>
 <text class="muted" x="52" y="204" font-size="13">of the original program, rebuilt byte for byte</text>
 <rect class="track" x="52" y="216" width="352" height="10" rx="5"/>
-<rect class="blue" x="52" y="216" width="92.0" height="10" rx="5"/>
+<rect class="blue" x="52" y="216" width="97.2" height="10" rx="5"/>
 <rect class="box" x="452" y="92" width="400" height="150" rx="10"/>
 <text class="muted" x="476" y="122" font-size="12" font-weight="600" letter-spacing="1.4">LINKING</text>
 <text class="strong" x="476" y="178" font-size="54" font-weight="700">56.4%</text>
 <text class="muted" x="476" y="204" font-size="13">of the names a full game needs: 4,679 of 8,296</text>
 <rect class="track" x="476" y="216" width="352" height="10" rx="5"/>
 <rect class="blue" x="476" y="216" width="198.5" height="10" rx="5"/>
-<text class="strong" x="28" y="286" font-size="24" font-weight="700">10,420</text>
+<text class="strong" x="28" y="286" font-size="24" font-weight="700">11,025</text>
 <text class="muted" x="28" y="306" font-size="12">functions finished,</text>
 <text class="muted" x="28" y="322" font-size="12">of 41,565</text>
 <text class="strong" x="310" y="286" font-size="24" font-weight="700">—</text>

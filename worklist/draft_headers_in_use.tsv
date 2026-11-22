@@ -1,9 +1,14 @@
-# measured_utc=2026-11-20T23:55:08Z revision=a8ba9aee59d9634cf44fba99f4652f4e5b596314
+# measured_utc=2026-11-22T07:36:05Z revision=439e43d7c56323576005221fe6ffd4c0ca71ca2c
 header	direct_including_files
 include/Draft/AnimationSoundClientBehavior.h	1
 include/Draft/ChangeStanceGroupOrder.h	1
+include/Draft/DeflectSpecialPowerModuleData.h	1
 include/Draft/GateProxyBehavior.h	1
 include/Draft/ModelConditionSoundSelectorClientBehavior.h	1
 include/Draft/StrategicHUD/ArmyDetailsMovieClip/Impl.h	1
 include/Draft/StrategicHUD/ChecklistUIImpl.h	1
+include/Draft/W3DLightDrawModuleData.h	1
+include/Draft/W3DQuadrupedDrawModuleData.h	1
+include/Draft/W3DStreakDrawModuleData.h	1
+include/Draft/W3DTornadoDrawModuleData.h	1
 include/Draft/Watchdog.h	1
