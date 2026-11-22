@@ -11,8 +11,10 @@
    "wide_total": 0
   },
   "2026-11-22": {
-   "authors": {},
-   "total": 0,
+   "authors": {
+    "44365026": 1
+   },
+   "total": 1,
    "wide_authors": {
     "1399571": 5
    },
@@ -443,6 +445,20 @@
    "kind": "wide",
    "number": 15,
    "tree": "64f4ab13708f8d0f4caf6426123e1383a76f51b8"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "44995422656"
+   },
+   "author": 44365026,
+   "base": "4a55f703a77728aeb3e17f504dfb2f209b223042",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "cdbe6e56ec39810a2f9c53b890bd06483808f836",
+   "kind": "narrow",
+   "number": 34,
+   "tree": "5f6f72fc5813967e7ce406353940a22d2cfa2071"
   }
  ],
  "version": 2
