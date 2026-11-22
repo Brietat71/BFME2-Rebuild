@@ -1748,6 +1748,20 @@
    "kind": "narrow",
    "number": 59,
    "tree": "2f63ca120298b1442a001c396b2cf10f301e840c"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45081439965"
+   },
+   "author": 1399571,
+   "base": "a13dbd4f83c8115b42919e02b1069c2138c23172",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "e1aa983640971c0533f5be59f69d480ddaf8fe1d",
+   "kind": "wide",
+   "number": 14,
+   "tree": "95472c148ba79d65d8536c18edc7f0943bff3215"
   }
  ],
  "version": 2
