@@ -21,10 +21,10 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 <text class="t2" x="46" y="28.0" font-size="13" text-anchor="end">100%</text>
 <text class="t2" x="52" y="288" font-size="13">20 November 2026</text>
 <text class="t2" x="680" y="288" font-size="13" text-anchor="end">22 November 2026</text>
-<path class="s1" d="M52.0,199.4 L60.1,199.1 L130.2,198.3 L587.5,194.8 L680.0,194.8" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s2" d="M60.1,113.0 L130.2,126.9 L587.5,126.9 L680.0,107.3" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s3" d="M52.0,220.1 L60.1,219.4 L130.2,219.0 L587.5,214.2 L680.0,214.2" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s4" d="M52.0,202.9 L60.1,202.0 L130.2,200.8 L587.5,197.4 L680.0,197.4" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s1" d="M52.0,199.4 L59.8,199.1 L127.1,198.3 L565.9,194.8 L654.8,194.8 L680.0,194.8" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s2" d="M59.8,113.0 L127.1,126.9 L565.9,126.9 L654.8,107.3 L680.0,107.3" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s3" d="M52.0,220.1 L59.8,219.4 L127.1,219.0 L565.9,214.2 L654.8,214.2 L680.0,214.2" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s4" d="M52.0,202.9 L59.8,202.0 L127.1,200.8 L565.9,197.4 L654.8,197.4 L680.0,197.4" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 <rect class="d2" x="688" y="103.3" width="8" height="8" rx="2"/>
 <text class="t1" x="700" y="112.3" font-size="14">Linking</text>
 <rect class="d1" x="688" y="190.8" width="8" height="8" rx="2"/>
