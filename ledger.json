@@ -1427,6 +1427,20 @@
    "kind": "narrow",
    "number": 44,
    "tree": "bde805b0159ffe20b9807cb492aba1b0f082c383"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45072468418"
+   },
+   "author": 1399571,
+   "base": "3f189791b1d0f4be26fc158122dfbb36c377e177",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "58ac49ff875792d8462ff5be559d4e3c13894594",
+   "kind": "wide",
+   "number": 17,
+   "tree": "cf987cd6907bdf16a5fd5dbcc0ffd8d5d96f6a48"
   }
  ],
  "version": 2
