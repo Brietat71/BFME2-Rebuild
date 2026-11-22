@@ -1484,7 +1484,10 @@
    },
    "author": 19627006,
    "base": "3f189791b1d0f4be26fc158122dfbb36c377e177",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45072537784"
+   },
    "day": "2026-11-22",
    "head": "92d1d8582fcf86bab6fefa7ee336420de30754bb",
    "kind": "narrow",
