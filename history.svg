@@ -21,10 +21,10 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 <text class="t2" x="46" y="28.0" font-size="13" text-anchor="end">100%</text>
 <text class="t2" x="52" y="288" font-size="13">20 November 2026</text>
 <text class="t2" x="680" y="288" font-size="13" text-anchor="end">22 November 2026</text>
-<path class="s1" d="M52.0,199.4 L58.7,199.1 L117.2,198.3 L498.1,194.8 L575.2,194.8 L597.1,194.8 L597.7,194.8 L625.3,194.8 L639.5,194.8 L644.5,194.8 L650.7,194.8 L672.9,194.8 L680.0,194.8" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s2" d="M58.7,113.0 L117.2,126.9 L498.1,126.9 L575.2,107.3 L597.1,107.3 L597.7,107.3 L625.3,107.3 L639.5,107.3 L644.5,107.3 L650.7,107.3 L672.9,107.3 L680.0,107.3" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s3" d="M52.0,220.1 L58.7,219.4 L117.2,219.0 L498.1,214.2 L575.2,214.2 L597.1,214.2 L597.7,214.2 L625.3,214.2 L639.5,214.2 L644.5,214.2 L650.7,214.2 L672.9,214.2 L680.0,214.2" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s4" d="M52.0,202.9 L58.7,202.0 L117.2,200.8 L498.1,197.4 L575.2,197.4 L597.1,197.4 L597.7,197.4 L625.3,197.4 L639.5,197.4 L644.5,197.4 L650.7,197.4 L672.9,197.4 L680.0,197.4" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s1" d="M52.0,199.4 L58.7,199.1 L116.6,198.3 L494.2,194.8 L570.6,194.8 L592.3,194.8 L592.9,194.8 L620.2,194.8 L634.4,194.8 L639.3,194.8 L645.4,194.8 L667.5,194.8 L674.5,194.8 L680.0,194.8" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s2" d="M58.7,113.0 L116.6,126.9 L494.2,126.9 L570.6,107.3 L592.3,107.3 L592.9,107.3 L620.2,107.3 L634.4,107.3 L639.3,107.3 L645.4,107.3 L667.5,107.3 L674.5,107.3 L680.0,107.3" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s3" d="M52.0,220.1 L58.7,219.4 L116.6,219.0 L494.2,214.2 L570.6,214.2 L592.3,214.2 L592.9,214.2 L620.2,214.2 L634.4,214.2 L639.3,214.2 L645.4,214.2 L667.5,214.2 L674.5,214.2 L680.0,214.2" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s4" d="M52.0,202.9 L58.7,202.0 L116.6,200.8 L494.2,197.4 L570.6,197.4 L592.3,197.4 L592.9,197.4 L620.2,197.4 L634.4,197.4 L639.3,197.4 L645.4,197.4 L667.5,197.4 L674.5,197.4 L680.0,197.4" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 <rect class="d2" x="688" y="103.3" width="8" height="8" rx="2"/>
 <text class="t1" x="700" y="112.3" font-size="14">Linking</text>
 <rect class="d1" x="688" y="190.8" width="8" height="8" rx="2"/>
