@@ -12,9 +12,9 @@
   },
   "2026-11-22": {
    "authors": {
-    "44365026": 17
+    "44365026": 18
    },
-   "total": 17,
+   "total": 18,
    "wide_authors": {
     "1399571": 10
    },
@@ -839,6 +839,20 @@
    },
    "day": "2026-11-22",
    "head": "cfa106eafdc2887f7bb53e039c54bf3d83c3ff6d",
+   "kind": "narrow",
+   "number": 38,
+   "tree": "ba697a021acebb1206197eec4729e89f87aded71"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45039097996"
+   },
+   "author": 44365026,
+   "base": "e8891c8fa058bff7bb9bf855a4130c2562991dfa",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "215a2fc0964d4efb74cfb18c8b038420028e7680",
    "kind": "narrow",
    "number": 38,
    "tree": "ba697a021acebb1206197eec4729e89f87aded71"
