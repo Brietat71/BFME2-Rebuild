@@ -1,0 +1,273 @@
+{
+ "checks": {
+  "control": "not run",
+  "maps": "not run",
+  "menu": "not run",
+  "save_load": "not run",
+  "starts": "not run"
+ },
+ "commit": "4ae67eed04400d4cc8b4d80aa4521a89d1750bb2",
+ "compile": {
+  "compile_errors": 0,
+  "compiled": 3250,
+  "expected_shards": 16,
+  "fastest_shard_s": 378.7,
+  "files": 3250,
+  "fully_matching": 526,
+  "per_shard": [
+   {
+    "batch_median_s": 35.0,
+    "busy_pct": 64.4,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 202,
+    "seconds": 954.0,
+    "shard": 0,
+    "steal_pct": 1.8
+   },
+   {
+    "batch_median_s": 21.1,
+    "busy_pct": 70.1,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 595.5,
+    "shard": 1,
+    "steal_pct": 0.4
+   },
+   {
+    "batch_median_s": 17.6,
+    "busy_pct": 74.8,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 469.0,
+    "shard": 2,
+    "steal_pct": 0.1
+   },
+   {
+    "batch_median_s": 17.1,
+    "busy_pct": 75.6,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 453.9,
+    "shard": 3,
+    "steal_pct": 0.1
+   },
+   {
+    "batch_median_s": 33.8,
+    "busy_pct": 65.2,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 202,
+    "seconds": 887.6,
+    "shard": 4,
+    "steal_pct": 1.7
+   },
+   {
+    "batch_median_s": 35.6,
+    "busy_pct": 63.7,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 918.4,
+    "shard": 5,
+    "steal_pct": 1.9
+   },
+   {
+    "batch_median_s": 18.3,
+    "busy_pct": 69.8,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 202,
+    "seconds": 475.5,
+    "shard": 6,
+    "steal_pct": 0.2
+   },
+   {
+    "batch_median_s": 19.6,
+    "busy_pct": 71.9,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 514.8,
+    "shard": 7,
+    "steal_pct": 0.3
+   },
+   {
+    "batch_median_s": 23.7,
+    "busy_pct": 62.9,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 623.3,
+    "shard": 8,
+    "steal_pct": 0.2
+   },
+   {
+    "batch_median_s": 21.1,
+    "busy_pct": 73.6,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 560.3,
+    "shard": 9,
+    "steal_pct": 0.4
+   },
+   {
+    "batch_median_s": 19.4,
+    "busy_pct": 72.6,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 500.2,
+    "shard": 10,
+    "steal_pct": 0.3
+   },
+   {
+    "batch_median_s": 18.7,
+    "busy_pct": 69.6,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 490.0,
+    "shard": 11,
+    "steal_pct": 0.2
+   },
+   {
+    "batch_median_s": 33.9,
+    "busy_pct": 66.1,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 876.9,
+    "shard": 12,
+    "steal_pct": 1.7
+   },
+   {
+    "batch_median_s": 21.8,
+    "busy_pct": 68.3,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 573.8,
+    "shard": 13,
+    "steal_pct": 0.2
+   },
+   {
+    "batch_median_s": 14.1,
+    "busy_pct": 77.6,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 378.7,
+    "shard": 14,
+    "steal_pct": 0.1
+   },
+   {
+    "batch_median_s": 16.8,
+    "busy_pct": 75.8,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 457.0,
+    "shard": 15,
+    "steal_pct": 0.1
+   }
+  ],
+  "problem": null,
+  "shards": 16,
+  "slowest_shard_s": 954.0
+ },
+ "compile_ok": true,
+ "control_caught": null,
+ "date": "2026-11-22",
+ "equal_frames": null,
+ "event": "schedule",
+ "files_substituted": null,
+ "frames": {
+  "compared": 0,
+  "equal": 0,
+  "first_divergent": {}
+ },
+ "functions": null,
+ "games_skipped": false,
+ "headline": "compiles (3250 of 3250 files compile, 526 match completely); game run not live yet",
+ "image_manifest_sha256": null,
+ "image_sha256": null,
+ "link": null,
+ "link_census": {
+  "duplicate_names": [
+   "??0RainOfFireUpdateModuleData@@QAE@XZ",
+   "?Equals@EAStringC@@QBE_NPBV1@@Z",
+   "?GetSnapshotName@RainOfFireUpdate@@MBEPBDXZ",
+   "?buildFieldParse@AutoPickUpUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z",
+   "?buildFieldParse@DetachableRiderUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z",
+   "?buildFieldParse@RainOfFireUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z",
+   "?buildFieldParse@RubbleRiseUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z",
+   "?getModuleNameKey@RainOfFireUpdate@@UBE?AW4NameKeyType@@XZ",
+   "?loadPostProcess@RainOfFireUpdate@@MAEXXZ",
+   "?rva004AC135@RainOfFireUpdate@@UAEXM@Z",
+   "?rva004AC18D@RainOfFireUpdate@@QAEXM@Z",
+   "?xfer@RainOfFireUpdate@@MAEXPAVXfer@@@Z",
+   "_XMP_Bits_To_Digits",
+   "_XMP_Digits_To_Bits"
+  ],
+  "duplicates": 14,
+  "missing": 3284,
+  "missing_by_kind": {
+   "c": 30,
+   "c++": 3252,
+   "import": 2
+  },
+  "needed": 9305,
+  "objects": 3250,
+  "program_functions": [
+   15885,
+   41565
+  ],
+  "provided": 6021
+ },
+ "linking_headline": "referenced",
+ "linking_measured": {
+  "date": "2026-11-22",
+  "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/45075400959",
+  "sha": "4ae67eed04400d4cc8b4d80aa4521a89d1750bb2",
+  "this_run": true
+ },
+ "linking_unit": "names",
+ "menu": null,
+ "plan": null,
+ "provided_required_symbols": [
+  6021,
+  9305
+ ],
+ "result": "partial",
+ "run_id": "45075400959",
+ "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/45075400959",
+ "save_load": null,
+ "schema": "bfme2-nightly/1",
+ "sha": "4ae67eed04400d4cc8b4d80aa4521a89d1750bb2",
+ "simulation_equal": null,
+ "size_check": null,
+ "skirmish": null,
+ "stages": {
+  "compile": "success",
+  "link_and_play": "not live"
+ },
+ "starts": null,
+ "stopped": null,
+ "tests": {},
+ "timings": {
+  "compile_slowest_shard_s": 954.0,
+  "link_and_play": null,
+  "run": {
+   "jobs": 18,
+   "runner_minutes": {
+    "compile": 174.2
+   },
+   "wall_minutes": 17.0
+  }
+ }
+}

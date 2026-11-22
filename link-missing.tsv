@@ -1,4 +1,4 @@
-# link census of 275e5bc86e6c35cbf28c1c173eafe8dc772c5fdc on 2026-11-22 objects=3250 missing=3285
+# link census of 4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 on 2026-11-22 objects=3250 missing=3284
 symbol	referrers	first_referrer
 ??1ObjectModule@@UAE@XZ	123	src/Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp
 ?loadPostProcess@UpdateModule@@MAEXXZ	66	src/Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp
@@ -2347,7 +2347,6 @@ _g_bfmeD1206	2	src/Code/Libraries/Source/Apt/AptCIH.cpp
 ?onBuildComplete@PreorderCreate@@UAEXXZ	1	src/Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp
 ?onBuildComplete@ReplaceSelfUpgrade@@UAEXXZ	1	src/unk/O004B6FF7.cpp
 ?onCapture@CastleBehavior@@UAEXPAVPlayer@@0@Z	1	src/Code/GameEngine/Source/GameLogic/System/CastleSystem.cpp
-?onCapture@CostModifierUpgrade@@UAEXPAVPlayer@@0@Z	1	src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp
 ?onCollide@AODCrushCollide@@UAEXPAVObject@@PBVCoord3D@@1@Z	1	src/unk/O004BBEDD.cpp
 ?onCollide@BezierProjectileBehavior@@UAEXPAVObject@@PBVCoord3D@@1@Z	1	src/unk/O004A750A.cpp
 ?onCollide@HordeMemberCollide@@UAEXPAVObject@@PBVCoord3D@@1@Z	1	src/unk/O004BC325.cpp
