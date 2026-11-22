@@ -1,4 +1,4 @@
-# measured_utc=2026-11-21T08:51:16Z revision=3c9a31dc201b3cf9bc7c4554c387e9f633d96c7e body_checked_against=531d47ed71 left_out_written=8
+# measured_utc=2026-11-21T08:51:16Z revision=3c9a31dc201b3cf9bc7c4554c387e9f633d96c7e body_checked_against=cf353ffcc3 left_out_written=9
 rva	function	owner_file	size_bytes	zero_hour_file	zero_hour_line	zero_hour_function	reference_kind	link_referrers	ready_at_snapshot	body_check
 0x000EFB4C	RenderObjClass::Set_Native_Screen_Size	src/unk/O000EFB3E.cpp	14	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/rendobj.h	489	RenderObjClass::Set_Native_Screen_Size	decl	0	no	none-found
 0x003EFCA4	RenderObjClass::Get_Render_Hook	src/unk/O003EFCA4.cpp	7	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/rendobj.h	512	RenderObjClass::Get_Render_Hook	decl	0	no	none-found
@@ -619,7 +619,6 @@ rva	function	owner_file	size_bytes	zero_hour_file	zero_hour_line	zero_hour_funct
 0x00118700	WW3D::Render	src/Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	96	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	876	WW3D::Render	def	0	no	none-found
 0x00118760	WW3D::Render	src/Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	135	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	876	WW3D::Render	def	0	no	none-found
 0x0014D220	WW3D::Get_Pixel_Center	src/unk/O0014D220.cpp	33	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	1947	WW3D::Get_Pixel_Center	def	0	no	none-found
-0x00391CE3	BuildAssistant::isRemovableForConstruction	src/Code/GameEngine/Source/Common/System/BuildAssistant.cpp	66	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/Common/System/BuildAssistant.cpp	1355	BuildAssistant::isRemovableForConstruction	def	0	yes	none-found
 0x00391B08	BuildAssistant::canMakeUnit	src/Code/GameEngine/Source/Common/System/BuildAssistant.cpp	475	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/Common/System/BuildAssistant.cpp	1303	BuildAssistant::canMakeUnit	def	0	no	none-found
 0x003921FA	BuildAssistant::BuildAssistant	src/Code/GameEngine/Source/Common/System/BuildAssistant.cpp	100	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/BuildAssistant.h	128	BuildAssistant::BuildAssistant	decl	0	no	none-found
 0x0039225E	BuildAssistant::~BuildAssistant	src/Code/GameEngine/Source/Common/System/BuildAssistant.cpp	89	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/BuildAssistant.h	129	BuildAssistant::~BuildAssistant	decl	0	no	none-found
