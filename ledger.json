@@ -1313,7 +1313,10 @@
    },
    "author": 19627006,
    "base": "cf353ffcc35deaeff04c647505b0c8b974ca7084",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45065307479"
+   },
    "day": "2026-11-22",
    "head": "cd4a029d58c8474b06e027b6b7d4ee2f216c1344",
    "kind": "narrow",
