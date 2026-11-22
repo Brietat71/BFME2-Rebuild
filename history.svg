@@ -21,10 +21,10 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 <text class="t2" x="46" y="28.0" font-size="13" text-anchor="end">100%</text>
 <text class="t2" x="52" y="288" font-size="13">20 November 2026</text>
 <text class="t2" x="680" y="288" font-size="13" text-anchor="end">22 November 2026</text>
-<path class="s1" d="M52.0,199.4 L59.1,199.1 L120.4,198.3 L519.9,194.8 L600.8,194.8 L623.8,194.8 L624.4,194.8 L653.3,194.8 L668.3,194.8 L673.5,194.8 L680.0,194.8" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s2" d="M59.1,113.0 L120.4,126.9 L519.9,126.9 L600.8,107.3 L623.8,107.3 L624.4,107.3 L653.3,107.3 L668.3,107.3 L673.5,107.3 L680.0,107.3" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s3" d="M52.0,220.1 L59.1,219.4 L120.4,219.0 L519.9,214.2 L600.8,214.2 L623.8,214.2 L624.4,214.2 L653.3,214.2 L668.3,214.2 L673.5,214.2 L680.0,214.2" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="s4" d="M52.0,202.9 L59.1,202.0 L120.4,200.8 L519.9,197.4 L600.8,197.4 L623.8,197.4 L624.4,197.4 L653.3,197.4 L668.3,197.4 L673.5,197.4 L680.0,197.4" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s1" d="M52.0,199.4 L58.8,199.1 L117.9,198.3 L503.2,194.8 L581.2,194.8 L603.3,194.8 L603.9,194.8 L631.8,194.8 L646.2,194.8 L651.2,194.8 L657.5,194.8 L680.0,194.8" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s2" d="M58.8,113.0 L117.9,126.9 L503.2,126.9 L581.2,107.3 L603.3,107.3 L603.9,107.3 L631.8,107.3 L646.2,107.3 L651.2,107.3 L657.5,107.3 L680.0,107.3" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s3" d="M52.0,220.1 L58.8,219.4 L117.9,219.0 L503.2,214.2 L581.2,214.2 L603.3,214.2 L603.9,214.2 L631.8,214.2 L646.2,214.2 L651.2,214.2 L657.5,214.2 L680.0,214.2" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="s4" d="M52.0,202.9 L58.8,202.0 L117.9,200.8 L503.2,197.4 L581.2,197.4 L603.3,197.4 L603.9,197.4 L631.8,197.4 L646.2,197.4 L651.2,197.4 L657.5,197.4 L680.0,197.4" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 <rect class="d2" x="688" y="103.3" width="8" height="8" rx="2"/>
 <text class="t1" x="700" y="112.3" font-size="14">Linking</text>
 <rect class="d1" x="688" y="190.8" width="8" height="8" rx="2"/>
