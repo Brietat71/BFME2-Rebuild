@@ -14,9 +14,9 @@
    "authors": {
     "19627006": 1,
     "202347015": 1,
-    "44365026": 24
+    "44365026": 25
    },
-   "total": 26,
+   "total": 27,
    "wide_authors": {
     "1399571": 10,
     "19627006": 1,
@@ -1220,6 +1220,20 @@
    "kind": "wide",
    "number": 49,
    "tree": "1e85b4e870ab0892530248786691cccd210f6224"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45062339470"
+   },
+   "author": 44365026,
+   "base": "531d47ed71b50e3f52808139d4f3f25a7dbb993b",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "b952dd1415b742e65f3cb237895d495e6b266959",
+   "kind": "narrow",
+   "number": 48,
+   "tree": "40a84edca2f2f00164a46530a645f8cd16321e89"
   }
  ],
  "version": 2
