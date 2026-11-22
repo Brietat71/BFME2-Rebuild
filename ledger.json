@@ -807,6 +807,20 @@
    "kind": "wide",
    "number": 14,
    "tree": "37db7ced9b71bf2b7d2b672828294b1ad2e5368c"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45038860993"
+   },
+   "author": 44365026,
+   "base": "e8891c8fa058bff7bb9bf855a4130c2562991dfa",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "cfa106eafdc2887f7bb53e039c54bf3d83c3ff6d",
+   "kind": "narrow",
+   "number": 38,
+   "tree": "ba697a021acebb1206197eec4729e89f87aded71"
   }
  ],
  "version": 2
