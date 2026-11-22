@@ -1954,7 +1954,10 @@
    },
    "author": 44365026,
    "base": "85af5809f5e23f8450d0f6b706e2f9cfefdc226f",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45085516545"
+   },
    "day": "2026-11-22",
    "head": "931672ab99c1c9801bafc37d4999ea23f96bcf1c",
    "kind": "narrow",
