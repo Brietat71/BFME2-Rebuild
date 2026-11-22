@@ -1974,6 +1974,20 @@
    "kind": "wide",
    "number": 49,
    "tree": "fd7a1dce764a05122cf62232e6ad041b9a261079"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45085497516"
+   },
+   "author": 202347015,
+   "base": "85af5809f5e23f8450d0f6b706e2f9cfefdc226f",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "f83697a16a5bf0e7fc5a0709ece297c43709355b",
+   "kind": "narrow",
+   "number": 59,
+   "tree": "91c304ce2dc5b94d00b6b077dc4dd9d3ac5131d8"
   }
  ],
  "version": 2
