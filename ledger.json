@@ -1483,6 +1483,20 @@
    "kind": "narrow",
    "number": 50,
    "tree": "0d8da88edb3205513f4537ab6a9a62990c6e3646"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45072491937"
+   },
+   "author": 44365026,
+   "base": "3f189791b1d0f4be26fc158122dfbb36c377e177",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "61003dd684fec23b80737233c5f69b791133d228",
+   "kind": "wide",
+   "number": 49,
+   "tree": "90c510d2f54806c628cbd0fc1320ec317993a209"
   }
  ],
  "version": 2
