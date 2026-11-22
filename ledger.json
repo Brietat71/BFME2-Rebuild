@@ -403,7 +403,10 @@
    },
    "author": 1399571,
    "base": "7dd9a812d38774bd290195d4b1b9409c93832fe5",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "44992772905"
+   },
    "day": "2026-11-22",
    "head": "58ac49ff875792d8462ff5be559d4e3c13894594",
    "kind": "wide",
