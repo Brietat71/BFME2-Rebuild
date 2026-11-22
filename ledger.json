@@ -1413,6 +1413,20 @@
    "kind": "wide",
    "number": 14,
    "tree": "23a0cec16f8154d562a03f3a9523c2f846d70382"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45072478834"
+   },
+   "author": 44365026,
+   "base": "3f189791b1d0f4be26fc158122dfbb36c377e177",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "bf57c404534089774119e10345e973c0e1281520",
+   "kind": "narrow",
+   "number": 44,
+   "tree": "bde805b0159ffe20b9807cb492aba1b0f082c383"
   }
  ],
  "version": 2
