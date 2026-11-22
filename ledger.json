@@ -941,6 +941,20 @@
    "kind": "wide",
    "number": 14,
    "tree": "60e543d2b5cff40f8d8770fa78a48b15595efbfa"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45040600322"
+   },
+   "author": 1399571,
+   "base": "37882787b2967c189f39983238d336b3a9def9f0",
+   "claimed_by": null,
+   "day": "2026-11-22",
+   "head": "8354112501c10249d99a5f8590b5c353bb5da963",
+   "kind": "wide",
+   "number": 15,
+   "tree": "ddf1d330617aa1c095881eb8dba5d09899bc38e2"
   }
  ],
  "version": 2
