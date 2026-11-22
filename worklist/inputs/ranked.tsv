@@ -1273,7 +1273,7 @@ referrers	state	rva	file	symbol	first_referrer
 1	owned:MISSING	0x004B9301	src/unk/G004B9301.cpp	?onBuildComplete@PreorderCreate@@UAEXXZ	src/Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp
 1	owned:MISSING	0x004B70F0	src/unk/G004B70F0.cpp	?onBuildComplete@ReplaceSelfUpgrade@@UAEXXZ	src/unk/O004B6FF7.cpp
 1	owned:MISSING	0x00396A17	src/Code/GameEngine/Source/GameLogic/System/CastleSystem.cpp	?onCapture@CastleBehavior@@UAEXPAVPlayer@@0@Z	src/Code/GameEngine/Source/GameLogic/System/CastleSystem.cpp
-1	owned:MISSING	0x004B5AC0	src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp	?onCapture@CostModifierUpgrade@@UAEXPAVPlayer@@0@Z	src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp
+1	owned:MATCH	0x004B5AC0	src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp	?onCapture@CostModifierUpgrade@@UAEXPAVPlayer@@0@Z	src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp
 1	owned:MISSING	0x004BC0B8	src/unk/G004BC0B8.cpp	?onCollide@AODCrushCollide@@UAEXPAVObject@@PBVCoord3D@@1@Z	src/unk/O004BBEDD.cpp
 1	owned:MISSING	0x004BC3CF	src/unk/G004BC3CF.cpp	?onCollide@HordeMemberCollide@@UAEXPAVObject@@PBVCoord3D@@1@Z	src/unk/O004BC325.cpp
 1	owned:MISSING	0x004BBA65	src/unk/O004BBA65.cpp	?onCollide@SquishCollide@@UAEXPAVObject@@PBVCoord3D@@1@Z	src/Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp

@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22T19:46:42Z revision=cf353ffcc3 finished_files=525
+# measured_utc=2026-11-22T20:17:37Z revision=7d3b757bad finished_files=526
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -7,7 +7,6 @@ src/Code/GameEngine/Source/GameLogic/Object/SpecialPower/GrabPassengerSpecialPow
 src/Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp	11	1	27	1	real	0
 src/Code/Libraries/Source/debug/debug_io_ods.cpp	4	1	55	1	real	0
 src/Code/Libraries/Source/WWVegas/WW3D2/w3d_util.cpp	23	1	120	1	real	0
-src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp	12	1	140	1	real	0
 src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DPropDraw.cpp	7	1	185	1	real	0
 src/Code/GameEngine/Source/GameLogic/System/CaveSystem.cpp	8	1	216	1	real	0
 src/Code/GameEngine/Source/GameClient/Gui/IMEManager.cpp	32	1	218	1	real	0

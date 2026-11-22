@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22 revision=275e5bc86e6c35cbf28c1c173eafe8dc772c5fdc body_checked_against=cf353ffcc3 left_out_written=42
+# measured_utc=2026-11-22 revision=275e5bc86e6c35cbf28c1c173eafe8dc772c5fdc body_checked_against=7d3b757bad left_out_written=43
 referrers	state	rva	file	symbol	first_referrer	body_check
 63	owned:MISSING	0x00253390	src/unk/O0024EEBB.cpp	??0UpdateModule@@QAE@PAVThing@@PBVModuleData@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp	none-found
 17	owned:MISSING	0x0004233A	src/unk/G000421F2.cpp	?Inv_Sqrt@WWMath@@SIMM@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowMapManager.cpp	none-found
@@ -1379,7 +1379,6 @@ referrers	state	rva	file	symbol	first_referrer	body_check
 1	owned:MISSING	0x004B5886	src/unk/O004B5886.cpp	?upgradeImplementation@GarrisonUpgrade@@MAEXXZ	src/unk/O004B57CE.cpp	none-found
 1	owned:MISSING	0x004B58FF	src/unk/O004B5886.cpp	?upgradeRemovalImplementation@GarrisonUpgrade@@MAEXXZ	src/unk/O004B57CE.cpp	none-found
 1	owned:MATCH	0x004B59AF	src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp	?onDelete@SpellRechargeModifierUpgrade@@UAEXXZ	src/unk/O004B5D0B.cpp	none-found
-1	owned:MISSING	0x004B5AC0	src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp	?onCapture@CostModifierUpgrade@@UAEXPAVPlayer@@0@Z	src/Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp	none-found
 1	owned:MISSING	0x004B6011	src/unk/G004B6011.cpp	??0SpellRechargeModifierUpgradeModuleData@@QAE@XZ	src/unk/O0024EEBB.cpp	none-found
 1	owned:MISSING	0x004B698A	src/unk/O004B68B6.cpp	?upgradeImplementation@CastleUpgrade@@MAEXXZ	src/unk/O004B67DC.cpp	none-found
 1	owned:MISSING	0x004B6A5E	src/unk/G004B6A3C.cpp	??0GeometryUpgrade@@QAE@PAVThing@@PBVModuleData@@@Z	src/unk/O0024EEBB.cpp	none-found
