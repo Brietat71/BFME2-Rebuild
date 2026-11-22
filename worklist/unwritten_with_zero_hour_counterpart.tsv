@@ -1,4 +1,4 @@
-# measured_utc=2026-11-21T08:51:16Z revision=3c9a31dc201b3cf9bc7c4554c387e9f633d96c7e body_checked_against=06bb318f2f left_out_written=10
+# measured_utc=2026-11-21T08:51:16Z revision=3c9a31dc201b3cf9bc7c4554c387e9f633d96c7e body_checked_against=a13dbd4f83 left_out_written=10
 rva	function	owner_file	size_bytes	zero_hour_file	zero_hour_line	zero_hour_function	reference_kind	link_referrers	ready_at_snapshot	body_check
 0x000EFB4C	RenderObjClass::Set_Native_Screen_Size	src/unk/O000EFB3E.cpp	14	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/rendobj.h	489	RenderObjClass::Set_Native_Screen_Size	decl	0	no	none-found
 0x003EFCA4	RenderObjClass::Get_Render_Hook	src/unk/O003EFCA4.cpp	7	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/rendobj.h	512	RenderObjClass::Get_Render_Hook	decl	0	no	none-found

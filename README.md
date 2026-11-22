@@ -2,7 +2,7 @@
 
 How much of the original game (version 1.06) has been rebuilt as source code that compiles back to the same machine code. Measured automatically after every change; nobody edits this page.
 
-Measured **22 November 2026**. The code figures describe commit [`06bb318f2f18`](https://github.com/Open-BFME/BFME2-Rebuild/commit/06bb318f2f1862db3f0c4fa8da3854dc6077b131) (22 November 2026, 22:08 UTC); the build checks run every day.
+Measured **22 November 2026**. The code figures describe commit [`a13dbd4f83c8`](https://github.com/Open-BFME/BFME2-Rebuild/commit/a13dbd4f83c8115b42919e02b1069c2138c23172) (22 November 2026, 22:43 UTC); the build checks run every day.
 
 ![Progress](progress.svg)
 
@@ -20,7 +20,7 @@ Measured by the daily build of commit [`4ae67eed0440`](https://github.com/Open-B
 **Code proven**: `████░░░░░░░░░░░░░░░░` 19.4% (1,228,471 of 6,333,616 bytes)  
 How much of the code, by size, is byte-matched and also confirmed at every place it refers to other code or data, so the match cannot be a coincidence.
 
-**Finished functions**: `█████░░░░░░░░░░░░░░░` 26.5% (11,030 of 41,565 functions)  
+**Finished functions**: `█████░░░░░░░░░░░░░░░` 26.5% (11,026 of 41,565 functions)  
 Functions that are proven, sit in a properly named source file, and belong to a class declared in a final header. Counted in functions, not bytes: small functions are often finished first, so this figure can be ahead of the byte figures.
 
 ## Does the rebuilt game run?
@@ -55,8 +55,7 @@ Byte match, by size, in each part of the source tree, largest part first.
 | ppmalloc 1.26.11 (memory allocator) | 0.0% (0 of 14,445 bytes) | `░░░░░░░░░░░░░░░░░░░░` |
 | LZHL 1.0 (compression library) | 99.7% (7,125 of 7,150 bytes) | `████████████████████` |
 | Platform layer: Win32Device | 57.0% (1,564 of 2,742 bytes) | `███████████░░░░░░░░░` |
-| Tools | 100.0% (744 of 744 bytes) | `████████████████████` |
-| Not yet placed in a named file | 8.4% (110,950 of 1,322,757 bytes) | `██░░░░░░░░░░░░░░░░░░` |
+| Not yet placed in a named file | 8.4% (111,694 of 1,323,501 bytes) | `██░░░░░░░░░░░░░░░░░░` |
 | Not yet assigned to any file | 0.0% (0 of 104,533 bytes) | `░░░░░░░░░░░░░░░░░░░░` |
 
 Provisional class declarations still in use (files under `include/Draft/` that some source file includes): 12. Each should become a final header.
@@ -67,6 +66,7 @@ Provisional class declarations still in use (files under `include/Draft/` that s
 
 | Commit | Date | Byte match | Linking | Proven | Finished |
 | --- | --- | ---: | ---: | ---: | ---: |
+| [`a13dbd4f83c8`](https://github.com/Open-BFME/BFME2-Rebuild/commit/a13dbd4f83c8115b42919e02b1069c2138c23172) | 22 November 2026, 22:43 UTC | 27.62% | 64.71% (build `4ae67ee`) | 19.40% | 26.53% |
 | [`06bb318f2f18`](https://github.com/Open-BFME/BFME2-Rebuild/commit/06bb318f2f1862db3f0c4fa8da3854dc6077b131) | 22 November 2026, 22:08 UTC | 27.62% | 64.71% (build `4ae67ee`) | 19.40% | 26.54% |
 | [`7d3b757bad14`](https://github.com/Open-BFME/BFME2-Rebuild/commit/7d3b757bad14352236dd725a3a1ce092f4bc03bd) | 22 November 2026, 20:17 UTC | 27.62% | 64.70% (build `275e5bc`) | 19.39% | 26.53% |
 | [`cf353ffcc35d`](https://github.com/Open-BFME/BFME2-Rebuild/commit/cf353ffcc35deaeff04c647505b0c8b974ca7084) | 22 November 2026, 19:46 UTC | 27.62% | 64.70% (build `275e5bc`) | 19.39% | 26.53% |
