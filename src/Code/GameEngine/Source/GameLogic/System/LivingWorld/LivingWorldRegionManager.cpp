@@ -9,6 +9,7 @@
 #include "GameLogic/LivingWorldRegionManager.h"
 #include "GameLogic/LivingWorldBattle.h"
 #include "GameLogic/LivingWorldRegion.h"
+#include "GameLogic/LivingWorldPlayer.h"
 // FUNCTION: BFME2 0x0020E27B size=105 name=?rva0020E27B@LivingWorldRegionManager@@QAEXM@Z evidence=P:provisional (wb-file) tier=B hypothesis:mm1-neighbour-callers
 // FUNCTION: BFME2 0x0020E2E4 size=7 name=?get@Rva0020E2E4ByteField@@QBEEXZ evidence=?:placeholder tier=B hypothesis:mm1-contiguity-callers
 // FUNCTION: BFME2 0x0020E2EB size=7 name=?get@Rva0020E2EBByteField@@QBEEXZ evidence=?:placeholder tier=B hypothesis:mm1-contiguity-callers
@@ -16,6 +17,11 @@
 // FUNCTION: BFME2 0x0020E2F8 size=9 name=?get@Rva0020E2F8CmpBoolField@@QBE_NXZ evidence=?:placeholder tier=B hypothesis:mm1-contiguity-shared-data
 // FUNCTION: BFME2 0x0020E301 size=17 name=?rva0020E301@LivingWorldPlayer@@QAE_NH@Z evidence=P:provisional (wb-file) tier=B hypothesis:mm1-contiguity-shared-data
 // FUNCTION: BFME2 0x0020E312 size=17 name=?rva0020E312@LivingWorldPlayer@@QBE_NPBV1@@Z evidence=P:provisional (wb-file) tier=B hypothesis:mm1-contiguity-shared-data
+bool LivingWorldPlayer::rva0020E312(const LivingWorldPlayer *other) const
+{
+	return !rva002E071E(other);
+}
+
 // FUNCTION: BFME2 0x0020E323 size=7 name=?get@Rva0020E323DwordField@@QBEHXZ evidence=?:placeholder tier=B hypothesis:mm1-contiguity-shared-data
 // FUNCTION: BFME2 0x0020E34F size=5 name=?clear@AITargetHeuristicExpansionBase@@UAEXXZ evidence=X:proven (vtable) tier=B hypothesis:mm1-contiguity-shared-data
 // FUNCTION: BFME2 0x0020E354 size=32 name=?rva0020E354@LivingWorldRegionManager@@QAE_NPAVRenderObjClass@@ABVVector3@@1@Z evidence=P:provisional (wb-file) tier=B hypothesis:mm1-neighbour-callers
