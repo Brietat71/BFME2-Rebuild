@@ -58,8 +58,8 @@ UpdateSleepTime StealthUpdate::update()
 	m_unk0x148 = true;
 	UpdateSleepTime sleepTime = rva00374FD5();
 
-	const StealthUpdateModuleData *data = static_cast<const StealthUpdateModuleData *>(m_moduleData);
 	Drawable *draw = self->getDrawable();
+	const StealthUpdateModuleData *data = static_cast<const StealthUpdateModuleData *>(m_moduleData);
 	if (draw)
 	{
 		StealthLookType look = calcStealthedStatusForPlayer(self, ThePlayerList->getLocalPlayer());
