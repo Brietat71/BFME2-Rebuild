@@ -38,7 +38,7 @@ const FieldParse GameWindowTransitionsHandler::m_gameWindowTransitionsFieldParse
 TransitionWindow::TransitionWindow()
 {
 	m_currentFrameDelay = m_frameDelay = 0;
-	m_winID = 0;
+	m_winID = NAMEKEY_INVALID;
 	m_win = NULL;
 	m_transition = NULL;
 }
