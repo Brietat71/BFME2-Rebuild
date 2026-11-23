@@ -202,6 +202,28 @@ void AITNGuardMachine::xfer(Xfer *xfer)
 }
 
 // FUNCTION: BFME2 0x00545F10 size=112 name=?rva00545F10@@YA_NPAVState@@PAX@Z evidence=?:placeholder
+Bool tunnelGuardAttackedByEnemy(State *thisState, void *userData)
+{
+	Object *obj = thisState->getMachineOwner();
+	BodyModuleInterface *body = obj ? obj->getBodyModule() : NULL;
+	if (!(obj && body))
+		return false;
+	ObjectID attackerID = body->getAndClearLastAttacker();
+	if (attackerID == INVALID_ID)
+		return false;
+	Object *attacker = TheGameLogic->findObjectByID(attackerID);
+	if (!attacker)
+		return false;
+	if (obj->getRelationship(attacker) != ENEMIES)
+		return false;
+	if (attacker->isEffectivelyDead())
+		return false;
+	CanAttackResult result = obj->getAbleToAttackSpecificObject((AbleToAttackType)0, attacker, CMD_FROM_AI);
+	if (result == ATTACKRESULT_POSSIBLE || result == ATTACKRESULT_POSSIBLE_AFTER_MOVING)
+		return true;
+	return false;
+}
+
 
 // FUNCTION: BFME2 0x00545F80 size=129 name=?findBestTunnel@@YAPAVObject@@PAVPlayer@@PBUCoord3D@@@Z evidence=N:ledger
 // Retail passes the player in eax and the position in ebx: a file static whose
