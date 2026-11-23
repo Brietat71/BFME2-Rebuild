@@ -79,9 +79,7 @@ Bool TunnelTracker::isValidContainerFor(Object *obj, Bool checkCapacity)
 		{
 			if (!checkCapacity || obj->testStatus((ObjectStatusTypes)0x26))
 				return true;
-			int limit = TheWritableGlobalData->m_maxTunnelCapacity;
-			int count = m_containListSize;
-			return count < limit;
+			return m_containListSize < getContainMax();
 		}
 	}
 	return false;
