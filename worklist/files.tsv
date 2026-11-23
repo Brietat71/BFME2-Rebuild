@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22T23:11:38Z revision=85af5809f5 finished_files=526
+# measured_utc=2026-11-23T03:05:57Z revision=b0b20aaf98 finished_files=526
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -380,8 +380,8 @@ src/Code/GameEngine/Source/Common/System/DataChunk.cpp	50	9	843	0	real	5
 src/Code/GameEngine/Source/GameLogic/System/LightPointSystem.cpp	10	9	867	0	real	0
 src/Code/GameEngine/Source/GameClient/MessageStream/LookAtXlat.cpp	9	9	4591	0	none	0
 src/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudge.cpp	10	9	5433	0	none	0
-src/Code/Libraries/Source/WWVegas/WW3D2/mapper.cpp	90	10	6397	11	real	1
 src/Code/Libraries/Source/WWVegas/WW3D2/htree.cpp	29	10	19232	9	real	0
+src/Code/Libraries/Source/WWVegas/WW3D2/mapper.cpp	90	10	6397	7	real	1
 src/Code/Libraries/Source/WWVegas/WW3D2/meshmatdesc.cpp	48	10	6840	5	real	2
 src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptMpGameRules.cpp	21	10	2249	4	real	1
 src/Code/GameEngine/Source/GameClient/Gui/ControlBar/ControlBarCommand.cpp	11	10	7837	2	real	1
@@ -551,7 +551,6 @@ src/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp	29	24
 src/Code/GameEngine/Source/GameClient/CrowdResponseSystem.cpp	24	24	2087	0	none	0
 src/Code/Libraries/Source/WWVegas/WWMath/matrix3.cpp	26	24	3416	0	real	2
 src/Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderPosGoalManager.cpp	26	25	3707	11	real	0
-src/Code/Libraries/Source/WWVegas/WW3D2/dxwrapper.cpp	134	25	14410	8	real	1
 src/Code/GameEngine/Source/Common/RTS/ScoreKeeper.cpp	66	25	4350	2	real	13
 src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptMessengerOnline.cpp	26	25	4847	2	real	0
 src/Code/GameEngine/Source/GameClient/Gui/GameWindowTransitionsStyles.cpp	70	25	4888	1	real	2
@@ -560,6 +559,7 @@ src/Code/GameEngine/Source/GameLogic/System/LivingWorld/BuildingNuggets/LivingWo
 src/Code/Libraries/Source/file/Win32BIGFileSystem.cpp	25	25	2440	0	draft	0
 src/Code/GameEngine/Source/GameClient/Gui/InGame/Tactical/AptInGameSpellBookInterface.cpp	25	25	2481	0	none	0
 src/Code/Libraries/Source/WWVegas/WWLib/TARGA.CPP	25	25	3571	0	real	0
+src/Code/Libraries/Source/WWVegas/WW3D2/dxwrapper.cpp	134	25	14410	0	real	1
 src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DVolumetricShadow.cpp	25	25	15412	0	draft	0
 src/Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp	36	26	3508	7	real	0
 src/Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIRegionDetailsStructuresPage.cpp	26	26	1392	0	none	0
