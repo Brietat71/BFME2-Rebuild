@@ -351,22 +351,22 @@ AIPlayer::~AIPlayer()
 // FUNCTION: BFME2 0x004F0819 size=143 name=?aiPreTeamDestroy@AIPlayer@@QAEXPBVTeam@@@Z evidence=N:ledger tier=A
 void AIPlayer::aiPreTeamDestroy(const Team *deletedTeam)
 {
-	for (DLINK_ITERATOR<TeamInQueue> iter = iterate_TeamBuildQueue(); !iter.done(); iter.advance())
+	for (DLINK_ITERATOR<TeamInQueue> iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamBuildQueue.m_head, &TeamInQueue::dlink_next_TeamBuildQueue); !iter.done(); iter.advance())
 	{
 		TeamInQueue *team = iter.cur();
 		if (team->m_team == deletedTeam) {
 			removeFrom_TeamBuildQueue(team);
 			delete team;
-			iter = iterate_TeamBuildQueue();
+			iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamBuildQueue.m_head, &TeamInQueue::dlink_next_TeamBuildQueue);
 		}
 	}
-	for (DLINK_ITERATOR<TeamInQueue> iter = iterate_TeamReadyQueue(); !iter.done(); iter.advance())
+	for (DLINK_ITERATOR<TeamInQueue> iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamReadyQueue.m_head, &TeamInQueue::dlink_next_TeamReadyQueue); !iter.done(); iter.advance())
 	{
 		TeamInQueue *team = iter.cur();
 		if (team->m_team == deletedTeam) {
 			removeFrom_TeamReadyQueue(team);
 			delete team;
-			iter = iterate_TeamReadyQueue();
+			iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamReadyQueue.m_head, &TeamInQueue::dlink_next_TeamReadyQueue);
 		}
 	}
 }
@@ -504,7 +504,7 @@ Bool AIPlayer::isAGoodIdeaToBuildTeam(TeamPrototype *proto)
 		return false;
 
 	// See if this team is already queued.
-	for (DLINK_ITERATOR<TeamInQueue> iter = iterate_TeamBuildQueue(); !iter.done(); iter.advance())
+	for (DLINK_ITERATOR<TeamInQueue> iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamBuildQueue.m_head, &TeamInQueue::dlink_next_TeamBuildQueue); !iter.done(); iter.advance())
 	{
 		TeamInQueue *team = iter.cur();
 		if (team->m_team->getPrototype() == proto)
@@ -539,7 +539,7 @@ Bool AIPlayer::isAGoodIdeaToBuildTeam(TeamPrototype *proto)
 // FUNCTION: BFME2 0x004F19D3 size=35 name=?dozerInQueue@AIPlayer@@IAE_NXZ evidence=N:ledger tier=A
 Bool AIPlayer::dozerInQueue()
 {
-	for (DLINK_ITERATOR<TeamInQueue> iter = iterate_TeamBuildQueue(); !iter.done(); iter.advance())
+	for (DLINK_ITERATOR<TeamInQueue> iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamBuildQueue.m_head, &TeamInQueue::dlink_next_TeamBuildQueue); !iter.done(); iter.advance())
 	{
 		TeamInQueue *team = iter.cur();
 		if (team && team->includesADozer())
