@@ -4894,6 +4894,20 @@
    "kind": "trusted-wide",
    "number": 29,
    "tree": "db8d2f03433b3194fe95b9c764d576febee9facd"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45260119908"
+   },
+   "author": 1399571,
+   "base": "2e2b1be063d7d8faa61174ea51bab6db0f8b10c5",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "58ac49ff875792d8462ff5be559d4e3c13894594",
+   "kind": "wide",
+   "number": 17,
+   "tree": "34fd9eab44ebd24382200839a6e70425660d724e"
   }
  ],
  "version": 2
