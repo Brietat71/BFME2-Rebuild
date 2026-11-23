@@ -5,5 +5,8 @@
 // FUNCTION: BFME2 0x006554E0 size=26 name=?WCodeToHRESULT@_com_error@@SAJG@Z evidence=N:ledger tier=B hypothesis:mm1-gap-unit
 long _com_error::WCodeToHRESULT(unsigned short wCode)
 {
-	return wCode >= 0xFE00 ? 0x8004FFFF : 0x80040200 + wCode;
+	unsigned short code = wCode;
+	if (code >= 0xFE00)
+		return 0x8004FFFF;
+	return 0x80040200 + code;
 }
