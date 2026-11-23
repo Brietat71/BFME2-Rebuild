@@ -205,7 +205,7 @@ void SlavedUpdate::doAttackLogic(const Object *target)
 	Real dist = me->rva002C97E8(me->getPosition(), targetPos);
 	if (dist > data->m_attackRange * data->m_attackRange)
 	{
-		attackPosition.set(targetPos);
+		attackPosition = *targetPos;
 		attackPosition.sub(master->getPosition());
 		attackPosition.normalize();
 		attackPosition.scale(data->m_attackRange);
@@ -213,7 +213,7 @@ void SlavedUpdate::doAttackLogic(const Object *target)
 	}
 	else
 	{
-		attackPosition.set(targetPos);
+		attackPosition = *targetPos;
 	}
 
 	if (data->m_attackWanderRange)
