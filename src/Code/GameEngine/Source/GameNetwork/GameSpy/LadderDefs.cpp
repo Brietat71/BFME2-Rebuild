@@ -101,7 +101,7 @@ void LadderList::checkLadder(AsciiString fname, Int index)
 void LadderList::loadLocalLadders()
 {
 	AsciiString dirname;
-	dirname.format("%s%s\\Ladders\\", TheGlobalData->rva002360DE().str(), "Online Files");
+	dirname.format("%s%s\\Ladders\\", TheWritableGlobalData->rva002360DE().str(), "Online Files");
 	FilenameList filenameList;
 	TheFileSystem->getFileListInDirectory(dirname, AsciiString("*.ini"), filenameList, true);
 
