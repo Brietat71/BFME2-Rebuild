@@ -13,12 +13,16 @@ static int s_verified = -1;
 void CopyProtect::setVerified(bool verified)
 {
 	if (s_verified == -1)
-		s_verified = verified ? 1 : 0;
+	{
+		bool value = verified;
+		s_verified = value != false;
+	}
 }
 
 // FUNCTION: BFME2 0x0002FB20 size=15 name=?isVerified@CopyProtect@@SA_NXZ evidence=N:ledger tier=B hypothesis:Z
 bool CopyProtect::isVerified()
 {
-	return s_verified == 1;
+	int state = s_verified;
+	return state == 1;
 }
 
