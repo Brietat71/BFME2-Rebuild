@@ -351,7 +351,9 @@ Bool Bridge::pickBridge(const Vector3 &from, const Vector3 &to, Vector3 *pos)
 	Real t;
 	plane.Compute_Intersection(from, to, &t);
 	Vector3 intersectPos;
-	intersectPos = from + (to - from) * t;
+	intersectPos.X = from.X + (to.X - from.X) * t;
+	intersectPos.Y = from.Y + (to.Y - from.Y) * t;
+	intersectPos.Z = from.Z + (to.Z - from.Z) * t;
 
 	Coord3D loc;
 	loc.x = intersectPos.X;
