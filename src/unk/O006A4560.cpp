@@ -4,5 +4,15 @@
 // Extents and edges are hypotheses; byte verification alone does not establish original TU boundaries.
 // Edges: left=no-edge-evidence right=unknown-rows; proof_first=false
 // Hypothesis rules: hypothesis:name:invented
+#include "../Code/Libraries/Source/GameSpy/GameSpy/peer/peerPlayers.h"
 // FUNCTION: BFME2 0x006A4560 size=36 name=_piIsPlayerVIP evidence=N:ledger tier=B hypothesis:name:invented
+PEERBool piIsPlayerVIP(piPlayer *player, RoomType roomType)
+{
+	if (!player)
+		return PEERFalse;
 
+	if (!player->inRoom[roomType])
+		return PEERFalse;
+
+	return (PEERBool)((player->flags[roomType] & (PEER_FLAG_OP | PEER_FLAG_VOICE)) != 0);
+}
