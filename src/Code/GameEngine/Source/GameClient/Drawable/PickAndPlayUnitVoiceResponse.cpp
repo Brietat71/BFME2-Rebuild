@@ -41,11 +41,9 @@ int Rva004D9596::rva004D9586()
 // FUNCTION: BFME2 0x004D9596 size=28 name=?rva004D9596@Rva004D9596@@QAE_NXZ evidence=?:placeholder tier=B hypothesis:K
 bool Rva004D9596::rva004D9596()
 {
-	if (m_unk0x00 != -1)
-		return true;
-	if (m_unk0x04 == 0)
+	if (m_unk0x00 == -1 && (m_unk0x04 == 0 || (m_unk0x18 != 0 && m_unk0x0C == 0)))
 		return false;
-	return m_unk0x18 == 0 || m_unk0x0C != 0;
+	return true;
 }
 
 // FUNCTION: BFME2 0x004D9645 size=9 name=?get@Rva004D9645SubImm32Field@@QBEHXZ evidence=?:placeholder tier=B hypothesis:K
