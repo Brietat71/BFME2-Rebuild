@@ -780,9 +780,9 @@ void Debug::AddOutput(const char *str, unsigned int remainingLen)
 			}
 
 			// search for the next '\n'
-			const char *p = str;
+			const char *p;
 			const char *end = str + remainingLen;
-			while (p != end)
+			for (p = str; p != end;)
 			{
 				if (*p++ == '\n')
 					break;
