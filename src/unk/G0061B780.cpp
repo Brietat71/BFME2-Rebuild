@@ -5,5 +5,5 @@
 // FUNCTION: BFME2 0x0061B780 size=33 name=_XMP_Test_Bit evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 extern "C" bool XMP_Test_Bit(const digit *r, unsigned bit)
 {
-	return (r[bit >> 5] & ((digit)1 << (bit & 31))) != 0;
+	return ((r[bit >> 5] >> (bit & 31)) & 1) != 0;
 }
