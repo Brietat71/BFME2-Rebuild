@@ -4006,6 +4006,17 @@ void AIExitState::onExit(StateExitType status)
 // FUNCTION: BFME2 0x003511E3 size=378 name=?onEnter@AIGuardState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0035135D size=108 name=?onExit@AIGuardState@@UAEXW4StateExitType@@@Z evidence=N:ledger tier=A
+void AIGuardState::onExit(StateExitType status)
+{
+	Object *owner = getMachine()->getOwner();
+	AIUpdateInterface *ai = owner->getAI();
+	ai->m_unk0x3CD = false;
+	Object *guarded = TheGameLogic->findObjectByID(ai->vslot119());
+	if (guarded != NULL && ai->vslot123() == 1)
+		owner->rva0028BBF3(guarded);
+	::delete m_guardMachine;
+	m_guardMachine = NULL;
+}
 
 // FUNCTION: BFME2 0x003513C9 size=214 name=?update@AIMoveToPositionAndDieState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 StateReturnType AIMoveToPositionAndDieState::update()
