@@ -71,12 +71,10 @@ UpdateSleepTime StealthUpdate::update()
 	{
 		if (!m_unk0x34)
 		{
-			const FXList *fx;
 			if (wasStealthed)
-				fx = m_unk0x33 ? data->m_exitStealthOneRingFX : data->m_exitStealthFX;
+				FXList::doFXObj(m_unk0x33 ? data->m_exitStealthOneRingFX : data->m_exitStealthFX, getObject(), NULL);
 			else
-				fx = m_unk0x31 ? data->m_becomeStealthedOneRingFX : data->m_becomeStealthedFX;
-			FXList::doFXObj(fx, getObject(), NULL);
+				FXList::doFXObj(m_unk0x31 ? data->m_becomeStealthedOneRingFX : data->m_becomeStealthedFX, getObject(), NULL);
 		}
 		if (m_unk0x32)
 			rva00373D5E();
