@@ -230,6 +230,41 @@ Coord3D AIGuardMachine::findPositionToGuard() const
 // FUNCTION: BFME2 0x005433FA size=929 name=?lookForInnerTarget@AIGuardMachine@@QAE_NXZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0054379B size=315 name=?onEnter@AIGuardInnerState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
+StateReturnType AIGuardInnerState::onEnter()
+{
+	AIGuardMachine *guard = getGuardMachine();
+	Object *targetToGuard = TheGameLogic->findObjectByID(guard->getTargetToGuardID());
+	Team *teamToGuard = TheTeamFactory->findTeamByID(guard->getTeamToGuardID());
+	Coord3D pos;
+	if (targetToGuard)
+		pos = *targetToGuard->getPosition();
+	else if (teamToGuard)
+		teamToGuard->rva0039E5B9(&pos);
+	else
+		pos = *getGuardMachine()->getPositionToGuard();
+
+	AIGuardMachine *machine = getGuardMachine();
+	Object *nemesis = TheGameLogic->findObjectByID(machine->getNemesisID());
+	if (nemesis == NULL)
+		return STATE_SUCCESS;
+
+	m_exitConditions.m_center = pos;
+	Real range = AIGuardMachine::getStdGuardRange(getGuardMachine()->getOwner());
+	m_exitConditions.m_radiusSqr = range * range;
+	m_exitConditions.m_conditionsToConsider = (ExitConditions::ATTACK_ExitIfOutsideRadius | ExitConditions::ATTACK_ExitIfNoUnitFound);
+
+	const PolygonTrigger *area = getGuardMachine()->getAreaToGuard();
+	if (area)
+	{
+		m_exitConditions.m_radiusSqr = area->m_polygon.getRadius() * area->m_polygon.getRadius();
+		area->getCenterPoint(&m_exitConditions.m_center);
+	}
+
+	m_attackState = new AIAttackState(getMachine(), false, true, false, &m_exitConditions);
+	m_attackState->getMachine()->setGoalObject(nemesis);
+	m_unk0x44 = TheGameLogic->getFrame() + BfmeLogicFramesPerSecond * 3;
+	return m_attackState->onEnter() ? STATE_SUCCESS : STATE_CONTINUE;
+}
 
 // FUNCTION: BFME2 0x005438D6 size=284 name=?update@AIGuardInnerState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 StateReturnType AIGuardInnerState::update()
