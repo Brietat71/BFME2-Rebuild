@@ -5,9 +5,15 @@
 #ifndef BFME2_COLLISIONMANAGER_H
 #define BFME2_COLLISIONMANAGER_H
 
+class CollisionClient;
+
 class CollisionManager
 {
 public:
+	// Forwarders to the manager's implementation object at +0x10 (CritterEmitterUpdate::update 0x004C8DE2 hands each the
+	// dropped object's collision client).
+	void rva00758230(CollisionClient *client);	// 0x00758230
+	void rva00758240(CollisionClient *client);	// 0x00758240
 	class Data
 	{
 	public:
@@ -17,5 +23,7 @@ public:
 		void makeDirty();
 	};
 };
+
+extern CollisionManager *TheCollisionManager;	// VA 0x00DFE754
 
 #endif

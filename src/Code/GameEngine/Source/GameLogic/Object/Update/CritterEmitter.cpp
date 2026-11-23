@@ -16,6 +16,7 @@
 #include "GameLogic/Object.h"
 #include "Common/RandomValue.h"
 #include "Common/Coord3D.h"
+#include "collisionmanager/CollisionManager.h"
 
 // Tier B; object=O004C8D3B evidence=invented flags=align=U;ehform=EH_prolog
 // Extent is a hypothesis; only Object VERIFIED establishes recovery.
@@ -49,6 +50,20 @@ CritterEmitterUpdate::CritterEmitterUpdate(Thing *thing, const ModuleData *modul
 }
 
 // FUNCTION: BFME2 0x004C8DE2 size=96 name=?update@CritterEmitterUpdate@@UAE?AW4UpdateSleepTime@@XZ evidence=N:ledger
+UpdateSleepTime CritterEmitterUpdate::update()
+{
+	if (m_unk0x24)
+	{
+		if (TheCollisionManager)
+			TheCollisionManager->rva00758240(getObject());
+		m_unk0x24 = FALSE;
+		m_unk0x25 = FALSE;
+		return static_cast<UpdateSleepTime>(static_cast<const CritterEmitterUpdateModuleData *>(m_moduleData)->m_reloadTime);
+	}
+	if (!m_unk0x25 && TheCollisionManager)
+		TheCollisionManager->rva00758230(getObject());
+	return UPDATE_SLEEP_NONE;
+}
 
 // FUNCTION: BFME2 0x004C8E42 size=65 name=?xfer@CritterEmitterUpdate@@MAEXPAVXfer@@@Z evidence=N:ledger
 void CritterEmitterUpdate::xfer(Xfer *xfer)
