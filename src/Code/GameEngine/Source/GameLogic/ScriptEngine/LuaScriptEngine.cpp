@@ -68,28 +68,6 @@ extern FileSystem *TheFileSystem;
 // FUNCTION: BFME2 0x00332C7A size=117 name=?ProcessInternalEvent@LuaScriptEngine@@QAEXPAVXmlNameSlotList@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x00332CFB size=46 name=?GetFrame@@YAHPAUlua_State@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x00332D29 size=76 name=?CurDrawableGetCurrentTargetHeight@@YAHPAUlua_State@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
-int CurDrawableGetCurrentTargetHeight(lua_State *state)
-{
-	LuaDrawableLink *drawable = TheLuaScriptEngine->m_drawable;
-	if (drawable != 0) {
-		Drawable *owner = drawable->m_drawable;
-		if (owner != 0) {
-			if (owner->m_object != 0) {
-				lua_pushnumber(state, owner->m_object->m_currentTargetPosition.z - owner->m_object->getPosition()->z);
-			}
-			else {
-				lua_pushnil(state);
-			}
-		}
-		else {
-			lua_pushnil(state);
-		}
-	}
-	else {
-		lua_pushnil(state);
-	}
-	return 1;
-}
 // FUNCTION: BFME2 0x00332D75 size=103 name=?GetClientRandomNumberReal@@YAHPAUlua_State@@@Z evidence=N:ledger
 int GetClientRandomNumberReal(lua_State *state)
 {
@@ -463,21 +441,6 @@ void LuaScriptEngine::LoadScripts(const char *filename)
 // FUNCTION: BFME2 0x00334C9F size=119 name=?ObjectChangeAllegianceFromNonPlayablePlayer@@YAHPAUlua_State@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x00334D16 size=72 name=?Rva00334D16@@YAHPAUlua_State@@@Z evidence=?:placeholder
-int Rva00334D16(lua_State *state)
-{
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id != INVALID_ID)
-	{
-		Object *object = TheGameLogic->findObjectByID(id);
-		if (object)
-		{
-			AIUpdateInterface *ai = object->getAI();
-			if (ai)
-				ai->m_allowStateChange = lua_toboolean(state, 2) != 0;
-		}
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x00334D5E size=129 name=?CurDrawableIsCurrentTargetKindof@@YAHPAUlua_State@@@Z evidence=N:ledger
 int CurDrawableIsCurrentTargetKindof(lua_State *state)
