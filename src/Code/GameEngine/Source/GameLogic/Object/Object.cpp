@@ -2614,15 +2614,6 @@ void Object::clearScriptStatus(ObjectScriptStatusBit bit)
 // FUNCTION: BFME2 0x002934E7 size=1087 name=?initObject@Object@@QAEXXZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x00293926 size=47 name=?rva00293926@Object@@QAE_NW4KindOfType@@@Z evidence=?:placeholder tier=A
-Bool Object::rva00293926(KindOfType kind)
-{
-	if (testModelConditionState((ModelConditionFlagType)kind))
-		return true;
-	Object *leader = rva002931F5(false);
-	if (leader)
-		return leader->testModelConditionState((ModelConditionFlagType)kind);
-	return false;
-}
 
 // FUNCTION: BFME2 0x00293955 size=176 name=?clearModelConditionStateForHorde@Object@@QAEXW4ModelConditionFlagType@@@Z evidence=N:ledger tier=A
 void Object::clearModelConditionStateForHorde(ModelConditionFlagType flag)
