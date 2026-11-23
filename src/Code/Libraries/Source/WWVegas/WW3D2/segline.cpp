@@ -310,6 +310,59 @@ int SegmentedLineClass::Get_Num_Polys() const
 }
 
 // FUNCTION: BFME2 0x0015E850 size=1653 name=?Get_Obj_Space_Bounding_Box@SegmentedLineClass@@UBEXAAVAABoxClass@@@Z evidence=N:ledger
+void SegmentedLineClass::Get_Obj_Space_Bounding_Box(AABoxClass &box) const
+{
+	unsigned int num_points = PointLocations.Count();
+
+	if (num_points >= 2) {
+		// The first box encloses the points; with subdivision a second box encloses the segment
+		// midpoints grown by the noise amplitude, and the two are combined.
+		Vector3 max_coords;
+		Vector3 min_coords;
+		unsigned int i;
+
+		max_coords = PointLocations[0];
+		min_coords = PointLocations[0];
+		for (i = 1; i < num_points; i++) {
+			max_coords.Update_Max(PointLocations[i]);
+			min_coords.Update_Min(PointLocations[i]);
+		}
+
+		float enlarge_factor = LineRenderer.Get_Width() * 0.5f;
+		Vector3 enlarge_offset;
+		enlarge_offset.Set(enlarge_factor, enlarge_factor, enlarge_factor);
+		max_coords += enlarge_offset;
+		min_coords = min_coords - enlarge_offset;
+
+		if (MaxSubdivisionLevels > 0) {
+			Vector3 max_coords2;
+			Vector3 min_coords2;
+			Vector3 midpoint = (PointLocations[0] + PointLocations[1]) * 0.5f;
+			max_coords2 = midpoint;
+			min_coords2 = midpoint;
+			for (i = 1; i < num_points - 1; i++) {
+				midpoint = (PointLocations[i] + PointLocations[i + 1]) * 0.5f;
+				max_coords2.Update_Max(midpoint);
+				min_coords2.Update_Min(midpoint);
+			}
+
+			enlarge_factor += (2 * LineRenderer.Get_Noise_Amplitude());
+			enlarge_offset.Set(enlarge_factor, enlarge_factor, enlarge_factor);
+			max_coords2 += enlarge_offset;
+			min_coords2 = min_coords2 - enlarge_offset;
+
+			max_coords.Update_Max(max_coords2);
+			min_coords.Update_Min(min_coords2);
+		}
+
+		MinMaxAABoxClass bounds;
+		bounds.MinCorner = min_coords;
+		bounds.MaxCorner = max_coords;
+		box.Init(bounds);
+	} else {
+		box.Init(Vector3(0, 0, 0), Vector3(1, 1, 1));
+	}
+}
 
 // FUNCTION: BFME2 0x0015EED0 size=78 name=?Render_Seg_Line@SegmentedLineClass@@IAEXAAVRenderInfoClass@@@Z evidence=N:ledger
 void SegmentedLineClass::Render_Seg_Line(RenderInfoClass &rinfo)
