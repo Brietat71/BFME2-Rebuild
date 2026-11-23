@@ -23,6 +23,11 @@ const char *W3DGhostObject::GetSnapshotName() const
 }
 
 // FUNCTION: BFME2 0x0006341B size=11 name=?reset@Rva0006341B@@QAEXXZ evidence=?:placeholder tier=B hypothesis:cohesion
+void W3DGhostObject::vslot01()
+{
+	if (m_parentObject)
+		m_parentObject = 0;
+}
 
 // FUNCTION: BFME2 0x00063426 size=65 name=?removeParentObject@W3DGhostObject@@IAEXXZ evidence=N:ledger tier=B hypothesis:cohesion
 void W3DGhostObject::removeParentObject()
@@ -334,6 +339,11 @@ GhostObject *W3DGhostObjectManager::addGhostObject(Object *object)
 }
 
 // FUNCTION: BFME2 0x00063C33 size=21 name=?detach@Rva006BD6C0@@QAEXXZ evidence=?:placeholder tier=B hypothesis:cohesion
+void W3DGhostObject::vslot00()
+{
+	if (TheGhostObjectManager)
+		static_cast<W3DGhostObjectManager *>(TheGhostObjectManager)->removeGhostObject(this);
+}
 
 // FUNCTION: BFME2 0x00063C48 size=42 name=?reset@W3DGhostObjectManager@@UAEXXZ evidence=N:ledger tier=B hypothesis:cohesion
 
