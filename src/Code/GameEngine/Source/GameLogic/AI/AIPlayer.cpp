@@ -509,7 +509,7 @@ void AIPlayer::xfer(Xfer *xfer)
 	*xfer == m_teamSeconds;
 	XferObjectID(xfer, &m_curWarehouseID);
 	*xfer == m_frameLastBuildingBuilt;
-	XferGameDifficulty(xfer, (Int *)&m_difficulty);
+	XferGameDifficulty(xfer, &m_difficulty);
 	*xfer == m_skillsetSelector;
 	*xfer == m_baseCenter;
 	*xfer == m_baseCenterSet;
