@@ -43,4 +43,8 @@ Bool ProjectileNugget::slot12() const
 }
 
 // FUNCTION: BFME2 0x00509D29 size=7 name=?getPlayerNightColor@Player@@QBEHXZ evidence=N:ledger tier=A
+Int ProjectileNugget::slot11() const
+{
+	return (Int)m_warheadTemplate;
+}
 
