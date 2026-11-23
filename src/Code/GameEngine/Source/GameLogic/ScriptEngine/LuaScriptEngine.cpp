@@ -512,44 +512,8 @@ int CurDrawableIsCurrentTargetKindof(lua_State *state)
 // FUNCTION: BFME2 0x00334DDF size=114 name=?ObjectDescription@LuaScriptEngine@@SAHPAUlua_State@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x00334E51 size=115 name=?Rva00334E51@@YAHPAUlua_State@@@Z evidence=?:placeholder
-int Rva00334E51(lua_State *state)
-{
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-	{
-		Object *object = TheGameLogic->findObjectByID(id);
-		if (object)
-		{
-			TeamPrototype *prototype = object->getTeam()->getPrototype();
-			const AsciiString *name;
-			if (prototype == 0)
-				name = &AsciiString::TheEmptyString;
-			else
-				name = &prototype->getName();
-			lua_pushstring(state, name->str());
-			return 1;
-		}
-	}
-	lua_pushnil(state);
-	return 1;
-}
 
 // FUNCTION: BFME2 0x00334EC4 size=106 name=?ObjectPlayerSide@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectPlayerSide(lua_State *state)
-{
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-	{
-		Object *object = TheGameLogic->findObjectByID(id);
-		if (object)
-		{
-			lua_pushstring(state, object->getTeam()->getControllingPlayer()->getSide().str());
-			return 1;
-		}
-	}
-	lua_pushnil(state);
-	return 1;
-}
 
 // FUNCTION: BFME2 0x00334F2E size=125 name=?ObjectCapturingObjectPlayerSide@@YAHPAUlua_State@@@Z evidence=N:ledger
 
@@ -571,30 +535,6 @@ int ObjectTemplateName(lua_State *state)
 }
 
 // FUNCTION: BFME2 0x0033500D size=130 name=?ObjectTestModelCondition@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectTestModelCondition(lua_State *state)
-{
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-	{
-		Object *object = TheGameLogic->findObjectByID(id);
-		if (object)
-		{
-			const char *name = lua_tostring(state, 2);
-			if (name)
-			{
-				int bit = BitFlags<591>::getSingleBitFromName(name);
-				if (bit != -1)
-				{
-					Bool hit = object->m_modelConditions.test(bit) != 0;
-					bfmeGo1039E(state, hit);
-					return 1;
-				}
-			}
-		}
-	}
-	lua_pushnil(state);
-	return 1;
-}
 
 // FUNCTION: BFME2 0x0033508F size=187 name=?ObjectTestCanSufferFear@@YAHPAUlua_State@@@Z evidence=N:ledger
 
@@ -667,102 +607,14 @@ int ObjectEnterUncontrollableCowerState(lua_State *state)
 }
 
 // FUNCTION: BFME2 0x003352F7 size=178 name=?ObjectDoSpecialPower@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectDoSpecialPower(lua_State *state)
-{
-	if (lua_gettop(state) >= 2 && TheAudio != 0)
-	{
-		ObjectID id = lua_tablesizehint(state, 1);
-		if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-		{
-			Object *object = TheGameLogic->findObjectByID(id);
-			if (object)
-			{
-				const SpecialPowerTemplate *power = TheSpecialPowerStore->findSpecialPowerTemplate(AsciiString(lua_tostring(state, 2)));
-				if (power)
-				{
-					SpecialPowerModuleInterface *module = object->findSpecialPowerModuleInterface(power->getSpecialPowerType());
-					if (module)
-					{
-						if (module->isReady())
-							module->doSpecialPower(0);
-						return 1;
-					}
-				}
-			}
-		}
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x003353A9 size=115 name=?ObjectSetDelayedDeath@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectSetDelayedDeath(lua_State *state)
-{
-	if (lua_gettop(state) >= 2)
-	{
-		ObjectID id = lua_tablesizehint(state, 1);
-		if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-		{
-			Object *object = TheGameLogic->findObjectByID(id);
-			if (object)
-			{
-				Bool flag = lua_toboolean(state, 2) != 0;
-				BodyModuleInterface *body = object->getBodyModule();
-				if (body)
-					body->rva004C15F7(flag);
-			}
-		}
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x0033541C size=186 name=?ObjectCreateAndFireTempWeapon@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectCreateAndFireTempWeapon(lua_State *state)
-{
-	if (lua_gettop(state) >= 2 && TheAudio != 0)
-	{
-		ObjectID id = lua_tablesizehint(state, 1);
-		if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-		{
-			Object *object = TheGameLogic->findObjectByID(id);
-			if (object)
-			{
-				const WeaponTemplate *weapon = TheWeaponStore->findWeaponTemplate(AsciiString(lua_tostring(state, 2)));
-				if (weapon)
-				{
-					TheWeaponStore->createAndFireTempWeapon(weapon, object, object->getPosition());
-					return 1;
-				}
-			}
-		}
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x003354D6 size=220 name=?ObjectModifyUpgrade@LuaScriptEngine@@SAHPAUlua_State@@_N@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x003355B2 size=224 name=?ObjectHasUpgrade@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectHasUpgrade(lua_State *state)
-{
-	if (lua_gettop(state) < 2)
-		return 0;
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-		return 0;
-	double result = 0.0;
-	Object *object = TheGameLogic->findObjectByID(id);
-	if (object)
-	{
-		const UpgradeTemplate *upgrade = TheUpgradeCenter->findUpgrade(AsciiString(lua_tostring(state, 2)));
-		if (upgrade)
-		{
-			if (upgrade->getUpgradeType() == UPGRADE_TYPE_PLAYER && object->getControllingPlayer()->rva002AB87D(upgrade))
-				result = 1.0;
-			lua_pushnumber(state, result);
-			return 1;
-		}
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x00335692 size=14 name=?ObjectGrantUpgrade@@YAHPAUlua_State@@@Z evidence=N:ledger
 int ObjectGrantUpgrade(lua_State *state)
