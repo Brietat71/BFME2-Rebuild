@@ -463,21 +463,6 @@ void LuaScriptEngine::LoadScripts(const char *filename)
 // FUNCTION: BFME2 0x00334C9F size=119 name=?ObjectChangeAllegianceFromNonPlayablePlayer@@YAHPAUlua_State@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x00334D16 size=72 name=?Rva00334D16@@YAHPAUlua_State@@@Z evidence=?:placeholder
-int Rva00334D16(lua_State *state)
-{
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id != INVALID_ID)
-	{
-		Object *object = TheGameLogic->findObjectByID(id);
-		if (object)
-		{
-			AIUpdateInterface *ai = object->getAI();
-			if (ai)
-				ai->m_allowStateChange = lua_toboolean(state, 2) != 0;
-		}
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x00334D5E size=129 name=?CurDrawableIsCurrentTargetKindof@@YAHPAUlua_State@@@Z evidence=N:ledger
 int CurDrawableIsCurrentTargetKindof(lua_State *state)
