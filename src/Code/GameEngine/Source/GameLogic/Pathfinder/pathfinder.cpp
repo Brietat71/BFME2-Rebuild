@@ -927,6 +927,11 @@ Path *Pathfinder::FindHierarchicalPath(Bool a, const LocomotorSet &locomotorSet,
 }
 
 // FUNCTION: BFME2 0x002F83CE size=39 name=?FindClosestHierarchicalPath@Pathfinder@@IAEPAVPath@@_NABVLocomotorSet@@PAVObject@@PBVCoord3D@@30PAU5@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
+Path *Pathfinder::FindClosestHierarchicalPath(Bool a, const LocomotorSet &locomotorSet, Object *obj, const Coord3D *from, const Coord3D *to, Bool c, Coord3D *adjustedTo)
+{
+	Int surfaces = locomotorSet.m_validLocomotorSurfaces;
+	return internal_findHierarchicalPath(a, surfaces, obj, from, to, c, true, adjustedTo);
+}
 
 // FUNCTION: BFME2 0x002F83F5 size=1803 name=?rva002F83F5@Pathfinder@@QAEHPAVPathfindCell@@0ABVLocomotorSet@@_N2HPAUICoord2D@@PAVObject@@H@Z evidence=?:placeholder tier=A
 
