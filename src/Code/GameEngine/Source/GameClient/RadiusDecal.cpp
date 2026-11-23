@@ -67,6 +67,14 @@ void RadiusDecalTemplate::assign(const RadiusDecalTemplate &that)
 }
 
 // FUNCTION: BFME2 0x00330D3E size=83 name=?rva00330D3E@RadiusDecalTemplate@@QAEMI@Z evidence=?:placeholder
+Real RadiusDecalTemplate::getRadiusForUnitCount(UnsignedInt count)
+{
+	Real radius = (m_maxRadius - m_minRadius) / (Real)m_maxSelectedUnits * (Real)(count - 1) + m_minRadius;
+	if (radius > m_maxRadius)
+		radius = m_maxRadius;
+	return radius;
+}
+
 
 // FUNCTION: BFME2 0x00330D91 size=19 name=?parseRadiusDecalTemplate@RadiusDecalTemplate@@SAXPAVINI@@PAX1PBX@Z evidence=N:ledger
 void RadiusDecalTemplate::parseRadiusDecalTemplate(INI *ini, void *formal, void *store, const void *userData)

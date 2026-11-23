@@ -33,6 +33,7 @@ public:
 	~RadiusDecalTemplate();
 
 	void assign(const RadiusDecalTemplate &that);	// 0x00330CDD
+	Real getRadiusForUnitCount(UnsignedInt count);	// 0x00330D3E: the radius that grows from MinRadius towards MaxRadius with the selected unit count (the map holds it as rva00330D3E)
 	void xferRadiusDecalTemplate(Xfer *xfer);
 	void createRadiusDecal(const Coord3D &pos, Real radius, const Player *owningPlayer, RadiusDecal &result) const;
 
