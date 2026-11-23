@@ -222,7 +222,7 @@ ShaderClass Vertex_Split_Table::Peek_Shader(unsigned int idx, unsigned int pass)
 	// BFME 2 has no gap filler: polygons past the model's own keep the default shader.
 	if (Model->Has_Shader_Array(pass)) {
 		ShaderClass shader;
-		if (idx < (unsigned int)Model->Get_Polygon_Count()) {
+		if (idx < Model->Get_Polygon_Count()) {
 			shader = Model->Get_Shader(idx, pass);
 		}
 		if (NPatchEnable) {
