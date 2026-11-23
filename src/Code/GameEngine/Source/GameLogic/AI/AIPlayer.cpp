@@ -351,23 +351,35 @@ AIPlayer::~AIPlayer()
 // FUNCTION: BFME2 0x004F0819 size=143 name=?aiPreTeamDestroy@AIPlayer@@QAEXPBVTeam@@@Z evidence=N:ledger tier=A
 void AIPlayer::aiPreTeamDestroy(const Team *deletedTeam)
 {
-	for (DLINK_ITERATOR<TeamInQueue> iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamBuildQueue.m_head, &TeamInQueue::dlink_next_TeamBuildQueue); !iter.done(); iter.advance())
+	typedef TeamInQueue *(TeamInQueue::*NextBuild)() const;
+	NextBuild nextBuild = &TeamInQueue::dlink_next_TeamBuildQueue;
+	TeamInQueue *team = m_dlinkhead_TeamBuildQueue.m_head;
+	while (team != 0)
 	{
-		TeamInQueue *team = iter.cur();
 		if (team->m_team == deletedTeam) {
 			removeFrom_TeamBuildQueue(team);
 			::delete team;
-			iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamBuildQueue.m_head, &TeamInQueue::dlink_next_TeamBuildQueue);
+			team = m_dlinkhead_TeamBuildQueue.m_head;
+			nextBuild = &TeamInQueue::dlink_next_TeamBuildQueue;
 		}
+		if (team == 0)
+			break;
+		team = (team->*nextBuild)();
 	}
-	for (DLINK_ITERATOR<TeamInQueue> iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamReadyQueue.m_head, &TeamInQueue::dlink_next_TeamReadyQueue); !iter.done(); iter.advance())
+	typedef TeamInQueue *(TeamInQueue::*NextReady)() const;
+	NextReady nextReady = &TeamInQueue::dlink_next_TeamReadyQueue;
+	team = m_dlinkhead_TeamReadyQueue.m_head;
+	while (team != 0)
 	{
-		TeamInQueue *team = iter.cur();
 		if (team->m_team == deletedTeam) {
 			removeFrom_TeamReadyQueue(team);
 			::delete team;
-			iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamReadyQueue.m_head, &TeamInQueue::dlink_next_TeamReadyQueue);
+			team = m_dlinkhead_TeamReadyQueue.m_head;
+			nextReady = &TeamInQueue::dlink_next_TeamReadyQueue;
 		}
+		if (team == 0)
+			break;
+		team = (team->*nextReady)();
 	}
 }
 
