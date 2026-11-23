@@ -68,6 +68,7 @@ protected:
 class AIAttackMoveStateMachine : public StateMachine
 {
 public:
+	AIAttackMoveStateMachine(Object *owner, UnsignedInt name);	// 0x0034C6EF
 	virtual ~AIAttackMoveStateMachine() {}		// 0x0034004C (COMDAT)
 
 protected:

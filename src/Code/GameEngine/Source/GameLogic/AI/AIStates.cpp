@@ -3602,6 +3602,25 @@ StateReturnType AIPickUpCrateState::update()
 // FUNCTION: BFME2 0x0034E084 size=643 name=?update@AIFollowPathState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0034E307 size=158 name=??0AIFollowPathAsTeamState@@QAE@PAVStateMachine@@_NI@Z evidence=N:ledger tier=A
+AIFollowPathAsTeamState::AIFollowPathAsTeamState(StateMachine *machine, Bool unk, UnsignedInt name) :
+	AIInternalMoveToState(machine, name),
+	m_unk0x4C(0),
+	m_unk0x50(5),
+	m_unk0x54(true),
+	m_unk0x55(false),
+	m_unk0x56(false),
+	m_unk0x57(false),
+	m_commandSource(0),
+	m_subMachine(NULL),
+	m_unk0x60(0.0f),
+	m_unk0x64(false)
+{
+	if (unk)
+	{
+		m_subMachine = new AIAttackMoveStateMachine(getMachineOwner(), 0xC586154E);
+		m_subMachine->initDefaultState();
+	}
+}
 
 // FUNCTION: BFME2 0x0034E3A5 size=528 name=?onEnter@AIFollowPathAsTeamState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 
@@ -3633,6 +3652,20 @@ StateReturnType AIMoveAndEvacuateState::onEnter()
 
 
 // FUNCTION: BFME2 0x0034EBE8 size=147 name=??0AIAttackMoveToState@@QAE@PAVStateMachine@@@Z evidence=N:ledger tier=A
+AIAttackMoveToState::AIAttackMoveToState(StateMachine *machine) :
+	AIMoveToState(machine),
+	m_unk0x50(0),
+	m_unk0x58(0),
+	m_unk0x5C(5)
+{
+	m_unk0x4C = false;
+	m_attackMoveMachine = new AIAttackMoveStateMachine(getMachineOwner(), 0xC586154E);
+	m_attackMoveMachine->initDefaultState();
+	m_unk0x60.x = 0.0f;
+	m_unk0x60.y = 0.0f;
+	m_unk0x60.z = 0.0f;
+	m_unk0x6C = INVALID_ID;
+}
 
 // FUNCTION: BFME2 0x0034EC7B size=96 name=?onEnter@AIAttackMoveToState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 StateReturnType AIAttackMoveToState::onEnter()
@@ -3694,6 +3727,12 @@ StateReturnType AIFollowWaypointPathStateAndEvacuate::onEnter()
 // FUNCTION: BFME2 0x0034F01B size=312 name=?onEnter@AIFollowWaypointPathExactState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0034F153 size=113 name=??0AIAttackFollowWaypointPathState@@QAE@PAVStateMachine@@_N@Z evidence=N:ledger tier=A
+AIAttackFollowWaypointPathState::AIAttackFollowWaypointPathState(StateMachine *machine, Bool asGroup) :
+	AIFollowWaypointPathState(machine, asGroup, false)
+{
+	m_attackFollowMachine = new AIAttackMoveStateMachine(getMachineOwner(), 0x1B42B558);
+	m_attackFollowMachine->initDefaultState();
+}
 
 // FUNCTION: BFME2 0x0034F1C4 size=29 name=?onEnter@AIAttackFollowWaypointPathState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 StateReturnType AIAttackFollowWaypointPathState::onEnter()
