@@ -87,6 +87,7 @@ public:
 	UnicodeString getDescription();											// 0x003009CD
 	UnicodeString bfme_getBaseDisplayName();								// 0x00300AEA
 	UnicodeString bfme_getDisplayName(bool includePlayerCount);				// 0x00300C7E
+	UnicodeString bfme_getDisplayName(bool includePlayerCount) const;		// the same row for a const MapMetaData (MapCache::findMap returns one)
 	UnicodeString rva00300D0E();											// 0x00300D0E
 	UnicodeString bfme_getDescriptionFirstLine();							// 0x00301534
 
