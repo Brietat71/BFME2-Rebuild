@@ -194,10 +194,14 @@ void Rva0070DDC0Remove(AptString *pString)
     unsigned int nRoot = pString->getGCRootCount();
     if (nRoot == 0x7f) {
         g_nCurrentMemorySaved -= aptStringSavedSize(pString);
+        if (g_nCurrentMemorySaved > sStringPoolMaxMemorySaved)
+            sStringPoolMaxMemorySaved = g_nCurrentMemorySaved;
     } else {
         pString->decrementGCRootCount();
         if (nRoot != 1) {
             g_nCurrentMemorySaved -= aptStringSavedSize(pString);
+            if (g_nCurrentMemorySaved > sStringPoolMaxMemorySaved)
+                sStringPoolMaxMemorySaved = g_nCurrentMemorySaved;
         } else {
             unsigned short uBucket = pString->mString.GetHashValue() % g_nStringBucketCount;
             AptString *pLocalString = g_ppStringBuckets[uBucket];
@@ -207,6 +211,7 @@ void Rva0070DDC0Remove(AptString *pString)
             --sStringPoolCurrentStrings;
             if (pLocalString == pString) {
                 g_ppStringBuckets[uBucket] = pString->mpNextFree;
+                pString->Release();
             } else {
                 while (pLocalString->mpNextFree != pString) {
                     pLocalString = pLocalString->mpNextFree;
@@ -216,12 +221,9 @@ void Rva0070DDC0Remove(AptString *pString)
                     }
                 }
                 pLocalString->mpNextFree = pString->mpNextFree;
+                pString->Release();
             }
-            pString->Release();
-            return;
         }
     }
-    if (g_nCurrentMemorySaved > sStringPoolMaxMemorySaved)
-        sStringPoolMaxMemorySaved = g_nCurrentMemorySaved;
 }
 
