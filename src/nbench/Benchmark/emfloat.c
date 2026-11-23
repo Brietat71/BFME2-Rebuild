@@ -1,9 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MEM_ARRAY_SIZE 20
+
+static long randw = 13L;
+static long randx = 117L;
+
 // Generated from the ledger; map snapshot c591f7146f88c8a8248ebb8ae22f0c978c22aed463db64e05ef57ff0dfae99cc
 // object=O006B89A0 name-evidence=L
 // Extents and edges are hypotheses; byte verification alone does not establish original TU boundaries.
 // FUNCTION: BFME2 0x006B8950 size=72 name=?randnum@@YAJJ@Z evidence=N:ledger tier=B hypothesis:mm1-neighbour-shared-data
+long randnum(long val)
+{
+	long rand;
+
+	if (val != 0L)
+	{
+		randw = 13L;
+		randx = 117L;
+	}
+	rand = (254754L * randw + 529562L * randx) % 1000075L;
+	randx = randw;
+	randw = rand;
+	return rand;
+}
+
 // FUNCTION: BFME2 0x006B89A0 size=59 name=?bfmeRandom@@YAHH@Z evidence=N:ledger tier=B hypothesis:mm1-libs-upstream-path
+int bfmeRandom(int num)
+{
+	return (int)(randnum(0L) % (long)num);
+}
+
 // FUNCTION: BFME2 0x006B89E0 size=65 name=?abs_randwc@@YAKK@Z evidence=N:ledger tier=B hypothesis:mm1-libs-upstream-path
+unsigned long abs_randwc(unsigned long num)
+{
+	long temp = randnum(0L) % (long)num;
+	if (temp < 0)
+		temp = -temp;
+	return (unsigned long)temp;
+}
+
 // FUNCTION: BFME2 0x006B8A40 size=11 name=?InitMemArray@@YAXXZ evidence=N:ledger tier=B hypothesis:mm1-libs-upstream-path
 // FUNCTION: BFME2 0x006B8A50 size=45 name=?Rva008791B0Add@@YAHPAX0@Z evidence=?:placeholder tier=B hypothesis:mm1-libs-upstream-path
 // FUNCTION: BFME2 0x006B8A80 size=96 name=?Rva008791E0Remove@@YAHPAXPAPAX@Z evidence=?:placeholder tier=B hypothesis:mm1-libs-upstream-path
