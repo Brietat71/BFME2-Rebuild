@@ -154,7 +154,8 @@ void LivingWorldRegionManager::EnumerateCompletedBattles(PendingBattleVisitor *v
 	LivingWorldBattle **end = m_completedBattles.end();
 	for (LivingWorldBattle **it = m_completedBattles.begin(); it != end; ++it)
 	{
-		if (!visitor->call(*it))
+		LivingWorldBattle *battle = *it;
+		if (!visitor->call(battle))
 			break;
 	}
 }
