@@ -6,6 +6,7 @@
 // Edges: left=unknown-rows right=unknown-rows; proof_first=false
 // Hypothesis rules: hypothesis:K
 #include "Common/Rva004D94A5DivMovField.h"
+#include "Common/Rva004D9596.h"
 #include "Common/Rva004D94EEDivMovField.h"
 #include "Common/Rva004D9645SubImm32Field.h"
 #include "Common/Rva004D99F4.h"
@@ -32,8 +33,20 @@ int Rva004D94EEDivMovField::get() const
 // FUNCTION: BFME2 0x004D94FC size=61 name=?rva004D94FC@@YA_NPAVObject@@@Z evidence=?:placeholder tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x004D9586 size=16 name=?rva004D9586@Rva004D9596@@QAEHXZ evidence=?:placeholder tier=B hypothesis:K
+int Rva004D9596::rva004D9586()
+{
+	return m_unk0x04 != 0 || m_unk0x00 != -1;
+}
 
 // FUNCTION: BFME2 0x004D9596 size=28 name=?rva004D9596@Rva004D9596@@QAE_NXZ evidence=?:placeholder tier=B hypothesis:K
+bool Rva004D9596::rva004D9596()
+{
+	if (m_unk0x00 != -1)
+		return true;
+	if (m_unk0x04 == 0)
+		return false;
+	return m_unk0x18 == 0 || m_unk0x0C != 0;
+}
 
 // FUNCTION: BFME2 0x004D9645 size=9 name=?get@Rva004D9645SubImm32Field@@QBEHXZ evidence=?:placeholder tier=B hypothesis:K
 int Rva004D9645SubImm32Field::get() const
