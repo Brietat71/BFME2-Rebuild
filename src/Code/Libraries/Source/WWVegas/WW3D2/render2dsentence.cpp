@@ -115,19 +115,22 @@ void FontCharsClass::Create_GDI_Font(const char *face)
 		generals = true;
 	}
 
+	float pointSize = PointSize;
 	float fontWidth = 0.0f;
 	if (generals)
-		fontWidth = PointSize * 0.4f;
+		fontWidth = pointSize * 0.4f;
 
-	PixelOverlap = (int)floor(PointSize * 0.125f + 0.5f);
+	PixelOverlap = (int)floor(pointSize * 0.125f + 0.5f);
 	if (PixelOverlap < 0)
 		PixelOverlap = 0;
 	if (PixelOverlap > 4)
 		PixelOverlap = 4;
 
 	int weight = IsBold ? FW_BOLD : FW_NORMAL;
-	float scaledHeight = floor(Grid * PointSize + 0.5f);
-	float scaledWidth = floor(Grid * fontWidth + 0.5f);
+	float heightValue = Grid * pointSize + 0.5f;
+	float widthValue = Grid * fontWidth + 0.5f;
+	float scaledHeight = floor(heightValue);
+	float scaledWidth = floor(widthValue);
 	GDIFont = CreateFontA(-(int)scaledHeight, (int)scaledWidth, 0, 0, weight, 0, FALSE, FALSE, DEFAULT_CHARSET,
 		OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, 0, face);
 
