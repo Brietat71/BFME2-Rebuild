@@ -345,7 +345,7 @@ BattlePlanUpdate::BattlePlanUpdate(Thing *thing, const ModuleData *moduleData) :
 void BattlePlanUpdate::setStatus(TransitionStatus newStatus)
 {
 	const ModuleData *moduleData = getModuleData();
-	const BattlePlanUpdateModuleData *data = (const BattlePlanUpdateModuleData *)moduleData;
+	const BattlePlanUpdateModuleData *data = static_cast<const BattlePlanUpdateModuleData *>(moduleData);
 	Object *obj = m_object;
 	if (m_status == newStatus)
 		return;
