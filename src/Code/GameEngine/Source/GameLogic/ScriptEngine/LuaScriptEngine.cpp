@@ -57,11 +57,6 @@ extern "C" void bfmeGo1039E(lua_State *L, int b);
 extern "C" int lua_toboolean(lua_State *L, int index);
 extern "C" ObjectID lua_tablesizehint(lua_State *L, int index);
 
-// The reference-returning maximum this unit selects with `a > b ? a : b`.
-template <class T> inline const T &greaterOf(const T &a, const T &b)
-{
-	return a > b ? a : b;
-}
 
 extern FileSystem *TheFileSystem;
 
@@ -72,11 +67,6 @@ extern FileSystem *TheFileSystem;
 // FUNCTION: BFME2 0x00332B7A size=256 name=?InitializeInternalEvents@LuaScriptEngine@@QAEXXZ evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x00332C7A size=117 name=?ProcessInternalEvent@LuaScriptEngine@@QAEXPAVXmlNameSlotList@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x00332CFB size=46 name=?GetFrame@@YAHPAUlua_State@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
-int GetFrame(lua_State *state)
-{
-	lua_pushnumber(state, TheGameLogic->getFrame());
-	return 1;
-}
 // FUNCTION: BFME2 0x00332D29 size=76 name=?CurDrawableGetCurrentTargetHeight@@YAHPAUlua_State@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 int CurDrawableGetCurrentTargetHeight(lua_State *state)
 {
@@ -652,21 +642,6 @@ int ObjectRemoveUpgrade(lua_State *state)
 // FUNCTION: BFME2 0x003357E0 size=113 name=?ObjectSetChanting@@YAHPAUlua_State@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x00335851 size=136 name=?ObjectSetFearFactor@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectSetFearFactor(lua_State *state)
-{
-	if (lua_gettop(state) < 2)
-		return 0;
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-		return 0;
-	Object *object = TheGameLogic->findObjectByID(id);
-	if (!object)
-		return 0;
-	Int value = lua_tonumber(state, 2);
-	Int current = static_cast<Int>(object->m_1ac);
-	object->m_1ac = greaterOf(value, current);
-	return 1;
-}
 
 // FUNCTION: BFME2 0x003358D9 size=113 name=?ObjectSetEnragedState@@YAHPAUlua_State@@@Z evidence=N:ledger
 int ObjectSetEnragedState(lua_State *state)
