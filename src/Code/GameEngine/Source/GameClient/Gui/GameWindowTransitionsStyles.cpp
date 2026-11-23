@@ -800,11 +800,8 @@ void CountUpTransition::skip()
 }
 
 // FUNCTION: BFME2 0x0035F64A size=74 name=??0CountUpTransition@@QAE@XZ evidence=N:ledger
-CountUpTransition::CountUpTransition() : m_startFrame(0), m_endFrame(30), m_intValue(0), m_currentValue(0), m_countState(0)
+CountUpTransition::CountUpTransition() : m_startFrame(0), m_endFrame(30), m_pos(), m_size(), m_drawState(-1), m_intValue(0), m_currentValue(0), m_countState(0)
 {
-	zeroCoord(m_pos);
-	zeroCoord(m_size);
-	m_drawState = -1;
 	m_frameLength = m_endFrame;
 	m_win = 0;
 	m_isForward = true;
