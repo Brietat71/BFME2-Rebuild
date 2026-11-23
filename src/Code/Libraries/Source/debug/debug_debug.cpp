@@ -891,7 +891,7 @@ bool Debug::ExecCommand(const char *cmdstart, const char *cmdend)
 
 	for (;;)
 	{
-		if (!lastNonWhitespace && (*cur == ''' || *cur == '"'))
+		if (!lastNonWhitespace && (*cur == '\'' || *cur == '"'))
 		{
 			char quote = *cur++;
 
