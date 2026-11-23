@@ -391,14 +391,6 @@ VertexMaterialClass *MeshLoadContextClass::Peek_Legacy_Vertex_Material(int legac
 }
 
 // FUNCTION: BFME2 0x001893C0 size=62 name=?Peek_Legacy_Texture@MeshLoadContextClass@@AAE?AVBfmeHandleCX@@H@Z evidence=N:ledger tier=B hypothesis:K
-TextureAsset MeshLoadContextClass::Peek_Legacy_Texture(int legacy_material_index)
-{
-	int index = LegacyMaterials[legacy_material_index]->TextureIdx;
-	if (index != -1) {
-		return Peek_Texture_Handle(index);
-	}
-	return TextureAsset();
-}
 
 // FUNCTION: BFME2 0x00189400 size=33 name=?rva00189400@Rva00189400@@QAEHH@Z evidence=?:placeholder tier=B hypothesis:K
 Vector2 *MeshLoadContextClass::Get_Temporary_UV_Array(int elementcount)
