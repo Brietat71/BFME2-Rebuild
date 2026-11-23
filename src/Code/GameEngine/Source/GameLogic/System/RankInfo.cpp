@@ -94,9 +94,9 @@ void RankInfoStore::friend_parseRankDefinition(INI *ini)
 			RankInfo *newInfo = new RankInfo;
 
 			// The new override starts as a copy of the final override.
-			Overridable *finalOverride = info->friend_getFinalOverride();
-			*newInfo = static_cast<RankInfo &>(*finalOverride);
-			finalOverride->setNextOverride(newInfo);
+			info = (RankInfo *)info->friend_getFinalOverride();
+			*newInfo = *info;
+			info->setNextOverride(newInfo);
 			newInfo->markAsOverride();
 
 			ini->initFromINI(newInfo, myFieldParse);
