@@ -1806,6 +1806,20 @@
    "kind": "narrow",
    "number": 44,
    "tree": "259d2cf784b29a2e0fb440b1216d0632baf851b1"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45103131914"
+   },
+   "author": 1399571,
+   "base": "f386b86ad82ba0f6f74b78e5d454ef81bd356972",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "f3a5981c2d1abb7e669bafc9e4b1d52b270d44be",
+   "kind": "wide",
+   "number": 15,
+   "tree": "ebdac965da1b623f14b4b353bcdd115b2af6b7e5"
   }
  ],
  "version": 2
