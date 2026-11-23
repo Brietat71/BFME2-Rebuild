@@ -16,6 +16,8 @@
 #include "GameClient/Display.h"
 #include "GameClient/WinInstanceData.h"
 #include "GameClient/View.h"
+#include "Common/RadiusDecal.h"
+#include "Common/Radar.h"
 #include "Common/ActionManager.h"
 #include "GameClient/CommandButton.h"
 #include "GameClient/ControlBar.h"
@@ -159,6 +161,30 @@ void InGameUI::setRadiusCursorNone()
 }
 
 // FUNCTION: BFME2 0x0029A661 size=203 name=?handleRadiusCursor@InGameUI@@IAEXXZ evidence=N:ledger tier=B hypothesis:Z
+void InGameUI::handleRadiusCursor()
+{
+	if (m_radiusDecal.m_empty)
+		return;
+
+	const ICoord2D *pixel = &TheMouse->m_currMouse.pos;
+	Coord3D pos;
+
+	Bool radarOn = TheRadar->isRadarForced()
+		|| (!TheRadar->isRadarHidden()
+			&& ThePlayerList->getLocalPlayer()
+			&& ThePlayerList->getLocalPlayer()->hasRadar());
+
+	if (!radarOn || !TheRadar->screenPixelToWorld(pixel, &pos))
+	{
+		TheTacticalView->screenToTerrain(pixel, &pos, false);
+		if (TheShroudManager && ThePlayerList
+			&& TheShroudManager->getShroudStatusForPlayer(ThePlayerList->getLocalPlayer()->getPlayerIndex(), &pos))
+			TheTacticalView->screenToTerrain(pixel, &pos, true);
+	}
+
+	m_radiusDecal.setPosition(pos);
+	m_radiusDecal.update();
+}
 
 // FUNCTION: BFME2 0x0029A72C size=59 name=?updateOrderDisplayMode@InGameUI@@QAEXXZ evidence=N:ledger tier=B hypothesis:Z
 void InGameUI::updateOrderDisplayMode(){
