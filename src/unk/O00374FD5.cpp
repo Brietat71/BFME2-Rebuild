@@ -72,9 +72,9 @@ UpdateSleepTime StealthUpdate::update()
 		if (!m_unk0x34)
 		{
 			if (wasStealthed)
-				FXList::doFXObj(m_unk0x33 ? data->m_exitStealthOneRingFX : data->m_exitStealthFX, getObject(), NULL);
+				FXList::doFXObj(m_unk0x33 ? static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_exitStealthOneRingFX : static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_exitStealthFX, getObject(), NULL);
 			else
-				FXList::doFXObj(m_unk0x31 ? data->m_becomeStealthedOneRingFX : data->m_becomeStealthedFX, getObject(), NULL);
+				FXList::doFXObj(m_unk0x31 ? static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_becomeStealthedOneRingFX : static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_becomeStealthedFX, getObject(), NULL);
 		}
 		if (m_unk0x32)
 			rva00373D5E();
@@ -90,13 +90,13 @@ UpdateSleepTime StealthUpdate::update()
 			{
 				if (wasOneRing)
 				{
-					FXList::doFXObj(data->m_exitStealthOneRingFX, getObject(), NULL);
-					FXList::doFXObj(data->m_becomeStealthedFX, getObject(), NULL);
+					FXList::doFXObj(static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_exitStealthOneRingFX, getObject(), NULL);
+					FXList::doFXObj(static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_becomeStealthedFX, getObject(), NULL);
 				}
 				else
 				{
-					FXList::doFXObj(data->m_exitStealthFX, getObject(), NULL);
-					FXList::doFXObj(data->m_becomeStealthedOneRingFX, getObject(), NULL);
+					FXList::doFXObj(static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_exitStealthFX, getObject(), NULL);
+					FXList::doFXObj(static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_becomeStealthedOneRingFX, getObject(), NULL);
 				}
 			}
 			m_unk0x33 = m_unk0x31;
