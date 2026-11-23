@@ -468,95 +468,16 @@ int CurDrawableIsCurrentTargetKindof(lua_State *state)
 // FUNCTION: BFME2 0x0033508F size=187 name=?ObjectTestCanSufferFear@@YAHPAUlua_State@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x0033514A size=120 name=?bfmeHelper6280@@YAHPAUlua_State@@@Z evidence=N:ledger
-int bfmeHelper6280(lua_State *state)
-{
-	ObjectID firstID = lua_tablesizehint(state, 1);
-	if (firstID == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-		return 0;
-	Object *first = TheGameLogic->findObjectByID(firstID);
-	if (first)
-	{
-		ObjectID secondID = lua_tablesizehint(state, 2);
-		if (secondID == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-			return 0;
-		Object *second = TheGameLogic->findObjectByID(secondID);
-		if (second)
-			first->rva0028EC68(6, second, 1);
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x003351C2 size=120 name=?bfmeHelper6320@@YAHPAUlua_State@@@Z evidence=N:ledger
-int bfmeHelper6320(lua_State *state)
-{
-	ObjectID firstID = lua_tablesizehint(state, 1);
-	if (firstID == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-		return 0;
-	Object *first = TheGameLogic->findObjectByID(firstID);
-	if (first)
-	{
-		ObjectID secondID = lua_tablesizehint(state, 2);
-		if (secondID == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-			return 0;
-		Object *second = TheGameLogic->findObjectByID(secondID);
-		if (second)
-			first->rva0028EC68(4, second, 1);
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x0033523A size=71 name=?ObjectEnterAlertState@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectEnterAlertState(lua_State *state)
-{
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-	{
-		Object *object = TheGameLogic->findObjectByID(id);
-		if (object)
-			object->rva0028EC68(9, 0, 1);
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x00335281 size=118 name=?ObjectEnterUncontrollableCowerState@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectEnterUncontrollableCowerState(lua_State *state)
-{
-	ObjectID firstID = lua_tablesizehint(state, 1);
-	if (firstID == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-		return 0;
-	ObjectID secondID = lua_tablesizehint(state, 2);
-	if (secondID == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-		return 0;
-	GameLogic *logic = TheGameLogic;
-	Object *first = logic->findObjectByID(firstID);
-	Object *second = logic->findObjectByID(secondID);
-	if (first && second)
-		first->rva0028EC68(5, second, 1);
-	return 0;
-}
 
 // FUNCTION: BFME2 0x003352F7 size=178 name=?ObjectDoSpecialPower@@YAHPAUlua_State@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x003353A9 size=115 name=?ObjectSetDelayedDeath@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectSetDelayedDeath(lua_State *state)
-{
-	if (lua_gettop(state) >= 2)
-	{
-		ObjectID id = lua_tablesizehint(state, 1);
-		if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-		{
-			Object *object = TheGameLogic->findObjectByID(id);
-			if (object)
-			{
-				Bool flag = lua_toboolean(state, 2) != 0;
-				BodyModuleInterface *body = object->getBodyModule();
-				if (body)
-					body->rva004C15F7(flag);
-			}
-		}
-	}
-	return 0;
-}
 
 // FUNCTION: BFME2 0x0033541C size=186 name=?ObjectCreateAndFireTempWeapon@@YAHPAUlua_State@@@Z evidence=N:ledger
 
