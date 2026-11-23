@@ -156,7 +156,7 @@ void BeaconClientUpdate::clientUpdate()
 
 		if (!draw->isDrawableEffectivelyHidden())
 		{
-			const BeaconClientUpdateModuleData *data = (const BeaconClientUpdateModuleData *)getModuleData();
+			const BeaconClientUpdateModuleData *data = static_cast<const BeaconClientUpdateModuleData *>(getModuleData());
 			if (TheGameLogic->getFrame() > m_unk0x10 + data->m_radarPulseFrequency)
 			{
 				TheRadar->createEvent(draw->getPosition(), (RadarEventType)6, data->m_radarPulseDuration * g_secondsPerLogicFrame);
