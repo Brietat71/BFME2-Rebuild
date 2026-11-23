@@ -6,11 +6,6 @@
 // Edges: left=no-edge-evidence right=unknown-rows; proof_first=false
 // Hypothesis rules: hypothesis:Z, hypothesis:name:invented, hypothesis:padding
 // FUNCTION: BFME2 0x0013F220 size=19 name=?Get_Flag@LightClass@@QBEHW4FlagsType@1@@Z evidence=N:ledger tier=B hypothesis:name:invented
-int LightClass::Get_Flag(FlagsType flag) const
-{
-	return (Flags & flag) != 0;
-}
-
 // FUNCTION: BFME2 0x0013F240 size=7 name=?Get_Spot_Angle_Cos@LightClass@@QBEMXZ evidence=N:ledger tier=B hypothesis:Z
 float LightClass::Get_Spot_Angle_Cos(void) const
 {

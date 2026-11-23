@@ -34,12 +34,6 @@ public:
 		SPOT
 	};
 
-	enum FlagsType
-	{
-		NEAR_ATTENUATION = 0,
-		FAR_ATTENUATION
-	};
-
 	LightClass(LightType type = POINT);								// 0x00130AC0
 	LightClass(const LightClass &src);								// 0x00130C00
 	LightClass &operator=(const LightClass &src);							// 0x00130D40
@@ -55,7 +49,6 @@ public:
 	virtual bool Is_Light_Source(void) { return true; }						// 129: 0x0050B5C6 (role name)
 
 	LightType Get_Type(void) const { return Type; }
-	int Get_Flag(FlagsType flag) const;							// 0x0013F220
 	float Get_Spot_Angle_Cos(void) const;						// 0x0013F240
 	void Set_Ambient(const Vector3 &color);							// 0x00042EBD
 	void Set_Diffuse(const Vector3 &color);							// 0x00042EDA
