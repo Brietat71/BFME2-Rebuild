@@ -15,7 +15,7 @@ void Rva001DABB6Parse(INI *, void *, int *, void *);
 #undef _CRTIMP
 #define _CRTIMP
 
-// msvcr71 exports _strcmpi (import slot VA 0x00BBA518); the plain declaration above resolves statically here.
+// Retail calls _strcmpi through the msvcr71 import; the plain declaration above resolves it statically here.
 namespace AudioEventInfoCRT { extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *); }
 
 // VolumeSliderMultiplier's slider names (retail's table at 0x00DB8AEC).
