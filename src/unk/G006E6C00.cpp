@@ -11,7 +11,8 @@ void __debugbreak();
 // FUNCTION: BFME2 0x006E6C00 size=137 name=?PushValue@AptValueVector@@QAEXPAVAptValue@@@Z evidence=X:map request (link (from standalone link 0cf3e833)) tier=B hypothesis:mm1-gap-unit
 void AptValueVector::PushValue(AptValue *pValue)
 {
-    if (!pValue->IsReleaseAtEnd()) {
+    char releaseAtEnd = pValue->IsReleaseAtEnd();
+    if (!releaseAtEnd) {
         g_bfmeAptAssertAtE17734("pValue->IsReleaseAtEnd()", ".\AptValue/AptValueVector.inl", 0x35);
         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
     }
