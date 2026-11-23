@@ -14,6 +14,7 @@
 #include "GameClient/GadgetStaticText.h"
 #include "GameClient/DisplayString.h"
 #include "GameClient/DisplayStringManager.h"
+#include "Common/IRegion2D.h"
 #include <stdlib.h>
 
 void PushButtonImageDrawThree(GameWindow *window, Int alpha);
@@ -684,6 +685,97 @@ void ButtonFlashTransition::skip()
 // FUNCTION: BFME2 0x0035E650 size=81 name=?Rva0035E650Parse@@YAXPAVINI@@PAVRva0035E650Holder@@@Z evidence=?:placeholder
 
 // FUNCTION: BFME2 0x0035E6A1 size=733 name=?PushButtonImageDrawThree@@YAXPAVGameWindow@@H@Z evidence=N:ledger
+void PushButtonImageDrawThree(GameWindow *window, Int alpha)
+{
+	WinInstanceData *instData = window->winGetInstanceData();
+	const Image *leftImage, *rightImage, *centerImage;
+	ICoord2D origin, size, start, end;
+	Int xOffset, yOffset;
+	Int i;
+	Int color = GameMakeColor(255, 255, 255, (unsigned char)alpha);
+
+	window->winGetScreenPosition(&origin.x, &origin.y);
+	window->winGetSize(&size.x, &size.y);
+
+	xOffset = instData->m_imageOffset.x;
+	yOffset = instData->m_imageOffset.y;
+
+	leftImage = window->m_instData.m_enabledDrawData[0].image;
+	rightImage = window->m_instData.m_enabledDrawData[6].image;
+	centerImage = window->m_instData.m_enabledDrawData[5].image;
+
+	if (leftImage == 0 || rightImage == 0 || centerImage == 0)
+		return;
+
+	ICoord2D leftSize, rightSize;
+	leftSize.x = leftImage->getImageWidth();
+	leftSize.y = leftImage->getImageHeight();
+	rightSize.x = rightImage->getImageWidth();
+	rightSize.y = rightImage->getImageHeight();
+
+	ICoord2D leftEnd, rightStart;
+	leftEnd.x = origin.x + leftSize.x + xOffset;
+	leftEnd.y = origin.y + size.y + yOffset;
+	rightStart.x = origin.x + size.x - rightSize.x + xOffset;
+	rightStart.y = origin.y + yOffset;
+
+	Int centerWidth, pieces;
+
+	centerWidth = rightStart.x - leftEnd.x;
+
+	if (centerWidth <= 0)
+	{
+		start.x = origin.x + xOffset;
+		start.y = origin.y + yOffset;
+		end.y = leftEnd.y;
+		end.x = origin.x + xOffset + size.x / 2;
+		w3dDisplay()->rva0004D6B3(const_cast<Image *>(leftImage), (float)start.x, (float)start.y, (float)end.x, (float)end.y, color, 2);
+
+		start.y = rightStart.y;
+		start.x = end.x;
+		end.x = origin.x + size.x;
+		end.y = start.y + size.y;
+		w3dDisplay()->rva0004D6B3(const_cast<Image *>(rightImage), (float)start.x, (float)start.y, (float)end.x, (float)end.y, color, 2);
+	}
+	else
+	{
+		pieces = centerWidth / centerImage->getImageWidth();
+
+		start.x = leftEnd.x;
+		start.y = origin.y + yOffset;
+		end.y = start.y + size.y + yOffset;
+		for (i = 0; i < pieces; i++)
+		{
+			end.x = start.x + centerImage->getImageWidth();
+			w3dDisplay()->rva0004D6B3(const_cast<Image *>(centerImage), (float)start.x, (float)start.y, (float)end.x, (float)end.y, color, 2);
+			start.x += centerImage->getImageWidth();
+		}
+
+		IRegion2D reg;
+		reg.lo.x = start.x;
+		reg.lo.y = start.y;
+		reg.hi.x = rightStart.x;
+		reg.hi.y = end.y;
+		centerWidth = rightStart.x - start.x;
+		if (centerWidth > 0)
+		{
+			TheDisplay->setClipRegion(&reg);
+			end.x = start.x + centerImage->getImageWidth();
+			w3dDisplay()->rva0004D6B3(const_cast<Image *>(centerImage), (float)start.x, (float)start.y, (float)end.x, (float)end.y, color, 2);
+			TheDisplay->enableClipping(false);
+		}
+
+		start.x = origin.x + xOffset;
+		start.y = origin.y + yOffset;
+		end = leftEnd;
+		w3dDisplay()->rva0004D6B3(const_cast<Image *>(leftImage), (float)start.x, (float)start.y, (float)end.x, (float)end.y, color, 2);
+
+		start = rightStart;
+		end.x = start.x + rightSize.x;
+		end.y = start.y + size.y;
+		w3dDisplay()->rva0004D6B3(const_cast<Image *>(rightImage), (float)start.x, (float)start.y, (float)end.x, (float)end.y, color, 2);
+	}
+}
 
 // FUNCTION: BFME2 0x0035E97E size=135 name=?init@ButtonFlashTransition@@UAEXPAVGameWindow@@@Z evidence=N:ledger
 void ButtonFlashTransition::init(GameWindow *win)
