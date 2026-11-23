@@ -1645,8 +1645,30 @@ void Drawable::enableAmbientSound(Bool enable)
 }
 
 // FUNCTION: BFME2 0x002785FB size=49 name=?rva002785FB@Drawable@@QAEX_N@Z evidence=?:placeholder tier=A
+void Drawable::rva002785FB(Bool enable)
+{
+	m_unk0x43D[11] = enable;
+	if (enable)
+	{
+		startAmbientSound(FALSE);
+		rva002784EB();
+	}
+	else
+	{
+		stopAmbientSound();
+		rva002714CA();
+	}
+}
 
 // FUNCTION: BFME2 0x0027862C size=24 name=?rva0027862C@Drawable@@QAEX_N@Z evidence=?:placeholder tier=A
+void Drawable::rva0027862C(Bool value)
+{
+	if (m_unk0x43D[12] != value)
+	{
+		m_unk0x43D[12] = value;
+		rva002784EB();
+	}
+}
 
 // FUNCTION: BFME2 0x00278644 size=69 name=?setAudible@Drawable@@QAEXXZ evidence=N:ledger tier=A
 

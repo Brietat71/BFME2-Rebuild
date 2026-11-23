@@ -300,6 +300,9 @@ public:
 	void rva00271AEA();									// 0x00271AEA, draw-module slot 15
 	Bool isAmbientSoundPlaying();						// 0x002714B4 (map: placeholder): TheAudio slot 52 on +0x144
 	void rva002714CA();									// 0x002714CA: removes the +0x148 sound, then marks it 1
+ void rva002784EB();						// 0x002784EB: refreshes the ambient sound from the status bytes +0x448/+0x449
+ void rva002785FB(Bool enable);			// 0x002785FB: sets status byte +0x448; starts or stops the ambient sound
+ void rva0027862C(Bool value);			// 0x0027862C: sets status byte +0x449 and refreshes the ambient sound when it changes
 	void rva00271C68(Int type);							// 0x00271C68: tint bit 4 on for type 26
 	void rva00271C79(Int type);							// 0x00271C79: tint bit 4 off for type 26
 	Bool clientOnly_getFirstRenderObjInfo(Coord3D *pos, Real *boundingSphereRadius, Matrix3D *transform);	// 0x00272366
