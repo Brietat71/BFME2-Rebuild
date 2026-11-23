@@ -479,15 +479,16 @@ Bool Pathfinder::IsImpassableCell(Int pos, Int layer)
 Bool Pathfinder::IsBuildRestrictedCell(const Coord3D *pos, Bool allowWater, Bool allowBridgeImpassable, Int layer)
 {
 	PathfindCell *cell = getCell((PathfindLayerEnum)layer, pos);
-	if (!cell)
-		return true;
-
-	UnsignedInt type = cell->getType();
-	Bool restricted = type == PathfindCell::CELL_CLIFF;
-	if (!allowWater)
-		restricted = restricted || type == PathfindCell::CELL_WATER || type == PathfindCell::CELL_WATER_7;
-	if (!allowBridgeImpassable)
-		restricted = restricted || type == PathfindCell::CELL_BRIDGE_IMPASSABLE;
+	Bool restricted = true;
+	if (cell)
+	{
+		UnsignedInt type = cell->getType();
+		restricted = type == PathfindCell::CELL_CLIFF;
+		if (!allowWater)
+			restricted = restricted || type == PathfindCell::CELL_WATER || type == PathfindCell::CELL_WATER_7;
+		if (!allowBridgeImpassable)
+			restricted = restricted || type == PathfindCell::CELL_BRIDGE_IMPASSABLE;
+	}
 	return restricted;
 }
 
