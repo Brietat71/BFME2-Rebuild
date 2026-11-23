@@ -470,8 +470,8 @@ void Matrix3D::Lerp(const Matrix3D &A, const Matrix3D &B, float factor, Matrix3D
 	// normalized first and its scale is put back on the result.
 	float scale = WWMath::Sqrt(A.Row[2][0] * A.Row[2][0] + A.Row[2][1] * A.Row[2][1] + A.Row[2][2] * A.Row[2][2]);
 	if (fabs(scale - 1.0f) > 0.000001f) {
-		Matrix3D a = A;
 		Matrix3D b = B;
+		Matrix3D a = A;
 		float inverse = 1.0f / scale;
 		scaleRotation(a, inverse);
 		scaleRotation(b, inverse);
