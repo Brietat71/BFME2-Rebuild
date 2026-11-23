@@ -2033,6 +2033,20 @@
    "kind": "trusted-narrow",
    "number": 498,
    "tree": "1875f3877ec36ae3cfacc14c80a1815ff35c20a7"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45128478147"
+   },
+   "author": 1760627,
+   "base": "38e2ce704e8a3df65ad545bb6f3dcdde41a47310",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "9edbb416e714632c7183099720bcf9950ef44fac",
+   "kind": "trusted-narrow",
+   "number": 430,
+   "tree": "1076b51c6c381a21f9f871adb94c04ae74361064"
   }
  ],
  "version": 2
