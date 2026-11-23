@@ -13,7 +13,7 @@
 #include "Common/Player.h"
 #include "Common/PlayerList.h"
 
-// Seconds per logic frame (VA 0x00DBA4F8, beside BfmeLogicFramesPerSecond).
+// Seconds per logic frame, next to the logic frame rate.
 extern Real g_secondsPerLogicFrame;
 
 static inline const StealthUpdateModuleData *stealthData(const ModuleData *data)

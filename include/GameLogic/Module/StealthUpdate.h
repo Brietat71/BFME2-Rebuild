@@ -108,7 +108,7 @@ public:
 public:
 	void rva00373D23();   // 0x00373D23 (public void, placeholder name)
 	// Zero Hour's inline accessor (module data +0x8 StealthDelay): AIGroup::groupIdle 0x0036FC23 reads it in place.
-	UnsignedInt getStealthDelay() const { return ((const StealthUpdateModuleData *)getModuleData())->m_stealthDelay; }
+	UnsignedInt getStealthDelay() const { return static_cast<const StealthUpdateModuleData *>(m_moduleData)->m_stealthDelay; }
 	UnsignedInt m_unk0x20;                         // +0x20; xfer UnsignedInt
 	UnsignedInt m_unk0x24;                         // +0x24; xfer UnsignedInt
 	UnsignedInt m_unk0x28;                         // +0x28; xfer UnsignedInt
