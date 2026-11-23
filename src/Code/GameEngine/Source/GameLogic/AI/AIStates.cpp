@@ -2276,10 +2276,11 @@ StateReturnType AIAttackMeleeHordeWaitPathState::onEnter()
 		return STATE_SUCCESS;
 	if (getMachine()->getGoalObject() == NULL)
 		return STATE_SUCCESS;
-	m_unk0x20 = TheGameLogic->getFrame();
+	UnsignedInt frame = TheGameLogic->getFrame();
+	m_unk0x20 = frame;
 	Object *owner = getMachineOwner();
 	if (owner->testStatus((ObjectStatusTypes)0x44) || owner->m_ai->m_unk0x3CC)
-		m_unk0x20 = m_unk0x20 + BfmeLogicFramesPerSecond + 2;
+		m_unk0x20 = frame + BfmeLogicFramesPerSecond + 2;
 	return STATE_CONTINUE;
 }
 
