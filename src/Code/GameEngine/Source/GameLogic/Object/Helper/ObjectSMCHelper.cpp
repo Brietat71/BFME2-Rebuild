@@ -71,7 +71,8 @@ void ObjectSMCHelper::setModelConditionState(ModelConditionFlagType flag, Unsign
 	if (flag < 0 || flag >= 0x24F)
 		return;
 	UnsignedInt now = TheGameLogic->getFrame();
-	for (_STL::list<Entry>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
+	_STL::list<Entry>::iterator end = m_entries.end();
+	for (_STL::list<Entry>::iterator it = m_entries.begin(); it != end; ++it)
 	{
 		if (it->m_flag == flag)
 		{
