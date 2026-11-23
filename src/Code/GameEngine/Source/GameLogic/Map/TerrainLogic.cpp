@@ -17,6 +17,7 @@
 #include "GameLogic/GameLogic.h"
 #include "GameLogic/Object.h"
 #include "GameClient/TerrainRoadType.h"
+#include "GameLogic/Module/BodyModule.h"
 
 // The singleton (retail VA 0x00DFEC50).
 TerrainLogic *TheTerrainLogic = NULL;
