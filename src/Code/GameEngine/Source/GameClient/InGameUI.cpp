@@ -16,6 +16,9 @@
 #include "GameClient/Display.h"
 #include "GameClient/WinInstanceData.h"
 #include "GameClient/View.h"
+#include "GameClient/WorldAnimationOptions.h"
+#include "GameClient/Anim2DCollection.h"
+#include "GameClient/Anim2D.h"
 #include "Common/RadiusDecal.h"
 #include "Common/Radar.h"
 #include "Common/ActionManager.h"
@@ -1526,6 +1529,25 @@ void InGameUI::removeMilitarySubtitle()
 
 // FUNCTION: BFME2 0x002A0D19 size=253 name=?addFloatingText@InGameUI@@UAEXABVUnicodeString@@PBVCoord3D@@H@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 // FUNCTION: BFME2 0x002A0E16 size=259 name=?addWorldAnimation@InGameUI@@QAEXPAVAnim2DTemplate@@PBVCoord3D@@W4WorldAnimationOptions@@MM@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
+void InGameUI::addWorldAnimation(Anim2DTemplate *animTemplate, const Coord3D *pos, WorldAnimationOptions options, Real durationInSeconds, Real zRisePerSecond)
+{
+	if (animTemplate == 0 || pos == 0 || durationInSeconds <= 0.0f)
+		return;
+
+	WorldAnimationData *wad = new WorldAnimationData;
+	if (wad == 0)
+		return;
+
+	Anim2D *anim = new Anim2D(animTemplate, TheAnim2DCollection);
+
+	wad->m_anim = anim;
+	wad->m_expireFrame = TheGameLogic->getFrame() + (durationInSeconds * BfmeLogicFramesPerSecond);
+	wad->m_options = options;
+	wad->m_worldPos = *pos;
+	wad->m_zRisePerSecond = zRisePerSecond;
+
+	m_worldAnimationList.push_front(wad);
+}
 
 // FUNCTION: BFME2 0x002A0F19 size=504 name=?rva002A0F19@InGameFloatingAnimationHost@@QAEXPAVAnim2DTemplate@@PBUICoord2D@@HMM@Z evidence=?:placeholder tier=A
 

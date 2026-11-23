@@ -31,6 +31,21 @@ class FloatingTextData; class WorldAnimationData; class MaterialPassClass;
 class Overridable; class Anim2DTemplate; class SuperweaponInfo; class INI;
 enum LegalBuildCode; enum KindOfType; enum CanAttackResult;
 enum SpecialPowerType; enum WorldAnimationOptions;
+class Anim2D;
+// One animation drawn at a world position (Zero Hour's WorldAnimationData). Retail allocates 0x1C bytes in
+// addWorldAnimation and clears every field in its constructor.
+class WorldAnimationData
+{
+public:
+	WorldAnimationData() : m_anim(0), m_expireFrame(0), m_options(0), m_zRisePerSecond(0.0f) { m_worldPos.x = 0.0f; m_worldPos.y = 0.0f; m_worldPos.z = 0.0f; }
+
+	Anim2D *m_anim;				// +0x00
+	Coord3D m_worldPos;			// +0x04
+	UnsignedInt m_expireFrame;	// +0x10 logic frame the animation stops
+	Int m_options;				// +0x14 the WorldAnimationOptions it was added with
+	Real m_zRisePerSecond;		// +0x18
+};
+typedef char WorldAnimationDataSize[(sizeof(WorldAnimationData) == 0x1C) ? 1 : -1];
 // Target ctor2A61A9/dtor2A5B30: SubsystemInterface+0, Snapshot+C,
 // InGameNotificationBox+10. Primary table7FD410 has120 slots; secondary
 // tables7FD400 (4) and7C7A64 (5). Derived ctor8EF3F starts members at9F0.
