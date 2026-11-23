@@ -17,9 +17,13 @@
 #include "GameLogic/GameLogic.h"
 #include "GameLogic/Object.h"
 #include "GameClient/TerrainRoadType.h"
+#include <math.h>
+#include "Common/Region2D.h"
 
 // The singleton (retail VA 0x00DFEC50).
 TerrainLogic *TheTerrainLogic = NULL;
+static const Real PATHFIND_CELL_SIZE_F = 10.0f;
+static const Real LAYER_Z_CLOSE_ENOUGH_F = 10.0f;
 extern Waypoint *TheWaypointListHead;	// 0x00DFEC54: the head of the waypoint list (TerrainLogic::getFirstWaypoint, slot 33, returns it)
 // FUNCTION: BFME2 0x0027C79C size=447 name=?isCellOnEnd@Bridge@@QAE_NPBURegion2D@@@Z evidence=N:ledger tier=A
 
@@ -408,10 +412,121 @@ Bool TerrainLogic::parseWaypointData(DataChunkInput &file, DataChunkInfo *info, 
 // FUNCTION: BFME2 0x002802FE size=251 name=?getLayerForDestination@TerrainLogic@@QAE?AW4PathfindLayerEnum@@PAVObject@@PBVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 
 // FUNCTION: BFME2 0x002803F9 size=185 name=?getHighestLayerForDestination@TerrainLogic@@QAE?AW4PathfindLayerEnum@@PBVCoord3D@@_N@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
+PathfindLayerEnum TerrainLogic::getHighestLayerForDestination(const Coord3D *pos, Bool onlyHealthyBridges)
+{
+	PathfindLayerEnum bestLayer = LAYER_GROUND;
+	Real bestDistance = pos->z - getGroundHeight(pos->x, pos->y);
+
+	for (Bridge *pBridge = getFirstBridge(); pBridge != NULL; pBridge = pBridge->getNext())
+	{
+		if (onlyHealthyBridges && pBridge->peekBridgeInfo()->curDamageState == BODY_RUBBLE)
+			continue;
+
+		if (pBridge->isPointOnBridge(pos))
+		{
+			Real delta = pos->z - pBridge->getBridgeHeight(pos, NULL);
+			// must be above (or on) the bridge for this call
+			if (delta >= 0 && fabs(delta) < fabs(bestDistance))
+			{
+				bestLayer = pBridge->getLayer();
+				bestDistance = delta;
+			}
+		}
+	}
+	return bestLayer;
+}
+
 
 // FUNCTION: BFME2 0x002804B2 size=271 name=?objectInteractsWithBridgeLayer@TerrainLogic@@UBE_NPAVObject@@H_N@Z evidence=N:ledger tier=A
+Bool TerrainLogic::objectInteractsWithBridgeLayer(Object *obj, Int layer, Bool considerBridgeHealth) const
+{
+	if (layer == LAYER_GROUND)
+		return false;
+
+	Bridge *pBridge = getFirstBridge();
+	while (pBridge)
+	{
+		if (pBridge->getLayer() == layer)
+		{
+			Bool match = false;
+			if (pBridge->isPointOnBridge(obj->getPosition()))
+				match = true;
+
+			Real radius = obj->getMajorRadius();
+			radius += PATHFIND_CELL_SIZE_F / 2.0f;
+			Region2D bounds;
+			bounds.lo.x = obj->getPosition()->x;
+			bounds.lo.y = obj->getPosition()->y;
+			bounds.hi = bounds.lo;
+			bounds.lo.x -= radius;
+			bounds.lo.y -= radius;
+			bounds.hi.x += radius;
+			bounds.hi.y += radius;
+			if (pBridge->isCellOnEnd(&bounds))
+				match = true;
+
+			if (match)
+			{
+				Real bridgeHeight = pBridge->getBridgeHeight(obj->getPosition(), NULL);
+				Real delta = fabs(obj->getPosition()->z - bridgeHeight);
+				if (delta > LAYER_Z_CLOSE_ENOUGH_F)
+					return false;
+
+				// a destroyed bridge cannot be interacted with
+				if (considerBridgeHealth && pBridge->peekBridgeInfo()->curDamageState == BODY_RUBBLE)
+					return false;
+
+				return true;
+			}
+			return false;
+		}
+		pBridge = pBridge->getNext();
+	}
+	return false;
+}
+
 
 // FUNCTION: BFME2 0x002805C1 size=221 name=?objectInteractsWithBridgeEnd@TerrainLogic@@UBE_NPAVObject@@H@Z evidence=N:ledger tier=A
+Bool TerrainLogic::objectInteractsWithBridgeEnd(Object *obj, Int layer) const
+{
+	if (layer == LAYER_GROUND)
+		return false;
+
+	Bridge *pBridge = getFirstBridge();
+	while (pBridge)
+	{
+		if (pBridge->getLayer() == layer)
+		{
+			Bool match = false;
+
+			Real radius = obj->getMajorRadius();
+			radius += PATHFIND_CELL_SIZE_F / 2.0f;
+			Region2D bounds;
+			bounds.lo.x = obj->getPosition()->x;
+			bounds.lo.y = obj->getPosition()->y;
+			bounds.hi = bounds.lo;
+			bounds.lo.x -= radius;
+			bounds.lo.y -= radius;
+			bounds.hi.x += radius;
+			bounds.hi.y += radius;
+			if (pBridge->isCellOnEnd(&bounds))
+				match = true;
+
+			if (match)
+			{
+				Real bridgeHeight = pBridge->getBridgeHeight(obj->getPosition(), NULL);
+				Real delta = fabs(obj->getPosition()->z - bridgeHeight);
+				if (delta > LAYER_Z_CLOSE_ENOUGH_F)
+					return false;
+				return true;
+			}
+			return false;
+		}
+		pBridge = pBridge->getNext();
+	}
+	return false;
+}
+
 
 // FUNCTION: BFME2 0x0028069E size=220 name=?setActiveBoundary@TerrainLogic@@QAEXH@Z evidence=N:ledger tier=A
 
