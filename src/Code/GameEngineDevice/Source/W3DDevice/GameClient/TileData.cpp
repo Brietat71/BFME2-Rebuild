@@ -6,6 +6,7 @@
 // Edges: left=unknown-rows right=unknown-rows; proof_first=false
 // Hypothesis rules: hypothesis:K, hypothesis:Z, hypothesis:name:Z
 // Portions derived from Command & Conquer Generals and Command & Conquer Generals Zero Hour, (c) Electronic Arts Inc., GPL-3.0-or-later; see LICENSE and NOTICE.
+#include <algorithm>
 #include "GameClient/TileData.h"
 
 // Retail's version of Zero Hour's doMip works on 16-bit pixels and is an ordinary cdecl function (0x001117E3, the row below;
@@ -93,6 +94,43 @@ void TileData::updateMips()
 }
 
 // FUNCTION: BFME2 0x001118EC size=281 name=_Rva001118ECResampleRgb555 evidence=?:placeholder tier=B hypothesis:Z
+extern "C" void resampleRgb555(const UnsignedByte *src, Int srcPitch, Int step, UnsignedShort *dst)
+{
+	Int area = step * step;
+	Int half = area / 2;
+	Int rowBytes = srcPitch * step;
+
+	for (Int y = 0; y < 64; y += step)
+	{
+		const UnsignedByte *rowStart = src;
+		for (Int x = 0; x < 64; x += step)
+		{
+			UnsignedShort sum[4] = { 0, 0, 0, 0 };
+			const UnsignedByte *block = rowStart;
+			for (Int r = 0; r < step; r++)
+			{
+				const UnsignedByte *p = block;
+				for (Int c = 0; c < step; c++)
+				{
+					for (Int k = 0; k < 4; k++)
+						sum[k] += p[k];
+					p += 4;
+				}
+				block += srcPitch;
+			}
+
+			UnsignedByte avg[4];
+			for (Int k = 0; k < 4; k++)
+			{
+				Int v = (sum[k] + half) / area;
+				avg[k] = _STL::min(v, 255);
+			}
+			*dst++ = (UnsignedShort)((((((avg[2] + 1) * 31 / 256) << 5) | ((avg[1] + 1) * 31 / 256)) << 5) | ((avg[0] + 1) * 31 / 256));
+			rowStart += step * 4;
+		}
+		src += rowBytes;
+	}
+}
 
 // FUNCTION: BFME2 0x00111A05 size=134 name=?rva00111A05@TileData@@QAEXPBEH@Z evidence=?:placeholder tier=B hypothesis:Z
 void TileData::setFromRgba(const UnsignedByte *src, Int srcPitch)
