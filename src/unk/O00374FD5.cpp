@@ -52,7 +52,7 @@ UpdateSleepTime StealthUpdate::update()
 			}
 			changeVisualDisguise();
 		}
-		return calcSleepTime();
+		return m_unk0x30 ? UPDATE_SLEEP_NONE : UPDATE_SLEEP_FOREVER;
 	}
 
 	m_unk0x148 = true;
@@ -76,7 +76,7 @@ UpdateSleepTime StealthUpdate::update()
 				fx = m_unk0x33 ? data->m_exitStealthOneRingFX : data->m_exitStealthFX;
 			else
 				fx = m_unk0x31 ? data->m_becomeStealthedOneRingFX : data->m_becomeStealthedFX;
-			FXList::doFXObj(fx, self, NULL);
+			FXList::doFXObj(fx, getObject(), NULL);
 		}
 		if (m_unk0x32)
 			rva00373D5E();
@@ -89,13 +89,13 @@ UpdateSleepTime StealthUpdate::update()
 		{
 			if (m_unk0x33)
 			{
-				FXList::doFXObj(data->m_exitStealthOneRingFX, self, NULL);
-				FXList::doFXObj(data->m_becomeStealthedFX, self, NULL);
+				FXList::doFXObj(data->m_exitStealthOneRingFX, getObject(), NULL);
+				FXList::doFXObj(data->m_becomeStealthedFX, getObject(), NULL);
 			}
 			else
 			{
-				FXList::doFXObj(data->m_exitStealthFX, self, NULL);
-				FXList::doFXObj(data->m_becomeStealthedOneRingFX, self, NULL);
+				FXList::doFXObj(data->m_exitStealthFX, getObject(), NULL);
+				FXList::doFXObj(data->m_becomeStealthedOneRingFX, getObject(), NULL);
 			}
 		}
 		m_unk0x33 = m_unk0x31;
