@@ -1967,6 +1967,20 @@
    "kind": "wide",
    "number": 49,
    "tree": "2e66712c54df313b15dad25ca165723df5b08451"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45106988094"
+   },
+   "author": 44365026,
+   "base": "4a34cb25f7e9b42e819157e032d87eddcd34db7f",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "61003dd684fec23b80737233c5f69b791133d228",
+   "kind": "wide",
+   "number": 49,
+   "tree": "78b2640118445e793555fd5553dc3cdb14dd1a20"
   }
  ],
  "version": 2
