@@ -242,7 +242,7 @@ bool Shell::showShellMap(bool useShellMap, bool restartShellGame)
 			TheMessageStream->appendMessage(GameMessage::MSG_EXIT_LINEAR_CAMPAIGN);
 	}
 
-	m_unknown52 = !TheWritableGlobalData->m_shellMapOn;
+	m_unknown52 = useShellMap && !TheWritableGlobalData->m_shellMapOn;
 	if (!TheWritableGlobalData->m_initialFile.isEmpty() || !TheGameLogic)
 		return false;
 
