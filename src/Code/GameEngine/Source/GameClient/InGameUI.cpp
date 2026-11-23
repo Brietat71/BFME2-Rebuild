@@ -1012,6 +1012,46 @@ int InGameUI::selectMatchingAcrossMap()
 }
 
 // FUNCTION: BFME2 0x0029D0E5 size=283 name=?updateFloatingText@InGameUI@@IAEXXZ evidence=N:ledger tier=A
+void InGameUI::updateFloatingText()
+{
+	UnsignedInt currLogicFrame = TheGameClient->getFrame();
+	UnsignedByte r, g, b, a;
+	Int amount;
+	static UnsignedInt lastLogicFrameUpdate = currLogicFrame;
+
+	// Only move the text when the frame has advanced.
+	if (lastLogicFrameUpdate == currLogicFrame)
+		return;
+
+	lastLogicFrameUpdate = currLogicFrame;
+
+	_STL::list<FloatingTextData *>::iterator it = m_floatingTextList.begin();
+	while (it != m_floatingTextList.end())
+	{
+		FloatingTextData *ftd = *it;
+
+		++ftd->m_frameCount;
+
+		if (currLogicFrame > ftd->m_frameTimeOut)
+		{
+			GameGetColorComponents(ftd->m_color, &r, &g, &b, &a);
+			amount = (Int)((currLogicFrame - ftd->m_frameTimeOut) * (m_floatingTextMoveVanishRate / TheGameEngine->m_maxFPS));
+			if (a - amount < 0)
+				a = 0;
+			else
+				a -= amount;
+			ftd->m_color = GameMakeColor(r, g, b, a);
+
+			if (a <= 0)
+			{
+				it = m_floatingTextList.erase(it);
+				::delete ftd;
+				continue;
+			}
+		}
+		++it;
+	}
+}
 
 // FUNCTION: BFME2 0x0029D200 size=266 name=?drawFloatingText@InGameUI@@IAEXXZ evidence=N:ledger tier=A
 void InGameUI::drawFloatingText()
