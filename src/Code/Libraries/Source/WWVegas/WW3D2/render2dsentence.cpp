@@ -225,6 +225,24 @@ void FontCharsClass::ensureCharPage(unsigned short c)
 // FUNCTION: BFME2 0x00156390 size=249 name=?Record_Sentence_Chunk@Render2DSentenceClass@@AAEXXZ evidence=N:ledger tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x00156490 size=164 name=?Update_Current_Buffer@FontCharsClass@@AAEXH@Z evidence=N:ledger tier=B hypothesis:K
+void FontCharsClass::Update_Current_Buffer(int width)
+{
+	bool needsNewBuffer = (Buffers.Count() == 0);
+	int pixelsNeeded = CharHeight * width;
+	if (!needsNewBuffer) {
+		FontCharsBuffer *last = Buffers[Buffers.Count() - 1];
+		if (CurrPixelOffset + pixelsNeeded > last->PixelCapacity)
+			needsNewBuffer = true;
+	}
+
+	if (needsNewBuffer) {
+		if (pixelsNeeded < 0x8000)
+			pixelsNeeded = 0x8000;
+		FontCharsBuffer *buffer = new FontCharsBuffer(pixelsNeeded);
+		Buffers.Add(buffer);
+		CurrPixelOffset = 0;
+	}
+}
 
 // FUNCTION: BFME2 0x00156540 size=256 name=?rva00156540@Render2DSentenceClass@@QAEXPBURva00156540Param@@@Z evidence=?:placeholder tier=B hypothesis:K
 

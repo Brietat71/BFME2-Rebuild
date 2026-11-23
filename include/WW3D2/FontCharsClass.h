@@ -32,6 +32,7 @@
 #ifndef BFME2_WW3D2_FONTCHARSCLASS_H
 #define BFME2_WW3D2_FONTCHARSCLASS_H
 
+#include <string.h>
 #include "Common/StlMap.h"
 #include "WWLib/RefCountClass.h"
 #include "WWLib/wwstring.h"
@@ -42,6 +43,12 @@
 class FontCharsBuffer
 {
 public:
+	FontCharsBuffer(int capacity) : PixelCapacity(capacity), m_unk0x08(0)	// 0x001541E0
+	{
+		Pixels = new unsigned short[capacity];
+		memset(Pixels, 0, capacity * sizeof(unsigned short));
+	}
+
 	unsigned short *Pixels;
 	int PixelCapacity;
 
