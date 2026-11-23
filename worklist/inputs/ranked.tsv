@@ -1373,7 +1373,7 @@ referrers	state	rva	file	symbol	first_referrer
 1	owned:MISSING	0x004F437E	src/Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	?recruitSpecificAITeam@AIPlayer@@UAEXPAVTeamPrototype@@MPBVCoord3D@@@Z	src/Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp
 1	owned:MISSING	0x004EFFC9	src/Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	?recruitSpecificAITeam@AISkirmishPlayer@@UAEXPAVTeamPrototype@@MPBVCoord3D@@@Z	src/Code/GameEngine/Source/GameLogic/AI/AISkirmishPlayer.cpp
 1	owned:MISSING	0x003986EF	src/Code/GameEngine/Source/GameLogic/System/CastleSystem.cpp	?registerOwnedObject@CastleBehavior@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/System/CastleSystem.cpp
-1	owned:MISSING	0x002C6A3D	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	?registerProducedObject@SkirmishAI@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/FoundationAIUpdate.cpp
+1	owned:MATCH	0x002C6A3D	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	?registerProducedObject@SkirmishAI@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/FoundationAIUpdate.cpp
 1	owned:MISSING	0x00419BA5	src/unk/O00419BA5.cpp	?release@TBuff@@QAEXXZ	src/Code/GameEngine/Source/GameClient/BuffManager.cpp
 1	owned:MISSING	0x00360CB0	src/Code/GameEngine/Source/GameLogic/System/ObjectFilter.cpp	?releaseObjectFilterRecord@@YAXPAH@Z	src/Code/GameEngine/Source/GameLogic/System/ObjectFilter.cpp
 1	owned:MISSING	0x002D335B	src/Code/GameEngine/Source/GameClient/Gui/InGame/Tactical/Palantir.cpp	?releaseTarget@RadarMarker@@QAEXXZ	src/Code/GameEngine/Source/Common/System/Radar.cpp
@@ -1758,7 +1758,7 @@ referrers	state	rva	file	symbol	first_referrer
 1	owned:MISSING	0x004CE18A	src/unk/O004CE037.cpp	?triggerAbilityEffect@UnleashSpecialPower@@UAEXXZ	src/unk/O004CE037.cpp
 1	owned:MISSING	0x00262045	src/unk/G00262045.cpp	?unLink@DisplayStringManager@@IAEXPAVDisplayString@@@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayStringManager.cpp
 1	owned:MISSING	0x0002BF4A	src/Code/Libraries/Source/ini/INI.cpp	?unPrepFile@INI@@IAEXXZ	src/Code/Libraries/Source/ini/INI.cpp
-1	owned:MISSING	0x002C6A4E	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	?unRegisterProducedObject@SkirmishAI@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/FoundationAIUpdate.cpp
+1	owned:MATCH	0x002C6A4E	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	?unRegisterProducedObject@SkirmishAI@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/FoundationAIUpdate.cpp
 1	owned:MISSING	0x007397B0	src/Code/Libraries/Source/shroudmanager/shroudmanager_data.cpp	?undoRevealMapForPlayerPermanently@PartitionManager@@QAEXH@Z	src/Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions.cpp
 1	owned:MISSING	0x00340744	src/Code/GameEngine/Source/GameLogic/AI/AIStates.cpp	?unknownNotify16@AIAttackMeleeHordeWaitState@@UAEXXZ	src/Code/GameEngine/Source/GameLogic/AI/AIStates.cpp
 1	owned:MISSING	0x0033F504	src/Code/GameEngine/Source/GameLogic/AI/AIStates.cpp	?unknownQuery15@AIAttackSquadState@@UBE_NXZ	src/Code/GameEngine/Source/GameLogic/AI/AIStates.cpp

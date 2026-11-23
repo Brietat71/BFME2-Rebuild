@@ -2,7 +2,7 @@
 
 How much of the original game (version 1.06) has been rebuilt as source code that compiles back to the same machine code. Measured automatically after every change; nobody edits this page.
 
-Measured **23 November 2026**. The code figures describe commit [`ba9713c5b2e5`](https://github.com/Open-BFME/BFME2-Rebuild/commit/ba9713c5b2e508f744c0e19b99d76c9dfba849bd) (23 November 2026, 13:35 UTC); the build checks run every day.
+Measured **23 November 2026**. The code figures describe commit [`c87f290c27b5`](https://github.com/Open-BFME/BFME2-Rebuild/commit/c87f290c27b542b4e65b4caa0fdbe40bb442c602) (23 November 2026, 13:50 UTC); the build checks run every day.
 
 ![Progress](progress.svg)
 
@@ -10,14 +10,14 @@ Measured **23 November 2026**. The code figures describe commit [`ba9713c5b2e5`]
 
 ![The four figures](detail.svg)
 
-**Byte match**: `██████░░░░░░░░░░░░░░` 27.6% (1,751,219 of 6,333,616 bytes)  
+**Byte match**: `██████░░░░░░░░░░░░░░` 27.7% (1,751,253 of 6,333,616 bytes)  
 How much of the original game's code, by size, our source code compiles back to byte for byte.
 
 **Linking**: `█████████████░░░░░░░` 64.7% (6,021 of 9,305 names)  
 How many of the names the game needs to be assembled into one program our source already provides.
 Measured by the daily build of commit [`4ae67eed0440`](https://github.com/Open-BFME/BFME2-Rebuild/commit/4ae67eed04400d4cc8b4d80aa4521a89d1750bb2) (22 November 2026), which can be newer or older than the commit the other figures describe.
 
-**Code proven**: `████░░░░░░░░░░░░░░░░` 19.4% (1,229,571 of 6,333,616 bytes)  
+**Code proven**: `████░░░░░░░░░░░░░░░░` 19.4% (1,229,588 of 6,333,616 bytes)  
 How much of the code, by size, is byte-matched and also confirmed at every place it refers to other code or data, so the match cannot be a coincidence.
 
 **Finished functions**: `█████░░░░░░░░░░░░░░░` 26.6% (11,037 of 41,565 functions)  
@@ -39,7 +39,7 @@ Byte match, by size, in each part of the source tree, largest part first.
 
 | Part | Byte match | Bar |
 | --- | ---: | --- |
-| Game engine: GameLogic | 26.3% (399,763 of 1,520,680 bytes) | `█████░░░░░░░░░░░░░░░` |
+| Game engine: GameLogic | 26.3% (399,797 of 1,520,680 bytes) | `█████░░░░░░░░░░░░░░░` |
 | Game libraries | 52.3% (571,288 of 1,092,443 bytes) | `██████████░░░░░░░░░░` |
 | Game engine: GameClient | 20.3% (172,481 of 850,669 bytes) | `████░░░░░░░░░░░░░░░░` |
 | Platform layer: W3DDevice | 8.7% (46,344 of 531,429 bytes) | `██░░░░░░░░░░░░░░░░░░` |
@@ -66,6 +66,7 @@ Provisional class declarations still in use (files under `include/Draft/` that s
 
 | Commit | Date | Byte match | Linking | Proven | Finished |
 | --- | --- | ---: | ---: | ---: | ---: |
+| [`c87f290c27b5`](https://github.com/Open-BFME/BFME2-Rebuild/commit/c87f290c27b542b4e65b4caa0fdbe40bb442c602) | 23 November 2026, 13:50 UTC | 27.65% | 64.71% (build `4ae67ee`) | 19.41% | 26.55% |
 | [`ba9713c5b2e5`](https://github.com/Open-BFME/BFME2-Rebuild/commit/ba9713c5b2e508f744c0e19b99d76c9dfba849bd) | 23 November 2026, 13:35 UTC | 27.65% | 64.71% (build `4ae67ee`) | 19.41% | 26.55% |
 | [`cf033cf34be6`](https://github.com/Open-BFME/BFME2-Rebuild/commit/cf033cf34be6dc4d66d58eac9106aa4d35899e69) | 23 November 2026, 12:08 UTC | 27.65% | 64.71% (build `4ae67ee`) | 19.41% | 26.55% |
 | [`d910812ef906`](https://github.com/Open-BFME/BFME2-Rebuild/commit/d910812ef906028a2c7111921b58cf1b9c8827b3) | 23 November 2026, 12:02 UTC | 27.64% | 64.71% (build `4ae67ee`) | 19.41% | 26.55% |

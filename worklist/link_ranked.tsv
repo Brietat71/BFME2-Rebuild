@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=ba9713c5b2 left_out_written=46
+# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=c87f290c27 left_out_written=48
 referrers	state	rva	file	symbol	first_referrer	body_check
 63	owned:MISSING	0x00253390	src/unk/O0024EEBB.cpp	??0UpdateModule@@QAE@PAVThing@@PBVModuleData@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp	none-found
 17	owned:MISSING	0x0004233A	src/unk/G000421F2.cpp	?Inv_Sqrt@WWMath@@SIMM@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowMapManager.cpp	none-found
@@ -752,8 +752,6 @@ referrers	state	rva	file	symbol	first_referrer	body_check
 1	owned:MISSING	0x002BED10	src/Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp	?rva002BED10@LivingWorld@@QAEXXZ	src/Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldLogic.cpp	none-found
 1	owned:MISSING	0x002C02D0	src/unk/G002C0292.cpp	?GadgetListBoxGetDownButton@@YAPAVGameWindow@@PAV1@@Z	src/Code/GameEngine/Source/GameClient/Gui/Gadget/GadgetListBox.cpp	none-found
 1	owned:MISSING	0x002C02E7	src/unk/G002C0292.cpp	?GadgetListBoxGetSlider@@YAPAVGameWindow@@PAV1@@Z	src/Code/GameEngine/Source/GameClient/Gui/Gadget/GadgetListBox.cpp	none-found
-1	owned:MISSING	0x002C6A3D	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	?registerProducedObject@SkirmishAI@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/FoundationAIUpdate.cpp	none-found
-1	owned:MISSING	0x002C6A4E	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	?unRegisterProducedObject@SkirmishAI@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/FoundationAIUpdate.cpp	none-found
 1	owned:MISSING	0x002C6A76	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	?UnRegister@SkirmishAI@@QAEXPAVTeam@@@Z	src/Code/GameEngine/Source/Common/RTS/Team.cpp	none-found
 1	owned:MISSING	0x002C6AFA	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	?transferUnitsToPlayer@SkirmishAI@@QAEXPAVPlayer@@@Z	src/Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	none-found
 1	owned:MISSING	0x002C7907	src/Code/GameEngine/Source/GameLogic/Object/WeaponSet.cpp	?getAbleToUseWeaponAgainstTarget@WeaponSet@@QBE?AW4CanAttackResult@@W4AbleToAttackType@@PBVObject@@1PBVCoord3D@@W4CommandSourceType@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Object.cpp	none-found
