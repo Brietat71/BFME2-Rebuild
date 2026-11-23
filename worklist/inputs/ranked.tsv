@@ -1582,7 +1582,7 @@ referrers	state	rva	file	symbol	first_referrer
 1	owned:MISSING	0x0045C026	src/Code/GameEngine/Source/GameLogic/Object/Behavior/BezierProjectileBehavior.cpp	?rva0045C026@BezierProjectileBehavior@@QAEXXZ	src/unk/O004A750A.cpp
 1	owned:MISSING	0x0045CD6E	src/Code/GameEngine/Source/GameLogic/Object/Behavior/BezierProjectileBehavior.cpp	?rva0045CD6E@BezierProjectileBehavior@@UAE_NPAVObject@@@Z	src/unk/O004A750A.cpp
 1	owned:MISSING	0x0045E8A9	src/Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehavior.cpp	?rva0045E8A9@SlowDeathBehaviorModuleData@@SAXPAVINI@@PAX1PBX@Z	src/Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehavior.cpp
-1	owned:MISSING	0x0045ED4B	src/unk/G0045ED4B.cpp	?rva0045ED4B@StancesBehavior@@QBEHXZ	src/Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions.cpp
+1	owned:MATCH	0x0045ED4B	src/unk/G0045ED4B.cpp	?rva0045ED4B@StancesBehavior@@QBEHXZ	src/Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions.cpp
 1	owned:MISSING	0x0045F235	src/unk/G0045F21C.cpp	?rva0045F235@StancesBehavior@@QAEXXZ	src/Code/GameEngine/Source/GameLogic/AI/AIStates.cpp
 1	owned:MISSING	0x004608E0	src/Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviour.cpp	?rva004608E0@DynamicPortalBehaviour@@SAPAVModule@@PAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPower.cpp
 1	owned:MISSING	0x004649A1	src/Code/GameEngine/Source/GameLogic/Object/Contain/OpenContain.cpp	?rva004649A1@@YAXPAVINI@@PAX1PBX@Z	src/Code/GameEngine/Source/GameLogic/Object/Contain/OpenContain.cpp

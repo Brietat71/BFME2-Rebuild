@@ -1,4 +1,4 @@
-# measured_utc=2026-11-23T13:50:27Z revision=c87f290c27 finished_files=535
+# measured_utc=2026-11-23T14:04:22Z revision=b011d73f96 finished_files=535
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -1033,6 +1033,7 @@ src/unk/G00196100.cpp	1	1	14	0	address-named	0
 src/unk/G002D2548.cpp	1	1	14	0	address-named	0
 src/unk/G003A44DF.cpp	1	1	14	0	address-named	0
 src/unk/G0041E6AA.cpp	1	1	14	0	address-named	0
+src/unk/G0045ED4B.cpp	4	1	14	0	address-named	0
 src/unk/G00528232.cpp	1	1	14	0	address-named	0
 src/unk/G0054C88A.cpp	1	1	14	0	address-named	0
 src/unk/G005AD93A.cpp	1	1	14	0	address-named	0
@@ -1445,6 +1446,7 @@ src/unk/G0056C50E.cpp	1	1	520	0	address-named	0
 src/unk/G004AB57E.cpp	1	1	586	0	address-named	0
 src/unk/G0027C4F4.cpp	1	1	680	0	address-named	0
 src/unk/O00214405.cpp	1	1	691	0	address-named	0
+src/unk/O00495DD4.cpp	2	1	1169	0	address-named	0
 src/unk/O00160240.cpp	1	1	1184	0	address-named	0
 src/unk/O005CBC95.cpp	1	1	1291	0	address-named	0
 src/unk/O0058A6A8.cpp	1	1	1537	0	address-named	0
@@ -1471,7 +1473,6 @@ src/unk/G004AFC5F.cpp	3	2	1266	2	address-named	0
 src/unk/G001DBA69.cpp	2	2	8	1	address-named	0
 src/unk/G00085117.cpp	2	2	36	1	address-named	0
 src/unk/O00419BA5.cpp	2	2	40	1	address-named	0
-src/unk/G0045ED4B.cpp	4	2	41	1	address-named	0
 src/unk/O0002FB00.cpp	2	2	41	1	address-named	0
 src/unk/G00580154.cpp	2	2	46	1	address-named	0
 src/unk/G0050BD45.cpp	2	2	60	1	address-named	0
@@ -1824,7 +1825,6 @@ src/unk/G00723EA0.cpp	2	2	795	0	address-named	0
 src/unk/O006733A0.cpp	2	2	856	0	address-named	0
 src/unk/O006543BE.cpp	2	2	954	0	address-named	0
 src/unk/G0011C770.cpp	2	2	1182	0	address-named	0
-src/unk/O00495DD4.cpp	2	2	1205	0	address-named	0
 src/unk/O0047D53A.cpp	2	2	1230	0	address-named	0
 src/unk/O000A273F.cpp	2	2	1584	0	address-named	0
 src/unk/O001D65A0.cpp	2	2	1711	0	address-named	0
