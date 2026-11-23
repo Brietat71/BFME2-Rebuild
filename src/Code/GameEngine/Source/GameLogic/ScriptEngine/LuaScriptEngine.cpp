@@ -72,34 +72,7 @@ extern FileSystem *TheFileSystem;
 // FUNCTION: BFME2 0x00332B7A size=256 name=?InitializeInternalEvents@LuaScriptEngine@@QAEXXZ evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x00332C7A size=117 name=?ProcessInternalEvent@LuaScriptEngine@@QAEXPAVXmlNameSlotList@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x00332CFB size=46 name=?GetFrame@@YAHPAUlua_State@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
-int GetFrame(lua_State *state)
-{
-	lua_pushnumber(state, TheGameLogic->getFrame());
-	return 1;
-}
 // FUNCTION: BFME2 0x00332D29 size=76 name=?CurDrawableGetCurrentTargetHeight@@YAHPAUlua_State@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
-int CurDrawableGetCurrentTargetHeight(lua_State *state)
-{
-	LuaDrawableLink *drawable = TheLuaScriptEngine->m_drawable;
-	if (drawable != 0) {
-		Drawable *owner = drawable->m_drawable;
-		if (owner != 0) {
-			if (owner->m_object != 0) {
-				lua_pushnumber(state, owner->m_object->m_currentTargetPosition.z - owner->m_object->getPosition()->z);
-			}
-			else {
-				lua_pushnil(state);
-			}
-		}
-		else {
-			lua_pushnil(state);
-		}
-	}
-	else {
-		lua_pushnil(state);
-	}
-	return 1;
-}
 // FUNCTION: BFME2 0x00332D75 size=103 name=?GetClientRandomNumberReal@@YAHPAUlua_State@@@Z evidence=N:ledger
 int GetClientRandomNumberReal(lua_State *state)
 {
