@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "Common/GameType.h"
 #include "GameLogic/Module/UpdateModule.h"
+#include "GameLogic/Module/PickupStuffUpdateModuleData.h"
 
 class Thing;
 class ModuleData;
@@ -21,12 +22,20 @@ class PickupStuffUpdate : public UpdateModule
 {
 public:
 	PickupStuffUpdate(Thing *thing, const ModuleData *moduleData);
+	virtual ~PickupStuffUpdate();		// 0x00491DD3
 	static Module *friend_newModuleInstance(Thing *thing, const ModuleData *moduleData);
 	virtual NameKeyType getModuleNameKey() const;
 	virtual UpdateSleepTime update();
 	// The ledger spells the parameter void *; the body casts it to Object * and starts a temporary state machine that
 	// walks the module's own object to it.
 	void moveToStuff(void *target);
+	// 0x00491EE6: once the module's AI is idle, ends its temporary state machine and clears the active flag.
+	void rva00491EE6();
+	// 0x00491FA6: scans for stuff to pick up around the module's object (not yet written).
+	Object *rva00491FA6();
+	// 0x004920B5: rescans once the scan interval has passed since the last scan.
+	void updateInactive();
+	const PickupStuffUpdateModuleData *getPickupStuffUpdateModuleData() const { return static_cast<const PickupStuffUpdateModuleData *>(m_moduleData); }
 
 protected:
 	virtual const char *GetSnapshotName() const;

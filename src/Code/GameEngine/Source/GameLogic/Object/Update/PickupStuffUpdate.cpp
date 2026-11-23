@@ -11,6 +11,8 @@
 #include "Common/Xfer.h"
 #include "GameLogic/Object.h"
 #include "GameLogic/Module/AIUpdate.h"
+#include "GameLogic/GameLogic.h"
+#include "GameLogic/SkirmishAI/SkirmishAIManager.h"
 void iniParseObjectFilter(INI *ini, void *instance, void *store, const void *userData);
 
 // The table retail passes to MultiIniFieldParse::add (VA 0x00C4DE90), read back
@@ -29,6 +31,10 @@ static const FieldParse s_pickupStuffUpdateModuleDataFieldParse[] =
 
 
 // FUNCTION: BFME2 0x00491DD3 size=25 name=??1PickupStuffUpdate@@UAE@XZ evidence=N:ledger tier=B hypothesis:mm1-held-object-encloses-unk-file
+PickupStuffUpdate::~PickupStuffUpdate()
+{
+}
+
 // FUNCTION: BFME2 0x00491DEC size=6 name=?GetSnapshotName@PickupStuffUpdate@@MBEPBDXZ evidence=N:ledger
 const char *PickupStuffUpdate::GetSnapshotName() const
 {
@@ -65,6 +71,15 @@ PickupStuffUpdate::PickupStuffUpdate(Thing *thing, const ModuleData *moduleData)
 }
 
 // FUNCTION: BFME2 0x00491EE6 size=50 name=?rva00491EE6@PickupStuffUpdate@@QAEXXZ evidence=?:placeholder
+void PickupStuffUpdate::rva00491EE6()
+{
+	if (getObject()->getAI()->isIdle())
+	{
+		if (getObject()->getAI()->m_unk0x34)
+			getObject()->getAI()->rva0026331C();
+		m_unk0x20 = false;
+	}
+}
 
 // FUNCTION: BFME2 0x00491F18 size=66 name=?xfer@PickupStuffUpdate@@MAEXPAVXfer@@@Z evidence=N:ledger
 void PickupStuffUpdate::xfer(Xfer *xfer)
@@ -87,5 +102,35 @@ void PickupStuffUpdate::moveToStuff(void *target)
 }
 
 // FUNCTION: BFME2 0x004920B5 size=118 name=?updateInactive@PickupStuffUpdate@@QAEXXZ evidence=N:ledger tier=B hypothesis:mm1-held-object-encloses-unk-file
+void PickupStuffUpdate::updateInactive()
+{
+	const PickupStuffUpdateModuleData *data = getPickupStuffUpdateModuleData();
+	if (TheGameLogic->getFrame() > data->m_scanIntervalSeconds * BfmeLogicFramesPerSecond + m_unk0x24)
+	{
+		if (!getObject()->getAI()->m_unk0x34)
+		{
+			Object *stuff = rva00491FA6();
+			if (stuff)
+			{
+				moveToStuff(stuff);
+				m_unk0x20 = true;
+			}
+		}
+		m_unk0x24 = TheGameLogic->getFrame();
+	}
+}
 
 // FUNCTION: BFME2 0x0049212B size=78 name=?update@PickupStuffUpdate@@UAE?AW4UpdateSleepTime@@XZ evidence=N:ledger tier=B hypothesis:mm1-held-object-encloses-unk-file
+UpdateSleepTime PickupStuffUpdate::update()
+{
+	if (!getObject()->m_ai)
+		return UPDATE_SLEEP_FOREVER;
+	const PickupStuffUpdateModuleData *data = getPickupStuffUpdateModuleData();
+	if (data->m_skirmishAIOnly && !TheSkirmishAIManager->rva002A8AB1(getObject()->getControllingPlayer()))
+		return UPDATE_SLEEP_FOREVER;
+	if (m_unk0x20)
+		rva00491EE6();
+	else
+		updateInactive();
+	return UPDATE_SLEEP_NONE;
+}
