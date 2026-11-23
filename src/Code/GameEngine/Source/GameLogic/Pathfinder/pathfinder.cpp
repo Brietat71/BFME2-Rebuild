@@ -482,12 +482,11 @@ Bool Pathfinder::IsBuildRestrictedCell(const Coord3D *pos, Bool allowWater, Bool
 	if (!cell)
 		return true;
 
-	UnsignedInt type = cell->getType();
-	Bool restricted = type == PathfindCell::CELL_CLIFF;
+	Bool restricted = cell->getType() == PathfindCell::CELL_CLIFF;
 	if (!allowWater)
-		restricted = restricted || type == PathfindCell::CELL_WATER || type == PathfindCell::CELL_WATER_7;
+		restricted = restricted || cell->getType() == PathfindCell::CELL_WATER || cell->getType() == PathfindCell::CELL_WATER_7;
 	if (!allowBridgeImpassable)
-		restricted = restricted || type == PathfindCell::CELL_BRIDGE_IMPASSABLE;
+		restricted = restricted || cell->getType() == PathfindCell::CELL_BRIDGE_IMPASSABLE;
 	return restricted;
 }
 
