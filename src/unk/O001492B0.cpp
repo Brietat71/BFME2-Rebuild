@@ -8,5 +8,7 @@
 // FUNCTION: BFME2 0x001492B0 size=33 name=?Set_Fog_Color@MeshClass@@QAEXABVVector3@@@Z evidence=N:ledger tier=B hypothesis:name:invented
 void MeshClass::Set_Fog_Color(const Vector3 &color)
 {
-	Field_314 = color;
+	Field_314.X = color.X;
+	Field_314.Y = color.Y;
+	Field_314.Z = color.Z;
 }
