@@ -2269,6 +2269,18 @@ Bool AIInternalMoveToState::computePath()
 // FUNCTION: BFME2 0x00344F57 size=287 name=?onEnter@AIAttackMeleeHordeWaitState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x00345076 size=101 name=?onEnter@AIAttackMeleeHordeWaitPathState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
+StateReturnType AIAttackMeleeHordeWaitPathState::onEnter()
+{
+	m_unk0x24 = 0;
+	if (getMachine()->isGoalObjectDestroyed() || getMachine()->getGoalObject() == NULL)
+		return STATE_SUCCESS;
+	UnsignedInt frame = TheGameLogic->getFrame();
+	m_unk0x20 = frame;
+	Object *owner = getMachineOwner();
+	if (owner->testStatus((ObjectStatusTypes)0x44) || owner->m_ai->m_unk0x3CC)
+		m_unk0x20 = frame + BfmeLogicFramesPerSecond + 2;
+	return STATE_CONTINUE;
+}
 
 // FUNCTION: BFME2 0x003450DB size=300 name=?update@AIAttackMeleeHordeWaitPathState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 
