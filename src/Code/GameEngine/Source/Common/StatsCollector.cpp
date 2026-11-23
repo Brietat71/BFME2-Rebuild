@@ -11,6 +11,7 @@
 #include "Common/FileSystem.h"
 #include "Common/UnicodeString.h"
 #include "Common/GameEngine.h"
+#include "GameClient/Display.h"
 #include <stdio.h>
 #include <time.h>
 extern int BfmeLogicFramesPerSecond;
@@ -114,6 +115,55 @@ StatsCollector::StatsCollector()
 // FUNCTION: BFME2 0x00437755 size=460 name=?writeInitialFileInfo@StatsCollector@@AAEXXZ evidence=N:ledger
 
 // FUNCTION: BFME2 0x00437921 size=556 name=?writeStatInfo@StatsCollector@@AAEXXZ evidence=N:ledger
+void StatsCollector::writeStatInfo()
+{
+	UnicodeString fileName(m_statsFileName);
+	FILE *f = _wfopen(fileName.str(), L"a");
+	if (!f)
+		return;
+
+	Money *money = ThePlayerList->getLocalPlayer()->getMoney();
+
+	fprintf(f, "%d\t", m_timeCount);
+	Real averageFPS = TheDisplay ? TheDisplay->getAverageFPS() : 0.0f;
+	fprintf(f, "%.1f\t", averageFPS);
+	Real netFPS = TheGameEngine ? TheGameEngine->m_instantNetFPS : 0.0f;
+	fprintf(f, "%.1f\t", netFPS);
+	fprintf(f, "%d\t", m_buildCommands);
+	fprintf(f, "%d\t", m_moveCommands);
+	fprintf(f, "%d\t", m_attackCommands);
+	fprintf(f, "%d\t", m_scrollMapCommands);
+	fprintf(f, "%d\t", m_scrollTime / BfmeLogicFramesPerSecond);
+	fprintf(f, "%d\t", 0);
+	fprintf(f, "%d\t", money->countMoney());
+	fprintf(f, "%d\t", m_moneyWithdrawn);
+	fprintf(f, "%d\t", m_moneyDeposited);
+	fprintf(f, "%d\t", m_playerUnits);
+	fprintf(f, "%d\t", m_aiUnits);
+	fprintf(f, "%d\t", m_alliesKilled);
+	fprintf(f, "%d\t", m_enemiesKilled);
+	fprintf(f, "%d\t", m_neutralsKilled);
+
+	Player *player = ThePlayerList->getLocalPlayer();
+	if (player)
+	{
+		ScoreKeeper *keeper = player->getScoreKeeper();
+		if (keeper)
+		{
+			fprintf(f, "%d\t", keeper->getTotalMoneySpent() - m_scoreKeeperMoneySpent);
+			fprintf(f, "%d\t", keeper->getTotalMoneyEarned() - m_scoreKeeperMoneyEarned);
+			fprintf(f, "%d\t", keeper->getTotalUnitsDestroyed() - m_scoreKeeperUnitsDestroyed);
+			fprintf(f, "%d\t", keeper->getTotalUnitsBuilt() - m_scoreKeeperUnitsBuilt);
+			fprintf(f, "%d\t", keeper->getTotalUnitsLost() - m_scoreKeeperUnitsLost);
+			fprintf(f, "%d\t", keeper->getTotalBuildingsDestroyed() - m_scoreKeeperBuildingsDestroyed);
+			fprintf(f, "%d\t", keeper->getTotalBuildingsBuilt() - m_scoreKeeperBuildingsBuilt);
+			fprintf(f, "%d\t", keeper->getTotalBuildingsLost() - m_scoreKeeperBuildingsLost);
+		}
+	}
+
+	fprintf(f, "\n");
+	fclose(f);
+}
 
 // FUNCTION: BFME2 0x00437B4D size=105 name=?collectUnitCountStats@StatsCollector@@QAEXXZ evidence=N:ledger
 void StatsCollector::collectUnitCountStats()

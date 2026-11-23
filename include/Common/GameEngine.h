@@ -72,7 +72,13 @@ public:
 	Real m_clientFrameRatio;									// +0x3C, used by Drawable's interpolation.
 
 private:
-	UnsignedByte m_unk0x40[0x20];
+	UnsignedByte m_unk0x40[0x18];
+
+public:
+	Real m_instantNetFPS;									// +0x58, the Instant_Net_FPS column of the stats file (update refreshes it every 25 frames).
+
+private:
+	UnsignedByte m_unk0x5C[0x4];
 
 	void updateClientFrameCounter();						// 0x00225D68
 	void updateClientFrameRatio();							// 0x00225D78
@@ -81,6 +87,7 @@ private:
 };
 
 typedef char GameEngineSize[(sizeof(GameEngine) == 0x60) ? 1 : -1];
+typedef char GameEngineInstantNetFPSOffset[(offsetof(GameEngine, m_instantNetFPS) == 0x58) ? 1 : -1];
 typedef char GameEngineFrameRatioOffset[(offsetof(GameEngine, m_clientFrameRatio) == 0x3C) ? 1 : -1];
 
 extern GameEngine *TheGameEngine;							// 0x00DFE710
