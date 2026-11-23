@@ -33,6 +33,8 @@ public:
 	virtual NameKeyType getModuleNameKey() const;
 	virtual UpdateSleepTime update();	// override: update slot 0 at +0x10 (0x00480FE2)
 	virtual Bool isValidContainerFor(Object *obj, Bool checkCapacity, Bool flag);	// override: isValidContainerFor slot 38 at +0x20 (0x0048071D)
+	virtual void rva00480E9A(Object *obj);	// override: slot 32 of the primary table 0x00C48CC0 (0x00480E9A)
+	virtual Bool rva004807C7(Object *obj);	// override: slot 33 of the primary table 0x00C48CC0 (0x004807C7)
 
 protected:
 	virtual const char *GetSnapshotName() const;

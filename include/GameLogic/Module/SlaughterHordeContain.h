@@ -111,6 +111,11 @@ private:
 public:
 	UnsignedInt m_unk0x9E4;                        // +0x9E4; xfer UnsignedInt
 	AsciiString m_unk0x9E8;                        // +0x9E8; xfer AsciiString
+	// The two new slots of this class's 34-slot table 0x00C48AA0 (HordeGarrisonContain's has 32): the shared `ret 4`
+	// 0x0047A69C and `mov al,1; ret 4` 0x005CB9FA bodies; CitadelSlaughterHordeContain overrides both.
+	virtual void slaughterSlot32(Object *obj) {}	// slot 32
+	virtual Bool slaughterSlot33(Object *obj) { return true; }	// slot 33
+
 protected:
 	virtual Bool containSlot12() { return true; }
 	virtual Bool containSlot13() { return true; }
