@@ -253,7 +253,11 @@ bool Shell::showShellMap(bool useShellMap, bool restartShellGame)
 		stopMusic();
 
 		Int gameMode = TheGameLogic->getGameMode();
-		if (gameMode != GAME_MODE_SHELL || restartShellGame)
+		if (gameMode == GAME_MODE_SHELL && !restartShellGame)
+		{
+			return true;
+		}
+		else
 		{
 			if (gameMode != GAME_MODE_NONE)
 				TheMessageStream->appendMessage(GameMessage::MSG_CLEAR_GAME_DATA);
@@ -262,8 +266,8 @@ bool Shell::showShellMap(bool useShellMap, bool restartShellGame)
 			InitGameLogicRandom(0);
 			GameMessage *message = TheMessageStream->appendMessage(GameMessage::MSG_NEW_GAME);
 			message->appendIntegerArgument(GAME_MODE_SHELL);
+			return true;
 		}
-		return true;
 	}
 
 	TheDisplay->rva0025D2F6();
