@@ -16,7 +16,8 @@ Bool LANGameSlot::isLocalPlayer() const
 		return FALSE;
 	if (TheLAN->GetLocalAddress()->Rva00248CBF(&m_address))
 		return TRUE;
-	BfmeNetAddress local = *TheLAN->GetLocalAddress();
+	BfmeNetAddress local;
+	local = *TheLAN->GetLocalAddress();
 	local.m_port += 8;
 	return local.Rva00248CBF(&m_address);
 }
