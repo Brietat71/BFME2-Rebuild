@@ -2,7 +2,7 @@
 
 How much of the original game (version 1.06) has been rebuilt as source code that compiles back to the same machine code. Measured automatically after every change; nobody edits this page.
 
-Measured **23 November 2026**. The code figures describe commit [`31ca4805aeae`](https://github.com/Open-BFME/BFME2-Rebuild/commit/31ca4805aeae624220bca566c0e8d85e9c65e7a4) (23 November 2026, 06:03 UTC); the build checks run every day.
+Measured **23 November 2026**. The code figures describe commit [`38e2ce704e8a`](https://github.com/Open-BFME/BFME2-Rebuild/commit/38e2ce704e8a3df65ad545bb6f3dcdde41a47310) (23 November 2026, 06:59 UTC); the build checks run every day.
 
 ![Progress](progress.svg)
 
@@ -10,14 +10,14 @@ Measured **23 November 2026**. The code figures describe commit [`31ca4805aeae`]
 
 ![The four figures](detail.svg)
 
-**Byte match**: `██████░░░░░░░░░░░░░░` 27.6% (1,749,952 of 6,333,616 bytes)  
+**Byte match**: `██████░░░░░░░░░░░░░░` 27.6% (1,749,967 of 6,333,616 bytes)  
 How much of the original game's code, by size, our source code compiles back to byte for byte.
 
 **Linking**: `█████████████░░░░░░░` 64.7% (6,021 of 9,305 names)  
 How many of the names the game needs to be assembled into one program our source already provides.
 Measured by the daily build of commit [`4ae67eed0440`](https://github.com/Open-BFME/BFME2-Rebuild/commit/4ae67eed04400d4cc8b4d80aa4521a89d1750bb2) (22 November 2026), which can be newer or older than the commit the other figures describe.
 
-**Code proven**: `████░░░░░░░░░░░░░░░░` 19.4% (1,228,888 of 6,333,616 bytes)  
+**Code proven**: `████░░░░░░░░░░░░░░░░` 19.4% (1,228,903 of 6,333,616 bytes)  
 How much of the code, by size, is byte-matched and also confirmed at every place it refers to other code or data, so the match cannot be a coincidence.
 
 **Finished functions**: `█████░░░░░░░░░░░░░░░` 26.5% (11,029 of 41,565 functions)  
@@ -55,7 +55,7 @@ Byte match, by size, in each part of the source tree, largest part first.
 | ppmalloc 1.26.11 (memory allocator) | 0.0% (0 of 14,445 bytes) | `░░░░░░░░░░░░░░░░░░░░` |
 | LZHL 1.0 (compression library) | 99.7% (7,125 of 7,150 bytes) | `████████████████████` |
 | Platform layer: Win32Device | 57.0% (1,564 of 2,742 bytes) | `███████████░░░░░░░░░` |
-| Not yet placed in a named file | 8.4% (111,694 of 1,323,501 bytes) | `██░░░░░░░░░░░░░░░░░░` |
+| Not yet placed in a named file | 8.4% (111,709 of 1,323,501 bytes) | `██░░░░░░░░░░░░░░░░░░` |
 | Not yet assigned to any file | 0.0% (0 of 104,533 bytes) | `░░░░░░░░░░░░░░░░░░░░` |
 
 Provisional class declarations still in use (files under `include/Draft/` that some source file includes): 12. Each should become a final header.
@@ -66,6 +66,7 @@ Provisional class declarations still in use (files under `include/Draft/` that s
 
 | Commit | Date | Byte match | Linking | Proven | Finished |
 | --- | --- | ---: | ---: | ---: | ---: |
+| [`38e2ce704e8a`](https://github.com/Open-BFME/BFME2-Rebuild/commit/38e2ce704e8a3df65ad545bb6f3dcdde41a47310) | 23 November 2026, 06:59 UTC | 27.63% | 64.71% (build `4ae67ee`) | 19.40% | 26.53% |
 | [`31ca4805aeae`](https://github.com/Open-BFME/BFME2-Rebuild/commit/31ca4805aeae624220bca566c0e8d85e9c65e7a4) | 23 November 2026, 06:03 UTC | 27.63% | 64.71% (build `4ae67ee`) | 19.40% | 26.53% |
 | [`859d14483f9f`](https://github.com/Open-BFME/BFME2-Rebuild/commit/859d14483f9fa01283a0c37b4737fc9d4ba19440) | 23 November 2026, 05:48 UTC | 27.62% | 64.71% (build `4ae67ee`) | 19.40% | 26.53% |
 | [`b0b20aaf98c5`](https://github.com/Open-BFME/BFME2-Rebuild/commit/b0b20aaf98c5e9d8f908e97b2814a9f8dd8fc3ca) | 23 November 2026, 03:05 UTC | 27.62% | 64.71% (build `4ae67ee`) | 19.40% | 26.53% |
