@@ -6,6 +6,7 @@
 class _com_error {
 public:
   virtual ~_com_error(); // slot=0x0 target=0x00654D80 mangled=??_G_com_error@@UAEPAXI@Z
+  static long WCodeToHRESULT(unsigned short wCode); // 0x006554E0: COM wCode to an ITF HRESULT, saturating at 0xFE00
 };
 #pragma pack(pop)
 // DRAFT STILL NEEDS:
