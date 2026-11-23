@@ -356,7 +356,7 @@ void AIPlayer::aiPreTeamDestroy(const Team *deletedTeam)
 		TeamInQueue *team = iter.cur();
 		if (team->m_team == deletedTeam) {
 			removeFrom_TeamBuildQueue(team);
-			delete team;
+			::delete team;
 			iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamBuildQueue.m_head, &TeamInQueue::dlink_next_TeamBuildQueue);
 		}
 	}
@@ -365,7 +365,7 @@ void AIPlayer::aiPreTeamDestroy(const Team *deletedTeam)
 		TeamInQueue *team = iter.cur();
 		if (team->m_team == deletedTeam) {
 			removeFrom_TeamReadyQueue(team);
-			delete team;
+			::delete team;
 			iter = DLINK_ITERATOR<TeamInQueue>(m_dlinkhead_TeamReadyQueue.m_head, &TeamInQueue::dlink_next_TeamReadyQueue);
 		}
 	}
