@@ -872,7 +872,8 @@ bool Debug::ExecCommand(const char *cmdstart, const char *cmdend)
 	int numParts = 0;
 	char *lastNonWhitespace = NULL;
 	char *cur = strbuf;
-	bool doneCommand = false;
+	bool doneCommand;
+	doneCommand = false;
 
 	// regular reply or structured reply?
 	DebugIOInterface::StringType reply;
