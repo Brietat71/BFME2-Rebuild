@@ -438,6 +438,14 @@ void Matrix3D::Re_Orthogonalize(void)
 	Row[2][2] = z.Z;
 }
 
+// Zero Hour's Vector3::Lerp (WWMath/vector3.h), expanded in place by retail.
+static inline void lerpVector3(const Vector3 &a, const Vector3 &b, float alpha, Vector3 *result)
+{
+	result->X = (a.X + (b.X - a.X) * alpha);
+	result->Y = (a.Y + (b.Y - a.Y) * alpha);
+	result->Z = (a.Z + (b.Z - a.Z) * alpha);
+}
+
 // Uniformly scales the three axes, translation untouched.
 static inline void scaleRotation(Matrix3D &m, float scale)
 {
@@ -456,9 +464,7 @@ static inline void scaleRotation(Matrix3D &m, float scale)
 void Matrix3D::Lerp(const Matrix3D &A, const Matrix3D &B, float factor, Matrix3D &result)
 {
 	Vector3 pos;
-	pos.X = A.Row[0][3] + (B.Row[0][3] - A.Row[0][3]) * factor;
-	pos.Y = A.Row[1][3] + (B.Row[1][3] - A.Row[1][3]) * factor;
-	pos.Z = A.Row[2][3] + (B.Row[2][3] - A.Row[2][3]) * factor;
+	lerpVector3(A.Get_Translation(), B.Get_Translation(), factor, &pos);
 
 	// Build_Quaternion needs an unscaled rotation, so a scaled source is
 	// normalized first and its scale is put back on the result.
