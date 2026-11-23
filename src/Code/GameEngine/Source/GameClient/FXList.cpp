@@ -727,6 +727,14 @@ void AttachedModelFXNugget::doFXObj(const Object *primary, const Object *seconda
 }
 
 // FUNCTION: BFME2 0x001E08D9 size=60 name=??0TerrainScorchFXNugget@@QAE@XZ evidence=N:ledger tier=A
+TerrainScorchFXNugget::TerrainScorchFXNugget() :
+	m_scorchType(-1),
+	m_radius(0.0f)
+{
+	ICoord2D range = { 0, 3 };
+	m_type = 7;
+	m_randomRange = range;
+}
 
 // FUNCTION: BFME2 0x001E0915 size=80 name=?doFXPos@TerrainScorchFXNugget@@UBEXPBVCoord3D@@PBVMatrix3D@@M0@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 void TerrainScorchFXNugget::doFXPos(const Coord3D *primary, const Matrix3D *primaryMtx, Real primarySpeed,
