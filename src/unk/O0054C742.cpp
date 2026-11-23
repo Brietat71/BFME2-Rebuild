@@ -10,5 +10,5 @@
 
 AptStrategicMessageBox::~AptStrategicMessageBox()
 {
-	s_instance = NULL;
+	s_instance = 0;
 }
