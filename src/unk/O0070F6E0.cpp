@@ -41,12 +41,13 @@ extern "C" unsigned int bfmeReload1221()
         *p0++ = *pM++ ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
     for (pM = g_bfmeStateFA, j = M; --j; s0 = s1, s1 = *p2++)
         *p0++ = *pM++ ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
-    s1 = g_bfmeStateFA[0], *p0 = *pM ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
-    unsigned int y = s1;
-    y ^= (y >> 11);
-    y ^= (y << 7) & 0x9d2c5680U;
-    y ^= (y << 15) & 0xefc60000U;
-    return y ^ (y >> 18);
+    unsigned int next = g_bfmeStateFA[0];
+    *p0 = *pM ^ (mixBits(s0, next) >> 1) ^ (loBit(next) ? K : 0U);
+    s1 = next;
+    s1 ^= (s1 >> 11);
+    s1 ^= (s1 << 7) & 0x9d2c5680U;
+    s1 ^= (s1 << 15) & 0xefc60000U;
+    return s1 ^ (s1 >> 18);
 }
 
 // FUNCTION: BFME2 0x0070F830 size=68 name=?bfmeNext1221@@YAIXZ evidence=N:ledger tier=B hypothesis:K
