@@ -215,6 +215,7 @@ class AIUpdateInterface : public UpdateModule, public AICommandInterface, public
 	friend class Object;	// Object::rva0028AE6D 0x0028AE6D tail-calls the protected wakeUpNow 0x00262871 (Zero Hour's AIUpdateInterface names Object a friend)
 	friend class ScriptTracker;	// ScriptTracker::update 0x0026249D reads the owner object (Team) of the tracker's AIUpdateInterface
 	friend class AIGroup;	// AIGroup::groupIdle 0x0036FC23 sets +0x3CC on a player's idle order
+	friend class AssaultTransportAIUpdate;	// AssaultTransportAIUpdate::giveFinalOrders clears the allowed-to-chase flag of each member it releases
 public:
 	// Zero Hour's inline accessors over the module data (+0x1C AutoAcquireEnemiesWhenIdle, bit 1 while stealthed):
 	// AIGroup::groupIdle 0x0036FC23 reads [data+0x1C] twice in place.
@@ -234,7 +235,6 @@ public:
 	void setLocomotorUpgrade(Bool set);	// 0x00262804 (Zero Hour's name; placeholder row): stores m_upgradedLocomotors and re-chooses the normal set (slot 142) when the normal or upgraded set is current
 	Bool isMoving() const;					// 0x00264688
 	void restartWaypointPath();				// 0x0026293E
-	void setAllowedToChase(Bool allowed) { m_unk0x3C1 = allowed; }	// +0x3C1: AssaultTransportAIUpdate::giveFinalOrders 0x0048F6EE clears it on each member it releases
 	void setDesiredSpeed(Real speed);	// 0x002628F9 (+0x44 m_desiredSpeed; role name on a placeholder-class row)
 	ObjectID getIgnoredObstacleID() const;	// 0x0006E009 (+0x164 m_ignoreObstacleID; role name on a placeholder row)
 	void destroyPathAndIdle();				// 0x00262D2D

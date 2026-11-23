@@ -172,7 +172,7 @@ void AssaultTransportAIUpdate::giveFinalOrders()
 			else if (m_isAttackMove)
 				ai->aiAttackMoveToPosition(&m_attackMoveGoalPos, 0x7FFFFFFF, CMD_FROM_PLAYER);
 
-			ai->setAllowedToChase(false);
+			ai->m_unk0x3C1 = false;
 		}
 	}
 }
