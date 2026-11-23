@@ -14,6 +14,7 @@
 #include "GameLogic/Module/ObjectSMCHelper.h"
 
 void XferModelConditionFlagType(Xfer *xfer, Int *value);	// 0x00305BD2
+template <class T> inline const T &larger(const T &a, const T &b) { return a > b ? a : b; }
 // FUNCTION: BFME2 0x004DE700 size=77 name=?framesUntilNext@ObjectSMCHelper@@AAEHXZ evidence=N:ledger tier=B hypothesis:name:Z
 Int ObjectSMCHelper::framesUntilNext()
 {
@@ -75,7 +76,7 @@ void ObjectSMCHelper::setModelConditionState(ModelConditionFlagType flag, Unsign
 		if (it->m_flag == flag)
 		{
 			UnsignedInt endFrame = now + frames;
-			it->m_frame = _STL::max(endFrame, it->m_frame);
+			it->m_frame = larger(it->m_frame, endFrame);
 			Int wake = framesUntilNext();
 			setWakeFrame(getObject(), (UpdateSleepTime)wake);
 			return;
