@@ -713,11 +713,11 @@ void PushButtonImageDrawThree(GameWindow *window, Int alpha)
 	rightSize.x = rightImage->getImageWidth();
 	rightSize.y = rightImage->getImageHeight();
 
-	ICoord2D leftEnd, rightStart;
-	leftEnd.x = leftSize.x + xOffset + origin.x;
-	leftEnd.y = origin.y + size.y + yOffset;
-	rightStart.x = xOffset - rightSize.x + size.x + origin.x;
+	ICoord2D rightStart, leftEnd;
 	rightStart.y = origin.y + yOffset;
+	rightStart.x = origin.x + size.x - rightSize.x + xOffset;
+	leftEnd.y = origin.y + size.y + yOffset;
+	leftEnd.x = origin.x + leftSize.x + xOffset;
 
 	Int centerWidth, pieces;
 
