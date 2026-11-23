@@ -24,10 +24,10 @@ public:
     void AddPlayer(const LWPlayerDef &player);
     static void ParseLivingWorldCampaignBlock(INI *ini);
     virtual const char *GetSnapshotName() const;
+    virtual void xfer(Xfer *xfer);
 
 protected:
     virtual void loadPostProcess() {} // slot 1, native 0x000B3FD0
-    virtual void xfer(Xfer *xfer);
 
 private:
     AsciiString m_name;
