@@ -43,6 +43,7 @@ class Vector3;
 class Waypoint;
 class WaterHandle;
 class Matrix3D;
+class ThingTemplate;
 class Object;
 class Xfer;
 class RiverArea;
@@ -141,6 +142,9 @@ public:
 	Object *rva00283D70(const Coord3D *position);	// 0x00283D70 (FireSpreadUpdate::update 0x0048B7FD: the object a forest-fire position belongs to)
 	void rva0027F28E(const Coord3D *pos, float radius, int arg);	// 0x0027F28E (ElvenWoodSpecialPower::rva004C3B17, TaintSpecialPower::rva004C49AE)
 	void rva0027D1A4(const Coord3D *pos, float radius, int arg);	// 0x0027D1A4
+	void addTree(const ThingTemplate *tmpl, const Coord3D *pos, const Matrix3D *mtx, Real scale);	// 0x00283642
+	void rva00280176(const ThingTemplate *tmpl, const Coord3D *pos, const Matrix3D *mtx, Real scale);	// 0x00280176
+	void rva0027D3D9(const ThingTemplate *tmpl, const Coord3D *pos, const Matrix3D *mtx, Real scale);	// 0x0027D3D9
 	PathfindLayerEnum getHighestLayerForDestination(const Coord3D *, bool = false);
 	PathfindLayerEnum getLayerForDestination(Object *obj, const Coord3D *pos);
 	void deleteBridges();							// 0x0027D5AD (frees the bridge list; Zero Hour's name)

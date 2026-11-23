@@ -15,7 +15,41 @@
 #include "GameLogic/ObjectCreationList.h"
 #include "GameLogic/BfmeTaintManager.h"
 #include "Common/RandomValue.h"
+#include "WWMath/Matrix3D.h"
+#include "Common/KindOf.h"
+#include "Common/CreateMask.h"
+#include "Common/ThingTemplate.h"
+#include "Common/ThingFactory.h"
+#include <string.h>
 // FUNCTION: BFME2 0x004C397F size=288 name=?addObject@ElvenWoodSpecialPower@@QAEPAVObject@@PBVCoord3D@@PBVAsciiString@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=B hypothesis:mm1-neighbour-callers
+Object *ElvenWoodSpecialPower::addObject(const Coord3D *position, const AsciiString *name)
+{
+	const ThingTemplate *tmpl = TheThingFactory->findTemplate(*name);
+	if (tmpl == 0)
+		return 0;
+
+	if (!tmpl->isKindOf(KINDOF_OPTIMIZED_PROP) && !tmpl->isKindOf(KINDOF_TREE) && !tmpl->isKindOf(KINDOF_SHRUB))
+	{
+		CreateMask mask;
+		memset(&mask, 0, sizeof(mask));
+		Object *obj = TheThingFactory->newObject(tmpl, 0, &mask, (ObjectID)0);
+		if (obj == 0)
+			return 0;
+		obj->setTeam(m_object->getTeam());
+		obj->setPosition(position);
+		return obj;
+	}
+
+	Matrix3D transform(true);
+	Real scale = tmpl->m_scale;
+	if (tmpl->isKindOf(KINDOF_TREE))
+		TheTerrainLogic->addTree(tmpl, position, &transform, scale);
+	else if (tmpl->isKindOf(KINDOF_SHRUB))
+		TheTerrainLogic->rva00280176(tmpl, position, &transform, scale);
+	else
+		TheTerrainLogic->rva0027D3D9(tmpl, position, &transform, scale);
+	return 0;
+}
 // FUNCTION: BFME2 0x004C3A9F size=45 name=?Rva004C3A9FConstruct@@YAXPAXPBX@Z evidence=?:placeholder tier=B hypothesis:mm1-neighbour-callers
 // FUNCTION: BFME2 0x004C3B17 size=287 name=?rva004C3B17@ElvenWoodSpecialPower@@QAEXPBVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=B hypothesis:K
 void ElvenWoodSpecialPower::rva004C3B17(const Coord3D *loc)
