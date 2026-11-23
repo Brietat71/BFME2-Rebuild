@@ -794,10 +794,12 @@ void Debug::AddOutput(const char *str, unsigned int remainingLen)
 
 		// every '\n' is stored as a carriage return and a line feed
 		unsigned int numLF = 0;
-		for (unsigned int i = 0; i < len; i++)
+		unsigned int i = 0;
+		while (i < len)
 		{
 			if (str[i] == '\n')
 				numLF++;
+			i++;
 		}
 
 		if (ioBuffer[curType].used + numLF + len + 64 >= ioBuffer[curType].alloc)
