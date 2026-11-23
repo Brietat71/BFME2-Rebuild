@@ -1699,7 +1699,7 @@ void ScriptEngine::adjustTimer(ScriptAction *pAction, Bool millisecondTimer, Boo
 Bool ScriptEngine::evaluateCondition(Condition *pCondition)
 {
 	Int gameMode = getGameModeMask();
-	if ((gameMode & pCondition->rva003B275A()) == 0)
+	if ((pCondition->rva003B275A() & gameMode) == 0)
 		return false;
 
 	switch (pCondition->getConditionType()) {
