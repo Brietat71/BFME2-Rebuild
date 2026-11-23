@@ -15,8 +15,9 @@ struct AABCollisionStruct
 {
 	AABCollisionStruct(const AABoxClass &box0, const Vector3 &move0, const AABoxClass &box1, const Vector3 &move1) :
 		StartBad(true),
-		AxisId(-1),
 		MaxFrac(0.0f),
+		AxisId(-1),
+		Side(0),
 		Box0(box0),
 		Box1(box1)
 	{
