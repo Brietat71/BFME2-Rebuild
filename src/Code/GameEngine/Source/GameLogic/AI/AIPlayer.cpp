@@ -499,7 +499,7 @@ Bool AIPlayer::isSupplySourceAttacked()
 						if (info->out.m_noEffect)
 							continue;
 						if (body->getLastDamageTimestamp() + SCAN_RATE > curFrame) {
-							m_attackedSupplyCenter = obj->getID();
+							m_attackedSupplyCenter = objIter.cur()->getID();
 							return true;
 						}
 					}
