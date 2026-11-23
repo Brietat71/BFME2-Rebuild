@@ -40,8 +40,8 @@ Object *ElvenWoodSpecialPower::addObject(const Coord3D *position, const AsciiStr
 		return obj;
 	}
 
-	Matrix3D transform(true);
 	Real scale = tmpl->m_scale;
+	Matrix3D transform(true);
 	if (tmpl->isKindOf(KINDOF_TREE))
 		TheTerrainLogic->addTree(tmpl, position, &transform, scale);
 	else if (tmpl->isKindOf(KINDOF_SHRUB))
