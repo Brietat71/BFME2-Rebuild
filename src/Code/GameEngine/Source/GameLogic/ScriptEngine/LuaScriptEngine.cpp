@@ -504,21 +504,6 @@ int CurDrawableIsCurrentTargetKindof(lua_State *state)
 // FUNCTION: BFME2 0x00334E51 size=115 name=?Rva00334E51@@YAHPAUlua_State@@@Z evidence=?:placeholder
 
 // FUNCTION: BFME2 0x00334EC4 size=106 name=?ObjectPlayerSide@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectPlayerSide(lua_State *state)
-{
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-	{
-		Object *object = TheGameLogic->findObjectByID(id);
-		if (object)
-		{
-			lua_pushstring(state, object->getTeam()->getControllingPlayer()->getSide().str());
-			return 1;
-		}
-	}
-	lua_pushnil(state);
-	return 1;
-}
 
 // FUNCTION: BFME2 0x00334F2E size=125 name=?ObjectCapturingObjectPlayerSide@@YAHPAUlua_State@@@Z evidence=N:ledger
 
