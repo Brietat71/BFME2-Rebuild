@@ -222,7 +222,7 @@ void xferMapName(Xfer *xfer, AsciiString *mapName)
 }
 
 // FUNCTION: BFME2 0x003063A9 size=112 name=?Rva003063A9XferThingTemplate@@YAXPAVXfer@@PAPBVThingTemplate@@@Z evidence=?:placeholder tier=B hypothesis:mm1-contiguity-shared-data
-void XferThingTemplate(Xfer *xfer, const ThingTemplate **thingTemplate)
+void Rva003063A9XferThingTemplate(Xfer *xfer, const ThingTemplate **thingTemplate)
 {
 	AsciiString name(*thingTemplate ? (*thingTemplate)->getName() : AsciiString::TheEmptyString);
 	*xfer == name;
