@@ -45,6 +45,7 @@ class HAnimClass : public RefCountClass, public HashableClass
 public:
 	// Zero Hour's `virtual ~HAnimClass(void) { }`. Retail's derived destructors (HRawAnimClass 0x0018EBC0) call it out of line: 0x00196150 stores
 	// the two secondary tables and the RefCountClass table and returns.
+	HAnimClass();									// 0x0018D170
 	virtual ~HAnimClass();
 	// The HashableClass slot adjusts to the animation and forwards to Get_Name.
 	virtual const char *Get_Key(void) { return Get_Name(); }
