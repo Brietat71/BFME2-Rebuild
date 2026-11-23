@@ -5888,6 +5888,20 @@
    "kind": "trusted-narrow",
    "number": 353,
    "tree": "08215785ca8b8b1e6816b9ff79402f30134b1da2"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45285439390"
+   },
+   "author": 1760627,
+   "base": "f5338b58da737d9005b8f0df5d18d5439c92a8e1",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "4d736ba915a9dd776883de99e27bf34f7e654db2",
+   "kind": "trusted-narrow",
+   "number": 398,
+   "tree": "0e7f3f23e92415602f4707f0dbbe7714141701df"
   }
  ],
  "version": 2
