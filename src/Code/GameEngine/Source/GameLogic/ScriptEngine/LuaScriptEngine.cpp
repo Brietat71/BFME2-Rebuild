@@ -633,21 +633,6 @@ int ObjectRemoveUpgrade(lua_State *state)
 // FUNCTION: BFME2 0x003357E0 size=113 name=?ObjectSetChanting@@YAHPAUlua_State@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x00335851 size=136 name=?ObjectSetFearFactor@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectSetFearFactor(lua_State *state)
-{
-	if (lua_gettop(state) < 2)
-		return 0;
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id == INVALID_ID && lua_type(state, 1) != LUA_TNIL)
-		return 0;
-	Object *object = TheGameLogic->findObjectByID(id);
-	if (!object)
-		return 0;
-	Int value = lua_tonumber(state, 2);
-	Int current = static_cast<Int>(object->m_1ac);
-	object->m_1ac = greaterOf(value, current);
-	return 1;
-}
 
 // FUNCTION: BFME2 0x003358D9 size=113 name=?ObjectSetEnragedState@@YAHPAUlua_State@@@Z evidence=N:ledger
 int ObjectSetEnragedState(lua_State *state)
