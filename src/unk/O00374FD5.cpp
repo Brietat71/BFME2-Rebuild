@@ -81,22 +81,26 @@ UpdateSleepTime StealthUpdate::update()
 		m_unk0x32 = self->testStatus((ObjectStatusTypes)0xF);
 		m_unk0x33 = m_unk0x31;
 	}
-	else if (m_unk0x33 != m_unk0x31)
+	else
 	{
-		if (self->testStatus((ObjectStatusTypes)0xF))
+		Bool wasOneRing = m_unk0x33;
+		if (wasOneRing != m_unk0x31)
 		{
-			if (m_unk0x33)
+			if (self->testStatus((ObjectStatusTypes)0xF))
 			{
-				FXList::doFXObj(data->m_exitStealthOneRingFX, getObject(), NULL);
-				FXList::doFXObj(data->m_becomeStealthedFX, getObject(), NULL);
+				if (wasOneRing)
+				{
+					FXList::doFXObj(data->m_exitStealthOneRingFX, getObject(), NULL);
+					FXList::doFXObj(data->m_becomeStealthedFX, getObject(), NULL);
+				}
+				else
+				{
+					FXList::doFXObj(data->m_exitStealthFX, getObject(), NULL);
+					FXList::doFXObj(data->m_becomeStealthedOneRingFX, getObject(), NULL);
+				}
 			}
-			else
-			{
-				FXList::doFXObj(data->m_exitStealthFX, getObject(), NULL);
-				FXList::doFXObj(data->m_becomeStealthedOneRingFX, getObject(), NULL);
-			}
+			m_unk0x33 = m_unk0x31;
 		}
-		m_unk0x33 = m_unk0x31;
 	}
 	m_unk0x34 = false;
 	return sleepTime;
