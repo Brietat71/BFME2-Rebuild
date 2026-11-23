@@ -334,10 +334,14 @@ void Pathfinder::clip(Coord3D *from, Coord3D *to)
 {
 	ICoord2D fromCell, toCell;
 	ICoord2D clipFromCell, clipToCell;
-	fromCell.x = Float_To_Long((float)PathfinderCRT::floor(from->x * 0.1f));
-	fromCell.y = Float_To_Long((float)PathfinderCRT::floor(from->y * 0.1f));
-	toCell.x = Float_To_Long((float)PathfinderCRT::floor(to->x * 0.1f));
-	toCell.y = Float_To_Long((float)PathfinderCRT::floor(to->y * 0.1f));
+	Int fromX = Float_To_Long((float)PathfinderCRT::floor(from->x * 0.1f));
+	Int fromY = Float_To_Long((float)PathfinderCRT::floor(from->y * 0.1f));
+	Int toX = Float_To_Long((float)PathfinderCRT::floor(to->x * 0.1f));
+	Int toY = Float_To_Long((float)PathfinderCRT::floor(to->y * 0.1f));
+	fromCell.x = fromX;
+	fromCell.y = fromY;
+	toCell.x = toX;
+	toCell.y = toY;
 	if (ClipLine2D(&fromCell, &toCell, &clipFromCell, &clipToCell, &m_extent))
 	{
 		if (fromCell.x != clipFromCell.x || fromCell.y != clipFromCell.y)
