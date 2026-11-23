@@ -337,11 +337,11 @@ void SegmentedLineClass::Get_Obj_Space_Bounding_Box(AABoxClass &box) const
 		if (MaxSubdivisionLevels > 0) {
 			Vector3 max_coords2;
 			Vector3 min_coords2;
-			Vector3 midpoint = (PointLocations[0] + PointLocations[1]) * 0.5f;
+			Vector3 midpoint = (PointLocations[1] + PointLocations[0]) * 0.5f;
 			max_coords2 = midpoint;
 			min_coords2 = midpoint;
 			for (i = 1; i < num_points - 1; i++) {
-				midpoint = (PointLocations[i] + PointLocations[i + 1]) * 0.5f;
+				midpoint = (PointLocations[i + 1] + PointLocations[i]) * 0.5f;
 				max_coords2.Update_Max(midpoint);
 				min_coords2.Update_Min(midpoint);
 			}
