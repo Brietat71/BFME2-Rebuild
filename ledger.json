@@ -1,15 +1,5 @@
 {
  "days": {
-  "2026-11-21": {
-   "authors": {
-    "1399571": 2,
-    "44365026": 11,
-    "64750076": 3
-   },
-   "total": 16,
-   "wide_authors": {},
-   "wide_total": 0
-  },
   "2026-11-22": {
    "authors": {
     "19627006": 5,
@@ -24,351 +14,17 @@
     "44365026": 4
    },
    "wide_total": 16
+  },
+  "2026-11-23": {
+   "authors": {},
+   "total": 0,
+   "wide_authors": {
+    "44365026": 1
+   },
+   "wide_total": 1
   }
  },
  "reservations": [
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44921631050"
-   },
-   "author": 64750076,
-   "base": "bfeb4d1c4f0861a4c1175aea8eba611766602742",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44922644224"
-   },
-   "day": "2026-11-21",
-   "head": "87ce70642ac08cfe461820c7891a25e191c57372",
-   "kind": "narrow",
-   "number": 30,
-   "tree": "f98110ce334a1f49a1f2b0317ac55a2f79edde62"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44921631050"
-   },
-   "author": 44365026,
-   "base": "bfeb4d1c4f0861a4c1175aea8eba611766602742",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44922648125"
-   },
-   "day": "2026-11-21",
-   "head": "53c8283fcee6a2cf2caeeab805543d751422e88e",
-   "kind": "narrow",
-   "number": 32,
-   "tree": "6b6086c1bd40a29686f55e5e1a719d76b83b3c2a"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44924287704"
-   },
-   "author": 44365026,
-   "base": "bfeb4d1c4f0861a4c1175aea8eba611766602742",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44925597364"
-   },
-   "day": "2026-11-21",
-   "head": "b347344a12272b9f2c33d258790be63e94d7884f",
-   "kind": "narrow",
-   "number": 33,
-   "tree": "26f8b97a7151b83ec5a9ac188c07a0eece1dbaa7"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44937096632"
-   },
-   "author": 1760627,
-   "base": "4e6c970ef5d877db6172c49615eeb3bead7cfb8a",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44937134109"
-   },
-   "day": "2026-11-21",
-   "head": "c58ca59589b1eca9b42f606cba756c58869e4a0c",
-   "kind": "trusted-narrow",
-   "number": 27,
-   "tree": "0eeb397af3c4ca8dbf294f0272493c9620436752"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44937105957"
-   },
-   "author": 44365026,
-   "base": "4e6c970ef5d877db6172c49615eeb3bead7cfb8a",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44937134141"
-   },
-   "day": "2026-11-21",
-   "head": "cdbe6e56ec39810a2f9c53b890bd06483808f836",
-   "kind": "narrow",
-   "number": 34,
-   "tree": "d14f40004b3c3c26546b87f30a47a5300d00f327"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44937107565"
-   },
-   "author": 44365026,
-   "base": "4e6c970ef5d877db6172c49615eeb3bead7cfb8a",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44937137065"
-   },
-   "day": "2026-11-21",
-   "head": "b347344a12272b9f2c33d258790be63e94d7884f",
-   "kind": "narrow",
-   "number": 33,
-   "tree": "ecd3ad177dc959afcf768c28f7c7156a84f67df4"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44937099223"
-   },
-   "author": 1760627,
-   "base": "4e6c970ef5d877db6172c49615eeb3bead7cfb8a",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44937138753"
-   },
-   "day": "2026-11-21",
-   "head": "20b8ba58db108aa42b5d2e7f0e9a714b3ae5a308",
-   "kind": "trusted-narrow",
-   "number": 21,
-   "tree": "b43d84ecf7ea207effd5b4204c83955124fe7989"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44938320538"
-   },
-   "author": 1760627,
-   "base": "8c24effe0da90a13622152097660118b67ebd69c",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44938351490"
-   },
-   "day": "2026-11-21",
-   "head": "c58ca59589b1eca9b42f606cba756c58869e4a0c",
-   "kind": "trusted-narrow",
-   "number": 27,
-   "tree": "e8e71ccf321d1e9c3de285c28154cc98066db813"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44938320206"
-   },
-   "author": 1760627,
-   "base": "8c24effe0da90a13622152097660118b67ebd69c",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44938352815"
-   },
-   "day": "2026-11-21",
-   "head": "20b8ba58db108aa42b5d2e7f0e9a714b3ae5a308",
-   "kind": "trusted-narrow",
-   "number": 21,
-   "tree": "ff688e2d7e0619ca293cc935e094a715cf53f736"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44938335749"
-   },
-   "author": 64750076,
-   "base": "8c24effe0da90a13622152097660118b67ebd69c",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44938360986"
-   },
-   "day": "2026-11-21",
-   "head": "87ce70642ac08cfe461820c7891a25e191c57372",
-   "kind": "narrow",
-   "number": 30,
-   "tree": "50503e7eaf47aae260f7042fe9338afbac409e43"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44938349935"
-   },
-   "author": 44365026,
-   "base": "8c24effe0da90a13622152097660118b67ebd69c",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44938381759"
-   },
-   "day": "2026-11-21",
-   "head": "cdbe6e56ec39810a2f9c53b890bd06483808f836",
-   "kind": "narrow",
-   "number": 34,
-   "tree": "60fa5ce2014e852f2b7f654eabc4cbd775a1fb0f"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44941422031"
-   },
-   "author": 1760627,
-   "base": "1c8f9c96b5c424328120e72f309b724d56d11b72",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44941466670"
-   },
-   "day": "2026-11-21",
-   "head": "c58ca59589b1eca9b42f606cba756c58869e4a0c",
-   "kind": "trusted-narrow",
-   "number": 27,
-   "tree": "5cb5bc769e9bc987a200e0c8e733f66d3ea69e5b"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44941427298"
-   },
-   "author": 64750076,
-   "base": "1c8f9c96b5c424328120e72f309b724d56d11b72",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44941473128"
-   },
-   "day": "2026-11-21",
-   "head": "87ce70642ac08cfe461820c7891a25e191c57372",
-   "kind": "narrow",
-   "number": 30,
-   "tree": "08c00b4a8d375f6783c7c1f65a9a7df4c5cabff3"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44941448624"
-   },
-   "author": 44365026,
-   "base": "1c8f9c96b5c424328120e72f309b724d56d11b72",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44941480777"
-   },
-   "day": "2026-11-21",
-   "head": "cdbe6e56ec39810a2f9c53b890bd06483808f836",
-   "kind": "narrow",
-   "number": 34,
-   "tree": "116758d20cf0b396612e73e965ee6d35af21cf82"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44941429344"
-   },
-   "author": 1760627,
-   "base": "1c8f9c96b5c424328120e72f309b724d56d11b72",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44941484422"
-   },
-   "day": "2026-11-21",
-   "head": "20b8ba58db108aa42b5d2e7f0e9a714b3ae5a308",
-   "kind": "trusted-narrow",
-   "number": 21,
-   "tree": "afe00b9ede2a6c726efe4263e5a1d1ef80d41f97"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44943533832"
-   },
-   "author": 44365026,
-   "base": "a3a33fe85c474785d800df3e5ff71ef6403c904c",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44943570077"
-   },
-   "day": "2026-11-21",
-   "head": "cdbe6e56ec39810a2f9c53b890bd06483808f836",
-   "kind": "narrow",
-   "number": 34,
-   "tree": "b12089e546faad66f1c7de5ce8a56b9b27a54cfd"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44953951814"
-   },
-   "author": 44365026,
-   "base": "9fa818c2b335503f6988214ed1a9783b9d9da2a7",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44953974366"
-   },
-   "day": "2026-11-21",
-   "head": "cdbe6e56ec39810a2f9c53b890bd06483808f836",
-   "kind": "narrow",
-   "number": 34,
-   "reissues": 1,
-   "tree": "efa61a217f0c8d2b82397082dc5e3a223dd7c7fa"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44953936477"
-   },
-   "author": 1399571,
-   "base": "9fa818c2b335503f6988214ed1a9783b9d9da2a7",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44953955129"
-   },
-   "day": "2026-11-21",
-   "head": "0a749b9e815ffed2038478cd74929faa62b80fa9",
-   "kind": "narrow",
-   "number": 19,
-   "reissues": 1,
-   "tree": "4d8acc4a53a56332b2a142cd8fc87d07171bd136"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44957479629"
-   },
-   "author": 44365026,
-   "base": "7c73da5fea422ef964b035aa9197795b3795d21e",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44957510735"
-   },
-   "day": "2026-11-21",
-   "head": "cdbe6e56ec39810a2f9c53b890bd06483808f836",
-   "kind": "narrow",
-   "number": 34,
-   "tree": "c46eb108090bd428dfd0ee6346f44f517c72eebc"
-  },
-  {
-   "admitted_by": {
-    "attempt": "1",
-    "run": "44960934326"
-   },
-   "author": 44365026,
-   "base": "a0b70e7aa298eda91614bbdb818a89e96d2e61e0",
-   "claimed_by": {
-    "attempt": "1",
-    "run": "44961277468"
-   },
-   "day": "2026-11-21",
-   "head": "cdbe6e56ec39810a2f9c53b890bd06483808f836",
-   "kind": "narrow",
-   "number": 34,
-   "tree": "ef61142a7a8e133bcf7a85edaa5c579064fa2ee6"
-  },
   {
    "admitted_by": {
     "attempt": "1",
@@ -2071,6 +1727,20 @@
    "kind": "narrow",
    "number": 44,
    "tree": "1466d244ce6f5379cbf1564262e18d4ca300774e"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45096364684"
+   },
+   "author": 44365026,
+   "base": "96940f740dda471fe3a2e97441eda690059b8c21",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "61003dd684fec23b80737233c5f69b791133d228",
+   "kind": "wide",
+   "number": 49,
+   "tree": "4f4e45209e4cdf88298903ed1efbd7dc7c14ff27"
   }
  ],
  "version": 2
