@@ -2,6 +2,7 @@
 // stlport46
 // Portions derived from Command & Conquer Generals and Command & Conquer Generals Zero Hour, (c) Electronic Arts Inc., GPL-3.0-or-later; see LICENSE and NOTICE.
 // psdk
+#define _STLP_USE_MALLOC
 #include <windows.h>
 #include <imm.h>
 #include <algorithm>
