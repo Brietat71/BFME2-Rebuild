@@ -149,6 +149,15 @@ void LivingWorldRegionManager::EnumeratePendingBattles(PendingBattleVisitor &vis
 }
 
 // FUNCTION: BFME2 0x0020E7E8 size=43 name=?EnumerateCompletedBattles@LivingWorldRegionManager@@QAEXPAVRva0020E7E8Callback@@@Z evidence=N:ledger tier=A
+void LivingWorldRegionManager::EnumerateCompletedBattles(PendingBattleVisitor *visitor)
+{
+	LivingWorldBattle **end = m_completedBattles.end();
+	for (LivingWorldBattle **it = m_completedBattles.begin(); it != end; ++it)
+	{
+		if (!visitor->call(*it))
+			break;
+	}
+}
 
 // FUNCTION: BFME2 0x0020E813 size=87 name=?rva0020E813@LivingWorldRegionManager@@QBE_NPAURegionBattleView@@@Z evidence=?:placeholder tier=A
 
