@@ -1933,6 +1933,20 @@
    "kind": "wide",
    "number": 49,
    "tree": "b8a3d06e7f97b4743e3d6f7de1b171f4becd9f3d"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45104296759"
+   },
+   "author": 1399571,
+   "base": "b0b20aaf98c5e9d8f908e97b2814a9f8dd8fc3ca",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "f3a5981c2d1abb7e669bafc9e4b1d52b270d44be",
+   "kind": "wide",
+   "number": 15,
+   "tree": "623e35c169301d4550da666371b30f91881db420"
   }
  ],
  "version": 2
