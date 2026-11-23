@@ -1051,10 +1051,6 @@ void MPEXPORT XMP_Decode_ASCII(char const * str, digit * mpn, int precision)
 
 	unsigned short radix;
 	switch (toupper(str[i-1])) {
-		case '.':
-			radix = 10;
-			break;
-
 		case 'H':
 			radix = 16;
 			break;
@@ -1067,6 +1063,7 @@ void MPEXPORT XMP_Decode_ASCII(char const * str, digit * mpn, int precision)
 			radix = 2;
 			break;
 
+		case '.':
 		default:
 			radix = 10;
 			break;
