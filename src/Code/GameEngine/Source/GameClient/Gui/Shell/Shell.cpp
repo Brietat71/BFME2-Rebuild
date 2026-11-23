@@ -253,16 +253,16 @@ bool Shell::showShellMap(bool useShellMap, bool restartShellGame)
 		stopMusic();
 
 		Int gameMode = TheGameLogic->getGameMode();
-		if (gameMode == GAME_MODE_SHELL && !restartShellGame)
-			return true;
+		if (gameMode != GAME_MODE_SHELL || restartShellGame)
+		{
+			if (gameMode != GAME_MODE_NONE)
+				TheMessageStream->appendMessage(GameMessage::MSG_CLEAR_GAME_DATA);
 
-		if (gameMode != GAME_MODE_NONE)
-			TheMessageStream->appendMessage(GameMessage::MSG_CLEAR_GAME_DATA);
-
-		TheWritableGlobalData->m_pendingFile = TheWritableGlobalData->m_shellMapName;
-		InitGameLogicRandom(0);
-		GameMessage *message = TheMessageStream->appendMessage(GameMessage::MSG_NEW_GAME);
-		message->appendIntegerArgument(GAME_MODE_SHELL);
+			TheWritableGlobalData->m_pendingFile = TheWritableGlobalData->m_shellMapName;
+			InitGameLogicRandom(0);
+			GameMessage *message = TheMessageStream->appendMessage(GameMessage::MSG_NEW_GAME);
+			message->appendIntegerArgument(GAME_MODE_SHELL);
+		}
 		return true;
 	}
 
