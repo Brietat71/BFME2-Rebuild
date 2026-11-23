@@ -8,11 +8,7 @@
 // Edges: left=unknown-rows right=unknown-rows; proof_first=false
 // Hypothesis rules: hypothesis:K, hypothesis:name:invented
 // FUNCTION: BFME2 0x00494D26 size=58 name=??0WeaponModeSpecialPowerUpdateModuleData@@QAE@XZ evidence=N:ledger tier=B hypothesis:mm1-neighbour-class
-WeaponModeSpecialPowerUpdateModuleData::WeaponModeSpecialPowerUpdateModuleData() :
-	m_duration(0),
-	m_lockWeaponSlot((WeaponSlotType)5)
-{
-	m_weaponSetFlags.clear();
-}
-
 // FUNCTION: BFME2 0x00494D7C size=53 name=??1WeaponModeSpecialPowerUpdateModuleData@@UAE@XZ evidence=N:ledger tier=B hypothesis:name:invented
+WeaponModeSpecialPowerUpdateModuleData::~WeaponModeSpecialPowerUpdateModuleData()
+{
+}
