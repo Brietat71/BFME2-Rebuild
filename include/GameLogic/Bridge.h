@@ -48,11 +48,13 @@ typedef char BridgeInfo_size[(sizeof(BridgeInfo) == 0xA8) ? 1 : -1];
 
 class PolygonTrigger;
 class Vector3;
+struct Region2D;
 class Bridge
 {
 public:
 	virtual ~Bridge();							// slot 0, 0x00280C05 (deleting)
 	Bool isPointOnBridge(const Coord3D *pos);
+	Bool isCellOnEnd(const Region2D *cell);							// 0x0027C79C
 	Real getBridgeHeight(const Coord3D *pos, struct Coord3D *normal);	// 0x0027FD2A (the map spells the normal as a struct tag)
 	void updateDamageState();
 
