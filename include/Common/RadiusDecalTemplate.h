@@ -32,6 +32,7 @@ public:
 	RadiusDecalTemplate();
 	~RadiusDecalTemplate();
 
+	void assign(const RadiusDecalTemplate &that);	// 0x00330CDD
 	void xferRadiusDecalTemplate(Xfer *xfer);
 	void createRadiusDecal(const Coord3D &pos, Real radius, const Player *owningPlayer, RadiusDecal &result) const;
 

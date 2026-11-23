@@ -14,6 +14,8 @@
 #include "Common/PlayerList.h"
 #include "Common/INI/FieldParse.h"
 
+extern Real SECONDS_PER_CLIENTFRAME_REAL;
+
 // The bit names parseBitString32 reads for Style (VA 0x00DBE6F0): sixteen names
 // in bit order, then NULL.
 static const char *s_radiusDecalStyleNames[] =
@@ -47,6 +49,22 @@ static const FieldParse s_radiusDecalTemplateFieldParse[] =
 };
 
 // FUNCTION: BFME2 0x00330CDD size=97 name=?rva00330CDD@RadiusDecalTemplate@@QAEXABV1@@Z evidence=?:placeholder
+void RadiusDecalTemplate::assign(const RadiusDecalTemplate &that)
+{
+	m_style = that.m_style;
+	m_opacityMin = that.m_opacityMin;
+	m_opacityMax = that.m_opacityMax;
+	m_opacityThrobTime = that.m_opacityThrobTime;
+	m_color = that.m_color;
+	m_onlyVisibleToOwningPlayer = that.m_onlyVisibleToOwningPlayer;
+	m_texture = that.m_texture;
+	m_texture2 = that.m_texture2;
+	m_maxRadius = that.m_maxRadius;
+	m_minRadius = that.m_minRadius;
+	m_maxSelectedUnits = that.m_maxSelectedUnits;
+	m_rotationsPerMinute = that.m_rotationsPerMinute;
+	m_spiralAcceleration = that.m_spiralAcceleration;
+}
 
 // FUNCTION: BFME2 0x00330D3E size=83 name=?rva00330D3E@RadiusDecalTemplate@@QAEMI@Z evidence=?:placeholder
 
@@ -96,10 +114,19 @@ RadiusDecal::~RadiusDecal()
 }
 
 // FUNCTION: BFME2 0x00330E15 size=24 name=?Rva00330E15@RadiusDecal@@QAEXABUCoord3D@@@Z evidence=?:placeholder
+void RadiusDecal::setDirection(const Coord3D &direction)
+{
+	if (m_decal)
+		m_decal->m_direction = direction;
+}
 
 // FUNCTION: BFME2 0x00330E2D size=31 name=?rva00330E2D@Rva00330E2DFrameOpacity@@QAEXI@Z evidence=?:placeholder
 
 // FUNCTION: BFME2 0x00330E4C size=17 name=?rva00330E4C@@YAMM@Z evidence=?:placeholder
+Real convertDegreesPerSecondToRadiansPerClientFrame(Real degreesPerSecond)
+{
+	return SECONDS_PER_CLIENTFRAME_REAL * 0.017453292f * degreesPerSecond;
+}
 
 // FUNCTION: BFME2 0x00330E5D size=131 name=??0RadiusDecalTemplate@@QAE@XZ evidence=N:ledger
 RadiusDecalTemplate::RadiusDecalTemplate() :
