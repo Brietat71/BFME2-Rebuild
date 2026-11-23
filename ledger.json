@@ -5860,6 +5860,20 @@
    "kind": "trusted-narrow",
    "number": 351,
    "tree": "28412968f5fef8154f92ef2e51b5d107328f5691"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45285428883"
+   },
+   "author": 1760627,
+   "base": "f5338b58da737d9005b8f0df5d18d5439c92a8e1",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "ef2975630937eaac0d99f8c3dcb21cf0d31eed7a",
+   "kind": "trusted-narrow",
+   "number": 395,
+   "tree": "bfe1844a8854cf975fcb85fd12d0e9966a34cdc9"
   }
  ],
  "version": 2
