@@ -1698,7 +1698,7 @@ void ScriptEngine::adjustTimer(ScriptAction *pAction, Bool millisecondTimer, Boo
 // FUNCTION: BFME2 0x002096E2 size=102 name=?evaluateCondition@ScriptEngine@@IAE_NPAVCondition@@@Z evidence=N:ledger tier=A
 Bool ScriptEngine::evaluateCondition(Condition *pCondition)
 {
-	if ((pCondition->rva003B275A() & getGameModeMask()) == 0)
+	if ((getGameModeMask() & pCondition->rva003B275A()) == 0)
 		return false;
 
 	switch (pCondition->getConditionType()) {
