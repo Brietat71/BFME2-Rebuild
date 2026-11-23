@@ -58,6 +58,7 @@ public:
 	LivingWorldRegion *rva0020FAEA(float *pos, LivingWorldRegion *hint); // (LivingWorldArmy::getRegion 0x00318C32: the region at a position, given the last one)
 	LivingWorldRegion *rva0020EEF4(int id); // (LivingWorldLogic::getRegionByID 0x002B2579 forwards a non-zero id)
 	void EnumeratePendingBattles(PendingBattleVisitor &visitor) const;
+	void EnumerateCompletedBattles(PendingBattleVisitor *visitor); // 0x0020E7E8: the completed battle list, stopping when the visitor returns false
 
 private:
 	Int m_unk0x2C;
