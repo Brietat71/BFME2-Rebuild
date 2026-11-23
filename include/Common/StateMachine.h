@@ -177,6 +177,7 @@ public:
 	void setFlag(Bool flag) { m_flag = flag; }		// +0x3A (the constructor's Bool argument): AIChargeTargetState::onExit 0x0034BEC3 clears it in place
 	Bool isLocked() const { return m_locked; }
 	Object *getGoalObject();
+	UnsignedByte bfmeQuery932C();
 	Object *getSecondGoalObject();						// 0x004D7735: the object whose ID is at +0x34 (set by rva004D73AD/rva004D7427); the map files it under the placeholder class TurretStateMachine
 	Object *getOwner() const { return m_owner; }
 	StateID getCurrentStateID() const { return m_currentState ? m_currentState->getID() : INVALID_STATE_ID; }
