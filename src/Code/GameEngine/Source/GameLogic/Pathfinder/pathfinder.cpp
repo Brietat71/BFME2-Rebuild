@@ -329,15 +329,20 @@ Bool Pathfinder::IsPointOnRamp(const Coord3D *pos)
 	return false;
 }
 
+inline Int cellOfWorld(Real world)
+{
+	return Float_To_Long((float)PathfinderCRT::floor(world * 0.1f));
+}
+
 // FUNCTION: BFME2 0x002E75A3 size=304 name=?clip@Pathfinder@@QAEXPAVCoord3D@@0@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 void Pathfinder::clip(Coord3D *from, Coord3D *to)
 {
 	ICoord2D fromCell, toCell;
 	ICoord2D clipFromCell, clipToCell;
-	fromCell.x = Float_To_Long((float)PathfinderCRT::floor(from->x * 0.1f));
-	fromCell.y = Float_To_Long((float)PathfinderCRT::floor(from->y * 0.1f));
-	toCell.x = Float_To_Long((float)PathfinderCRT::floor(to->x * 0.1f));
-	toCell.y = Float_To_Long((float)PathfinderCRT::floor(to->y * 0.1f));
+	fromCell.x = cellOfWorld(from->x);
+	fromCell.y = cellOfWorld(from->y);
+	toCell.x = cellOfWorld(to->x);
+	toCell.y = cellOfWorld(to->y);
 	if (ClipLine2D(&fromCell, &toCell, &clipFromCell, &clipToCell, &m_extent))
 	{
 		if (fromCell.x != clipFromCell.x || fromCell.y != clipFromCell.y)
