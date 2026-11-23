@@ -503,32 +503,31 @@ void GameWindowTransitionsHandler::reverse(AsciiString groupName)
 	if (g)
 	{
 		if (m_currentGroup == g)
-		{
 			m_currentGroup->reverse();
-			return;
-		}
-		if (m_pendingGroup == g)
+		else if (m_pendingGroup == g)
 		{
 			m_pendingGroup->retire();
 			m_pendingGroup = NULL;
-			return;
 		}
-		if (m_currentGroup)
+		else
 		{
-			m_currentGroup->skip();
-			m_currentGroup->retire();
-		}
-		if (m_pendingGroup)
-		{
-			m_pendingGroup->skip();
-			m_pendingGroup->retire();
-			m_pendingGroup = NULL;
-		}
+			if (m_currentGroup)
+			{
+				m_currentGroup->skip();
+				m_currentGroup->retire();
+			}
+			if (m_pendingGroup)
+			{
+				m_pendingGroup->skip();
+				m_pendingGroup->retire();
+				m_pendingGroup = NULL;
+			}
 
-		m_currentGroup = g;
-		g->init();
-		m_currentGroup->skip();
-		m_currentGroup->reverse();
+			m_currentGroup = g;
+			g->init();
+			m_currentGroup->skip();
+			m_currentGroup->reverse();
+		}
 	}
 }
 
