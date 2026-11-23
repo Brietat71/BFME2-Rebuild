@@ -34,6 +34,9 @@ Int ObjectSMCHelper::framesUntilNext()
 }
 
 // FUNCTION: BFME2 0x004DE767 size=91 name=??1ObjectSMCHelper@@UAE@XZ evidence=N:ledger tier=B hypothesis:Z
+ObjectSMCHelper::~ObjectSMCHelper()
+{
+}
 
 // FUNCTION: BFME2 0x004DE7C2 size=157 name=?update@ObjectSMCHelper@@UAE?AW4UpdateSleepTime@@XZ evidence=N:ledger tier=B hypothesis:Z
 UpdateSleepTime ObjectSMCHelper::update()
@@ -61,6 +64,32 @@ UpdateSleepTime ObjectSMCHelper::update()
 }
 
 // FUNCTION: BFME2 0x004DE85F size=167 name=?setModelConditionState@ObjectSMCHelper@@QAEXW4ModelConditionFlagType@@I@Z evidence=N:ledger tier=B hypothesis:Z
+void ObjectSMCHelper::setModelConditionState(ModelConditionFlagType flag, UnsignedInt frames)
+{
+	if (flag < 0 || flag >= 0x24F)
+		return;
+	UnsignedInt now = TheGameLogic->getFrame();
+	_STL::list<Entry>::iterator it;
+	for (it = m_entries.begin(); it != m_entries.end(); ++it)
+	{
+		if (it->m_flag == flag)
+			break;
+	}
+	if (it != m_entries.end())
+	{
+		UnsignedInt endFrame = now + frames;
+		it->m_frame = _STL::max(it->m_frame, endFrame);
+	}
+	else
+	{
+		Entry entry;
+		entry.m_flag = flag;
+		entry.m_frame = now + frames;
+		m_entries.push_back(entry);
+		getObject()->setModelConditionState(flag);
+	}
+	setWakeFrame(getObject(), (UpdateSleepTime)framesUntilNext());
+}
 
 // FUNCTION: BFME2 0x004DE906 size=189 name=?xfer@ObjectSMCHelper@@MAEXPAVXfer@@@Z evidence=N:ledger tier=B hypothesis:Z
 void ObjectSMCHelper::xfer(Xfer *xfer)
