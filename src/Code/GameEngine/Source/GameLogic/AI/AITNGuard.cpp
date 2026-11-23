@@ -234,6 +234,82 @@ static Object *findBestTunnel(Player *player, const Coord3D *from)
 // FUNCTION: BFME2 0x00546001 size=417 name=??0AITNGuardMachine@@QAE@PAVObject@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x005461A2 size=395 name=?lookForInnerTarget@AITNGuardMachine@@QAE_NXZ evidence=N:ledger
+Bool AITNGuardMachine::lookForInnerTarget()
+{
+	Object *owner = getOwner();
+
+	// A team that shares one target hands it to every guard.
+	if (owner->getTeam()->getPrototype()->getTemplateInfo()->m_attackCommonTarget)
+	{
+		Object *teamVictim = owner->getTeam()->getTeamTargetObject();
+		if (teamVictim)
+		{
+			setNemesisID(teamVictim->getID());
+			return true;
+		}
+	}
+
+	Player *ownerPlayer = getOwner()->getControllingPlayer();
+	if (!ownerPlayer)
+		return false;
+	TunnelTracker *tunnels = ownerPlayer->m_tunnelSystem;
+	if (tunnels == NULL)
+		return false;
+	if (tunnels->getCurNemesis())
+	{
+		setNemesisID(tunnels->getCurNemesis()->getID());
+		return true;
+	}
+	std::list<ObjectID> &allTunnels = tunnels->m_tunnelIDs;
+	for (std::list<ObjectID>::iterator iter = allTunnels.begin(); iter != allTunnels.end(); iter++)
+	{
+		Object *currentTunnel = TheGameLogic->findObjectByID(*iter);
+		if (currentTunnel)
+		{
+			// A tunnel whose occupant is attacking an enemy.
+			if (currentTunnel->getAI())
+			{
+				Object *victim = currentTunnel->getAI()->getStateMachine()->getGoalObject();
+				if (owner->getRelationship(victim) == ENEMIES)
+				{
+					setNemesisID(victim->getID());
+					return true;
+				}
+			}
+			// A tunnel that was just damaged by an enemy.
+			BodyModuleInterface *body = currentTunnel->getBodyModule();
+			if (body)
+			{
+				const DamageInfo *info = body->getLastDamageInfo();
+				if (info)
+				{
+					if (info->out.m_noEffect)
+						continue;
+					if (body->getLastDamageTimestamp() + TheAI->getAiData()->m_guardEnemyScanRate > TheGameLogic->getFrame())
+					{
+						ObjectID attackerID = info->in.m_sourceID;
+						Object *attacker = TheGameLogic->findObjectByID(attackerID);
+						if (attacker)
+						{
+							if (owner->getRelationship(attacker) != ENEMIES)
+								continue;
+							CanAttackResult result = getOwner()->getAbleToAttackSpecificObject((AbleToAttackType)4, attacker, CMD_FROM_AI);
+							if (result == ATTACKRESULT_POSSIBLE || result == ATTACKRESULT_POSSIBLE_AFTER_MOVING)
+							{
+								setNemesisID(attackerID);
+								owner->getTeam()->setTeamTargetObject(attacker);
+								tunnels->updateNemesis(attacker);
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
 // FUNCTION: BFME2 0x0054632D size=156 name=?onEnter@AITNGuardInnerState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger
 StateReturnType AITNGuardInnerState::onEnter()
 {
