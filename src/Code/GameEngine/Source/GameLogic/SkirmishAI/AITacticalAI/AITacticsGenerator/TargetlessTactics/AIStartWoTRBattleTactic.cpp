@@ -52,7 +52,8 @@ void AIStartWoTRBattleTactic::run()
 		Rva002A8F24Record *record = TheSkirmishAIManager->rva002A8F24(m_player);
 		Coord3D target = brain->rva004EBF4B();
 		_STL::vector<ObjectID> &ids = record->m_owner->m_objects;
-		for (_STL::vector<ObjectID>::iterator it = ids.begin(); it != ids.end(); ++it)
+		_STL::vector<ObjectID>::iterator end = ids.end();
+		for (_STL::vector<ObjectID>::iterator it = ids.begin(); it != end; ++it)
 		{
 			Object *obj = TheGameLogic->findObjectByID(*it);
 			if (obj != 0 && !(obj->m_privateStatus & 1))
