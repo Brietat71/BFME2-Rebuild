@@ -21,6 +21,7 @@ public:
 struct RegionOwnershipTable {
 	unsigned char m_unk0x00[0x2C];
 	_STL::vector<LivingWorldRegion *> m_regions; // +0x2C
+	void rva0020F5B3(); // 0x0020F5B3 (the loadPostProcess tail; not written)
 };
 class LivingWorldRegionManager : public Snapshot, public LivingWorldTurnObserver
 {
@@ -49,6 +50,7 @@ public:
 	LivingWorldRegion *rva0020EAF6(int index); // (LivingWorldLogic::getBattleRegion 0x002B2B2D passes the battle region index)
 	void UpdateBattleMarkers();
 	void SetRegionReinforcements(Int regionIndex, Int a, Int b, Int c, Int d, Int e, Int f); // 0x0020EEC8
+	void rva0020F483(); // 0x0020F483: part of loadPostProcess (not written)
 	void rva0020F685(); // 0x0020F685: frees the entries of the two battle lists (not written)
 	LivingWorldRegion *rva0020FAEA(float *pos, LivingWorldRegion *hint); // (LivingWorldArmy::getRegion 0x00318C32: the region at a position, given the last one)
 	LivingWorldRegion *rva0020EEF4(int id); // (LivingWorldLogic::getRegionByID 0x002B2579 forwards a non-zero id)

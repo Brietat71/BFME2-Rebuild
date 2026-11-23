@@ -284,6 +284,13 @@ void LivingWorldRegionManager::OnTurnEnding(Int turn, Int arg)
 // FUNCTION: BFME2 0x00210202 size=200 name=?xfer@LivingWorldRegionManager@@UAEXPAVXfer@@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x002102CA size=68 name=?loadPostProcess@LivingWorldRegionManager@@UAEXXZ evidence=N:ledger tier=A
+void LivingWorldRegionManager::loadPostProcess()
+{
+	for (unsigned int i = 0; i < m_table->m_regions.size(); ++i)
+		m_table->m_regions[i]->loadPostProcess();
+	rva0020F483();
+	m_table->rva0020F5B3();
+}
 
 // FUNCTION: BFME2 0x00210390 size=38 name=?rva00210390@Rva00210390@@QAEPAXPBVAsciiString@@@Z evidence=?:placeholder tier=A
 
