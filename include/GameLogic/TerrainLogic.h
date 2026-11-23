@@ -143,6 +143,7 @@ public:
 	void rva0027D1A4(const Coord3D *pos, float radius, int arg);	// 0x0027D1A4
 	PathfindLayerEnum getHighestLayerForDestination(const Coord3D *, bool = false);
 	PathfindLayerEnum getLayerForDestination(Object *obj, const Coord3D *pos);
+	Int getPartitionBucket(Real *pos);				// 0x0027D0D6 (the 50 x 50 grid cell over the extent including its border that holds pos)
 	void deleteBridges();							// 0x0027D5AD (frees the bridge list; Zero Hour's name)
 	Bool isBridgeRepaired(const Object *bridge);	// 0x0027D40B
 	Bool isBridgeBroken(const Object *bridge);	// 0x0027D447

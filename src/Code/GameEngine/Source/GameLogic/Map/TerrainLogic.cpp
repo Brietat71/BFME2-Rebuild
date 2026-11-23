@@ -17,6 +17,9 @@
 #include "GameLogic/GameLogic.h"
 #include "GameLogic/Object.h"
 #include "GameClient/TerrainRoadType.h"
+#include <math.h>
+#include "Common/Region3D.h"
+#include "WWMath/FloatToLong.h"
 
 // The singleton (retail VA 0x00DFEC50).
 TerrainLogic *TheTerrainLogic = NULL;
@@ -56,6 +59,29 @@ Real TerrainLogic::getLayerHeight(Real x, Real y, PathfindLayerEnum layer, Coord
 // FUNCTION: BFME2 0x0027D098 size=62 name=?rva0027D098@Rva0027D098@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0027D0D6 size=206 name=?getPartitionBucket@TerrainLogic@@QAEHPAM@Z evidence=N:ledger tier=A
+Int TerrainLogic::getPartitionBucket(Real *pos)
+{
+	Real x = pos[0];
+	Real y = pos[1];
+
+	Region3D extent;
+	getExtentIncludingBorder(&extent);
+
+	if (x < extent.lo.x)
+		x = extent.lo.x;
+	if (y < extent.lo.y)
+		y = extent.lo.y;
+	if (x > extent.hi.x)
+		x = extent.hi.x;
+	if (y > extent.hi.y)
+		y = extent.hi.y;
+
+	Real column = (Real)floor((x - extent.lo.x) / (extent.hi.x - extent.lo.x) * 49.9f);
+	Int columnIndex = Float_To_Long(column);
+	Real row = (Real)floor((y - extent.lo.y) / (extent.hi.y - extent.lo.y) * 49.9f);
+	Int rowIndex = Float_To_Long(row);
+	return rowIndex * 50 + columnIndex;
+}
 
 // FUNCTION: BFME2 0x0027D1A4 size=34 name=?rva0027D1A4@TerrainLogic@@QAEXPBVCoord3D@@MH@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 
