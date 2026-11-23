@@ -29,6 +29,4 @@ public:
 	_STL::vector<RankInfo *> m_rankInfos;					// +0xC
 };
 
-extern RankInfoStore *TheRankInfoStore;
-
 #endif

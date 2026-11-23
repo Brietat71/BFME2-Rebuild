@@ -14,6 +14,8 @@
 #include "Common/INI/FieldParse.h"
 #include "Common/INIException.h"
 
+extern RankInfoStore *TheRankInfoStore;
+
 // FUNCTION: BFME2 0x002000A4 size=51 name=?rva002000A4@RankInfoStore@@UAEXXZ evidence=?:placeholder tier=B hypothesis:name:Z
 void RankInfoStore::reset()
 {
