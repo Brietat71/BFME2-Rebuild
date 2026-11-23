@@ -113,8 +113,8 @@ public:
 	AsciiString m_unk0x9E8;                        // +0x9E8; xfer AsciiString
 	// The two new slots of this class's 34-slot table 0x00C48AA0 (HordeGarrisonContain's has 32): the shared `ret 4`
 	// 0x0047A69C and `mov al,1; ret 4` 0x005CB9FA bodies; CitadelSlaughterHordeContain overrides both.
-	virtual void slaughterSlot32(Object *obj) {}	// slot 32
-	virtual Bool slaughterSlot33(Object *obj) { return true; }	// slot 33
+	virtual void rva00480E9A(Object *obj) {}	// slot 32 (the ledger spells the Citadel override rva00480E9A)
+	virtual Bool rva004807C7(Object *obj) { return true; }	// slot 33 (the ledger spells the Citadel override rva004807C7)
 
 protected:
 	virtual Bool containSlot12() { return true; }
