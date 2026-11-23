@@ -3078,6 +3078,20 @@
    "kind": "narrow",
    "number": 44,
    "tree": "2d636a488c20a6c9deab0695ff811fa9866c1475"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45202015220"
+   },
+   "author": 44365026,
+   "base": "f032c52ffb9fd650a3ad5e48999c5a56c85eb0e8",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "61003dd684fec23b80737233c5f69b791133d228",
+   "kind": "wide",
+   "number": 49,
+   "tree": "ecb8bb939d74ffecd3a46eb6b028fd4d6a50be21"
   }
  ],
  "version": 2
