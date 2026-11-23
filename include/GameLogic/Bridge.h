@@ -64,7 +64,7 @@ public:
 	void setTowerObjectID(ObjectID id, Int which) { m_bridgeInfo.towerObjectID[which] = id; }
 
 	Bridge *m_next;								// +0x04
-	unsigned char m_unk0x08[4];					// +0x08
+	AsciiString m_templateName;					// +0x08 the bridge template name (getBridgeTemplateName 0x000AF1DD returns it; the destructor 0x0027FBAC releases it)
 	BridgeInfo m_bridgeInfo;					// +0x0C
 	Real m_boundsLoX;							// +0xB4 the 2D bounds isPointOnBridge tests first (lo x, lo y, hi x, hi y)
 	Real m_boundsLoY;							// +0xB8

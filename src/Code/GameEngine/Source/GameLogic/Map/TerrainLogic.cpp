@@ -132,6 +132,40 @@ Bool TerrainLogic::isBridgeBroken(const Object *bridge)
 }
 
 // FUNCTION: BFME2 0x0027D483 size=298 name=?getBridgeAttackPoints@TerrainLogic@@QAEXPBVObject@@PAUTBridgeAttackInfo@@@Z evidence=N:ledger tier=A
+void TerrainLogic::getBridgeAttackPoints(const Object *bridge, TBridgeAttackInfo *attackInfo)
+{
+	ObjectID id = bridge->getID();
+	Bridge *pBridge = getFirstBridge();
+	while (pBridge)
+	{
+		const BridgeInfo *info = pBridge->peekBridgeInfo();
+		if (info->bridgeObjectID == id)
+		{
+			Coord3D delta;
+			delta.x = info->to.x - info->from.x;
+			delta.y = info->to.y - info->from.y;
+			delta.z = info->to.z - info->from.z;
+			delta.normalize();
+			Coord3D width;
+			width.x = info->fromRight.x - info->fromLeft.x;
+			width.y = info->fromRight.y - info->fromLeft.y;
+			width.z = info->fromRight.z - info->fromLeft.z;
+			Real len = width.length();
+			len /= 2.0f;
+			attackInfo->attackPoint1.x = info->from.x + delta.x * len;
+			attackInfo->attackPoint1.y = info->from.y + delta.y * len;
+			attackInfo->attackPoint1.z = info->from.z + delta.z * len;
+
+			attackInfo->attackPoint2.x = info->to.x - delta.x * len;
+			attackInfo->attackPoint2.y = info->to.y - delta.y * len;
+			attackInfo->attackPoint2.z = info->to.z - delta.z * len;
+			return;
+		}
+		pBridge = pBridge->getNext();
+	}
+	attackInfo->attackPoint1 = *bridge->getPosition();
+	attackInfo->attackPoint2 = *bridge->getPosition();
+}
 
 // FUNCTION: BFME2 0x0027D5AD size=51 name=?deleteBridges@TerrainLogic@@IAEXXZ evidence=N:ledger tier=A
 void TerrainLogic::deleteBridges()
@@ -338,6 +372,14 @@ AsciiString Waypoint::getPathLabel3() const
 // FUNCTION: BFME2 0x0027F882 size=810 name=??0Bridge@@QAE@AAVRva0027C36A@@PAVDict@@ABVAsciiString@@PAVPolygonTrigger@@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0027FBAC size=82 name=??1Bridge@@UAE@XZ evidence=N:ledger tier=A
+Bridge::~Bridge()
+{
+	if (m_polygonTrigger)
+	{
+		::delete m_polygonTrigger;
+		m_polygonTrigger = NULL;
+	}
+}
 
 // FUNCTION: BFME2 0x0027FBFE size=300 name=?pickBridge@Bridge@@QAE_NABVVector3@@0PAV2@@Z evidence=N:ledger tier=A
 
