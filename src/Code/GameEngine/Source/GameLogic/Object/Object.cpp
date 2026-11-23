@@ -1905,17 +1905,6 @@ void Object::forceEmotion(Int index, Real value, Int flag)
 // FUNCTION: BFME2 0x0028EFB8 size=780 name=?rva0028EFB8@Object@@QBEMPBVCoord3D@@PBV1@0@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 
 // FUNCTION: BFME2 0x0028F2C4 size=34 name=?rva0028F2C4@Object@@QBEPAVBehaviorModule@@H@Z evidence=?:placeholder tier=A
-BehaviorModule *Object::rva0028F2C4(int key) const
-{
-	BehaviorModule **it = m_behaviors;
-	for (; *it; ++it)
-	{
-		BehaviorModule *module = *it;
-		if (key == module->getModuleTagNameKey())
-			return module;
-	}
-	return 0;
-}
 // FUNCTION: BFME2 0x0028F2E6 size=18 name=?rva0028F2E6@Rva0028A638@@QBEHXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0028F2F8 size=46 name=?getDisplayName@Object@@QAEPAXXZ evidence=N:ledger tier=A
