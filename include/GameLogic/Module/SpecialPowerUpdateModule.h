@@ -40,6 +40,8 @@ class Xfer;
 class SpecialPowerUpdateModuleData : public ModuleData
 {
 public:
+	SpecialPowerUpdateModuleData();
+	virtual ~SpecialPowerUpdateModuleData();
 	static void buildFieldParse(MultiIniFieldParse &parse);		// 0x005890ED (the map's Rva005890EDBase)
 
 	const SpecialPowerTemplate *m_specialPowerTemplate;			// 0x08 SpecialPowerTemplate (the interface's template getter reads data+0x8)
