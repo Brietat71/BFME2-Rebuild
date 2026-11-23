@@ -39,6 +39,9 @@ void removeRiderVisitor(Object *rider, void *userData)
 }
 
 // FUNCTION: BFME2 0x0047DB00 size=67 name=??1TunnelContain@@UAE@XZ evidence=N:ledger tier=A
+TunnelContain::~TunnelContain()
+{
+}
 
 // FUNCTION: BFME2 0x0047DB43 size=69 name=?getModuleNameKey@TunnelContain@@UBE?AW4NameKeyType@@XZ evidence=N:ledger tier=A
 NameKeyType TunnelContain::getModuleNameKey() const
@@ -102,6 +105,11 @@ void TunnelContain::iterateContained(ContainIterateFunc func, void *userData, Un
 }
 
 // FUNCTION: BFME2 0x0047DD0F size=30 name=?rva0047DD0F@TunnelContain@@UAE?AVRva0036AE51ListView@@XZ evidence=?:placeholder tier=A
+ContainmentListView TunnelContain::tunnelSlot33()
+{
+	Player *player = getObject()->getControllingPlayer();
+	return player->m_tunnelSystem->getContainedItemsList();
+}
 
 // FUNCTION: BFME2 0x0047DD2D size=117 name=?onRemoving@TunnelContain@@UAEXPAVObject@@@Z evidence=N:ledger tier=A
 void TunnelContain::onRemoving(Object *obj)
