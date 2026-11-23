@@ -65,6 +65,35 @@ work, read the current evidence and interpret a hosted report with a plain
 checkout. Keep local binary comparisons, disassembly and object files in
 your own reference environment.
 
+## Quick local toolchain download (Windows & Linux)
+
+Contributors and coding agents can bootstrap the exact pinned Visual C++ 7.1
+(`13.10.3077`) compiler and support headers outside this Git checkout with one
+command:
+
+```sh
+python3 tools/setup_local_toolchain.py
+```
+
+The script sparse-fetches only the required subtrees into
+`~/.cache/bfme2-judge/toolchains/` (never inside this repository) and verifies
+`cl.exe` against its pinned SHA-256 (`2ecf86a3edfd3deae498e08298e210e984537ce9e11759930561e43f40bd2515`):
+
+- **MSVC 7.1 (`13.10.3077`) compiler & Platform SDK:**
+  [`Open-BFME/Open-BFME-1`](https://github.com/Open-BFME/Open-BFME-1/tree/946f3c05a1b1e60448734e874a8f47f8017cfdb9/inputs/toolchains/vs2003)
+  at commit `946f3c05a1b1e60448734e874a8f47f8017cfdb9` (`inputs/toolchains/vs2003`).
+- **STLport 4.6, overlays, DirectX 9 SDK (Aug 2005) & shims:**
+  [`Open-BFME/Open-BFME-2`](https://github.com/Open-BFME/Open-BFME-2/tree/39cdd2ca5c409c01b9c08d5dae7b3835c59a8b25)
+  at commit `39cdd2ca5c409c01b9c08d5dae7b3835c59a8b25` (`tools`, `vendor/stlport*`,
+  `vendor/dxsdk-aug2005`, `reference/shims`).
+
+It writes `toolchain.json`, `toolchain-env.sh`, and `toolchain-env.ps1` under
+`~/.cache/bfme2-judge/` (override with `--state-dir`). Pass `--vc71-root` or
+`--runner-root` to reuse an existing local checkout, or `--json` for
+machine-readable paths. On Windows you can dot-source `toolchain-env.ps1` to
+compile `.cpp` files directly with native `cl.exe`; on Linux + Wine, source
+`toolchain-env.sh` before running `tools/judge/bin/judge.py` below.
+
 ## Run the packaged judge locally
 
 The [judge source](judge/bin/judge.py) works with a committed revision and

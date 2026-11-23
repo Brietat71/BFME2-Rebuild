@@ -9,8 +9,12 @@ agent reads by itself; this page is for you, and for the agent to read once.
   On Windows, clone with `-c core.longpaths=true`: some reference paths are long.
 - `objdump` from binutils, to read the original program. Any disassembler
   that opens a 32-bit Windows program will do.
-- No compiler, no Wine and no copy of the game. The checks compile on the
-  project's machines and tell the agent what happened.
+- No compiler, no Wine and no copy of the game are required: hosted Boat
+  compiles on the project's machines and reports verdicts. If you want fast
+  local byte-exact pre-checks before pushing, run
+  `python3 tools/setup_local_toolchain.py` to sparse-fetch the pinned VC7.1
+  (`13.10.3077`) compiler and STLport/SDK headers into `~/.cache/bfme2-judge/`
+  (see [tools/README.md](../tools/README.md)).
 
 ## The loop
 
