@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=1ba2c4209b left_out_written=44
+# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=c6e384baec left_out_written=45
 referrers	state	rva	file	symbol	first_referrer	body_check
 63	owned:MISSING	0x00253390	src/unk/O0024EEBB.cpp	??0UpdateModule@@QAE@PAVThing@@PBVModuleData@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp	none-found
 17	owned:MISSING	0x0004233A	src/unk/G000421F2.cpp	?Inv_Sqrt@WWMath@@SIMM@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowMapManager.cpp	none-found
@@ -1402,7 +1402,6 @@ referrers	state	rva	file	symbol	first_referrer	body_check
 1	owned:MISSING	0x004BBA65	src/unk/O004BBA65.cpp	?onCollide@SquishCollide@@UAEXPAVObject@@PBVCoord3D@@1@Z	src/Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp	none-found
 1	owned:MATCH	0x004BBEFD	src/unk/O004BBEDD.cpp	?GetSnapshotName@AODCrushCollide@@UBEPBDXZ	src/unk/O004BBEDD.cpp	none-found
 1	owned:MISSING	0x004BC0B8	src/unk/G004BC0B8.cpp	?onCollide@AODCrushCollide@@UAEXPAVObject@@PBVCoord3D@@1@Z	src/unk/O004BBEDD.cpp	none-found
-1	owned:MISSING	0x004BC2E6	src/unk/G004BC0B8.cpp	?update@AODCrushCollide@@UAE?AW4UpdateSleepTime@@XZ	src/unk/O004BBEDD.cpp	none-found
 1	owned:MISSING	0x004BC3CF	src/unk/G004BC3CF.cpp	?onCollide@HordeMemberCollide@@UAEXPAVObject@@PBVCoord3D@@1@Z	src/unk/O004BC325.cpp	none-found
 1	owned:MISSING	0x004BD8A2	src/Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp	?getGrabOffset@InactiveBody@@UAE?AVCoord2D@@XZ	src/Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp	none-found
 1	owned:MISSING	0x004C0AF1	src/Code/GameEngine/Source/GameLogic/Object/Body/SymbioticStructureBody.cpp	??0SymbioticStructuresBody@@QAE@PAVThing@@PBVModuleData@@@Z	src/unk/O0024EEBB.cpp	none-found
