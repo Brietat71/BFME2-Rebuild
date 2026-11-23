@@ -478,6 +478,62 @@ void MessageStream::propagateMessages(void)
 }
 
 // FUNCTION: BFME2 0x00311097 size=379 name=??0GameMessage@@QAE@ABV0@@Z evidence=N:ledger
+GameMessage::GameMessage(const GameMessage &source)
+{
+	m_playerIndex = source.m_playerIndex;
+	m_type = source.m_type;
+	m_argList = 0;
+	m_argTail = 0;
+	m_argCount = 0;
+	m_list = 0;
+	m_next = 0;
+	m_prev = 0;
+	for (Int i = 0; i < source.getArgumentCount(); ++i)
+	{
+		switch (const_cast<GameMessage &>(source).getArgumentDataType(i))
+		{
+		case ARGUMENTDATATYPE_INTEGER:
+			appendIntegerArgument(source.getArgument(i)->integer);
+			break;
+		case ARGUMENTDATATYPE_REAL:
+			appendRealArgument(source.getArgument(i)->real);
+			break;
+		case ARGUMENTDATATYPE_BOOLEAN:
+			appendBooleanArgument(source.getArgument(i)->boolean);
+			break;
+		case ARGUMENTDATATYPE_OBJECTID:
+			appendObjectIDArgument(source.getArgument(i)->objectID);
+			break;
+		case ARGUMENTDATATYPE_DRAWABLEID:
+			appendDrawableIDArgument(source.getArgument(i)->drawableID);
+			break;
+		case ARGUMENTDATATYPE_TEAMID:
+			appendTeamIDArgument(source.getArgument(i)->teamID);
+			break;
+		case ARGUMENTDATATYPE_LOCATION:
+		{
+			Coord3D location = source.getArgument(i)->location;
+			appendLocationArgument(location);
+			break;
+		}
+		case ARGUMENTDATATYPE_PIXEL:
+		{
+			ICoord2D pixel = source.getArgument(i)->pixel;
+			appendPixelArgument(pixel);
+			break;
+		}
+		case ARGUMENTDATATYPE_PIXELREGION:
+			appendPixelRegionArgument(source.getArgument(i)->pixelRegion);
+			break;
+		case ARGUMENTDATATYPE_TIMESTAMP:
+			appendTimestampArgument(source.getArgument(i)->timestamp);
+			break;
+		case ARGUMENTDATATYPE_WIDECHAR:
+			appendWideCharArgument(source.getArgument(i)->wChar);
+			break;
+		}
+	}
+}
 
 
 // FUNCTION: BFME2 0x0031123E size=371 name=?rva0031123E@GameMessage@@QAEXABV1@@Z evidence=?:placeholder
