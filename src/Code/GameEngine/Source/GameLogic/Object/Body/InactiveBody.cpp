@@ -7,6 +7,7 @@
 // Hypothesis rules: hypothesis:K, hypothesis:cohesion, hypothesis:name:Z
 #include "GameLogic/Module/InactiveBody.h"
 #include "Common/NameKeyGenerator.h"
+#include "Common/Coord2D.h"
 #include "Common/Xfer.h"
 #include "GameLogic/Damage.h"
 #include "GameLogic/Object.h"
