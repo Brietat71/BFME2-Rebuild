@@ -44,6 +44,9 @@ extern "C" {
 LuaScriptEngine *TheLuaScriptEngine = 0;
 }
 extern "C" void bfmeGo1039E(lua_State *L, int b);
+void bfmeLogMsg574(const char *message);
+struct LuaAr;
+int Rva00333CD1Console(lua_State *state, LuaAr *ar);
 
 extern FileSystem *TheFileSystem;
 
@@ -54,7 +57,34 @@ extern FileSystem *TheFileSystem;
 // FUNCTION: BFME2 0x00332B7A size=256 name=?InitializeInternalEvents@LuaScriptEngine@@QAEXXZ evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x00332C7A size=117 name=?ProcessInternalEvent@LuaScriptEngine@@QAEXPAVXmlNameSlotList@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x00332CFB size=46 name=?GetFrame@@YAHPAUlua_State@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
+int GetFrame(lua_State *state)
+{
+	lua_pushnumber(state, TheGameLogic->getFrame());
+	return 1;
+}
 // FUNCTION: BFME2 0x00332D29 size=76 name=?CurDrawableGetCurrentTargetHeight@@YAHPAUlua_State@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
+int CurDrawableGetCurrentTargetHeight(lua_State *state)
+{
+	LuaDrawableLink *drawable = TheLuaScriptEngine->m_drawable;
+	if (drawable != 0) {
+		Drawable *owner = drawable->m_drawable;
+		if (owner != 0) {
+			if (owner->m_object != 0) {
+				lua_pushnumber(state, owner->m_object->m_currentTargetPosition.z - owner->m_object->getPosition()->z);
+			}
+			else {
+				lua_pushnil(state);
+			}
+		}
+		else {
+			lua_pushnil(state);
+		}
+	}
+	else {
+		lua_pushnil(state);
+	}
+	return 1;
+}
 // FUNCTION: BFME2 0x00332D75 size=103 name=?GetClientRandomNumberReal@@YAHPAUlua_State@@@Z evidence=N:ledger
 int GetClientRandomNumberReal(lua_State *state)
 {
@@ -313,8 +343,18 @@ bool Rva003336ADGet(bool flag, const char *name)
 }
 
 // FUNCTION: BFME2 0x00333722 size=25 name=?CurDrawableHideModule@@YAHPAX@Z evidence=N:ledger
+int CurDrawableHideModule(void *state)
+{
+	Rva003336ADGet(true, lua_tostring(static_cast<lua_State *>(state), 1));
+	return 0;
+}
 
 // FUNCTION: BFME2 0x0033373B size=25 name=?CurDrawableShowModule@@YAHPAX@Z evidence=N:ledger
+int CurDrawableShowModule(void *state)
+{
+	Rva003336ADGet(false, lua_tostring(static_cast<lua_State *>(state), 1));
+	return 0;
+}
 
 // FUNCTION: BFME2 0x00333754 size=108 name=?CurDrawablePrevAnimationState@@YAHPAUlua_State@@@Z evidence=N:ledger
 int CurDrawablePrevAnimationState(lua_State *state)
@@ -368,6 +408,11 @@ template Bool BitFlags<101>::rva003339CE(const char *token, Bool *sawName, Bool 
 // FUNCTION: BFME2 0x00333CD1 size=369 name=?Rva00333CD1Console@@YAHPAXPAULuaAr@@@Z evidence=?:placeholder
 
 // FUNCTION: BFME2 0x00333E42 size=25 name=_io_debug evidence=N:ledger
+extern "C" int io_debug(lua_State *state)
+{
+	bfmeLogMsg574("\nEntering LUA debug mode.  Type ? for help, 'cont' to exit debug mode\n");
+	return Rva00333CD1Console(state, 0);
+}
 
 // FUNCTION: BFME2 0x00333E5B size=220 name=?rva00333E5B@LuaDrawableState@@QAEXPAVObject@@@Z evidence=?:placeholder
 
