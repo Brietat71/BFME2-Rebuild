@@ -135,7 +135,7 @@ void BeaconClientUpdate::hideBeacon()
 
 	if (m_particleSystemID != 0)
 	{
-		ParticleSystemHandle found = TheParticleSystemManager->findParticleSystemByID(m_particleSystemID);
+		ParticleSystemHandle found = TheParticleSystemManager->findParticleSystemByID((ParticleSystemID)m_particleSystemID);
 		if (found)
 			found->stop();
 	}
