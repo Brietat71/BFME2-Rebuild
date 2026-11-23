@@ -87,16 +87,16 @@ void RankInfoStore::friend_parseRankDefinition(INI *ini)
 			if (rank < 1 || rank > TheRankInfoStore->m_rankInfos.size())
 				throw INIException(3, "Rank not found in map.ini");
 
-			RankInfo *info = TheRankInfoStore->m_rankInfos[rank - 1];
+			Overridable *info = TheRankInfoStore->m_rankInfos[rank - 1];
 			if (!info)
 				throw INIException(3, "Rank not found in map.ini");
 
 			RankInfo *newInfo = new RankInfo;
 
 			// The new override starts as a copy of the final override.
-			Overridable *finalOverride = info->friend_getFinalOverride();
-			*newInfo = static_cast<RankInfo &>(*finalOverride);
-			finalOverride->setNextOverride(newInfo);
+			info = info->friend_getFinalOverride();
+			*newInfo = static_cast<RankInfo &>(*info);
+			info->setNextOverride(newInfo);
 			newInfo->markAsOverride();
 
 			ini->initFromINI(newInfo, myFieldParse);
