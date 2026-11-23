@@ -1,4 +1,4 @@
-# measured_utc=2026-11-23T11:12:41Z revision=aa022f4921 finished_files=532
+# measured_utc=2026-11-23T12:02:41Z revision=d910812ef9 finished_files=534
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -1058,8 +1058,6 @@ src/unk/G00661300.cpp	1	1	15	0	address-named	0
 src/unk/G000633D5.cpp	1	1	16	0	address-named	0
 src/unk/G0037DC52.cpp	1	1	16	0	address-named	0
 src/unk/G004210A0.cpp	1	1	16	0	address-named	0
-src/unk/O0004CB06.cpp	1	1	16	0	address-named	0
-src/unk/O00140C50.cpp	1	1	16	0	address-named	0
 src/unk/O0059E2FD.cpp	1	1	16	0	address-named	0
 src/unk/G0009DBF4.cpp	1	1	17	0	address-named	0
 src/unk/G001B49B3.cpp	1	1	17	0	address-named	0

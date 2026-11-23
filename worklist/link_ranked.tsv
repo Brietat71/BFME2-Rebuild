@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=aa022f4921 left_out_written=46
+# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=d910812ef9 left_out_written=46
 referrers	state	rva	file	symbol	first_referrer	body_check
 63	owned:MISSING	0x00253390	src/unk/O0024EEBB.cpp	??0UpdateModule@@QAE@PAVThing@@PBVModuleData@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp	none-found
 17	owned:MISSING	0x0004233A	src/unk/G000421F2.cpp	?Inv_Sqrt@WWMath@@SIMM@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowMapManager.cpp	none-found

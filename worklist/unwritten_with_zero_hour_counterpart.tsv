@@ -1,4 +1,4 @@
-# measured_utc=2026-11-21T08:51:16Z revision=3c9a31dc201b3cf9bc7c4554c387e9f633d96c7e body_checked_against=aa022f4921 left_out_written=16
+# measured_utc=2026-11-21T08:51:16Z revision=3c9a31dc201b3cf9bc7c4554c387e9f633d96c7e body_checked_against=d910812ef9 left_out_written=18
 rva	function	owner_file	size_bytes	zero_hour_file	zero_hour_line	zero_hour_function	reference_kind	link_referrers	ready_at_snapshot	body_check
 0x000EFB4C	RenderObjClass::Set_Native_Screen_Size	src/unk/O000EFB3E.cpp	14	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/rendobj.h	489	RenderObjClass::Set_Native_Screen_Size	decl	0	no	none-found
 0x003EFCA4	RenderObjClass::Get_Render_Hook	src/unk/O003EFCA4.cpp	7	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/rendobj.h	512	RenderObjClass::Get_Render_Hook	decl	0	no	none-found
@@ -434,8 +434,6 @@ rva	function	owner_file	size_bytes	zero_hour_file	zero_hour_line	zero_hour_funct
 0x0007E561	AABoxClass::Init_Min_Max	src/unk/O0007E535.cpp	128	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath/aabox.h	339	AABoxClass::Init_Min_Max	def	0	no	none-found
 0x007236F0	AABoxClass::Project_To_Axis	src/unk/O007236F0.cpp	68	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath/aabox.h	437	AABoxClass::Project_To_Axis	def	0	no	none-found
 0x001340B0	CameraClass::Update_Frustum	src/Code/Libraries/Source/WWVegas/WW3D2/camera.cpp	1434	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/camera.cpp	599	CameraClass::Update_Frustum	def	1	yes	none-found
-0x0004CB06	CameraClass::Get_Frustum	src/unk/O0004CB06.cpp	16	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/camera.h	214	CameraClass::Get_Frustum	decl	0	no	none-found
-0x00140C50	CameraClass::Get_Frustum_Corners	src/unk/O00140C50.cpp	16	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/camera.h	216	CameraClass::Get_Frustum_Corners	decl	0	no	none-found
 0x001AB670	ParticleBufferClass::Update_Non_New_Particles	src/Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp	3923	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp	2966	ParticleBufferClass::Update_Non_New_Particles	def	1	yes	none-found
 0x001A7AD0	ParticleBufferClass::Set_Texture	src/Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp	52	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp	3524	ParticleBufferClass::Set_Texture	def	0	yes	none-found
 0x001AD1B0	ParticleBufferClass::ParticleBufferClass	src/Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp	4768	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/part_buf.h	91	ParticleBufferClass::ParticleBufferClass	decl	1	no	none-found
