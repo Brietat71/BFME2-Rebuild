@@ -2950,15 +2950,14 @@ void AIFollowPathState::onExit(StateExitType status)
 {
 	AIInternalMoveToState::onExit(status);
 	AIUpdateInterface *ai = getMachine()->getOwner()->getAI();
-	if (ai != NULL)
-	{
-		ai->setCanPathThroughUnits(false);
-		ai->ignoreObstacle(NULL);
-		Locomotor *locomotor = ai->m_curLocomotor;
-		if (locomotor != NULL)
-			locomotor->m_flags &= ~8;
-		ai->m_unk0x194 = -1;
-	}
+	if (ai == NULL)
+		return;
+	ai->setCanPathThroughUnits(false);
+	ai->ignoreObstacle(NULL);
+	Locomotor *locomotor = ai->m_curLocomotor;
+	if (locomotor != NULL)
+		locomotor->m_flags &= ~8;
+	ai->m_unk0x194 = -1;
 	Object *owner = getMachine()->getOwner();
 	if (!owner->getTemplate()->isKindOf0x115())
 		owner->setStatus((ObjectStatusTypes)0x5A, false);
