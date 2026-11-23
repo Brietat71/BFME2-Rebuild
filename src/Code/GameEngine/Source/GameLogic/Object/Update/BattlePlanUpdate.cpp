@@ -344,7 +344,8 @@ BattlePlanUpdate::BattlePlanUpdate(Thing *thing, const ModuleData *moduleData) :
 // FUNCTION: BFME2 0x00497FF3 size=1241 name=?setStatus@BattlePlanUpdate@@IAEXW4TransitionStatus@@@Z evidence=N:ledger tier=A
 void BattlePlanUpdate::setStatus(TransitionStatus newStatus)
 {
-	const BattlePlanUpdateModuleData *data = (const BattlePlanUpdateModuleData *)getModuleData();
+	const ModuleData *moduleData = getModuleData();
+	const BattlePlanUpdateModuleData *data = (const BattlePlanUpdateModuleData *)moduleData;
 	Object *obj = m_object;
 	if (m_status == newStatus)
 		return;
