@@ -115,8 +115,8 @@ void FontCharsClass::Create_GDI_Font(const char *face)
 		generals = true;
 	}
 
-	float fontWidth = 0.0f;
 	float pointSize = PointSize;
+	float fontWidth = 0.0f;
 	if (generals)
 		fontWidth = pointSize * 0.4f;
 
@@ -129,8 +129,8 @@ void FontCharsClass::Create_GDI_Font(const char *face)
 	int weight = IsBold ? FW_BOLD : FW_NORMAL;
 	float heightValue = Grid * pointSize + 0.5f;
 	float widthValue = Grid * fontWidth + 0.5f;
-	float scaledHeight = floor(heightValue);
 	float scaledWidth = floor(widthValue);
+	float scaledHeight = floor(heightValue);
 	GDIFont = CreateFontA(-(int)scaledHeight, (int)scaledWidth, 0, 0, weight, 0, FALSE, FALSE, DEFAULT_CHARSET,
 		OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, 0, face);
 
