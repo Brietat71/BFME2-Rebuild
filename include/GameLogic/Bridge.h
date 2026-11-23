@@ -53,6 +53,7 @@ class Bridge
 public:
 	virtual ~Bridge();							// slot 0, 0x00280C05 (deleting)
 	Bool isPointOnBridge(const Coord3D *pos);
+	Real getBridgeHeight(const Coord3D *pos, struct Coord3D *normal);	// 0x0027FD2A (the map spells the normal as a struct tag)
 	void updateDamageState();
 
 	Bridge *getNext() const { return m_next; }
