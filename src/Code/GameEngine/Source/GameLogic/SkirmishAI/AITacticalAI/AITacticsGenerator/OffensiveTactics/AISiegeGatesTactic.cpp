@@ -25,7 +25,7 @@ bool AISiegeGatesTactic::canRun(void *request)
 }
 
 // FUNCTION: BFME2 0x005A9B20 size=37 name=?rva005A9B20@AISiegeGatesTactic@@QAE_NXZ evidence=?:placeholder tier=B hypothesis:cohesion
-Bool AISiegeGatesTactic::attackWall()
+Bool AISiegeGatesTactic::rva005A9B20()
 {
 	if (!findWallTarget())
 		return false;
@@ -37,7 +37,7 @@ Bool AISiegeGatesTactic::attackWall()
 void AISiegeGatesTactic::run()
 {
 	if (getTeamByIndex(0))
-		attackWall();
+		rva005A9B20();
 	else
 		end(false, false);
 }
@@ -60,7 +60,7 @@ void AISiegeGatesTactic::update()
 			m_unk0x5C = true;
 		}
 		else if (wallTargetGone() || rva004ED169())
-			attackWall();
+			rva005A9B20();
 	}
 	else if (rva004ED169())
 		end(true, false);

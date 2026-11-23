@@ -18,7 +18,7 @@ public:
 	virtual void run();
 	virtual void update();
 
-	Bool attackWall();	// 0x005A9B20: with a wall target, every team attacks it
+	Bool rva005A9B20();	// 0x005A9B20: with a wall target, every team attacks it
 
 	Bool m_unk0x5C; // 0x005A9C1E clears the first byte after the Siege base
 };
