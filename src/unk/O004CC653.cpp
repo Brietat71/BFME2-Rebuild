@@ -44,7 +44,7 @@ TemporarilyDefectUpdate::TemporarilyDefectUpdate(Thing *thing, const ModuleData 
 {
 	m_unk0x20 = 0;
 	m_unk0x24 = 0;
-	m_unk0x28 = 0;
+	m_unk0x28 = INVALID_ID;
 	m_gap0x2C[0] = 0;
 	setWakeFrame(getObject(), UPDATE_SLEEP_FOREVER);
 }
