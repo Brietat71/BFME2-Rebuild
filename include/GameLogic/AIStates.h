@@ -267,8 +267,10 @@ public:
 		: State(machine, 0x5C57BD74), m_unk0x20(unk20), m_canTurnInPlace(false), m_setLocomotor(false), m_unk0x23(unk23) {}	// 0x0033F3B6 (map placeholder; CRC-32 0x5C57BD74)
 	virtual StateReturnType update();
 	virtual void onExit(StateExitType status);
+	void rva00351949();
 
 protected:
+	StateReturnType updateInternal(Bool unk);
 	virtual const char *GetSnapshotName() const;		// slot 2
 	virtual void xfer(Xfer *xfer);
 
