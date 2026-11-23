@@ -142,10 +142,6 @@ void SkirmishAI::doSpecialSlaveAIDying()
 // FUNCTION: BFME2 0x002C6BFF size=143 name=?update@SkirmishAI@@QAEXXZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x002C6EA4 size=31 name=?rva002C6EA4@Rva002C6EA4@@QAE_NABVAsciiString@@@Z evidence=?:placeholder tier=B hypothesis:K
-Bool SkirmishAI::hasNamedValue(const AsciiString &key)
-{
-	return m_namedValues.find(key) != m_namedValues.end();
-}
 
 // FUNCTION: BFME2 0x002C6EE0 size=172 name=??0SkirmishAI@@QAE@PAVPlayer@@PAX_N@Z evidence=N:ledger tier=B hypothesis:K
 SkirmishAI::SkirmishAI(Player *player, void *unk, Bool flag)
@@ -204,17 +200,6 @@ void SkirmishAI::DoXfer(Xfer *xfer)
 }
 
 // FUNCTION: BFME2 0x002C717E size=24 name=?rva002C717E@Rva002A8AB1Record@@QAEXABVAsciiString@@H@Z evidence=?:placeholder tier=B hypothesis:K
-void SkirmishAI::setNamedValue(const AsciiString &key, Int value)
-{
-	m_namedValues[key] = value;
-}
 
 // FUNCTION: BFME2 0x002C7196 size=52 name=?rva002C7196@Rva002A8AB1Record@@QAEHABVAsciiString@@@Z evidence=?:placeholder tier=B hypothesis:K
-Int SkirmishAI::getNamedValue(const AsciiString &key)
-{
-	if (hasNamedValue(key))
-		return m_namedValues.find(key)->second;
-	setNamedValue(key, 0);
-	return 0;
-}
 
