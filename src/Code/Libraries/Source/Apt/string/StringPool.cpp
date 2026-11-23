@@ -156,14 +156,14 @@ AptString *Rva0070DBB0Intern(const char *text)
     pString->mString = EAStringC(text);
     pString->mString.rva006D3BA0();
     if (!(uHash == pString->mString.GetHashValue())) {
-        g_bfmeAptAssertAtE17734("uHash == pString->str.GetHashValue()", "C:\projects\bfme2patch103\bfme2\Code\Libraries\Source\Apt\string\StringPool.cpp", 0x1ca);
+        g_bfmeAptAssertAtE17734("uHash == pString->str.GetHashValue()", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\string\\StringPool.cpp", 0x1ca);
         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
     }
     pString->mpNextFree = g_ppStringBuckets[uIndex];
     g_ppStringBuckets[uIndex] = pString;
     pString->AddRef();
     if (!(pString->getGCRootCount() == 0)) {
-        g_bfmeAptAssertAtE17734("pString->getGCRoot() == 0", "C:\projects\bfme2patch103\bfme2\Code\Libraries\Source\Apt\string\StringPool.cpp", 0x1d1);
+        g_bfmeAptAssertAtE17734("pString->getGCRoot() == 0", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\string\\StringPool.cpp", 0x1d1);
         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
     }
     pString->incrementGCRootCount();
@@ -187,7 +187,7 @@ void Rva0070DDC0Remove(AptString *pString)
         }
     }
     if (!(bFound)) {
-        g_bfmeAptAssertAtE17734("bFound", "C:\projects\bfme2patch103\bfme2\Code\Libraries\Source\Apt\string\StringPool.cpp", 0x20a);
+        g_bfmeAptAssertAtE17734("bFound", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\string\\StringPool.cpp", 0x20a);
         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
     }
     --sStringPoolCurrentUsers;
@@ -211,7 +211,7 @@ void Rva0070DDC0Remove(AptString *pString)
                 while (pLocalString->mpNextFree != pString) {
                     pLocalString = pLocalString->mpNextFree;
                     if (!(pLocalString != NULL)) {
-                        g_bfmeAptAssertAtE17734("pLocalString != NULL", "C:\projects\bfme2patch103\bfme2\Code\Libraries\Source\Apt\string\StringPool.cpp", 0x24d);
+                        g_bfmeAptAssertAtE17734("pLocalString != NULL", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\string\\StringPool.cpp", 0x24d);
                         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
                     }
                 }
