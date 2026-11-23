@@ -167,7 +167,7 @@ void PingThreadClass::Thread_Function()
 			if (ThePinger->getRequest(req))
 			{
 				const char *hostnameBuffer = req.hostname.c_str();
-				UnsignedInt IP = 0xFFFFFFFF;
+				UnsignedInt IP;
 				if (__imp__isdigit(hostnameBuffer[0]))
 				{
 					IP = inet_addr(hostnameBuffer);
@@ -179,9 +179,9 @@ void PingThreadClass::Thread_Function()
 					IP = hostNode->s_addr;
 				}
 
-				Int totalPing = 0;
-				Int goodReps = 0;
 				Int reps = req.repetitions;
+				Int goodReps = 0;
+				Int totalPing = 0;
 				while (reps-- && IP != 0xFFFFFFFF)
 				{
 					MutexClass::LockClass stillRunning(*m_runMutex, 1);
