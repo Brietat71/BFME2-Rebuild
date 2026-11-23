@@ -6,6 +6,7 @@
 // Edges: left=unknown-rows right=unknown-rows; proof_first=false
 // Hypothesis rules: hypothesis:Z
 // Portions derived from Command & Conquer Generals and Command & Conquer Generals Zero Hour, (c) Electronic Arts Inc., GPL-3.0-or-later; see LICENSE and NOTICE.
+struct Coord3D;
 #include "Common/Thing.h"
 #include "GameLogic/TerrainLogic.h"
 #include "Common/ThingTemplate.h"
@@ -131,8 +132,38 @@ Real Thing::getHeightAboveTerrainOrWater() const
 }
 
 // FUNCTION: BFME2 0x0030A528 size=746 name=?convertBonePosToWorldPos@Thing@@QBEXPBVCoord3D@@PBVMatrix3D@@PAU2@PAV3@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
+void Thing::convertBonePosToWorldPos(const Coord3D *bonePos, const Matrix3D *boneTransform, Coord3D *worldPos, Matrix3D *worldTransform) const
+{
+	if (worldTransform)
+		worldTransform->mul(m_transform, *boneTransform);
+	if (worldPos)
+	{
+		Vector3 vector;
+		vector.X = bonePos->x;
+		vector.Y = bonePos->y;
+		vector.Z = bonePos->z;
+		Matrix3D::Transform_Vector(m_transform, vector, &vector);
+		worldPos->x = vector.X;
+		worldPos->y = vector.Y;
+		worldPos->z = vector.Z;
+	}
+}
 
 // FUNCTION: BFME2 0x0030A812 size=191 name=?transformPoint@Thing@@QAEXPBVCoord3D@@PAU2@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
+void Thing::transformPoint(const Coord3D *in, Coord3D *out)
+{
+	if (in == NULL || out == NULL)
+		return;
+	Vector3 vectorIn;
+	Vector3 vectorOut;
+	vectorIn.X = in->x;
+	vectorIn.Y = in->y;
+	vectorIn.Z = in->z;
+	Matrix3D::Transform_Vector(m_transform, vectorIn, &vectorOut);
+	out->x = vectorOut.X;
+	out->y = vectorOut.Y;
+	out->z = vectorOut.Z;
+}
 
 // FUNCTION: BFME2 0x0030A8EE size=62 name=?getUnitDirectionVector3D@Thing@@QBEXAAVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 void Thing::getUnitDirectionVector3D(Coord3D &dir) const
