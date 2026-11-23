@@ -11,7 +11,11 @@ void __stdcall computeCylinderEmissionPosition(Coord3D *position, Coord2D *direc
 {
 	Coord2D heading = *direction;
 	heading.normalize();
-	position->set(heading.x * radius, heading.y * radius, height);
+	Real x = heading.x * radius;
+	Real y = heading.y * radius;
+	position->x = x;
+	position->y = y;
+	position->z = height;
 }
 // FUNCTION: BFME2 0x0055D6D7 size=106 name=?rva0055D6D7@Rva003AF7FE@@QAEXVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=B hypothesis:mm1-neighbour-pointers-mixed
 // FUNCTION: BFME2 0x0055D741 size=212 name=?getPosition@CylinderEmissionVolumeModule@FXParticleSystem@@UAE?AUCoord3D@2@MMMM@Z evidence=N:ledger
