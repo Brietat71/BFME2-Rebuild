@@ -7,6 +7,7 @@
 #include "GameClient/W3DDisplay.h"
 #include "GameClient/W3DScene.h"
 #include "GameLogic/Object.h"
+#include "WW3D2/MaterialInfoClass.h"
 #include "GameClient/Drawable.h"
 #include "GameClient/DrawModule.h"
 #include "GameLogic/GhostObjectManager.h"
@@ -144,6 +145,12 @@ void W3DGhostObjectManager::setLocalPlayerIndex(Int index)
 // FUNCTION: BFME2 0x000636A8 size=11 name=?vslot10@GhostObject@@$4PPPPPPPM@GI@BEPAVPartitionData@@XZ evidence=N:ledger tier=B hypothesis:cohesion
 
 // FUNCTION: BFME2 0x000636C9 size=22 name=?Peek_Vertex_Material@MaterialInfoClass@@QBEPAVVertexMaterialClass@@H@Z evidence=N:ledger tier=B hypothesis:cohesion
+VertexMaterialClass *MaterialInfoClass::Peek_Vertex_Material(int index) const
+{
+	if (index < VertexMaterials.Count())
+		return VertexMaterials[index];
+	return 0;
+}
 
 // FUNCTION: BFME2 0x000636DF size=209 name=?disableUVAnimations@@YAXPAVRenderObjClass@@@Z evidence=N:ledger tier=B hypothesis:cohesion
 void disableUVAnimations(RenderObjClass *robj);
