@@ -618,4 +618,18 @@ void GameWindowTransitionsHandler::parseWindow(INI *ini, void *instance, void *s
 }
 
 // FUNCTION: BFME2 0x001DCBC3 size=124 name=??0GameWindowTransitionsHandler@@QAE@XZ evidence=N:ledger tier=B hypothesis:Z
+GameWindowTransitionsHandler::GameWindowTransitionsHandler()
+{
+	m_currentGroup = NULL;
+	m_pendingGroup = NULL;
+	m_drawGroup = NULL;
+	m_secondaryDrawGroup = NULL;
+	m_unknown64 = 33;
+	m_groupsHeld = false;
+	m_waiting = false;
+	m_lockInitialized = false;
+	m_unknown51 = false;
+	m_lockCount = 0;
+	m_transitionGroupList.clear();
+}
 
