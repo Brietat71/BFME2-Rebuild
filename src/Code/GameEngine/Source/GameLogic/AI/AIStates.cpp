@@ -3651,17 +3651,15 @@ StateReturnType AIMoveAndEvacuateState::onEnter()
 
 // FUNCTION: BFME2 0x0034EBE8 size=147 name=??0AIAttackMoveToState@@QAE@PAVStateMachine@@@Z evidence=N:ledger tier=A
 AIAttackMoveToState::AIAttackMoveToState(StateMachine *machine) :
-	AIMoveToState(machine),
-	m_unk0x50(0),
-	m_unk0x58(0),
-	m_unk0x5C(5)
+	AIMoveToState(machine)
 {
+	m_unk0x50 = 0;
 	m_unk0x4C = false;
+	m_unk0x58 = 0;
+	m_unk0x5C = 5;
 	m_attackMoveMachine = new AIAttackMoveStateMachine(getMachineOwner(), 0xC586154E);
 	m_attackMoveMachine->initDefaultState();
-	m_unk0x60.x = 0.0f;
-	m_unk0x60.y = 0.0f;
-	m_unk0x60.z = 0.0f;
+	m_unk0x60.zero();
 	m_unk0x6C = INVALID_ID;
 }
 
