@@ -111,7 +111,7 @@ void Matrix3::Multiply(const Matrix3 &a, const Matrix3D &b, Matrix3 *res)
 void Matrix3::Multiply(const Matrix3 &A, const Matrix3 &B, Matrix3 *set_res)
 {
 	Matrix3 tmp;
-	Matrix3 *Aptr;
+	const Matrix3 *Aptr;
 	float tmp1, tmp2, tmp3;
 
 	// copy A first when the result aliases it
@@ -119,7 +119,7 @@ void Matrix3::Multiply(const Matrix3 &A, const Matrix3 &B, Matrix3 *set_res)
 		tmp = A;
 		Aptr = &tmp;
 	} else {
-		Aptr = (Matrix3 *)&A;
+		Aptr = &A;
 	}
 
 	tmp1 = B[0][0];
