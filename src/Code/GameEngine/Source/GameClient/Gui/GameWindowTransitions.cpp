@@ -491,6 +491,46 @@ void GameWindowTransitionsHandler::setGroup(AsciiString groupName, bool immediat
 
 
 // FUNCTION: BFME2 0x001DC345 size=231 name=?reverse@GameWindowTransitionsHandler@@QAEXVAsciiString@@@Z evidence=N:ledger tier=A
+void GameWindowTransitionsHandler::reverse(AsciiString groupName)
+{
+	ScopedWin32Lock guard((LPCRITICAL_SECTION)m_criticalSectionStorage);
+	m_coord1.x = 0;
+	m_coord1.y = 0;
+	m_coord2.x = TheDisplay->getWidth();
+	m_coord2.y = TheDisplay->getHeight();
+
+	TransitionGroup *g = findGroup(groupName);
+	if (g)
+	{
+		if (m_currentGroup == g)
+		{
+			m_currentGroup->reverse();
+			return;
+		}
+		if (m_pendingGroup == g)
+		{
+			m_pendingGroup->retire();
+			m_pendingGroup = NULL;
+			return;
+		}
+		if (m_currentGroup)
+		{
+			m_currentGroup->skip();
+			m_currentGroup->retire();
+		}
+		if (m_pendingGroup)
+		{
+			m_pendingGroup->skip();
+			m_pendingGroup->retire();
+			m_pendingGroup = NULL;
+		}
+
+		m_currentGroup = g;
+		m_currentGroup->init();
+		m_currentGroup->skip();
+		m_currentGroup->reverse();
+	}
+}
 
 
 // FUNCTION: BFME2 0x001DC42C size=166 name=?remove@GameWindowTransitionsHandler@@QAEXVAsciiString@@_N@Z evidence=N:ledger tier=A
