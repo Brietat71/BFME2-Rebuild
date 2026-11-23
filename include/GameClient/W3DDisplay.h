@@ -29,6 +29,7 @@ public:
 	virtual VideoBuffer *createVideoBuffer(bool);													// 0x00044D7F
 	void rva0004D664(float, float, float, float, float, int);						// 0x0004D664: draws a line (start, end, width, colour); ShellMenuScheme::draw 0x00200506 calls it
 	void rva0004D6B3(Image *, float, float, float, float, int, int);								// 0x0004D6B3
+	void rva0008EEF0(float, float, float, float, float, int);						// 0x0008EEF0
 	void takeScreenShot(const char *);																// 0x00049B3A
 	void updateAverageFPS();																		// 0x000437A1
 	void drawAnimStats();																			// 0x00043BF9

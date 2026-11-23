@@ -29,6 +29,7 @@ class Display : public SubsystemInterface {
 public:
     typedef void DebugDisplayCallback(DebugDisplayInterface *, void *, FILE *);
     Display();
+    void rva0004263F(float, float, float, float, int); // 0x0004263F
     virtual ~Display();
     virtual void init() {}
     virtual void reset();
