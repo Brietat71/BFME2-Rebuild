@@ -115,10 +115,8 @@ void FontCharsClass::Create_GDI_Font(const char *face)
 		generals = true;
 	}
 
-	float fontWidth = 0.0f;
 	float pointSize = PointSize;
-	if (generals)
-		fontWidth = pointSize * 0.4f;
+	float fontWidth = generals ? pointSize * 0.4f : 0.0f;
 
 	PixelOverlap = (int)floor(pointSize * 0.125f + 0.5f);
 	if (PixelOverlap < 0)
