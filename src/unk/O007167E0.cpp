@@ -180,7 +180,10 @@ void Matrix3::Re_Orthogonalize(void)
 		Make_Identity();
 		return;
 	} else {
-		x /= len;
+		float ook = 1.0f / len;
+		x.X = x.X * ook;
+		x.Y = x.Y * ook;
+		x.Z = x.Z * ook;
 	}
 
 	len = y.Length();
@@ -188,7 +191,10 @@ void Matrix3::Re_Orthogonalize(void)
 		Make_Identity();
 		return;
 	} else {
-		y /= len;
+		float ook = 1.0f / len;
+		y.X = y.X * ook;
+		y.Y = y.Y * ook;
+		y.Z = y.Z * ook;
 	}
 
 	len = z.Length();
@@ -196,7 +202,10 @@ void Matrix3::Re_Orthogonalize(void)
 		Make_Identity();
 		return;
 	} else {
-		z /= len;
+		float ook = 1.0f / len;
+		z.X = z.X * ook;
+		z.Y = z.Y * ook;
+		z.Z = z.Z * ook;
 	}
 
 	Row[0][0] = x.X;
