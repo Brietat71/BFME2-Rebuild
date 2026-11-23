@@ -21,6 +21,10 @@
 // FUNCTION: BFME2 0x002D2CFF size=20 name=?Rva002D2CFF@@YA_NPBURva002D2CE2@@0@Z evidence=?:placeholder tier=B hypothesis:mm1-contiguity-callers
 // FUNCTION: BFME2 0x002D2D13 size=32 name=?rva002D2D13@Rva002D2D13@@QAEXPAXH@Z evidence=?:placeholder tier=B hypothesis:mm1-neighbour-callers
 // FUNCTION: BFME2 0x002D2D33 size=23 name=?multiplierFromPercent@@YAMH@Z evidence=N:ledger tier=B hypothesis:mm1-contiguity-callers
+float multiplierFromPercent(int percent)
+{
+	return 1.0f + percent * 0.01f;
+}
 // FUNCTION: BFME2 0x002D2D4A size=25 name=?rva002D2D4A@Rva002D2D4A@@QAEXXZ evidence=?:placeholder tier=B hypothesis:mm1-contiguity-callers
 // FUNCTION: BFME2 0x002D2D63 size=79 name=?renderFactionIcon@Rva002D5188ResourceBar@@QAEXABVCoord2D@@0PAX1@Z evidence=?:placeholder tier=B hypothesis:mm1-neighbour-callers
 // FUNCTION: BFME2 0x002D2DB2 size=34 name=?initialize@Rva002D2DB2@@QAEAAV1@HH@Z evidence=?:placeholder tier=B hypothesis:mm1-neighbour-callers
