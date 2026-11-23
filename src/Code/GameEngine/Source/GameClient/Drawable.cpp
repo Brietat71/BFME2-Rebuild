@@ -1491,6 +1491,12 @@ void Drawable::colorTint(const RGBColor *peak)
 // FUNCTION: BFME2 0x0027601B size=472 name=?rva0027601B@Rva0027601BHost@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x002761F3 size=48 name=?rva002761F3@Drawable@@QAEXPBH0@Z evidence=?:placeholder tier=A
+void Drawable::rva002761F3(const BitFlags<591> *conditions, const BitFlags<591> *previousConditions)
+{
+	m_unk0x2A4 = *conditions;
+	m_unk0x2F0 = *previousConditions;
+	rva00274176(TRUE);
+}
 
 // FUNCTION: BFME2 0x00276223 size=107 name=?rva00276223@Rva00276223@@QAEXVAsciiString@@_NH@Z evidence=?:placeholder tier=A
 
