@@ -153,8 +153,8 @@ void Pinger::clearPingMap()
 // FUNCTION: BFME2 0x005501F4 size=400 name=?Thread_Function@PingThreadClass@@UAEXXZ evidence=N:ledger tier=B hypothesis:name:Z
 void PingThreadClass::Thread_Function()
 {
-	PingRequest req;
 	try {
+		PingRequest req;
 		WSADATA wsaData;
 		WSAStartup(MAKEWORD(1, 1), &wsaData);
 
