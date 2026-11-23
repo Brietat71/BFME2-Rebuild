@@ -37,7 +37,16 @@ class Anim2D;
 class WorldAnimationData
 {
 public:
-	WorldAnimationData() : m_anim(0), m_expireFrame(0), m_options(0), m_zRisePerSecond(0.0f) { m_worldPos.x = 0.0f; m_worldPos.y = 0.0f; m_worldPos.z = 0.0f; }
+	WorldAnimationData()
+	{
+		m_anim = 0;
+		m_worldPos.x = 0.0f;
+		m_worldPos.y = 0.0f;
+		m_worldPos.z = 0.0f;
+		m_expireFrame = 0;
+		m_options = 0;
+		m_zRisePerSecond = 0.0f;
+	}
 
 	Anim2D *m_anim;				// +0x00
 	Coord3D m_worldPos;			// +0x04
