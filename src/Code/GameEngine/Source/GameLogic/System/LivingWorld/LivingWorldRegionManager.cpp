@@ -199,6 +199,13 @@ void LivingWorldRegionManager::BeginTurn(Int turn, Int arg)
 // FUNCTION: BFME2 0x0020EE5C size=51 name=?rva0020EE5C@Rva0020EE5C@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0020EE8F size=57 name=?GetDefaultArmyPlacementPos@LivingWorldRegionManager@@QAE_NHPAUPair8@@@Z evidence=N:ledger tier=A
+bool LivingWorldRegionManager::GetDefaultArmyPlacementPos(Int index, ICoord2D *position)
+{
+	if (!m_table || index < 0 || (unsigned int)index >= m_table->m_defaultArmyPositions.size())
+		return false;
+	*position = m_table->m_defaultArmyPositions[index];
+	return true;
+}
 
 // FUNCTION: BFME2 0x0020EEC8 size=44 name=?SetRegionReinforcements@LivingWorldRegionManager@@QAEXHHHHHHH@Z evidence=N:ledger tier=A
 void LivingWorldRegionManager::SetRegionReinforcements(Int regionIndex, Int a, Int b, Int c, Int d, Int e, Int f)
