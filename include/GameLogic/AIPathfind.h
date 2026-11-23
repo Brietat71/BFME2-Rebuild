@@ -350,6 +350,8 @@ public:
 	virtual Path *FindCollisionFreeQuickPath(Object *obj, const Coord3D *to, PathNode *);	// slot 6, 0x002F64DD
 	const char *name() const;							// 0x002F21EB (the map files the slot-2 body under this name)
 	PathfindCell *getCell(PathfindLayerEnum layer, const Coord3D *pos);	// 0x001E3647 (the map types it with a placeholder return)
+	// The cell lookups the map types with an Int position (IsWaterCell and its neighbours) pass that Int straight on as the position pointer.
+	PathfindCell *getCellAtInt(PathfindLayerEnum layer, Int pos) { return getCell(layer, (const Coord3D *)pos); }
 	void Rva0052F2EC();					// 0x0052F2EC (map placeholder name; ForceMapRecalculation's work)
 
 	// World position to grid cell (0x002E7875, cdecl: every line walk's
