@@ -591,6 +591,43 @@ void INI::parseWindowTransitions(INI *ini)
 }
 
 // FUNCTION: BFME2 0x001DC6E4 size=225 name=??1GameWindowTransitionsHandler@@UAE@XZ evidence=N:ledger tier=A
+GameWindowTransitionsHandler::~GameWindowTransitionsHandler()
+{
+	if (m_currentGroup)
+	{
+		m_currentGroup->retire();
+		m_currentGroup = NULL;
+	}
+	if (m_pendingGroup)
+	{
+		m_pendingGroup->retire();
+		m_pendingGroup = NULL;
+	}
+	if (m_drawGroup)
+	{
+		m_drawGroup->retire();
+		m_drawGroup = NULL;
+	}
+	if (m_secondaryDrawGroup)
+	{
+		m_secondaryDrawGroup->retire();
+		m_secondaryDrawGroup = NULL;
+	}
+
+	if (m_lockInitialized)
+	{
+		DeleteCriticalSection((LPCRITICAL_SECTION)m_criticalSectionStorage);
+		m_lockInitialized = false;
+	}
+
+	_STL::list<TransitionGroup *>::iterator it = m_transitionGroupList.begin();
+	while (it != m_transitionGroupList.end())
+	{
+		TransitionGroup *g = *it;
+		delete g;
+		it = m_transitionGroupList.erase(it);
+	}
+}
 
 // FUNCTION: BFME2 0x001DC7E1 size=780 name=?load@GameWindowTransitionsHandler@@QAEXXZ evidence=N:ledger tier=A
 
