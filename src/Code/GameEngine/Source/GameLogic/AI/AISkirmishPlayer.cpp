@@ -20,6 +20,8 @@
 #include "Common/TeamFactory.h"
 #include "Common/GlobalData.h"
 #include "GameLogic/ScriptEngine.h"
+#include "Common/PlayerList.h"
+#include "Common/NameKeyGenerator.h"
 
 // Edges: left=no-edge-evidence right=unknown-rows; proof_first=false
 // Hypothesis rules: hypothesis:Z, hypothesis:cohesion, hypothesis:name:invented
@@ -236,6 +238,83 @@ Bool AISkirmishPlayer::isAGoodIdeaToBuildTeam(TeamPrototype *proto)
 // FUNCTION: BFME2 0x004EF87D size=668 name=?adjustBuildList@AISkirmishPlayer@@IAEXPAVBuildListInfo@@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x004EFB3D size=622 name=?acquireEnemy@AISkirmishPlayer@@IAEXXZ evidence=N:ledger tier=A
+void AISkirmishPlayer::acquireEnemy()
+{
+	Player *bestEnemy = NULL;
+	Real bestDistanceSqr = 1000000.0f * 1000000.0f;
+
+	if (m_currentEnemy)
+	{
+		Bool inBadShape = !m_currentEnemy->rva002AB312() || !m_currentEnemy->rva002AB3FA();
+		if (!inBadShape)
+			return;
+	}
+
+	// look for the closest enemy.
+	Int i;
+	for (i = 0; i < ThePlayerList->getPlayerCount(); i++)
+	{
+		Player *curPlayer = ThePlayerList->getNthPlayer(i);
+		if (m_player->getRelationship(curPlayer->getDefaultTeam()) == ENEMIES)
+		{
+			if (curPlayer->hasAnyObjects(false) == false)
+				continue; // not much of an enemy.
+			if (curPlayer->m_playerName.compare("PlyrCreeps") == 0)
+				continue;
+
+			// If a player is out of units, or out of build facilities, we can lower his priority.
+			Bool inBadShape = !curPlayer->rva002AB312() || !curPlayer->rva002AB3FA();
+
+			Coord3D enemyPos = m_baseCenter;
+			Region2D bounds;
+			getPlayerStructureBounds(&bounds, i);
+			enemyPos.x = bounds.lo.x + bounds.width() * 0.5f;
+			enemyPos.y = bounds.lo.y + bounds.height() * 0.5f;
+			Real curDistSqr = (enemyPos.x - m_baseCenter.x) * (enemyPos.x - m_baseCenter.x)
+				+ (enemyPos.y - m_baseCenter.y) * (enemyPos.y - m_baseCenter.y);
+
+			// If an enemy is crippled, concentrate on the other ones.
+			if (inBadShape)
+				curDistSqr = 1000000.0f * 1000000.0f * 0.5f;
+
+			// We don't want the ai's to gang up on one enemy.
+			Int k;
+			for (k = 0; k < ThePlayerList->getPlayerCount(); k++)
+			{
+				if (k == i)
+					continue; // don't count self.
+				Player *somePlayer = ThePlayerList->getNthPlayer(k);
+				if (somePlayer->isSkirmishAIPlayer() && (somePlayer->getCurrentEnemy() == curPlayer))
+				{
+					// Some ai is already targeting this guy.  Add a distance penalty.
+					curDistSqr += (500 * 500);
+				}
+				if (somePlayer->isSkirmishAIPlayer() && (somePlayer->getCurrentEnemy() == m_player))
+				{
+					// he is attacking me.  So I will (gently) prefer to attack him.
+					curDistSqr -= (25 * 25);
+					if (curDistSqr < 0)
+						curDistSqr = 0;
+				}
+			}
+
+			// Ai enemy - will take if we don't get a better offer.
+			if (curDistSqr < bestDistanceSqr)
+			{
+				bestEnemy = curPlayer;
+				bestDistanceSqr = curDistSqr;
+			}
+		}
+	}
+	if (bestEnemy != NULL && (bestEnemy != m_currentEnemy))
+	{
+		m_currentEnemy = bestEnemy;
+		AsciiString msg = TheNameKeyGenerator->keyToName(m_player->getPlayerNameKey());
+		msg.concat(" acquiring target enemy player: ");
+		msg.concat(TheNameKeyGenerator->keyToName(m_currentEnemy->getPlayerNameKey()));
+		TheScriptEngine->AppendDebugMessage(msg, false);
+	}
+}
 
 // FUNCTION: BFME2 0x004EFDAB size=49 name=?getAiEnemy@AISkirmishPlayer@@UAEPAVPlayer@@XZ evidence=N:ledger tier=A
 Player *AISkirmishPlayer::getAiEnemy()
