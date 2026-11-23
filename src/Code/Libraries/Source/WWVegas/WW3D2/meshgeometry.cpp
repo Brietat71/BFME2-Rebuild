@@ -503,17 +503,13 @@ void MeshGeometryClass::Scale(const Vector3 &sc)
 {
 	Vector3 *vert = Vertex->Get_Array();
 	for (int i = 0; i < VertexCount; i++) {
-		vert[i].X *= sc.X;
-		vert[i].Y *= sc.Y;
-		vert[i].Z *= sc.Z;
+		vert[i].Scale(sc);
 	}
 
 	if (SecondaryVertex) {
 		Vector3 *vert2 = SecondaryVertex->Get_Array();
 		for (int i = 0; i < VertexCount; i++) {
-			vert2[i].X *= sc.X;
-			vert2[i].Y *= sc.Y;
-			vert2[i].Z *= sc.Z;
+			vert2[i].Scale(sc);
 		}
 	}
 
