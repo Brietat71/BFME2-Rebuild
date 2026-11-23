@@ -2702,7 +2702,10 @@
    },
    "author": 110029876,
    "base": "ba9713c5b2e508f744c0e19b99d76c9dfba849bd",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45185836631"
+   },
    "day": "2026-11-23",
    "head": "def372838d49cf3308f62e0d04fa2484ccd54380",
    "kind": "narrow",
