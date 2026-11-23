@@ -873,6 +873,7 @@ bool Debug::ExecCommand(const char *cmdstart, const char *cmdend)
 	int numParts = 0;
 	char *lastNonWhitespace = NULL;
 	char *cur = strbuf;
+	CmdInterfaceListEntry *group;
 
 	// regular reply or structured reply?
 	DebugIOInterface::StringType reply;
@@ -956,7 +957,6 @@ bool Debug::ExecCommand(const char *cmdstart, const char *cmdend)
 		AddOutput("\n", 1);
 
 		// command group known?
-		CmdInterfaceListEntry *group;
 		for (group = firstCmdGroup; group; group = group->next)
 			if (!strcmp(curCommandGroup, group->group))
 				break;
