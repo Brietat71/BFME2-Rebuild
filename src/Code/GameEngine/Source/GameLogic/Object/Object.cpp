@@ -1152,15 +1152,6 @@ Bool Object::rva0028C264(Int *out, Int value)
 // FUNCTION: BFME2 0x0028C428 size=142 name=?rva0028C428@Object@@QBE_NXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0028C4B6 size=55 name=?rva0028C4B6@Object@@QAEXXZ evidence=?:placeholder tier=A
-void Object::rva0028C4B6()
-{
-	HordeContainInterface *horde = rva0028C197();
-	if (horde && horde->rva0046F8F4() && horde->rva0046CDC9())
-	{
-		horde->rva004696E5();
-		TheControlBar->markUIDirty();
-	}
-}
 
 // FUNCTION: BFME2 0x0028C4ED size=38 name=?rva0028C4ED@Object@@QBE_NXZ evidence=?:placeholder tier=A
 Bool Object::isSlaved() const
