@@ -3180,7 +3180,10 @@
    },
    "author": 87946970,
    "base": "f032c52ffb9fd650a3ad5e48999c5a56c85eb0e8",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45202420704"
+   },
    "day": "2026-11-23",
    "head": "af64353b9ccfc83a02a7d29da7ea8dc2404cc71d",
    "kind": "narrow",
