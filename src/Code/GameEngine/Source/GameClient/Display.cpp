@@ -140,8 +140,8 @@ void Display::rva0025D10F()
 unsigned long bfmeVM0WorkerThread(void *param)
 {
 	Display *display = static_cast<Display *>(param);
-	WaitForSingleObject(display->field40, 0xFFFFFFFF);
 	bool running = true;
+	WaitForSingleObject(display->field40, 0xFFFFFFFF);
 	do
 	{
 		if (display->field60 == 5)
