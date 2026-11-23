@@ -278,7 +278,7 @@ StateReturnType AIGuardInnerState::update()
 		return STATE_SUCCESS;
 
 	// if the position has moved (IE we're guarding an object), move with it.
-	AIGuardMachine *machine = (AIGuardMachine *)getMachine();
+	AIGuardMachine *machine = getGuardMachine();
 	Object *targetToGuard = TheGameLogic->findObjectByID(machine->getTargetToGuardID());
 	Team *teamToGuard = TheTeamFactory->findTeamByID(machine->getTeamToGuardID());
 	if (targetToGuard)
@@ -290,7 +290,7 @@ StateReturnType AIGuardInnerState::update()
 	Object *goal = m_attackState->getMachine()->getGoalObject();
 	if (goal == NULL || goal->isEffectivelyDead())
 	{
-		if (((AIGuardMachine *)getMachine())->lookForInnerTarget())
+		if (getGuardMachine()->lookForInnerTarget())
 		{
 			onExit(EXIT_NORMAL);
 			return onEnter();
@@ -302,7 +302,7 @@ StateReturnType AIGuardInnerState::update()
 		if (weapon && weapon->computeStatus(0) != WEAPONSTATUS_4)
 		{
 			m_unk0x44 = TheGameLogic->getFrame() + BfmeLogicFramesPerSecond;
-			if (((AIGuardMachine *)getMachine())->lookForInnerTarget())
+			if (getGuardMachine()->lookForInnerTarget())
 			{
 				onExit(EXIT_NORMAL);
 				return onEnter();
