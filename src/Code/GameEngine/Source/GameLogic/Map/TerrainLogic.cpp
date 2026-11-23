@@ -20,10 +20,78 @@
 
 // The singleton (retail VA 0x00DFEC50).
 TerrainLogic *TheTerrainLogic = NULL;
+static const Real PATHFIND_CELL_SIZE_F = 10.0f;
+Bool LineInRegion(const Coord2D *start, const Coord2D *end, const Region2D *region);
 extern Waypoint *TheWaypointListHead;	// 0x00DFEC54: the head of the waypoint list (TerrainLogic::getFirstWaypoint, slot 33, returns it)
 // FUNCTION: BFME2 0x0027C79C size=447 name=?isCellOnEnd@Bridge@@QAE_NPBURegion2D@@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0027C95B size=548 name=?isCellOnSide@Bridge@@QAE_NPBURegion2D@@@Z evidence=N:ledger tier=A
+Bool Bridge::isCellOnSide(const Region2D *cell)
+{
+	Coord2D line1, line2;
+	Coord3D endVector;
+	endVector.x = m_bridgeInfo.fromRight.x - m_bridgeInfo.fromLeft.x;
+	endVector.y = m_bridgeInfo.fromRight.y - m_bridgeInfo.fromLeft.y;
+	endVector.z = m_bridgeInfo.fromRight.z - m_bridgeInfo.fromLeft.z;
+	endVector.normalize();
+	endVector.x *= PATHFIND_CELL_SIZE_F * 0.51f;
+	endVector.y *= PATHFIND_CELL_SIZE_F * 0.51f;
+
+	Coord3D fromLeft = m_bridgeInfo.fromLeft;
+	fromLeft.x -= endVector.x;
+	fromLeft.y -= endVector.y;
+
+	Coord3D fromRight = m_bridgeInfo.fromRight;
+	fromRight.x += endVector.x;
+	fromRight.y += endVector.y;
+
+	Coord3D toLeft = m_bridgeInfo.toLeft;
+	toLeft.x -= endVector.x;
+	toLeft.y -= endVector.y;
+
+	Coord3D toRight = m_bridgeInfo.toRight;
+	toRight.x += endVector.x;
+	toRight.y += endVector.y;
+
+	line1.x = fromLeft.x;
+	line1.y = fromLeft.y;
+	line2.x = toLeft.x;
+	line2.y = toLeft.y;
+	if (LineInRegion(&line1, &line2, cell))
+		return true;
+	line1.x = fromRight.x;
+	line1.y = fromRight.y;
+	line2.x = toRight.x;
+	line2.y = toRight.y;
+	if (LineInRegion(&line1, &line2, cell))
+		return true;
+
+	fromLeft.x -= endVector.x;
+	fromLeft.y -= endVector.y;
+
+	fromRight.x += endVector.x;
+	fromRight.y += endVector.y;
+
+	toLeft.x -= endVector.x;
+	toLeft.y -= endVector.y;
+
+	toRight.x += endVector.x;
+	toRight.y += endVector.y;
+
+	line1.x = fromLeft.x;
+	line1.y = fromLeft.y;
+	line2.x = toLeft.x;
+	line2.y = toLeft.y;
+	if (LineInRegion(&line1, &line2, cell))
+		return true;
+	line1.x = fromRight.x;
+	line1.y = fromRight.y;
+	line2.x = toRight.x;
+	line2.y = toRight.y;
+	if (LineInRegion(&line1, &line2, cell))
+		return true;
+	return false;
+}
 
 // FUNCTION: BFME2 0x0027CB7F size=484 name=?isCellEntryPoint@Bridge@@QAE_NPBURegion2D@@PAM@Z evidence=N:ledger tier=A
 
