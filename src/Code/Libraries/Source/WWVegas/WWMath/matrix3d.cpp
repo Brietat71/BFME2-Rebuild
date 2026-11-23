@@ -473,8 +473,8 @@ void Matrix3D::Lerp(const Matrix3D &A, const Matrix3D &B, float factor, Matrix3D
 		Matrix3D a = A;
 		Matrix3D b = B;
 		float inverse = 1.0f / scale;
-		scaleRotation(a, inverse);
 		scaleRotation(b, inverse);
+		scaleRotation(a, inverse);
 		Quaternion rot;
 		Slerp(rot, Build_Quaternion(a), Build_Quaternion(b), factor);
 		result.Set_Rotation(rot);
