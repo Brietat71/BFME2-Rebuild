@@ -13,6 +13,7 @@
 #undef _CRTIMP
 #define _CRTIMP __declspec(dllimport)
 #include <string.h>
+#include <math.h>
 #undef _CRTIMP
 #define _CRTIMP
 #include "WW3D2/FontCharsClass.h"
@@ -106,6 +107,38 @@ FontCharsClassGdiState::~FontCharsClassGdiState()
 // FUNCTION: BFME2 0x00154580 size=172 name=?Check@Rva0093C4A0Target@@QAE_NPBGPAGH@Z evidence=?:placeholder tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x00154630 size=488 name=?Create_GDI_Font@FontCharsClass@@AAEXPBD@Z evidence=N:ledger tier=A
+void FontCharsClass::Create_GDI_Font(const char *face)
+{
+	bool generals = strcmp(face, "Generals") == 0;
+	if (generals)
+		face = "Arial";
+
+	float widthScale = 0.0f;
+	if (generals)
+		widthScale = PointSize * 0.4f;
+
+	PixelOverlap = (int)floor(PointSize * 0.125 + 0.5);
+	if (PixelOverlap < 0)
+		PixelOverlap = 0;
+	if (PixelOverlap > 4)
+		PixelOverlap = 4;
+
+	int weight = IsBold ? FW_BOLD : FW_NORMAL;
+	float grid = (float)Grid;
+	int width = (int)floor(grid * widthScale + 0.5f);
+	int height = -(int)floor(grid * PointSize + 0.5f);
+	GDIFont = CreateFontA(height, width, 0, 0, weight, 0, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
+		CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, 0, face);
+
+	HDC dc = g_fontCharsGdiState->DeviceContext;
+	HGDIOBJ previous = SelectObject(dc, GDIFont);
+	TEXTMETRICA metrics = { 0 };
+	GetTextMetricsA(dc, &metrics);
+	CharHeight = (Grid + metrics.tmExternalLeading + metrics.tmHeight - 1) / Grid;
+	CharAscent = metrics.tmExternalLeading / Grid;
+	CharOverhang = (Grid + metrics.tmOverhang - 1) / Grid;
+	SelectObject(dc, previous);
+}
 
 // FUNCTION: BFME2 0x00154820 size=26 name=?bfmeGoDWE@BfmeThingDWE@@QAEXXZ evidence=N:ledger tier=A
 
