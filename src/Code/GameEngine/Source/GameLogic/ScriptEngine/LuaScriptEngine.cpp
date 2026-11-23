@@ -518,21 +518,6 @@ int CurDrawableIsCurrentTargetKindof(lua_State *state)
 // FUNCTION: BFME2 0x00334F2E size=125 name=?ObjectCapturingObjectPlayerSide@@YAHPAUlua_State@@@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x00334FAB size=98 name=?ObjectTemplateName@@YAHPAUlua_State@@@Z evidence=N:ledger
-int ObjectTemplateName(lua_State *state)
-{
-	ObjectID id = lua_tablesizehint(state, 1);
-	if (id != INVALID_ID || lua_type(state, 1) == LUA_TNIL)
-	{
-		Object *object = TheGameLogic->findObjectByID(id);
-		if (object)
-		{
-			lua_pushstring(state, object->getTemplate()->getName().str());
-			return 1;
-		}
-	}
-	lua_pushnil(state);
-	return 1;
-}
 
 // FUNCTION: BFME2 0x0033500D size=130 name=?ObjectTestModelCondition@@YAHPAUlua_State@@@Z evidence=N:ledger
 
