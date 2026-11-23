@@ -326,7 +326,7 @@ Bool Pathfinder::IsValidMovementTerrain(PathfindLayerEnum layer, const Locomotor
 	if (toCell->getLayer() != LAYER_GROUND && type == PathfindCell::CELL_CLEAR)
 		return true;
 
-	return (locomotor->m_template->m_surfaces & s_surfacesForCellType[type]) != 0;
+	return (s_surfacesForCellType[type] & locomotor->m_template->m_surfaces) != 0;
 }
 
 // FUNCTION: BFME2 0x002E734E size=58 name=?rva002E734E@Rva002E7334@@QAEHPAURva002E734ECell@@0HH@Z evidence=?:placeholder tier=A
