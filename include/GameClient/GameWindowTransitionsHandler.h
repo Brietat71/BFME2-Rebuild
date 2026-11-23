@@ -7,10 +7,13 @@
 #include "Common/ICoord2D.h"
 #include "Common/AsciiString.h"
 #include "Common/NameKeyGenerator.h"
+#include "Common/INI/FieldParse.h"
 class Transition;
+class INI;
 class TransitionGroup;
 class GameWindow;
-typedef Transition *(*WindowTransitionFactory)();
+// A style entry is the INI parse function of one transition style (INI::Rva001DCAED_ParseTransition calls it with the window being parsed).
+typedef void (*WindowTransitionFactory)(INI *ini, void *instance, void *store, const void *userData);
 typedef _STL::hash_map<NameKeyType,WindowTransitionFactory,rts::hash<NameKeyType>,rts::equal_to<NameKeyType> > WindowTransitionMap;
 // One window of a transition group (retail allocation 0x18: parseWindow 0x001DCB2F news 0x18 and runs 0x001DBC61).
 // Members from init 0x001DBD24 (name key at +8, window at +0xC, the frame delay copied to +0x14) and update 0x001DBACA
@@ -18,6 +21,7 @@ typedef _STL::hash_map<NameKeyType,WindowTransitionFactory,rts::hash<NameKeyType
 // BFME 2 builds the transition while parsing (the Style field's factory stores it through 0x005F69CE), so there is no style member.
 class TransitionWindow {
 public:
+    TransitionWindow();             // 0x001DBC61
     bool init();                    // 0x001DBD24
     void update(int frame);         // 0x001DBACA
     bool isFinished() const;        // 0x001DBAF6
@@ -89,7 +93,10 @@ public:
     void releaseGroups();               // 0x001DBB87
     int bfmeGetGroupTotalFrames(AsciiString groupName);   // The named group's length, 0 when there is none
     void setCoords(const ICoord2D *,const ICoord2D *);
+    static void parseWindow(INI *ini, void *instance, void *store, const void *userData);    // 0x001DCB2F
+    static const FieldParse m_gameWindowTransitionsFieldParseTable[];
     friend class TransitionGroup;
+    friend class INI;
 private:
     TransitionGroup *findGroup(AsciiString groupName);
     WindowTransitionMap m_transitionMap; //C,14 bytes

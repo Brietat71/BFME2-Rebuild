@@ -45,6 +45,8 @@ public:
     static void parseMouseCursorDefinition(INI *);  // 0x001EF2CB: names one CursorInfo of TheMouse and parses its table
     static void Rva001FDD33_ParseResourceModifierValues(INI *ini, void *instance, void *store, const void *userData); // 0x001FDD33: appends every integer on the line to the vector at store
     static void parseInGameUIDefinition(INI *); // 0x0029A627: initFromINI(TheInGameUI, TheInGameUI->getInGameUIFieldParse())
+    static void parseWindowTransitions(INI *); // 0x001DC66F: names a transition group and parses its window list
+    static void Rva001DCAED_ParseTransition(INI *ini, void *instance, void *store, const void *userData); // 0x001DCAED: the Transition token of a window; looks the style up in the handler's map
     static void parseAnim2DDefinition(INI *); // 0x002D7554
     static void parseDynamicGameLODLevel(INI *, void *, void *, const void *); // 0x002025AC: a LOD name token to its level index
     static void parseBenchProfile(INI *); // 0x002026D4

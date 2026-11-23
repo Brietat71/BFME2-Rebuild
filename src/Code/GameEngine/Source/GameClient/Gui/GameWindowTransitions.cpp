@@ -12,7 +12,9 @@
 // FUNCTION: BFME2 0x001DBA77 size=14 name=?rva001DBA77@Rva001DBA77@@QBEHXZ evidence=?:placeholder tier=B hypothesis:mm1-contiguity-shared-data
 // FUNCTION: BFME2 0x001DBA9B size=9 name=?leave@Rva001DBA9BSectionView@@QAEXXZ evidence=?:placeholder tier=B hypothesis:mm1-neighbour-callers
 // FUNCTION: BFME2 0x001DBACA size=44 name=?rva001DBACA@Rva00489360@@QAEXH@Z evidence=?:placeholder tier=B hypothesis:K
+#include <stddef.h>
 #include <windows.h>
+#include "Common/INI.h"
 #include "Common/ScopedWin32Lock.h"
 #include "GameClient/GameWindowTransitionsHandler.h"
 #include "GameClient/Display.h"
@@ -25,6 +27,21 @@ void setFPMode();	// 0x00040EA9: resets the floating point control word
 
 // The window transitions handler singleton (retail VA 0x00DFDC14).
 GameWindowTransitionsHandler *TheTransitionHandler = NULL;
+
+const FieldParse GameWindowTransitionsHandler::m_gameWindowTransitionsFieldParseTable[] =
+{
+	{ "Window", GameWindowTransitionsHandler::parseWindow, 0, 0 },
+	{ "FireOnce", INI::parseBool, 0, offsetof(TransitionGroup, m_fireOnce) },
+	{ 0, 0, 0, 0 }
+};
+
+TransitionWindow::TransitionWindow()
+{
+	m_currentFrameDelay = m_frameDelay = 0;
+	m_winID = 0;
+	m_win = NULL;
+	m_transition = NULL;
+}
 
 void TransitionWindow::update(int frame)
 {
@@ -561,14 +578,45 @@ void GameWindowTransitionsHandler::finishTransitions()
 
 
 // FUNCTION: BFME2 0x001DC66F size=112 name=?parseWindowTransitions@INI@@SAXPAV1@@Z evidence=N:ledger tier=A
+void INI::parseWindowTransitions(INI *ini)
+{
+	AsciiString name;
+	name.set(ini->getNextToken(0));
+
+	if (TheTransitionHandler)
+	{
+		TransitionGroup *group = TheTransitionHandler->getNewGroup(name);
+		ini->initFromINI(group, GameWindowTransitionsHandler::m_gameWindowTransitionsFieldParseTable);
+	}
+}
 
 // FUNCTION: BFME2 0x001DC6E4 size=225 name=??1GameWindowTransitionsHandler@@UAE@XZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x001DC7E1 size=780 name=?load@GameWindowTransitionsHandler@@QAEXXZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x001DCAED size=66 name=?Rva001DCAED_ParseTransition@INI@@SAXPAV1@PAX1PBX@Z evidence=?:placeholder tier=B hypothesis:K
+void INI::Rva001DCAED_ParseTransition(INI *ini, void *instance, void *store, const void *userData)
+{
+	NameKeyType key = TheNameKeyGenerator->nameToKey(ini->getNextToken(0));
+	WindowTransitionFactory factory = TheTransitionHandler->m_transitionMap[key];
+	factory(ini, instance, store, userData);
+}
 
 // FUNCTION: BFME2 0x001DCB2F size=53 name=?parseWindow@GameWindowTransitionsHandler@@SAXPAVINI@@PAX1PBX@Z evidence=N:ledger tier=B hypothesis:K
+void GameWindowTransitionsHandler::parseWindow(INI *ini, void *instance, void *store, const void *userData)
+{
+	static const FieldParse myFieldParse[] =
+	{
+		{ "WinName", INI::parseAsciiString, 0, offsetof(TransitionWindow, m_winName) },
+		{ "Transition", INI::Rva001DCAED_ParseTransition, 0, 0 },
+		{ "FrameDelay", INI::parseInt, 0, offsetof(TransitionWindow, m_frameDelay) },
+		{ 0, 0, 0, 0 }
+	};
+
+	TransitionWindow *transWin = new TransitionWindow;
+	ini->initFromINI(transWin, myFieldParse);
+	static_cast<TransitionGroup *>(instance)->addWindow(transWin);
+}
 
 // FUNCTION: BFME2 0x001DCBC3 size=124 name=??0GameWindowTransitionsHandler@@QAE@XZ evidence=N:ledger tier=B hypothesis:Z
 
