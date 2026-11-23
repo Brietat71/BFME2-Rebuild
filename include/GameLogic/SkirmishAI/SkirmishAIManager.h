@@ -16,11 +16,11 @@ class TeamPrototype;
 class SkirmishAI;
 typedef SkirmishAI Rva002A8AB1Record;
 
-// The record's owner keeps a vector of the player's object ids at +0x04.
-struct Rva002A8F24Owner
+// The record's owner hands out the vector of the player's object ids through the map's field getter.
+class Rva005C4AD1LeaField
 {
-    unsigned char m_unk0x00[4];
-    _STL::vector<ObjectID> m_objects;
+public:
+    void *get() const;
 };
 
 struct Rva002A8F24Record
@@ -33,7 +33,7 @@ struct Rva002A8F24Record
         int m_moneyForScore;
     };
 
-    Rva002A8F24Owner *m_owner;
+    Rva005C4AD1LeaField *m_owner;
     unsigned char m_unk0x04[8];
     ScoreMoneySource *m_scoreMoneySource;
 };

@@ -51,7 +51,7 @@ void AIStartWoTRBattleTactic::run()
 		brain->setNamedValue(StartWoTRBattleTacticHasRun, 1);
 		Rva002A8F24Record *record = TheSkirmishAIManager->rva002A8F24(m_player);
 		Coord3D target = brain->rva004EBF4B();
-		_STL::vector<ObjectID> &ids = record->m_owner->m_objects;
+		_STL::vector<ObjectID> &ids = *static_cast<_STL::vector<ObjectID> *>(record->m_owner->get());
 		_STL::vector<ObjectID>::iterator idsEnd = ids.end();
 		for (_STL::vector<ObjectID>::iterator it = ids.begin(); it != idsEnd; ++it)
 		{
