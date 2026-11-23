@@ -21,6 +21,7 @@
 #include "WW3D2/w3d_emitter.h"
 #include "WWMath/Vector2.h"
 #include "WWMath/Vector3.h"
+#include "WWMath/Vector4.h"
 
 class RenderInfoClass;
 class Matrix3D;
@@ -102,7 +103,20 @@ public:
 	friend class StreakLineClass;
 
 private:
+	// One pending segment of subdivision_util's explicit stack.
+	struct SegLineSubdivision {
+		Vector3			StartPos;
+		Vector3			EndPos;
+		float			StartTexV;
+		float			EndTexV;
+		Vector4			StartDiffuse;
+		Vector4			EndDiffuse;
+		float			Rand;
+		unsigned int	Level;
+	};
+
 	VertexFormatXYZDUV1 *getVertexBuffer(unsigned int number);
+	void subdivision_util(unsigned int point_cnt, const Vector3 *xformed_pts, const float *base_tex_v, unsigned int *p_sub_point_cnt, Vector3 *xformed_subdiv_pts, float *subdiv_tex_v, Vector4 *base_diffuse, Vector4 *subdiv_diffuse);	// 0x00191480
 
 	TextureAsset Texture;					// +0x00 the handle (one factory pointer); released by the destructor
 	ShaderClass Shader;						// +0x04
