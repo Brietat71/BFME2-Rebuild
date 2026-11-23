@@ -73,7 +73,7 @@ Int rva002E6D42(Int index, Int count)
 Int rva002E6D54(Int index, Int count)
 {
 	if (index == 0)
-		index = count;
+		return count - 1;
 	return index - 1;
 }
 
