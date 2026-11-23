@@ -12,7 +12,6 @@
 #include "GameClient/W3DDisplay.h"
 #include "Common/Color.h"
 #include "GameClient/GadgetStaticText.h"
-#include "Common/IRegion2D.h"
 #include "GameClient/DisplayString.h"
 #include "GameClient/DisplayStringManager.h"
 #include <stdlib.h>
@@ -375,6 +374,11 @@ void MainMenuMediumScaleUpTransition::draw()
 	((W3DDisplay *)TheDisplay)->rva0004D6B3((Image *)image, (float)x, (float)y, (float)x1, (float)y1, -1, 2);
 }
 
+static inline W3DDisplay *w3dDisplay()
+{
+	return static_cast<W3DDisplay *>(TheDisplay);
+}
+
 static inline void zeroCoord(ICoord2D &c)
 {
 	c.x = 0;
@@ -584,31 +588,31 @@ void FlashTransition::draw()
 	switch (m_drawState)
 	{
 		case 1:
-			((W3DDisplay *)TheDisplay)->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 100));
+			w3dDisplay()->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 100));
 			TheDisplay->rva0004263F((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, GameMakeColor(255, 203, 45, 33));
 			break;
 		case 2:
-			((W3DDisplay *)TheDisplay)->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 150));
+			w3dDisplay()->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 150));
 			TheDisplay->rva0004263F((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, GameMakeColor(255, 203, 45, 66));
 			break;
 		case 3:
-			((W3DDisplay *)TheDisplay)->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 200));
+			w3dDisplay()->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 200));
 			TheDisplay->rva0004263F((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, GameMakeColor(255, 203, 45, 99));
 			break;
 		case 4:
-			((W3DDisplay *)TheDisplay)->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 250));
+			w3dDisplay()->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 250));
 			TheDisplay->rva0004263F((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, GameMakeColor(255, 203, 45, 75));
 			break;
 		case 5:
-			((W3DDisplay *)TheDisplay)->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 250));
+			w3dDisplay()->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 250));
 			TheDisplay->rva0004263F((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, GameMakeColor(255, 203, 45, 50));
 			break;
 		case 6:
-			((W3DDisplay *)TheDisplay)->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 250));
+			w3dDisplay()->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 250));
 			TheDisplay->rva0004263F((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, GameMakeColor(255, 203, 45, 25));
 			break;
 		case 7:
-			((W3DDisplay *)TheDisplay)->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 250));
+			w3dDisplay()->rva0008EEF0((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, 1.0f, GameMakeColor(255, 203, 45, 250));
 			TheDisplay->rva0004263F((float)(m_pos.x + 1), (float)(m_pos.y + 1), (float)(m_size.x - 2), (float)m_size.y, GameMakeColor(255, 203, 45, 10));
 			break;
 	}
@@ -690,7 +694,7 @@ void FullFadeTransition::draw()
 	if (alpha > 255)
 		alpha = 255;
 	TheDisplay->rva0004263F((float)m_pos.x, (float)m_pos.y, (float)m_size.x, (float)m_size.y, GameMakeColor(0, 0, 0, (unsigned char)alpha));
-	((W3DDisplay *)TheDisplay)->rva0008EEF0((float)m_pos.x, (float)m_pos.y, (float)m_size.x, (float)m_size.y, 1.0f, GameMakeColor(255, 190, 0, (unsigned char)alpha));
+	w3dDisplay()->rva0008EEF0((float)m_pos.x, (float)m_pos.y, (float)m_size.x, (float)m_size.y, 1.0f, GameMakeColor(255, 190, 0, (unsigned char)alpha));
 }
 
 // FUNCTION: BFME2 0x0035F43D size=97 name=?update@FadeTransition@@UAEXH@Z evidence=N:ledger
@@ -907,60 +911,6 @@ void CountUpTransition::update(int frame)
 // FUNCTION: BFME2 0x0035FB55 size=21 name=?copy@Rva005A0430@@QAEXXZ evidence=?:placeholder
 
 // FUNCTION: BFME2 0x0035FB6A size=364 name=?drawTypeText@@YAXPAVGameWindow@@PAVDisplayString@@@Z evidence=N:ledger
-static void drawTypeText(GameWindow *window, DisplayString *str)
-{
-	TextData *tData = (TextData *)window->winGetUserData();
-	Int textColor = window->winGetEnabledTextColor();
-	Int textDropColor = window->winGetEnabledTextBorderColor();
-	Int textWidth, textHeight, wordWrap;
-	DisplayString *text = tData->m_text;
-	ICoord2D origin, size, textPos;
-	IRegion2D clipRegion;
-
-	if (text == 0 || text->getTextLength() == 0)
-		return;
-	GameFont *font = text->getFont();
-
-	str->setFont(font);
-
-	window->winGetScreenPosition(&origin.x, &origin.y);
-	window->winGetSize(&size.x, &size.y);
-
-	wordWrap = size.x - 10;
-	text->setWordWrap(wordWrap);
-	str->setWordWrap(wordWrap);
-	if (window->winGetStatus() & 0x40000)
-	{
-		str->setWordWrapCentered(true);
-		text->setWordWrapCentered(true);
-	}
-	else
-	{
-		text->setWordWrapCentered(false);
-		str->setWordWrapCentered(false);
-	}
-
-	text->getSize(&textWidth, &textHeight);
-
-	clipRegion.lo.x = origin.x;
-	clipRegion.lo.y = origin.y;
-	clipRegion.hi.x = origin.x + size.x;
-	clipRegion.hi.y = origin.y + size.y;
-
-	if (tData->m_centered)
-	{
-		textPos.x = origin.x + (size.x / 2) - (textWidth / 2);
-		textPos.y = origin.y + (size.y / 2) - (textHeight / 2);
-	}
-	else
-	{
-		textPos.x = origin.x + 7;
-		textPos.y = origin.y + (size.y / 2) - (textHeight / 2);
-	}
-	str->setClipRegion(&clipRegion);
-	str->setColors(textColor, textDropColor);
-	str->draw(textPos.x, textPos.y, 1, 1);
-}
 
 // FUNCTION: BFME2 0x0035FD73 size=87 name=?Rva0035FD73Parse@@YAXPAVINI@@PAVRva003600D6Holder@@@Z evidence=?:placeholder
 
@@ -1022,14 +972,6 @@ void TextTypeTransition::update(int frame)
 }
 
 // FUNCTION: BFME2 0x0035FF1D size=57 name=?draw@TextTypeTransition@@UAEXXZ evidence=N:ledger
-void TextTypeTransition::draw()
-{
-	if (m_drawState > m_startFrame && m_drawState < m_frameLength)
-	{
-		m_dStr->setText(m_partialText);
-		drawTypeText(m_win, m_dStr);
-	}
-}
 
 
 #include "GameClient/GameWindowTransitions.h"
