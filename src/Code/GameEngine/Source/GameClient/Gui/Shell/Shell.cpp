@@ -12,12 +12,18 @@ extern IMEManager*TheIMEManager;
 class GameSpyInfo;
 extern GameSpyInfo *TheGameSpyInfo;
 void Rva00548C1ACleanup();
+void InitGameLogicRandom(UnsignedInt seed);
+enum { GAME_MODE_SHELL = 4, GAME_MODE_NONE = 9 };
 #include "GameClient/Shell.h"
 #include "GameClient/GameWindowManager.h"
 #include "GameClient/WindowLayout.h"
 #include "GameClient/AnimateWindowManager.h"
 #include "GameClient/GameWindowTransitionsHandler.h"
 #include "GameClient/IMEManager.h"
+#include "GameClient/Display.h"
+#include "GameLogic/GameLogic.h"
+#include "GameLogic/LinearCampaignManager.h"
+#include "Common/MessageStream.h"
 #include "Common/GlobalData.h"
 
 // The shell singleton (retail VA 0x00E01E48).
@@ -228,6 +234,44 @@ void Shell::reset()
 }
 
 // FUNCTION: BFME2 0x0035C194 size=293 name=?showShellMap@Shell@@QAE_N_N0@Z evidence=N:ledger
+bool Shell::showShellMap(bool useShellMap, bool restartShellGame)
+{
+	if (useShellMap)
+	{
+		if (TheLinearCampaignManager && TheLinearCampaignManager->hasCurrentCampaign())
+			TheMessageStream->appendMessage(GameMessage::MSG_EXIT_LINEAR_CAMPAIGN);
+	}
+
+	m_unknown52 = !TheWritableGlobalData->m_shellMapOn;
+	if (!TheWritableGlobalData->m_initialFile.isEmpty() || !TheGameLogic)
+		return false;
+
+	m_unknown53 = false;
+	if (useShellMap && TheWritableGlobalData->m_shellMapOn)
+	{
+		TheDisplay->rva0025D2F6();
+		stopMusic();
+
+		Int gameMode = TheGameLogic->getGameMode();
+		if (gameMode == GAME_MODE_SHELL && !restartShellGame)
+			return true;
+
+		if (gameMode != GAME_MODE_NONE)
+			TheMessageStream->appendMessage(GameMessage::MSG_CLEAR_GAME_DATA);
+
+		TheWritableGlobalData->m_pendingFile = TheWritableGlobalData->m_shellMapName;
+		InitGameLogicRandom(0);
+		GameMessage *message = TheMessageStream->appendMessage(GameMessage::MSG_NEW_GAME);
+		message->appendIntegerArgument(GAME_MODE_SHELL);
+		return true;
+	}
+
+	TheDisplay->rva0025D2F6();
+	stopMusic();
+	if (TheGameLogic->getGameMode() == GAME_MODE_SHELL)
+		TheMessageStream->appendMessage(GameMessage::MSG_CLEAR_GAME_DATA);
+	return false;
+}
 
 // FUNCTION: BFME2 0x0035C2B9 size=266 name=?rva0035C2B9@Shell@@QAEXXZ evidence=?:placeholder
 
