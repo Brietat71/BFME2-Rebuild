@@ -2638,6 +2638,20 @@
    "kind": "trusted-narrow",
    "number": 498,
    "tree": "c8f93216fd45130771382c861b7884a7b1792bcf"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45184725743"
+   },
+   "author": 1760627,
+   "base": "cf033cf34be6dc4d66d58eac9106aa4d35899e69",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "7d4b9b2d3819d16f206fbd0fd58bf2214dbe0797",
+   "kind": "trusted-narrow",
+   "number": 482,
+   "tree": "cca43a8530478a68bc4b24c4826d13f84b6928c4"
   }
  ],
  "version": 2
