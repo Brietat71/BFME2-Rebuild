@@ -290,15 +290,18 @@ UpdateSleepTime TunnelContain::update()
 void TunnelContain::removeAllContained(Bool exposeStealthUnits)
 {
 	Player *player = getObject()->getControllingPlayer();
-	ContainedItemsList fullList = player->m_tunnelSystem->getContainedItemsList().toList();
-	ContainedItemsList::const_iterator it = fullList.begin();
-	while (it != fullList.end())
+	TunnelTracker *tracker = player->m_tunnelSystem;
 	{
-		Object *obj = *it;
-		it++;
-		if (obj->getTemplate()->isKindOf0x115())
-			obj->getContain()->iterateContained(removeRiderVisitor, this, 1);
-		removeFromContain(obj, exposeStealthUnits);
+		ContainedItemsList fullList = tracker->getContainedItemsList().toList();
+		ContainedItemsList::const_iterator it = fullList.begin();
+		while (it != fullList.end())
+		{
+			Object *obj = *it;
+			it++;
+			if (obj->getTemplate()->isKindOf0x115())
+				obj->getContain()->iterateContained(removeRiderVisitor, this, 1);
+			removeFromContain(obj, exposeStealthUnits);
+		}
 	}
 }
 
