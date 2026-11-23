@@ -338,6 +338,14 @@ AsciiString Waypoint::getPathLabel3() const
 // FUNCTION: BFME2 0x0027F882 size=810 name=??0Bridge@@QAE@AAVRva0027C36A@@PAVDict@@ABVAsciiString@@PAVPolygonTrigger@@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0027FBAC size=82 name=??1Bridge@@UAE@XZ evidence=N:ledger tier=A
+Bridge::~Bridge()
+{
+	if (m_polygonTrigger)
+	{
+		::delete m_polygonTrigger;
+		m_polygonTrigger = NULL;
+	}
+}
 
 // FUNCTION: BFME2 0x0027FBFE size=300 name=?pickBridge@Bridge@@QAE_NABVVector3@@0PAV2@@Z evidence=N:ledger tier=A
 
