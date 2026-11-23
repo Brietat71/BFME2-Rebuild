@@ -13,14 +13,18 @@
 
 class Xfer;
 class Image;
+class LivingWorldBuilding;
 class UnicodeString;
 
-// One plot record as the region holds it: only the int at +0x20 is read so far.
+// One plot record as the region holds it: the building on the plot at +0x20 (zero while the plot is empty) and a flag
+// byte at +0x34 that GetBuildingByIndex tests are read so far.
 // The class is LivingWorldBuildPlot in the constructor; its layout is not recovered.
 struct RegionPlotRecord
 {
 	unsigned char m_unk0x00[0x20];
-	int m_unk0x20;
+	LivingWorldBuilding *m_building;
+	unsigned char m_unk0x24[0x10];
+	bool m_unk0x34;
 };
 
 // A 12-byte placement list (begin, end, end of storage). Its element is not recovered.
@@ -50,6 +54,7 @@ public:
 	UnicodeString GetFortressDisplayDescription();
 
 	int rva003F1053();					// Plots whose +0x20 is zero
+	LivingWorldBuilding *GetBuildingByIndex(Int index) const;	// 0x003F0711: the index-th plot with a building and the flag clear
 	void rva003F0F48(PlacementRange *list, void *request);	// (body not written)
 	void rva003F0FA3(void *request);			// Picks the list by the request's name
 
