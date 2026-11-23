@@ -933,15 +933,16 @@ void W3DRoadBuffer::preloadRoadSegment(RoadSegment *pRoad)
 	Real uOffset = 0.0f;
 	Real vOffset = (85.0f / 512.0f);
 
-	Real roadHeight = pRoad->m_widthInTexture * pRoad->m_scale / 2.0f;
-	roadNormal.Normalize();
-	roadNormal *= roadHeight;
-
 	Vector2 corners[NUM_CORNERS];
 	corners[bottomLeft] = pRoad->m_pt1.bottom;
 	corners[topLeft] = pRoad->m_pt1.top;
 	corners[bottomRight] = pRoad->m_pt2.bottom;
 	corners[topRight] = pRoad->m_pt2.top;
+
+	Real roadHeight = pRoad->m_widthInTexture * pRoad->m_scale / 2.0f;
+	roadNormal.Normalize();
+	roadNormal *= roadHeight;
+
 	loadFloat4PtSection(pRoad, pRoad->m_pt1.loc, roadNormal, roadVector, corners, uOffset, vOffset,
 		pRoad->m_scale, pRoad->m_scale);
 }
