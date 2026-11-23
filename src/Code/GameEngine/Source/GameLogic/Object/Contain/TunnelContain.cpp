@@ -279,6 +279,20 @@ UpdateSleepTime TunnelContain::update()
 }
 
 // FUNCTION: BFME2 0x0047E0CE size=157 name=?removeAllContained@TunnelContain@@UAEXH@Z evidence=N:ledger tier=A
+void TunnelContain::removeAllContained(Bool exposeStealthUnits)
+{
+	Player *player = getObject()->getControllingPlayer();
+	ContainedItemsList fullList = player->m_tunnelSystem->getContainedItemsList().toList();
+	ContainedItemsList::const_iterator it = fullList.begin();
+	while (it != fullList.end())
+	{
+		Object *obj = *it;
+		it++;
+		if (obj->getTemplate()->isKindOf0x115())
+			obj->getContain()->iterateContained(removeRiderVisitor, this, 1);
+		removeFromContain(obj, exposeStealthUnits);
+	}
+}
 
 // FUNCTION: BFME2 0x0047E16B size=253 name=?scatterToNearbyPosition@TunnelContain@@IAEXPAVObject@@@Z evidence=N:ledger tier=A
 void TunnelContain::scatterToNearbyPosition(Object *obj)
