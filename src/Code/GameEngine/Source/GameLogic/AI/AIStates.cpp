@@ -3382,24 +3382,16 @@ void AIFollowPathAndEvacuateState::onExit(StateExitType status)
 // FUNCTION: BFME2 0x0034C7BD size=264 name=?onEnter@AIMoveToState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 StateReturnType AIMoveToState::onEnter()
 {
-	if (g_bfmeCritterDesyncLog)
-	{
-		void *log = theLogicRandomLogFile;
-		if (log)
-			fprintf(log, "CritterDesync: setAdjustDestination(TRUE) 4");
-	}
+	if (g_bfmeCritterDesyncLog && theLogicRandomLogFile)
+		fprintf(theLogicRandomLogFile, "CritterDesync: setAdjustDestination(TRUE) 4");
 	m_adjustDestinations = true;
 	AIUpdateInterface *ai = getMachine()->getOwner()->getAI();
 	if (getMachine()->getGoalObject() && ai)
 	{
 		if (getMachine()->getGoalObject()->getID() == ai->getIgnoredObstacleID())
 		{
-			if (g_bfmeCritterDesyncLog)
-			{
-				void *log = theLogicRandomLogFile;
-				if (log)
-					fprintf(log, "CritterDesync: setAdjustDestination(FALSE) 5");
-			}
+			if (g_bfmeCritterDesyncLog && theLogicRandomLogFile)
+				fprintf(theLogicRandomLogFile, "CritterDesync: setAdjustDestination(FALSE) 5");
 			m_adjustDestinations = false;
 		}
 	}
