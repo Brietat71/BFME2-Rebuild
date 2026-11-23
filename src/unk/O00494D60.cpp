@@ -12,6 +12,7 @@ WeaponModeSpecialPowerUpdateModuleData::WeaponModeSpecialPowerUpdateModuleData()
 	m_duration(0),
 	m_lockWeaponSlot((WeaponSlotType)5)
 {
+	m_weaponSetFlags.clear();
 }
 
 // FUNCTION: BFME2 0x00494D7C size=53 name=??1WeaponModeSpecialPowerUpdateModuleData@@UAE@XZ evidence=N:ledger tier=B hypothesis:name:invented
