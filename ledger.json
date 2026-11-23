@@ -4020,6 +4020,20 @@
    "kind": "trusted-wide",
    "number": 29,
    "tree": "4833f2251b0f1a6dfdd37c08958a8ed0a8dc6f5a"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45237282528"
+   },
+   "author": 1760627,
+   "base": "3abb78d0758d664ac4d0368963deeb949abf9a9c",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "a7eec88db15c315214f08f21ad00b5b091c3f145",
+   "kind": "trusted-wide",
+   "number": 317,
+   "tree": "590953589a5abd69e6e7e2c5b3e3e6eabbbabe69"
   }
  ],
  "version": 2
