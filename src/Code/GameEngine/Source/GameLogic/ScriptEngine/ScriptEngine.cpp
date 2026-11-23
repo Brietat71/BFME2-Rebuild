@@ -1696,6 +1696,22 @@ void ScriptEngine::adjustTimer(ScriptAction *pAction, Bool millisecondTimer, Boo
 }
 
 // FUNCTION: BFME2 0x002096E2 size=102 name=?evaluateCondition@ScriptEngine@@IAE_NPAVCondition@@@Z evidence=N:ledger tier=A
+Bool ScriptEngine::evaluateCondition(Condition *pCondition)
+{
+	Int gameMode = getGameModeMask();
+	if ((gameMode & pCondition->rva003B275A()) == 0)
+		return false;
+
+	switch (pCondition->getConditionType()) {
+	case Condition::CONDITION_FALSE: return false;
+	case Condition::COUNTER: return evaluateCounter(pCondition);
+	case Condition::FLAG: return evaluateFlag(pCondition);
+	case Condition::CONDITION_TRUE: return true;
+	case Condition::TIMER_EXPIRED: return evaluateTimer(pCondition);
+	default:
+		return TheScriptConditions->evaluateCondition(pCondition);
+	}
+}
 // FUNCTION: BFME2 0x00209748 size=201 name=?evaluateConditions@ScriptEngine@@QAE_NPAVScript@@PAVTeam@@PAVPlayer@@@Z evidence=N:ledger tier=A
 Bool ScriptEngine::evaluateConditions(Script *pScript, Team *thisTeam, Player *player)
 {
