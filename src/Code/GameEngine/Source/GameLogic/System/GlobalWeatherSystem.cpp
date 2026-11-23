@@ -54,32 +54,10 @@ void GlobalWeatherSystem::parseWeatherData(INI *ini)
 
 // FUNCTION: BFME2 0x00318637 size=110 name=??1GlobalWeatherSystem@@UAE@XZ evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x003186A5 size=73 name=?reset@GlobalWeatherSystem@@UAEXXZ evidence=X:proven (vtable+position) tier=B hypothesis:mm1-held-object-same-path
-void GlobalWeatherSystem::reset()
-{
-	m_unk0x10 = 0;
-	m_unk0x28 = 0;
-	m_unk0x2C = 0;
-	TheAudio->removeAudioEvent(m_unk0x14);
-	m_unk0x14 = 1;
-	m_unk0x18 = 0;
-	m_unk0x20.set("");
-	m_unk0x58.clear();
-	m_unk0x24 = 0;
-}
 
 // FUNCTION: BFME2 0x003186EE size=43 name=?rva003186EE@GlobalWeatherSystem@@QAEXHHH@Z evidence=P:provisional (wb-file) tier=B hypothesis:mm1-held-object-same-path
 
 // FUNCTION: BFME2 0x00318719 size=79 name=?rva00318719@GlobalWeatherSystem@@QAEXXZ evidence=P:provisional (wb-file) tier=B hypothesis:mm1-held-object-same-path
-void GlobalWeatherSystem::rva00318719()
-{
-	for (Object *obj = TheGameLogic->getFirstObject(); obj; obj = obj->getNextObject())
-		rva00318333(obj, true);
-	m_unk0x18 = 0;
-	m_unk0x20.set("");
-	m_unk0x58.clear();
-	m_unk0x24 = 0;
-	m_unk0x2C = 0;
-}
 
 // FUNCTION: BFME2 0x00318768 size=56 name=?rva00318768@GlobalWeatherSystem@@QAEXXZ evidence=P:provisional (wb-file) tier=B hypothesis:mm1-held-object-same-path
 void GlobalWeatherSystem::update()
