@@ -1,4 +1,4 @@
-# measured_utc=2026-11-23T09:05:06Z revision=a0b76de72e finished_files=529
+# measured_utc=2026-11-23T10:03:15Z revision=d072bf9fb0 finished_files=530
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -114,7 +114,6 @@ src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DDebrisDra
 src/Code/Libraries/Source/WWVegas/WWMath/frustum.cpp	2	2	70	0	none	0
 src/Code/GameEngine/Source/GameClient/Gui/Shell/ShellMenuScheme.cpp	12	2	76	0	real	1
 src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDraw.cpp	7	2	112	0	real	0
-src/lua-4.0.1/Lua/lapi.c	54	2	114	0	real	0
 src/Code/GameEngine/Source/GameLogic/Object/Update/ProjectileStreamUpdate.cpp	10	2	151	0	real	1
 src/Code/Libraries/Source/Apt/AptArray.cpp	29	2	166	0	real	1
 src/Code/Libraries/Source/xfer/xfer_load.cpp	9	2	166	0	real	1
