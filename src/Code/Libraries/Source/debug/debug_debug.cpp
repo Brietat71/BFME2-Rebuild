@@ -624,15 +624,22 @@ void Debug::AddPatternEntry(unsigned int types, bool isActive, const char *patte
 // FUNCTION: BFME2 0x00039480 size=135 name=?SimpleMatch@Debug@@SA_NPBD0@Z evidence=N:ledger tier=A
 bool Debug::SimpleMatch(const char *str, const char *pattern)
 {
-	// the text is compared case-insensitively, the pattern is already lower case
-	while (*str && *pattern && *pattern != '*')
+	while (*str && *pattern)
 	{
-		char c = *str++;
-		if ((c >= 'A' && c <= 'Z' ? c + ('a' - 'A') : c) != *pattern++)
-			return false;
+		char p = *pattern;
+		if (p == '*')
+			break;
+		char c = *str;
+		int lower = c;
+		if (c >= 'A' && c <= 'Z')
+			lower = c + ('a' - 'A');
+		pattern++;
+		str++;
+		if (lower == p)
+			continue;
+		return false;
 	}
 
-	// a trailing star also matches the empty text
 	if (*pattern == '*')
 	{
 		pattern++;
