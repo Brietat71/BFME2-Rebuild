@@ -1,4 +1,4 @@
-# measured_utc=2026-11-23T03:05:57Z revision=b0b20aaf98 finished_files=526
+# measured_utc=2026-11-23T05:48:13Z revision=859d14483f finished_files=526
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -411,6 +411,7 @@ src/Code/GameEngine/Source/Common/INI/inihelp.cpp	47	12	1208	5	real	8
 src/Code/GameEngine/Source/GameClient/Gui/GameWindowTransitions.cpp	46	12	1900	3	real	1
 src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTankDraw.cpp	19	12	2535	3	real	1
 src/Code/Libraries/Source/assetmanager/assetmanager.cpp	12	12	809	2	none	0
+src/Code/Libraries/Source/debug/debug_except.cpp	22	12	3712	2	real	3
 src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptOptions.cpp	28	12	9287	2	real	3
 src/fesl/source/debug.cpp	12	12	738	0	real	0
 src/Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleBonus.cpp	12	12	929	0	none	0
@@ -435,7 +436,6 @@ src/Code/GameEngine/Source/GameClient/Gui/ChatWindowsInGame.cpp	14	14	1500	4	rea
 src/Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp	37	14	3365	4	real	4
 src/Code/GameEngine/Source/GameClient/Gui/ControlBar/CommandButton.cpp	34	14	1278	3	real	4
 src/Code/GameEngine/Source/Common/Thing/Module.cpp	14	14	2045	2	real	0
-src/Code/Libraries/Source/debug/debug_except.cpp	22	14	3828	2	real	3
 src/fesl/source/gamebrowser/gamebrowserlobby.cpp	14	14	643	1	none	0
 src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptScoreScreen.cpp	26	14	5637	1	real	1
 src/Code/GameEngine/Source/GameLogic/Object/SimpleObjectIterator.cpp	14	14	781	0	draft	0
