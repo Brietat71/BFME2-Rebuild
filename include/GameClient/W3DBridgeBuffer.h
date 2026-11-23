@@ -82,6 +82,7 @@ public:
 	W3DBridgeBuffer(void);													// 0x000DE52E
 	~W3DBridgeBuffer(void);
 	void clearAllBridges(void);
+	void allocateBridgeBuffers(void);		// 0x000DD8B8
 	enum { MAX_BRIDGE_VERTEX = 8000,MAX_BRIDGE_INDEX = 2 * MAX_BRIDGE_VERTEX, MAX_BRIDGES = 200 };
 
 protected:
@@ -93,7 +94,6 @@ protected:
 	Int m_numBridges;						// +0xD7B0
 	Bool m_initialized;						// +0xD7B4
 
-	void allocateBridgeBuffers(void);
 	void freeBridgeBuffers(void);			// 0x0074011F
 };
 
