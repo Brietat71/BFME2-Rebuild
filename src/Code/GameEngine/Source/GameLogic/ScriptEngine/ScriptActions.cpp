@@ -884,23 +884,23 @@ void ScriptActions::doAmbientSoundsPause(Bool pause)
 // FUNCTION: BFME2 0x003BBC81 size=50 name=?Rva003BBC81Set@ScriptActions@@QAEX_N0H@Z evidence=?:placeholder tier=B hypothesis:cohesion
 void ScriptActions::Rva003BBC81Set(Bool a, Bool b, Int musicSystem)
 {
-	Bool transition = !a;
-	Bool resume = !b;
+	Int transition = !a;
+	Int resume = !b;
 	TheAudio->popMusicEvent(0, musicSystem, transition, resume);
 }
 
 // FUNCTION: BFME2 0x003BBCB3 size=31 name=?Rva003BBCB3Set@ScriptActions@@QAEX_N@Z evidence=?:placeholder tier=B hypothesis:cohesion
 void ScriptActions::Rva003BBCB3Set(Bool a)
 {
-	Bool transition = !a;
+	Int transition = !a;
 	TheAudio->pushMusicSystem(0, 1, transition);
 }
 
 // FUNCTION: BFME2 0x003BBCD2 size=48 name=?Rva003BBCD2Set@ScriptActions@@QAEX_N0@Z evidence=?:placeholder tier=B hypothesis:cohesion
 void ScriptActions::Rva003BBCD2Set(Bool a, Bool b)
 {
-	Bool transition = !a;
-	Bool resume = !b;
+	Int transition = !a;
+	Int resume = !b;
 	TheAudio->popMusicSystem(0, 1, transition, resume);
 }
 
