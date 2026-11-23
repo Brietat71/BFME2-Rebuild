@@ -4238,6 +4238,20 @@
    "kind": "trusted-narrow",
    "number": 142,
    "tree": "d95a45c1f0d2ac685682ad01a6e122af12a7299e"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45241165652"
+   },
+   "author": 1760627,
+   "base": "2a0e6590c9a0a123867dc9d4cb3da6342cda3661",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "c10c3f7404458390f72a4b388b253576493aecfb",
+   "kind": "trusted-narrow",
+   "number": 143,
+   "tree": "85fa51178388a45b92526e0a729ee718b1645c41"
   }
  ],
  "version": 2
