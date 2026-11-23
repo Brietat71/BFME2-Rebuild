@@ -434,6 +434,742 @@ void GameMessage::appendWideCharArgument(const unsigned short &arg)
 }
 
 // FUNCTION: BFME2 0x0030FA44 size=4397 name=?getCommandTypeAsAsciiString@GameMessage@@SA?AVAsciiString@@W4Type@1@@Z evidence=N:ledger
+AsciiString GameMessage::getCommandTypeAsAsciiString(GameMessage::Type t)
+{
+	AsciiString commandName;
+	commandName.format("UNKNOWN COMMAND %d", t);
+	if (t >= 0x7EE)
+		commandName.format("OUT OF RANGE COMMAND %d", t);
+
+	switch (t)
+	{
+	case GameMessage::MSG_META_SAVE_VIEW1:
+		return AsciiString("MSG_META_SAVE_VIEW1");
+	case GameMessage::MSG_META_SAVE_VIEW2:
+		return AsciiString("MSG_META_SAVE_VIEW2");
+	case GameMessage::MSG_META_SAVE_VIEW3:
+		return AsciiString("MSG_META_SAVE_VIEW3");
+	case GameMessage::MSG_META_SAVE_VIEW4:
+		return AsciiString("MSG_META_SAVE_VIEW4");
+	case GameMessage::MSG_META_SAVE_VIEW5:
+		return AsciiString("MSG_META_SAVE_VIEW5");
+	case GameMessage::MSG_META_SAVE_VIEW6:
+		return AsciiString("MSG_META_SAVE_VIEW6");
+	case GameMessage::MSG_META_SAVE_VIEW7:
+		return AsciiString("MSG_META_SAVE_VIEW7");
+	case GameMessage::MSG_META_SAVE_VIEW8:
+		return AsciiString("MSG_META_SAVE_VIEW8");
+	case GameMessage::MSG_META_VIEW_VIEW1:
+		return AsciiString("MSG_META_VIEW_VIEW1");
+	case GameMessage::MSG_META_VIEW_VIEW2:
+		return AsciiString("MSG_META_VIEW_VIEW2");
+	case GameMessage::MSG_META_VIEW_VIEW3:
+		return AsciiString("MSG_META_VIEW_VIEW3");
+	case GameMessage::MSG_META_VIEW_VIEW4:
+		return AsciiString("MSG_META_VIEW_VIEW4");
+	case GameMessage::MSG_META_VIEW_VIEW5:
+		return AsciiString("MSG_META_VIEW_VIEW5");
+	case GameMessage::MSG_META_VIEW_VIEW6:
+		return AsciiString("MSG_META_VIEW_VIEW6");
+	case GameMessage::MSG_META_VIEW_VIEW7:
+		return AsciiString("MSG_META_VIEW_VIEW7");
+	case GameMessage::MSG_META_VIEW_VIEW8:
+		return AsciiString("MSG_META_VIEW_VIEW8");
+	case GameMessage::MSG_META_CREATE_TEAM0:
+		return AsciiString("MSG_META_CREATE_TEAM0");
+	case GameMessage::MSG_META_CREATE_TEAM1:
+		return AsciiString("MSG_META_CREATE_TEAM1");
+	case GameMessage::MSG_META_CREATE_TEAM2:
+		return AsciiString("MSG_META_CREATE_TEAM2");
+	case GameMessage::MSG_META_CREATE_TEAM3:
+		return AsciiString("MSG_META_CREATE_TEAM3");
+	case GameMessage::MSG_META_CREATE_TEAM4:
+		return AsciiString("MSG_META_CREATE_TEAM4");
+	case GameMessage::MSG_META_CREATE_TEAM5:
+		return AsciiString("MSG_META_CREATE_TEAM5");
+	case GameMessage::MSG_META_CREATE_TEAM6:
+		return AsciiString("MSG_META_CREATE_TEAM6");
+	case GameMessage::MSG_META_CREATE_TEAM7:
+		return AsciiString("MSG_META_CREATE_TEAM7");
+	case GameMessage::MSG_META_CREATE_TEAM8:
+		return AsciiString("MSG_META_CREATE_TEAM8");
+	case GameMessage::MSG_META_CREATE_TEAM9:
+		return AsciiString("MSG_META_CREATE_TEAM9");
+	case GameMessage::MSG_META_SELECT_TEAM0:
+		return AsciiString("MSG_META_SELECT_TEAM0");
+	case GameMessage::MSG_META_SELECT_TEAM1:
+		return AsciiString("MSG_META_SELECT_TEAM1");
+	case GameMessage::MSG_META_SELECT_TEAM2:
+		return AsciiString("MSG_META_SELECT_TEAM2");
+	case GameMessage::MSG_META_SELECT_TEAM3:
+		return AsciiString("MSG_META_SELECT_TEAM3");
+	case GameMessage::MSG_META_SELECT_TEAM4:
+		return AsciiString("MSG_META_SELECT_TEAM4");
+	case GameMessage::MSG_META_SELECT_TEAM5:
+		return AsciiString("MSG_META_SELECT_TEAM5");
+	case GameMessage::MSG_META_SELECT_TEAM6:
+		return AsciiString("MSG_META_SELECT_TEAM6");
+	case GameMessage::MSG_META_SELECT_TEAM7:
+		return AsciiString("MSG_META_SELECT_TEAM7");
+	case GameMessage::MSG_META_SELECT_TEAM8:
+		return AsciiString("MSG_META_SELECT_TEAM8");
+	case GameMessage::MSG_META_SELECT_TEAM9:
+		return AsciiString("MSG_META_SELECT_TEAM9");
+	case GameMessage::MSG_META_ADD_TEAM0:
+		return AsciiString("MSG_META_ADD_TEAM0");
+	case GameMessage::MSG_META_ADD_TEAM1:
+		return AsciiString("MSG_META_ADD_TEAM1");
+	case GameMessage::MSG_META_ADD_TEAM2:
+		return AsciiString("MSG_META_ADD_TEAM2");
+	case GameMessage::MSG_META_ADD_TEAM3:
+		return AsciiString("MSG_META_ADD_TEAM3");
+	case GameMessage::MSG_META_ADD_TEAM4:
+		return AsciiString("MSG_META_ADD_TEAM4");
+	case GameMessage::MSG_META_ADD_TEAM5:
+		return AsciiString("MSG_META_ADD_TEAM5");
+	case GameMessage::MSG_META_ADD_TEAM6:
+		return AsciiString("MSG_META_ADD_TEAM6");
+	case GameMessage::MSG_META_ADD_TEAM7:
+		return AsciiString("MSG_META_ADD_TEAM7");
+	case GameMessage::MSG_META_ADD_TEAM8:
+		return AsciiString("MSG_META_ADD_TEAM8");
+	case GameMessage::MSG_META_ADD_TEAM9:
+		return AsciiString("MSG_META_ADD_TEAM9");
+	case GameMessage::MSG_META_VIEW_TEAM0:
+		return AsciiString("MSG_META_VIEW_TEAM0");
+	case GameMessage::MSG_META_VIEW_TEAM1:
+		return AsciiString("MSG_META_VIEW_TEAM1");
+	case GameMessage::MSG_META_VIEW_TEAM2:
+		return AsciiString("MSG_META_VIEW_TEAM2");
+	case GameMessage::MSG_META_VIEW_TEAM3:
+		return AsciiString("MSG_META_VIEW_TEAM3");
+	case GameMessage::MSG_META_VIEW_TEAM4:
+		return AsciiString("MSG_META_VIEW_TEAM4");
+	case GameMessage::MSG_META_VIEW_TEAM5:
+		return AsciiString("MSG_META_VIEW_TEAM5");
+	case GameMessage::MSG_META_VIEW_TEAM6:
+		return AsciiString("MSG_META_VIEW_TEAM6");
+	case GameMessage::MSG_META_VIEW_TEAM7:
+		return AsciiString("MSG_META_VIEW_TEAM7");
+	case GameMessage::MSG_META_VIEW_TEAM8:
+		return AsciiString("MSG_META_VIEW_TEAM8");
+	case GameMessage::MSG_META_VIEW_TEAM9:
+		return AsciiString("MSG_META_VIEW_TEAM9");
+	case GameMessage::MSG_META_SELECT_MATCHING_UNITS:
+		return AsciiString("MSG_META_SELECT_MATCHING_UNITS");
+	case GameMessage::MSG_META_SELECT_NEXT_UNIT:
+		return AsciiString("MSG_META_SELECT_NEXT_UNIT");
+	case GameMessage::MSG_META_SELECT_PREV_UNIT:
+		return AsciiString("MSG_META_SELECT_PREV_UNIT");
+	case GameMessage::MSG_META_SELECT_NEXT_WORKER:
+		return AsciiString("MSG_META_SELECT_NEXT_WORKER");
+	case GameMessage::MSG_META_SELECT_PREV_WORKER:
+		return AsciiString("MSG_META_SELECT_PREV_WORKER");
+	case GameMessage::MSG_META_VIEW_HOME_BASE:
+		return AsciiString("MSG_META_VIEW_HOME_BASE");
+	case GameMessage::MSG_META_VIEW_LAST_RADAR_EVENT:
+		return AsciiString("MSG_META_VIEW_LAST_RADAR_EVENT");
+	case GameMessage::MSG_META_SELECT_HERO:
+		return AsciiString("MSG_META_SELECT_HERO");
+	case GameMessage::MSG_META_SELECT_ALL:
+		return AsciiString("MSG_META_SELECT_ALL");
+	case GameMessage::MSG_META_SCATTER:
+		return AsciiString("MSG_META_SCATTER");
+	case GameMessage::MSG_META_STOP:
+		return AsciiString("MSG_META_STOP");
+	case GameMessage::MSG_META_DEPLOY:
+		return AsciiString("MSG_META_DEPLOY");
+	case GameMessage::MSG_META_CREATE_FORMATION:
+		return AsciiString("MSG_META_CREATE_FORMATION");
+	case GameMessage::MSG_META_AUTO_SAVE:
+		return AsciiString("MSG_META_AUTO_SAVE");
+	case GameMessage::MSG_META_FOLLOW:
+		return AsciiString("MSG_META_FOLLOW");
+	case GameMessage::MSG_META_CHAT_PLAYERS:
+		return AsciiString("MSG_META_CHAT_PLAYERS");
+	case GameMessage::MSG_META_CHAT_BUDDIES:
+		return AsciiString("MSG_META_CHAT_BUDDIES");
+	case GameMessage::MSG_META_CHAT_ALLIES:
+		return AsciiString("MSG_META_CHAT_ALLIES");
+	case GameMessage::MSG_META_CHAT_EVERYONE:
+		return AsciiString("MSG_META_CHAT_EVERYONE");
+	case GameMessage::MSG_META_DIPLOMACY:
+		return AsciiString("MSG_META_DIPLOMACY");
+	case GameMessage::MSG_META_OPTIONS:
+		return AsciiString("MSG_META_OPTIONS");
+	case GameMessage::MSG_META_TOGGLE_CONTROL_BAR:
+		return AsciiString("MSG_META_TOGGLE_CONTROL_BAR");
+	case GameMessage::MSG_META_BEGIN_PATH_BUILD:
+		return AsciiString("MSG_META_BEGIN_PATH_BUILD");
+	case GameMessage::MSG_META_END_PATH_BUILD:
+		return AsciiString("MSG_META_END_PATH_BUILD");
+	case GameMessage::MSG_META_BEGIN_FORCEATTACK:
+		return AsciiString("MSG_META_BEGIN_FORCEATTACK");
+	case GameMessage::MSG_META_END_FORCEATTACK:
+		return AsciiString("MSG_META_END_FORCEATTACK");
+	case GameMessage::MSG_META_BEGIN_FORCEMOVE:
+		return AsciiString("MSG_META_BEGIN_FORCEMOVE");
+	case GameMessage::MSG_META_END_FORCEMOVE:
+		return AsciiString("MSG_META_END_FORCEMOVE");
+	case GameMessage::MSG_META_BEGIN_WAYPOINTS:
+		return AsciiString("MSG_META_BEGIN_WAYPOINTS");
+	case GameMessage::MSG_META_END_WAYPOINTS:
+		return AsciiString("MSG_META_END_WAYPOINTS");
+	case GameMessage::MSG_META_BEGIN_PREFER_SELECTION:
+		return AsciiString("MSG_META_BEGIN_PREFER_SELECTION");
+	case GameMessage::MSG_META_END_PREFER_SELECTION:
+		return AsciiString("MSG_META_END_PREFER_SELECTION");
+	case GameMessage::MSG_META_TAKE_SCREENSHOT:
+		return AsciiString("MSG_META_TAKE_SCREENSHOT");
+	case GameMessage::MSG_META_ALL_CHEER:
+		return AsciiString("MSG_META_ALL_CHEER");
+	case GameMessage::MSG_META_TOGGLE_ATTACKMOVE:
+		return AsciiString("MSG_META_TOGGLE_ATTACKMOVE");
+	case GameMessage::MSG_META_BEGIN_CAMERA_ROTATE_LEFT:
+		return AsciiString("MSG_META_BEGIN_CAMERA_ROTATE_LEFT");
+	case GameMessage::MSG_META_END_CAMERA_ROTATE_LEFT:
+		return AsciiString("MSG_META_END_CAMERA_ROTATE_LEFT");
+	case GameMessage::MSG_META_BEGIN_CAMERA_ROTATE_RIGHT:
+		return AsciiString("MSG_META_BEGIN_CAMERA_ROTATE_RIGHT");
+	case GameMessage::MSG_META_END_CAMERA_ROTATE_RIGHT:
+		return AsciiString("MSG_META_END_CAMERA_ROTATE_RIGHT");
+	case GameMessage::MSG_META_BEGIN_CAMERA_ZOOM_IN:
+		return AsciiString("MSG_META_BEGIN_CAMERA_ZOOM_IN");
+	case GameMessage::MSG_META_END_CAMERA_ZOOM_IN:
+		return AsciiString("MSG_META_END_CAMERA_ZOOM_IN");
+	case GameMessage::MSG_META_BEGIN_CAMERA_ZOOM_OUT:
+		return AsciiString("MSG_META_BEGIN_CAMERA_ZOOM_OUT");
+	case GameMessage::MSG_META_END_CAMERA_ZOOM_OUT:
+		return AsciiString("MSG_META_END_CAMERA_ZOOM_OUT");
+	case GameMessage::MSG_META_CAMERA_RESET:
+		return AsciiString("MSG_META_CAMERA_RESET");
+	case GameMessage::MSG_META_BEGIN_CAMERA_SCROLL_LEFT:
+		return AsciiString("MSG_META_BEGIN_CAMERA_SCROLL_LEFT");
+	case GameMessage::MSG_META_END_CAMERA_SCROLL_LEFT:
+		return AsciiString("MSG_META_END_CAMERA_SCROLL_LEFT");
+	case GameMessage::MSG_META_BEGIN_CAMERA_SCROLL_RIGHT:
+		return AsciiString("MSG_META_BEGIN_CAMERA_SCROLL_RIGHT");
+	case GameMessage::MSG_META_END_CAMERA_SCROLL_RIGHT:
+		return AsciiString("MSG_META_END_CAMERA_SCROLL_RIGHT");
+	case GameMessage::MSG_META_BEGIN_CAMERA_SCROLL_UP:
+		return AsciiString("MSG_META_BEGIN_CAMERA_SCROLL_UP");
+	case GameMessage::MSG_META_END_CAMERA_SCROLL_UP:
+		return AsciiString("MSG_META_END_CAMERA_SCROLL_UP");
+	case GameMessage::MSG_META_BEGIN_CAMERA_SCROLL_DOWN:
+		return AsciiString("MSG_META_BEGIN_CAMERA_SCROLL_DOWN");
+	case GameMessage::MSG_META_END_CAMERA_SCROLL_DOWN:
+		return AsciiString("MSG_META_END_CAMERA_SCROLL_DOWN");
+	case GameMessage::MSG_META_PLACE_BEACON:
+		return AsciiString("MSG_META_PLACE_BEACON");
+	case GameMessage::MSG_META_DELETE_BEACON:
+		return AsciiString("MSG_META_DELETE_BEACON");
+	case GameMessage::MSG_META_SPELL_STORE:
+		return AsciiString("MSG_META_SPELL_STORE");
+	case GameMessage::MSG_META_STANCE_AGGRESSIVE:
+		return AsciiString("MSG_META_STANCE_AGGRESSIVE");
+	case GameMessage::MSG_META_STANCE_HOLDGROUND:
+		return AsciiString("MSG_META_STANCE_HOLDGROUND");
+	case GameMessage::MSG_META_STANCE_BATTLE:
+		return AsciiString("MSG_META_STANCE_BATTLE");
+	case GameMessage::MSG_META_ORDERMODE_IMMEDIATE:
+		return AsciiString("MSG_META_ORDERMODE_IMMEDIATE");
+	case GameMessage::MSG_META_ORDERMODE_WAYPOINT:
+		return AsciiString("MSG_META_ORDERMODE_WAYPOINT");
+	case GameMessage::MSG_META_ORDER_SYNCHRONIZE:
+		return AsciiString("MSG_META_ORDER_SYNCHRONIZE");
+	case GameMessage::MSG_META_TOGGLE_PLANNING_MODE:
+		return AsciiString("MSG_META_TOGGLE_PLANNING_MODE");
+	case GameMessage::MSG_META_SELL:
+		return AsciiString("MSG_META_SELL");
+	case GameMessage::MSG_META_DEMO_PERFORM_STATISTICAL_DUMP:
+		return AsciiString("MSG_META_DEMO_PERFORM_STATISTICAL_DUMP");
+	case GameMessage::MSG_META_TOGGLE_FAST_FORWARD_MODE:
+		return AsciiString("MSG_META_TOGGLE_FAST_FORWARD_MODE");
+	case GameMessage::MSG_META_RELOAD_RAPID_ITERATION_FEATURE:
+		return AsciiString("MSG_META_RELOAD_RAPID_ITERATION_FEATURE");
+	case GameMessage::MSG_META_REFRESH_RAPID_ITERATION_FEATURE:
+		return AsciiString("MSG_META_REFRESH_RAPID_ITERATION_FEATURE");
+	case GameMessage::MSG_META_DEBUG_TOGGLE_SHOWVISIONEGGS:
+		return AsciiString("MSG_META_DEBUG_TOGGLE_SHOWVISIONEGGS");
+	case GameMessage::MSG_META_DEBUG_TOGGLE_STRINGTAGS:
+		return AsciiString("MSG_META_DEBUG_TOGGLE_STRINGTAGS");
+	case GameMessage::MSG_CREATE_SELECTED_GROUP:
+		return AsciiString("MSG_CREATE_SELECTED_GROUP");
+	case GameMessage::MSG_CREATE_SELECTED_GROUP_NO_SOUND:
+		return AsciiString("MSG_CREATE_SELECTED_GROUP_NO_SOUND");
+	case GameMessage::MSG_CREATE_SELECTED_GROUP_IDLE_WORKER_VOICE:
+		return AsciiString("MSG_CREATE_SELECTED_GROUP_IDLE_WORKER_VOICE");
+	case GameMessage::MSG_DESTROY_SELECTED_GROUP:
+		return AsciiString("MSG_DESTROY_SELECTED_GROUP");
+	case GameMessage::MSG_REMOVE_FROM_SELECTED_GROUP:
+		return AsciiString("MSG_REMOVE_FROM_SELECTED_GROUP");
+	case GameMessage::MSG_CREATE_TEAM0:
+		return AsciiString("MSG_CREATE_TEAM0");
+	case GameMessage::MSG_CREATE_TEAM1:
+		return AsciiString("MSG_CREATE_TEAM1");
+	case GameMessage::MSG_CREATE_TEAM2:
+		return AsciiString("MSG_CREATE_TEAM2");
+	case GameMessage::MSG_CREATE_TEAM3:
+		return AsciiString("MSG_CREATE_TEAM3");
+	case GameMessage::MSG_CREATE_TEAM4:
+		return AsciiString("MSG_CREATE_TEAM4");
+	case GameMessage::MSG_CREATE_TEAM5:
+		return AsciiString("MSG_CREATE_TEAM5");
+	case GameMessage::MSG_CREATE_TEAM6:
+		return AsciiString("MSG_CREATE_TEAM6");
+	case GameMessage::MSG_CREATE_TEAM7:
+		return AsciiString("MSG_CREATE_TEAM7");
+	case GameMessage::MSG_CREATE_TEAM8:
+		return AsciiString("MSG_CREATE_TEAM8");
+	case GameMessage::MSG_CREATE_TEAM9:
+		return AsciiString("MSG_CREATE_TEAM9");
+	case GameMessage::MSG_SELECT_TEAM0:
+		return AsciiString("MSG_SELECT_TEAM0");
+	case GameMessage::MSG_SELECT_TEAM1:
+		return AsciiString("MSG_SELECT_TEAM1");
+	case GameMessage::MSG_SELECT_TEAM2:
+		return AsciiString("MSG_SELECT_TEAM2");
+	case GameMessage::MSG_SELECT_TEAM3:
+		return AsciiString("MSG_SELECT_TEAM3");
+	case GameMessage::MSG_SELECT_TEAM4:
+		return AsciiString("MSG_SELECT_TEAM4");
+	case GameMessage::MSG_SELECT_TEAM5:
+		return AsciiString("MSG_SELECT_TEAM5");
+	case GameMessage::MSG_SELECT_TEAM6:
+		return AsciiString("MSG_SELECT_TEAM6");
+	case GameMessage::MSG_SELECT_TEAM7:
+		return AsciiString("MSG_SELECT_TEAM7");
+	case GameMessage::MSG_SELECT_TEAM8:
+		return AsciiString("MSG_SELECT_TEAM8");
+	case GameMessage::MSG_SELECT_TEAM9:
+		return AsciiString("MSG_SELECT_TEAM9");
+	case GameMessage::MSG_ADD_TEAM0:
+		return AsciiString("MSG_ADD_TEAM0");
+	case GameMessage::MSG_ADD_TEAM1:
+		return AsciiString("MSG_ADD_TEAM1");
+	case GameMessage::MSG_ADD_TEAM2:
+		return AsciiString("MSG_ADD_TEAM2");
+	case GameMessage::MSG_ADD_TEAM3:
+		return AsciiString("MSG_ADD_TEAM3");
+	case GameMessage::MSG_ADD_TEAM4:
+		return AsciiString("MSG_ADD_TEAM4");
+	case GameMessage::MSG_ADD_TEAM5:
+		return AsciiString("MSG_ADD_TEAM5");
+	case GameMessage::MSG_ADD_TEAM6:
+		return AsciiString("MSG_ADD_TEAM6");
+	case GameMessage::MSG_ADD_TEAM7:
+		return AsciiString("MSG_ADD_TEAM7");
+	case GameMessage::MSG_ADD_TEAM8:
+		return AsciiString("MSG_ADD_TEAM8");
+	case GameMessage::MSG_ADD_TEAM9:
+		return AsciiString("MSG_ADD_TEAM9");
+	case GameMessage::MSG_DO_ATTACKSQUAD:
+		return AsciiString("MSG_DO_ATTACKSQUAD");
+	case GameMessage::MSG_DO_WEAPON:
+		return AsciiString("MSG_DO_WEAPON");
+	case GameMessage::MSG_DO_WEAPON_AT_LOCATION:
+		return AsciiString("MSG_DO_WEAPON_AT_LOCATION");
+	case GameMessage::MSG_DO_WEAPON_AT_OBJECT:
+		return AsciiString("MSG_DO_WEAPON_AT_OBJECT");
+	case GameMessage::MSG_DO_SPECIAL_POWER:
+		return AsciiString("MSG_DO_SPECIAL_POWER");
+	case GameMessage::MSG_DO_SPECIAL_POWER_AT_LOCATION:
+		return AsciiString("MSG_DO_SPECIAL_POWER_AT_LOCATION");
+	case GameMessage::MSG_DO_SPECIAL_POWER_AT_OBJECT:
+		return AsciiString("MSG_DO_SPECIAL_POWER_AT_OBJECT");
+	case GameMessage::MSG_SET_RALLY_POINT:
+		return AsciiString("MSG_SET_RALLY_POINT");
+	case GameMessage::MSG_PURCHASE_SCIENCE:
+		return AsciiString("MSG_PURCHASE_SCIENCE");
+	case GameMessage::MSG_QUEUE_UPGRADE:
+		return AsciiString("MSG_QUEUE_UPGRADE");
+	case GameMessage::MSG_CANCEL_UPGRADE:
+		return AsciiString("MSG_CANCEL_UPGRADE");
+	case GameMessage::MSG_QUEUE_UNIT_CREATE:
+		return AsciiString("MSG_QUEUE_UNIT_CREATE");
+	case GameMessage::MSG_CANCEL_UNIT_CREATE:
+		return AsciiString("MSG_CANCEL_UNIT_CREATE");
+	case GameMessage::MSG_FOUNDATION_CONSTRUCT:
+		return AsciiString("MSG_FOUNDATION_CONSTRUCT");
+	case GameMessage::MSG_DOZER_CONSTRUCT:
+		return AsciiString("MSG_DOZER_CONSTRUCT");
+	case GameMessage::MSG_DOZER_CANCEL_CONSTRUCT:
+		return AsciiString("MSG_DOZER_CANCEL_CONSTRUCT");
+	case GameMessage::MSG_SELL:
+		return AsciiString("MSG_SELL");
+	case GameMessage::MSG_EXIT:
+		return AsciiString("MSG_EXIT");
+	case GameMessage::MSG_EVACUATE:
+		return AsciiString("MSG_EVACUATE");
+	case GameMessage::MSG_EVACUATE_CONTESTERS:
+		return AsciiString("MSG_EVACUATE_CONTESTERS");
+	case GameMessage::MSG_SACRIFICE:
+		return AsciiString("MSG_SACRIFICE");
+	case GameMessage::MSG_COMBATDROP_AT_LOCATION:
+		return AsciiString("MSG_COMBATDROP_AT_LOCATION");
+	case GameMessage::MSG_COMBATDROP_AT_OBJECT:
+		return AsciiString("MSG_COMBATDROP_AT_OBJECT");
+	case GameMessage::MSG_COMBINE_HORDES_WITH_OBJECT:
+		return AsciiString("MSG_COMBINE_HORDES_WITH_OBJECT");
+	case GameMessage::MSG_AREA_SELECTION:
+		return AsciiString("MSG_AREA_SELECTION");
+	case GameMessage::MSG_DO_ATTACK_OBJECT:
+		return AsciiString("MSG_DO_ATTACK_OBJECT");
+	case GameMessage::MSG_DO_FORCE_ATTACK_OBJECT:
+		return AsciiString("MSG_DO_FORCE_ATTACK_OBJECT");
+	case GameMessage::MSG_DO_FORCE_ATTACK_GROUND:
+		return AsciiString("MSG_DO_FORCE_ATTACK_GROUND");
+	case GameMessage::MSG_GET_REPAIRED:
+		return AsciiString("MSG_GET_REPAIRED");
+	case GameMessage::MSG_GET_HEALED:
+		return AsciiString("MSG_GET_HEALED");
+	case GameMessage::MSG_DO_REPAIR:
+		return AsciiString("MSG_DO_REPAIR");
+	case GameMessage::MSG_RESUME_CONSTRUCTION:
+		return AsciiString("MSG_RESUME_CONSTRUCTION");
+	case GameMessage::MSG_ENTER:
+		return AsciiString("MSG_ENTER");
+	case GameMessage::MSG_DOCK:
+		return AsciiString("MSG_DOCK");
+	case GameMessage::MSG_HARVEST:
+		return AsciiString("MSG_HARVEST");
+	case GameMessage::MSG_DO_MOVETO:
+		return AsciiString("MSG_DO_MOVETO");
+	case GameMessage::MSG_DO_ATTACKMOVETO:
+		return AsciiString("MSG_DO_ATTACKMOVETO");
+	case GameMessage::MSG_DO_FORCEMOVETO:
+		return AsciiString("MSG_DO_FORCEMOVETO");
+	case GameMessage::MSG_ADD_WAYPOINT:
+		return AsciiString("MSG_ADD_WAYPOINT");
+	case GameMessage::MSG_DO_GUARD_POSITION:
+		return AsciiString("MSG_DO_GUARD_POSITION");
+	case GameMessage::MSG_DO_GUARD_OBJECT:
+		return AsciiString("MSG_DO_GUARD_OBJECT");
+	case GameMessage::MSG_DO_STOP:
+		return AsciiString("MSG_DO_STOP");
+	case GameMessage::MSG_DO_SCATTER:
+		return AsciiString("MSG_DO_SCATTER");
+	case GameMessage::MSG_OPEN_GATE:
+		return AsciiString("MSG_OPEN_GATE");
+	case GameMessage::MSG_DO_CHEER:
+		return AsciiString("MSG_DO_CHEER");
+	case GameMessage::MSG_CLOSE_GATE:
+		return AsciiString("MSG_CLOSE_GATE");
+	case GameMessage::MSG_SWITCH_WEAPONS:
+		return AsciiString("MSG_SWITCH_WEAPONS");
+	case GameMessage::MSG_CONVERT_TO_CARBOMB:
+		return AsciiString("MSG_CONVERT_TO_CARBOMB");
+	case GameMessage::MSG_CAPTUREBUILDING:
+		return AsciiString("MSG_CAPTUREBUILDING");
+	case GameMessage::MSG_CASTLE_UNPACK:
+		return AsciiString("MSG_CASTLE_UNPACK");
+	case GameMessage::MSG_CASTLE_PACK:
+		return AsciiString("MSG_CASTLE_PACK");
+	case GameMessage::MSG_CASTLE_UNPACK_EXPLICIT_OBJECT:
+		return AsciiString("MSG_CASTLE_UNPACK_EXPLICIT_OBJECT");
+	case GameMessage::MSG_SNIPE_VEHICLE:
+		return AsciiString("MSG_SNIPE_VEHICLE");
+	case GameMessage::MSG_DO_SPECIAL_POWER_OVERRIDE_DESTINATION:
+		return AsciiString("MSG_DO_SPECIAL_POWER_OVERRIDE_DESTINATION");
+	case GameMessage::MSG_DO_SALVAGE:
+		return AsciiString("MSG_DO_SALVAGE");
+	case GameMessage::MSG_CLEAR_INGAME_POPUP_MESSAGE:
+		return AsciiString("MSG_CLEAR_INGAME_POPUP_MESSAGE");
+	case GameMessage::MSG_PLACE_BEACON:
+		return AsciiString("MSG_PLACE_BEACON");
+	case GameMessage::MSG_REMOVE_BEACON:
+		return AsciiString("MSG_REMOVE_BEACON");
+	case GameMessage::MSG_SET_BEACON_TEXT:
+		return AsciiString("MSG_SET_BEACON_TEXT");
+	case GameMessage::MSG_SET_REPLAY_CAMERA:
+		return AsciiString("MSG_SET_REPLAY_CAMERA");
+	case GameMessage::MSG_SELF_DESTRUCT:
+		return AsciiString("MSG_SELF_DESTRUCT");
+	case GameMessage::MSG_CREATE_FORMATION:
+		return AsciiString("MSG_CREATE_FORMATION");
+	case GameMessage::MSG_LOGIC_CRC:
+		return AsciiString("MSG_LOGIC_CRC");
+	case GameMessage::MSG_SET_MINE_CLEARING_DETAIL:
+		return AsciiString("MSG_SET_MINE_CLEARING_DETAIL");
+	case GameMessage::MSG_DO_USER1:
+		return AsciiString("MSG_DO_USER1");
+	case GameMessage::MSG_DO_USER2:
+		return AsciiString("MSG_DO_USER2");
+	case GameMessage::MSG_DO_USER3:
+		return AsciiString("MSG_DO_USER3");
+	case GameMessage::MSG_DO_USER4:
+		return AsciiString("MSG_DO_USER4");
+	case GameMessage::MSG_MOVE_ARMY_TO_POSITION:
+		return AsciiString("MSG_MOVE_ARMY_TO_POSITION");
+	case GameMessage::MSG_AUTO_SAVE:
+		return AsciiString("MSG_AUTO_SAVE");
+	case GameMessage::MSG_CHANGE_CAMERA_ARRIVED_AT_WAYPOINTID:
+		return AsciiString("MSG_CHANGE_CAMERA_ARRIVED_AT_WAYPOINTID");
+	case GameMessage::MSG_HORDE_TOGGLE_FORMATION:
+		return AsciiString("MSG_HORDE_TOGGLE_FORMATION");
+	case GameMessage::MSG_ONE_RING:
+		return AsciiString("MSG_ONE_RING");
+	case GameMessage::MSG_CREW_EVACUATE:
+		return AsciiString("MSG_CREW_EVACUATE");
+	case GameMessage::MSG_DO_SPELLBOOK_SPECIAL_POWER:
+		return AsciiString("MSG_DO_SPELLBOOK_SPECIAL_POWER");
+	case GameMessage::MSG_WEAPONSET_TOGGLE:
+		return AsciiString("MSG_WEAPONSET_TOGGLE");
+	case GameMessage::MSG_DO_AUTO_ABILITY:
+		return AsciiString("MSG_DO_AUTO_ABILITY");
+	case GameMessage::MSG_DO_AUTO_ABILITY_WEAPON:
+		return AsciiString("MSG_DO_AUTO_ABILITY_WEAPON");
+	case GameMessage::MSG_REVIVE:
+		return AsciiString("MSG_REVIVE");
+	case GameMessage::MSG_TOGGLE_NO_AUTO_ACQUIRE:
+		return AsciiString("MSG_TOGGLE_NO_AUTO_ACQUIRE");
+	case GameMessage::MSG_WAKE_AUTO_PICKUP:
+		return AsciiString("MSG_WAKE_AUTO_PICKUP");
+	case GameMessage::MSG_START_SELF_REPAIR:
+		return AsciiString("MSG_START_SELF_REPAIR");
+	case GameMessage::MSG_SUMMON_REINFORCEMENTS:
+		return AsciiString("MSG_SUMMON_REINFORCEMENTS");
+	case GameMessage::MSG_CALL_IN_REINFORCEMENTS:
+		return AsciiString("MSG_CALL_IN_REINFORCEMENTS");
+	case GameMessage::MSG_HORDE_SET_FORMATION:
+		return AsciiString("MSG_HORDE_SET_FORMATION");
+	case GameMessage::MSG_CREATE_SELECT_ALL_GROUP:
+		return AsciiString("MSG_CREATE_SELECT_ALL_GROUP");
+	case GameMessage::MSG_ENABLE_RETALIATION_MODE:
+		return AsciiString("MSG_ENABLE_RETALIATION_MODE");
+	case GameMessage::MSG_WALL_HUB_CONSTRUCT_SPAN:
+		return AsciiString("MSG_WALL_HUB_CONSTRUCT_SPAN");
+	case GameMessage::MSG_DO_MOVETO_FORMATION:
+		return AsciiString("MSG_DO_MOVETO_FORMATION");
+	case GameMessage::MSG_DO_MOVE_AND_ORIENTATE_OBJECTTO:
+		return AsciiString("MSG_DO_MOVE_AND_ORIENTATE_OBJECTTO");
+	case GameMessage::MSG_GIVE_MONEY:
+		return AsciiString("MSG_GIVE_MONEY");
+	case GameMessage::MSG_DO_ROTATE_FIRINGARC:
+		return AsciiString("MSG_DO_ROTATE_FIRINGARC");
+	case GameMessage::MSG_CHANGE_STANCE:
+		return AsciiString("MSG_CHANGE_STANCE");
+	case GameMessage::MSG_CHANGE_ORDERMODE:
+		return AsciiString("MSG_CHANGE_ORDERMODE");
+	case GameMessage::MSG_ACTIONQUEUE_EXECUTE_PLANNED:
+		return AsciiString("MSG_ACTIONQUEUE_EXECUTE_PLANNED");
+	case GameMessage::MSG_ACTIONQUEUE_CLEAR_ALL:
+		return AsciiString("MSG_ACTIONQUEUE_CLEAR_ALL");
+	case GameMessage::MSG_ACTIONQUEUE_CLEAR_PLANNED:
+		return AsciiString("MSG_ACTIONQUEUE_CLEAR_PLANNED");
+	case GameMessage::MSG_ACTIONQUEUE_CLEAR_LAST:
+		return AsciiString("MSG_ACTIONQUEUE_CLEAR_LAST");
+	case GameMessage::MSG_START_NEIGHBORHOOD_REPAIR:
+		return AsciiString("MSG_START_NEIGHBORHOOD_REPAIR");
+	case GameMessage::MSG_CANCEL_NEIGHBORHOOD:
+		return AsciiString("MSG_CANCEL_NEIGHBORHOOD");
+	case GameMessage::MSG_ORDER_SYNCHRONIZE:
+		return AsciiString("MSG_ORDER_SYNCHRONIZE");
+	case GameMessage::MSG_ADD_ALL_FACTION_UPGRADE:
+		return AsciiString("MSG_ADD_ALL_FACTION_UPGRADE");
+	}
+
+	if (t == GameMessage::MSG_INVALID)
+		return AsciiString("MSG_INVALID");
+	if (t == GameMessage::MSG_RAW_MOUSE_BEGIN)
+		return AsciiString("MSG_RAW_MOUSE_BEGIN");
+	if (t == GameMessage::MSG_RAW_MOUSE_POSITION)
+		return AsciiString("MSG_RAW_MOUSE_POSITION");
+	if (t == GameMessage::MSG_RAW_MOUSE_LEFT_BUTTON_DOWN)
+		return AsciiString("MSG_RAW_MOUSE_LEFT_BUTTON_DOWN");
+	if (t == GameMessage::MSG_RAW_MOUSE_LEFT_DOUBLE_CLICK)
+		return AsciiString("MSG_RAW_MOUSE_LEFT_DOUBLE_CLICK");
+	if (t == GameMessage::MSG_RAW_MOUSE_LEFT_BUTTON_UP)
+		return AsciiString("MSG_RAW_MOUSE_LEFT_BUTTON_UP");
+	if (t == GameMessage::MSG_RAW_MOUSE_LEFT_CLICK)
+		return AsciiString("MSG_RAW_MOUSE_LEFT_CLICK");
+	if (t == GameMessage::MSG_RAW_MOUSE_LEFT_DRAG)
+		return AsciiString("MSG_RAW_MOUSE_LEFT_DRAG");
+	if (t == GameMessage::MSG_RAW_MOUSE_MIDDLE_BUTTON_DOWN)
+		return AsciiString("MSG_RAW_MOUSE_MIDDLE_BUTTON_DOWN");
+	if (t == GameMessage::MSG_RAW_MOUSE_MIDDLE_DOUBLE_CLICK)
+		return AsciiString("MSG_RAW_MOUSE_MIDDLE_DOUBLE_CLICK");
+	if (t == GameMessage::MSG_RAW_MOUSE_MIDDLE_BUTTON_UP)
+		return AsciiString("MSG_RAW_MOUSE_MIDDLE_BUTTON_UP");
+	if (t == GameMessage::MSG_RAW_MOUSE_MIDDLE_DRAG)
+		return AsciiString("MSG_RAW_MOUSE_MIDDLE_DRAG");
+	if (t == GameMessage::MSG_RAW_MOUSE_RIGHT_BUTTON_DOWN)
+		return AsciiString("MSG_RAW_MOUSE_RIGHT_BUTTON_DOWN");
+	if (t == GameMessage::MSG_RAW_MOUSE_RIGHT_DOUBLE_CLICK)
+		return AsciiString("MSG_RAW_MOUSE_RIGHT_DOUBLE_CLICK");
+	if (t == GameMessage::MSG_RAW_MOUSE_RIGHT_BUTTON_UP)
+		return AsciiString("MSG_RAW_MOUSE_RIGHT_BUTTON_UP");
+	if (t == GameMessage::MSG_RAW_MOUSE_RIGHT_DRAG)
+		return AsciiString("MSG_RAW_MOUSE_RIGHT_DRAG");
+	if (t == GameMessage::MSG_RAW_MOUSE_WHEEL)
+		return AsciiString("MSG_RAW_MOUSE_WHEEL");
+	if (t == GameMessage::MSG_RAW_MOUSE_END)
+		return AsciiString("MSG_RAW_MOUSE_END");
+	if (t == GameMessage::MSG_RAW_KEY_DOWN)
+		return AsciiString("MSG_RAW_KEY_DOWN");
+	if (t == GameMessage::MSG_RAW_KEY_UP)
+		return AsciiString("MSG_RAW_KEY_UP");
+	if (t == GameMessage::MSG_MOUSE_LEFT_CLICK)
+		return AsciiString("MSG_MOUSE_LEFT_CLICK");
+	if (t == GameMessage::MSG_MOUSE_LEFT_DOUBLE_CLICK)
+		return AsciiString("MSG_MOUSE_LEFT_DOUBLE_CLICK");
+	if (t == GameMessage::MSG_MOUSE_MIDDLE_CLICK)
+		return AsciiString("MSG_MOUSE_MIDDLE_CLICK");
+	if (t == GameMessage::MSG_MOUSE_MIDDLE_DOUBLE_CLICK)
+		return AsciiString("MSG_MOUSE_MIDDLE_DOUBLE_CLICK");
+	if (t == GameMessage::MSG_MOUSE_RIGHT_CLICK)
+		return AsciiString("MSG_MOUSE_RIGHT_CLICK");
+	if (t == GameMessage::MSG_MOUSE_RIGHT_DOUBLE_CLICK)
+		return AsciiString("MSG_MOUSE_RIGHT_DOUBLE_CLICK");
+	if (t == GameMessage::MSG_CLEAR_GAME_DATA)
+		return AsciiString("MSG_CLEAR_GAME_DATA");
+	if (t == GameMessage::MSG_NEW_GAME)
+		return AsciiString("MSG_NEW_GAME");
+	if (t == GameMessage::MSG_START_LIVING_WORLD_LOGIC)
+		return AsciiString("MSG_START_LIVING_WORLD_LOGIC");
+	if (t == GameMessage::MSG_START_LINEAR_CAMPAIGN)
+		return AsciiString("MSG_START_LINEAR_CAMPAIGN");
+	if (t == GameMessage::MSG_CURRENT_LINEAR_CAMPAIGN_MISSION_COMPLETE)
+		return AsciiString("MSG_CURRENT_LINEAR_CAMPAIGN_MISSION_COMPLETE");
+	if (t == GameMessage::MSG_EXIT_LINEAR_CAMPAIGN)
+		return AsciiString("MSG_EXIT_LINEAR_CAMPAIGN");
+	if (t == GameMessage::MSG_BEGIN_META_MESSAGES)
+		return AsciiString("MSG_BEGIN_META_MESSAGES");
+	if (t == GameMessage::MSG_END_META_MESSAGES)
+		return AsciiString("MSG_END_META_MESSAGES");
+	if (t == GameMessage::MSG_MOUSEOVER_DRAWABLE_HINT)
+		return AsciiString("MSG_MOUSEOVER_DRAWABLE_HINT");
+	if (t == GameMessage::MSG_MOUSEOVER_LOCATION_HINT)
+		return AsciiString("MSG_MOUSEOVER_LOCATION_HINT");
+	if (t == GameMessage::MSG_VALID_GUICOMMAND_HINT)
+		return AsciiString("MSG_VALID_GUICOMMAND_HINT");
+	if (t == GameMessage::MSG_INVALID_GUICOMMAND_HINT)
+		return AsciiString("MSG_INVALID_GUICOMMAND_HINT");
+	if (t == GameMessage::MSG_AREA_SELECTION_HINT)
+		return AsciiString("MSG_AREA_SELECTION_HINT");
+	if (t == GameMessage::MSG_DO_ATTACK_OBJECT_HINT)
+		return AsciiString("MSG_DO_ATTACK_OBJECT_HINT");
+	if (t == GameMessage::MSG_DO_ATTACK_OBJECT_AFTER_MOVING_HINT)
+		return AsciiString("MSG_DO_ATTACK_OBJECT_AFTER_MOVING_HINT");
+	if (t == GameMessage::MSG_DO_FORCE_ATTACK_OBJECT_HINT)
+		return AsciiString("MSG_DO_FORCE_ATTACK_OBJECT_HINT");
+	if (t == GameMessage::MSG_DO_FORCE_ATTACK_GROUND_HINT)
+		return AsciiString("MSG_DO_FORCE_ATTACK_GROUND_HINT");
+	if (t == GameMessage::MSG_GET_REPAIRED_HINT)
+		return AsciiString("MSG_GET_REPAIRED_HINT");
+	if (t == GameMessage::MSG_GET_HEALED_HINT)
+		return AsciiString("MSG_GET_HEALED_HINT");
+	if (t == GameMessage::MSG_DO_REPAIR_HINT)
+		return AsciiString("MSG_DO_REPAIR_HINT");
+	if (t == GameMessage::MSG_RESUME_CONSTRUCTION_HINT)
+		return AsciiString("MSG_RESUME_CONSTRUCTION_HINT");
+	if (t == GameMessage::MSG_ENTER_HINT)
+		return AsciiString("MSG_ENTER_HINT");
+	if (t == GameMessage::MSG_CONTEST_HINT)
+		return AsciiString("MSG_CONTEST_HINT");
+	if (t == GameMessage::MSG_DOCK_HINT)
+		return AsciiString("MSG_DOCK_HINT");
+	if (t == GameMessage::MSG_HARVEST_HINT)
+		return AsciiString("MSG_HARVEST_HINT");
+	if (t == GameMessage::MSG_DO_MOVETO_HINT)
+		return AsciiString("MSG_DO_MOVETO_HINT");
+	if (t == GameMessage::MSG_DO_ATTACKMOVETO_HINT)
+		return AsciiString("MSG_DO_ATTACKMOVETO_HINT");
+	if (t == GameMessage::MSG_ADD_WAYPOINT_HINT)
+		return AsciiString("MSG_ADD_WAYPOINT_HINT");
+	if (t == GameMessage::MSG_HIJACK_HINT)
+		return AsciiString("MSG_HIJACK_HINT");
+	if (t == GameMessage::MSG_FIREBOMB_HINT)
+		return AsciiString("MSG_FIREBOMB_HINT");
+	if (t == GameMessage::MSG_CONVERT_TO_CARBOMB_HINT)
+		return AsciiString("MSG_CONVERT_TO_CARBOMB_HINT");
+	if (t == GameMessage::MSG_CAPTUREBUILDING_HINT)
+		return AsciiString("MSG_CAPTUREBUILDING_HINT");
+	if (t == GameMessage::MSG_APT_SKIP_NEXT_MSG)
+		return AsciiString("MSG_APT_SKIP_NEXT_MSG");
+	if (t == GameMessage::MSG_SNIPE_VEHICLE_HINT)
+		return AsciiString("MSG_SNIPE_VEHICLE_HINT");
+	if (t == GameMessage::MSG_DEFECTOR_HINT)
+		return AsciiString("MSG_DEFECTOR_HINT");
+	if (t == GameMessage::MSG_SET_RALLY_POINT_HINT)
+		return AsciiString("MSG_SET_RALLY_POINT_HINT");
+	if (t == GameMessage::MSG_DO_SALVAGE_HINT)
+		return AsciiString("MSG_DO_SALVAGE_HINT");
+	if (t == GameMessage::MSG_DO_INVALID_HINT)
+		return AsciiString("MSG_DO_INVALID_HINT");
+	if (t == GameMessage::MSG_BEGIN_NETWORK_MESSAGES)
+		return AsciiString("MSG_BEGIN_NETWORK_MESSAGES");
+	if (t == GameMessage::MSG_LW_DONE_SESSION)
+		return AsciiString("MSG_LW_DONE_SESSION");
+	if (t == GameMessage::MSG_LW_DONE_PHASE)
+		return AsciiString("MSG_LW_DONE_PHASE");
+	if (t == GameMessage::MSG_LW_SET_CONFLICT_RESOLUTION_METHOD)
+		return AsciiString("MSG_LW_SET_CONFLICT_RESOLUTION_METHOD");
+	if (t == GameMessage::MSG_LW_ARMY_MOVE_REQUEST)
+		return AsciiString("MSG_LW_ARMY_MOVE_REQUEST");
+	if (t == GameMessage::MSG_LW_CANCEL_ARMY_MOVE_REQUEST)
+		return AsciiString("MSG_LW_CANCEL_ARMY_MOVE_REQUEST");
+	if (t == GameMessage::MSG_LW_BUILD_BUILDING)
+		return AsciiString("MSG_LW_BUILD_BUILDING");
+	if (t == GameMessage::MSG_LW_DESTROY_BUILDING)
+		return AsciiString("MSG_LW_DESTROY_BUILDING");
+	if (t == GameMessage::MSG_LW_QUEUE_UNIT)
+		return AsciiString("MSG_LW_QUEUE_UNIT");
+	if (t == GameMessage::MSG_LW_DEQUEUE_UNIT)
+		return AsciiString("MSG_LW_DEQUEUE_UNIT");
+	if (t == GameMessage::MSG_LW_DEQUEUE_UNIT_AT_INDEX)
+		return AsciiString("MSG_LW_DEQUEUE_UNIT_AT_INDEX");
+	if (t == GameMessage::MSG_LW_SWAP_ARMY_MEMBERS)
+		return AsciiString("MSG_LW_SWAP_ARMY_MEMBERS");
+	if (t == GameMessage::MSG_LW_CANCEL_ARMY_MEMBER_MOVE)
+		return AsciiString("MSG_LW_CANCEL_ARMY_MEMBER_MOVE");
+	if (t == GameMessage::MSG_LW_DISBAND_ARMY_MEMBER)
+		return AsciiString("MSG_LW_DISBAND_ARMY_MEMBER");
+	if (t == GameMessage::MSG_LW_DISBAND_ARMY)
+		return AsciiString("MSG_LW_DISBAND_ARMY");
+	if (t == GameMessage::MSG_LW_CANCEL_ARMY_MEMBER_DISBAND)
+		return AsciiString("MSG_LW_CANCEL_ARMY_MEMBER_DISBAND");
+	if (t == GameMessage::MSG_LW_SWAP_ARMIES_IN_BATTLE)
+		return AsciiString("MSG_LW_SWAP_ARMIES_IN_BATTLE");
+	if (t == GameMessage::MSG_LW_FORCE_ENTER_REALTIME_BATTLE)
+		return AsciiString("MSG_LW_FORCE_ENTER_REALTIME_BATTLE");
+	if (t == GameMessage::MSG_LW_DEBUG_QUICKWIN_BATTLE)
+		return AsciiString("MSG_LW_DEBUG_QUICKWIN_BATTLE");
+	if (t == GameMessage::MSG_LW_RESOLVE_REGION_AWARD_DISPUTE)
+		return AsciiString("MSG_LW_RESOLVE_REGION_AWARD_DISPUTE");
+	if (t == GameMessage::MSG_LW_PLAYER_SURRENDERED)
+		return AsciiString("MSG_LW_PLAYER_SURRENDERED");
+	if (t == GameMessage::MSG_LW_REQUEST_ENDGAME)
+		return AsciiString("MSG_LW_REQUEST_ENDGAME");
+	if (t == GameMessage::MSG_LW_TRANSITION_TO_TACTICAL_COMPLETE)
+		return AsciiString("MSG_LW_TRANSITION_TO_TACTICAL_COMPLETE");
+	if (t == GameMessage::MSG_LW_TRANSITION_TO_STRATEGIC_COMPLETE)
+		return AsciiString("MSG_LW_TRANSITION_TO_STRATEGIC_COMPLETE");
+	if (t == GameMessage::MSG_LW_SCORESCREEN_DONE)
+		return AsciiString("MSG_LW_SCORESCREEN_DONE");
+	if (t == GameMessage::MSG_END_NETWORK_MESSAGES)
+		return AsciiString("MSG_END_NETWORK_MESSAGES");
+	if (t == GameMessage::MSG_TIMESTAMP)
+		return AsciiString("MSG_TIMESTAMP");
+	if (t == GameMessage::MSG_OBJECT_CREATED)
+		return AsciiString("MSG_OBJECT_CREATED");
+	if (t == GameMessage::MSG_OBJECT_DESTROYED)
+		return AsciiString("MSG_OBJECT_DESTROYED");
+	if (t == GameMessage::MSG_OBJECT_POSITION)
+		return AsciiString("MSG_OBJECT_POSITION");
+	if (t == GameMessage::MSG_OBJECT_ORIENTATION)
+		return AsciiString("MSG_OBJECT_ORIENTATION");
+	if (t == GameMessage::MSG_OBJECT_JOINED_TEAM)
+		return AsciiString("MSG_OBJECT_JOINED_TEAM");
+	if (t == GameMessage::MSG_GIVE_UPGRADE_HINT)
+		return AsciiString("MSG_GIVE_UPGRADE_HINT");
+	if (t == GameMessage::MSG_JOIN_HORDE_HINT)
+		return AsciiString("MSG_JOIN_HORDE_HINT");
+	if (t == GameMessage::MSG_CAN_GRAB_HINT)
+		return AsciiString("MSG_CAN_GRAB_HINT");
+
+	return commandName;
+}
 
 // FUNCTION: BFME2 0x00310FA1 size=84 name=??1MessageStream@@UAE@XZ evidence=N:ledger
 MessageStream::~MessageStream()
