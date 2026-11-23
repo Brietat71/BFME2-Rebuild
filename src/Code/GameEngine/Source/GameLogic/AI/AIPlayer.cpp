@@ -267,7 +267,7 @@ TeamInQueue::~TeamInQueue()
 	for (order = m_workOrders; order; order = next)
 	{
 		next = order->m_next;
-		delete order;
+		::delete order;
 	}
 	if (m_team)
 		m_team->setActive();
