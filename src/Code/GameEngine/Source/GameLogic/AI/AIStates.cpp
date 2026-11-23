@@ -20,6 +20,8 @@
 #include "Common/StateMachine.h"
 #include "GameLogic/AIGuard.h"
 #include "GameLogic/AIHarvest.h"
+#include "GameLogic/AICommandInterface.h"
+#include "GameLogic/AICommandParms.h"
 #include "GameLogic/GameLogic.h"
 #include "GameLogic/Module/EmotionTrackerUpdate.h"
 #include "GameLogic/Squad.h"
@@ -4099,6 +4101,12 @@ void AIStateMachine::setGoalSquad(const Squad *squad)
 // FUNCTION: BFME2 0x00352E12 size=184 name=?onEnter@AIChargeTargetState@@UAE?AW4StateReturnType@@XZ evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x00352ECA size=101 name=?aiMoveToObject@AICommandInterface@@QAEXPAVObject@@W4CommandSourceType@@@Z evidence=N:ledger tier=A
+void AICommandInterface::aiMoveToObject(Object *obj, CommandSourceType cmdSource)
+{
+	AICommandParms parms((AICommandType)1, cmdSource);
+	parms.m_object = obj;
+	aiDoCommand(&parms);
+}
 
 // FUNCTION: BFME2 0x00352F2F size=110 name=?invoke@Rva00352F2FOpaque@@QAEXPBVWaypoint@@HW4CommandSourceType@@@Z evidence=?:placeholder tier=A
 
