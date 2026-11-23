@@ -85,6 +85,9 @@ public:
 	~WaterTracksRenderSystem(void);
 	WaterTracksObj *bindTrack(waveType type);		// Track object to be controlled by owner
 	void shutdown(void);
+	void unbindTrack(WaterTracksObj *mod);			// 0x000FE8FC: the owner is done; the track is released
+	void reset(void);								// 0x000FE188
+	void update(void);								// 0x000FE1AC
 	void releaseTrack(WaterTracksObj *mod);			// 0x000FE001: returns a track to the free list
 	WaterTracksObj *findTrack(Vector2 &start, Vector2 &end, waveType type);	// 0x000FE207
 
