@@ -25,13 +25,6 @@
 #include "WW3D2/inttest.h"
 #include "WW3D2/RayCollisionTestClass.h"
 
-struct Gen_p12pod
-{
-	int a;
-	int b;
-	int c;
-};
-
 // FUNCTION: BFME2 0x00168F30 size=168 name=??0MeshGeometryClass@@QAE@XZ evidence=N:ledger tier=B hypothesis:Z
 MeshGeometryClass::MeshGeometryClass(void) :
 	MeshName(NULL),
