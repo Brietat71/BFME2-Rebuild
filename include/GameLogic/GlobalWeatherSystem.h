@@ -4,7 +4,7 @@
 // The destructor at 0x0010F149 releases the AudioEventInfoRef's counted pointee.
 // SIZE 0x5C (the factory allocates it): the constructor sets +0x10 to 0, +0x14 to 1, +0x18 to 0, builds the
 // filter at +0x1C and the name at +0x20 (the empty text), clears +0x28 and +0x2C, builds the five records and
-// the 11-bit flag word at +0x58; +0x24 is not touched there. reset 0x003186A5 and rva00318719 clear them again.
+// the flag word at +0x58; +0x24 is not touched there. reset 0x003186A5 and rva00318719 clear them again.
 #pragma once
 #ifndef BFME2_GLOBALWEATHERSYSTEM_H
 #define BFME2_GLOBALWEATHERSYSTEM_H
@@ -61,7 +61,7 @@ private:
 	Int m_unk0x28;									// +0x28: frames until rva003186EE(0, 0, 0), counted down by update
 	Int m_unk0x2C;									// +0x2C: frames until rva00318719, counted down by update
 	WeatherData m_weather[5];						// 0x30
-	BitFlags<11> m_unk0x58;							// +0x58
+	BitFlags<15> m_unk0x58;							// +0x58: a 15-bit mask (its xfer helper 0x00318871 is BitFlags<15>'s)
 };
 typedef char GlobalWeatherSystemSize[(sizeof(GlobalWeatherSystem) == 0x5C) ? 1 : -1];
 
