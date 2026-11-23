@@ -77,8 +77,10 @@ bool LineSegClass::Find_Intersection(const LineSegClass &other_line, Vector3 *p1
 		float length2 = top2 / bottom2;
 
 		// Closest points on both lines; if they coincide, the lines intersect.
-		(*p1) = P0 + (Dir * length1);
-		(*p2) = other_line.P0 + (other_line.Dir * length2);
+		Vector3 offset1(Dir.X * length1, Dir.Y * length1, Dir.Z * length1);
+		Vector3 offset2(other_line.Dir.X * length2, other_line.Dir.Y * length2, other_line.Dir.Z * length2);
+		(*p1) = P0 + offset1;
+		(*p2) = other_line.P0 + offset2;
 
 		if (fraction1 != NULL) {
 			(*fraction1) = length1 / Length;
