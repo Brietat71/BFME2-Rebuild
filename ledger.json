@@ -3143,7 +3143,10 @@
    },
    "author": 19627006,
    "base": "f032c52ffb9fd650a3ad5e48999c5a56c85eb0e8",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45202256770"
+   },
    "day": "2026-11-23",
    "head": "92d1d8582fcf86bab6fefa7ee336420de30754bb",
    "kind": "narrow",
