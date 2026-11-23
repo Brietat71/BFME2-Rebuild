@@ -8,7 +8,8 @@
 union FloatBitsExperiment { float f; int i; };
 int WWMath::Float_To_Int_Floor(const float &f)
 {
-	const FloatBitsExperiment &bits = *(const FloatBitsExperiment *)&f;
+	FloatBitsExperiment bits;
+	bits.f = f;
 	int a = bits.i;
 	int sign = (a >> 31);
 	a &= 0x7fffffff;
