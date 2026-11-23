@@ -153,22 +153,6 @@ void BeaconClientUpdate::clientUpdate()
 			if (system)
 				m_particleSystemID = system->m_systemID;
 		}
-
-		if (!draw->isDrawableEffectivelyHidden())
-		{
-			const BeaconClientUpdateModuleData *data = static_cast<const BeaconClientUpdateModuleData *>(m_moduleData);
-			if (TheGameLogic->getFrame() > m_unk0x10 + data->m_radarPulseFrequency)
-			{
-				TheRadar->createEvent(draw->getPosition(), (RadarEventType)6, data->m_radarPulseDuration * g_secondsPerLogicFrame);
-				m_unk0x10 = TheGameLogic->getFrame();
-			}
-		}
-		else
-		{
-			draw->setSelectable(false);
-			TheInGameUI->deselectDrawable(draw);
-			draw->setPositionZ(-100.0f);
-		}
 	}
 }
 
