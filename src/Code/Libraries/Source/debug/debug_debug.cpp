@@ -970,18 +970,19 @@ bool Debug::ExecCommand(const char *cmdstart, const char *cmdend)
 		if (*p)
 		{
 			// search for a matching command handler, starting at the group found above
-			for (; group; group = group->next)
+			CmdInterfaceListEntry *handler = group;
+			for (; handler; handler = handler->next)
 			{
-				if (strcmp(curCommandGroup, group->group))
+				if (strcmp(curCommandGroup, handler->group))
 					continue;
 
-				doneCommand = group->cmdif->Execute(*this, p, mode, numParts - 1, parts + 1);
+				doneCommand = handler->cmdif->Execute(*this, p, mode, numParts - 1, parts + 1);
 				if (doneCommand && (strcmp(p, "help") || numParts > 1))
 					break;
 			}
 
 			// display an error message if the command was not found
-			if (!group && mode == DebugCmdInterface::Normal)
+			if (!handler && mode == DebugCmdInterface::Normal)
 			{
 				if (strcmp(p, "help"))
 					operator<<("Unknown command");
