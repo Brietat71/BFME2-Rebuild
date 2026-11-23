@@ -416,6 +416,11 @@ void InGameUI::unidentifiedSlot101(const int *a, const int *b, int *out)
 }
 
 // FUNCTION: BFME2 0x0029B04D size=19 name=?setRva0029B04D@InGameUI@@UAEXH@Z evidence=N:ledger tier=B hypothesis:Z
+void InGameUI::disableTooltipsUntil(unsigned int frame)
+{
+	if (frame > field7EC)
+		field7EC = frame;
+}
 
 // FUNCTION: BFME2 0x0029B060 size=8 name=?clearRva0029B060@InGameUI@@UAEXXZ evidence=N:ledger tier=B hypothesis:Z
 void InGameUI::clearTooltipsDisabled()
