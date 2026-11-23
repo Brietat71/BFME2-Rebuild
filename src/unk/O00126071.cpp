@@ -2,3 +2,8 @@
 // object=O00126071 name-evidence=Z
 // Extents and edges are hypotheses; byte verification alone does not establish original TU boundaries.
 // FUNCTION: BFME2 0x00126071 size=6 name=?Has_CMOV_Instruction@CPUDetectClass@@SA_NXZ evidence=N:ledger tier=B hypothesis:mm1-fragment-path-elsewhere
+#include "WWLib/cpudetect.h"
+bool CPUDetectClass::Has_CMOV_Instruction()
+{
+	return HasCMOVSupport;
+}
