@@ -757,8 +757,8 @@ void AIPlayer::queueUnits()
 			if (order->m_numCompleted < order->m_numRequired && !order->m_unk0x29)
 			{
 				// start the creation of a new unit
-				TeamPrototype *proto = team->m_team->getPrototype();
-				startTraining(order, team->m_priorityBuild, proto ? proto->getName() : AsciiString::TheEmptyString);
+				startTraining(order, team->m_priorityBuild,
+					team->m_team->getPrototype() ? team->m_team->getPrototype()->getName() : AsciiString::TheEmptyString);
 			}
 			else if (!TheSkirmishAIManager->rva002A8AB1(m_player))
 			{
