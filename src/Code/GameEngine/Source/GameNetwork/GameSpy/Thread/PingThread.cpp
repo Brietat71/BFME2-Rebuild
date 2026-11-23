@@ -16,7 +16,6 @@ extern "C" int (__cdecl *__imp__isdigit)(int);
 // .bss 0x00A05FB8, after GSConfig.cpp's TheGameSpyConfig (Zero Hour's PingThread.cpp global).
 PingerInterface *ThePinger = 0;
 
-typedef in_addr *HostAddressPtr;
 typedef HANDLE (WINAPI *IcmpCreateFileProc)(void);
 typedef BOOL (WINAPI *IcmpCloseHandleProc)(HANDLE);
 typedef DWORD (WINAPI *IcmpSendEchoProc)(HANDLE, UnsignedInt, void *, WORD, PingIpOptionInfo *, void *, DWORD, DWORD);
@@ -151,68 +150,6 @@ void Pinger::clearPingMap()
 // FUNCTION: BFME2 0x005501D3 size=33 name=??4BfmeNarrowRecord0054FEF1@@QAEAAU0@ABU0@@Z evidence=N:ledger tier=B hypothesis:cohesion
 
 // FUNCTION: BFME2 0x005501F4 size=400 name=?Thread_Function@PingThreadClass@@UAEXXZ evidence=N:ledger tier=B hypothesis:name:Z
-void PingThreadClass::Thread_Function()
-{
-	try {
-		PingRequest req;
-		WSADATA wsaData;
-		WSAStartup(MAKEWORD(1, 1), &wsaData);
-
-		for (;;)
-		{
-			MutexClass::LockClass runLock(*m_runMutex, 1);
-			if (!runLock.Failed())
-				break;
-
-			if (ThePinger->getRequest(req))
-			{
-				const char *hostnameBuffer = req.hostname.c_str();
-				UnsignedInt IP;
-				if (__imp__isdigit(hostnameBuffer[0]))
-				{
-					IP = inet_addr(hostnameBuffer);
-				}
-				else
-				{
-					HOSTENT *hostStruct = gethostbyname(hostnameBuffer);
-					HostAddressPtr hostNode = (HostAddressPtr)hostStruct->h_addr;
-					IP = hostNode->s_addr;
-				}
-
-				Int reps = req.repetitions;
-				Int goodReps = 0;
-				Int totalPing = 0;
-				while (reps-- && IP != 0xFFFFFFFF)
-				{
-					MutexClass::LockClass stillRunning(*m_runMutex, 1);
-					if (!stillRunning.Failed())
-						break;
-
-					Int ping = doPing(IP, req.timeout);
-					if (ping >= 0)
-					{
-						totalPing += ping;
-						++goodReps;
-					}
-				}
-				if (!goodReps)
-					totalPing = -1;
-				else
-					totalPing = totalPing / goodReps;
-
-				PingResponse resp;
-				resp.hostname = req.hostname;
-				resp.avgPing = totalPing;
-				resp.repetitions = goodReps;
-				ThePinger->addResponse(resp);
-			}
-		}
-
-		WSACleanup();
-	} catch (...) {
-	}
-}
-
 
 // FUNCTION: BFME2 0x005503B1 size=53 name=?rva005503B1@Rva005503B1@@SAPAVRva0055011A@@XZ evidence=?:placeholder tier=B hypothesis:cohesion
 
