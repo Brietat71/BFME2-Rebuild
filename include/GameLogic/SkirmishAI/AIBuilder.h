@@ -9,6 +9,7 @@
 
 #include <stddef.h>
 #include "Common/GameType.h"
+#include "Common/Coord3D.h"
 
 class AIBuildable;
 class Object;
@@ -30,6 +31,7 @@ public:
 	void rva004EC072(TeamPrototype *team);	// forwards to the team builder at +0x90
 	void rva004EC07D(TeamPrototype *team);	// forwards to the team builder at +0x90
 	void rva004EC2D4(ObjectID objectID);	// dozer completion
+	Coord3D rva004EBF4B();	// the base builder's start position
 
 	unsigned char m_unk0x00[0x15C];
 };

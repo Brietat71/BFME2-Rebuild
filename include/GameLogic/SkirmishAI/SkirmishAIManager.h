@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Common/GameType.h"
+#include "Common/Vector.h"
 #include "Common/Snapshot.h"
 #include "Common/SubsystemInterface.h"
 #include "GameLogic/SkirmishAI/SkirmishAI.h"
@@ -15,6 +16,13 @@ class TeamPrototype;
 class SkirmishAI;
 typedef SkirmishAI Rva002A8AB1Record;
 
+// The record's owner keeps a vector of the player's object ids at +0x04.
+struct Rva002A8F24Owner
+{
+    unsigned char m_unk0x00[4];
+    _STL::vector<ObjectID> m_objects;
+};
+
 struct Rva002A8F24Record
 {
     // ScoreKeeper::updateFrame (0x0039D1F1) adds this field to the
@@ -25,7 +33,8 @@ struct Rva002A8F24Record
         int m_moneyForScore;
     };
 
-    unsigned char m_unk0x00[0xC];
+    Rva002A8F24Owner *m_owner;
+    unsigned char m_unk0x04[8];
     ScoreMoneySource *m_scoreMoneySource;
 };
 
