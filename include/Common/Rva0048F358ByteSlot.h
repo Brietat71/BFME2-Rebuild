@@ -1,4 +1,4 @@
-// A byte slot written of an owner not yet recovered; the pad stands in for the owner.
+// A byte slot of an owner not yet recovered; the pad stands in for the owner.
 #pragma once
 #ifndef BFME2_RVA0048F358BYTESLOT_H
 #define BFME2_RVA0048F358BYTESLOT_H

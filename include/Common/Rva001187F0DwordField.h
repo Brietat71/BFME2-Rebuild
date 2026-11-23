@@ -1,4 +1,4 @@
-// A dword field read of an owner not yet recovered; the pad stands in for the owner.
+// A dword field of an owner not yet recovered; the pad stands in for the owner.
 #pragma once
 #ifndef BFME2_RVA001187F0DWORDFIELD_H
 #define BFME2_RVA001187F0DWORDFIELD_H

@@ -1,4 +1,4 @@
-// A byte field read of an owner not yet recovered; the pad stands in for the owner.
+// A byte field of an owner not yet recovered; the pad stands in for the owner.
 #pragma once
 #ifndef BFME2_RVA0054C7FEBYTEFIELD_H
 #define BFME2_RVA0054C7FEBYTEFIELD_H
