@@ -39,7 +39,7 @@ void AptInGameChat::rva004E8220(int)
 // FUNCTION: BFME2 0x004E8234 size=11 name=?get@Rva004E8234CmpBoolField@@QBE_NXZ evidence=?:placeholder tier=B hypothesis:K
 bool Rva004E8234CmpBoolField::get() const
 {
-	return m_value != 0;
+	return !!m_value;
 }
 
 // FUNCTION: BFME2 0x004E8258 size=403 name=?OpenScreen@AptInGameChat@@SAXH@Z evidence=N:ledger tier=A
