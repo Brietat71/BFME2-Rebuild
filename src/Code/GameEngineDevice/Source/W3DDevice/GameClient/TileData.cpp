@@ -97,7 +97,8 @@ void TileData::updateMips()
 extern "C" void resampleRgb555(const UnsignedByte *src, Int srcPitch, Int step, UnsignedShort *dst)
 {
 	Int area = step * step;
-	Int half = area / 2;
+	Int half = area;
+	half /= 2;
 	Int rowBytes = srcPitch * step;
 
 	for (Int y = 0; y < 64; y += step)
