@@ -4799,6 +4799,20 @@
    "kind": "trusted-wide",
    "number": 130,
    "tree": "04c13a5fe7be5187bde653157f78e1b52e1288e0"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45252113132"
+   },
+   "author": 1399571,
+   "base": "ccf01afaaf1580a3ff9c355eb2af80bc97641f7b",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "f3a5981c2d1abb7e669bafc9e4b1d52b270d44be",
+   "kind": "wide",
+   "number": 15,
+   "tree": "b90c6300181797c6dd7941562ba3153fba572c22"
   }
  ],
  "version": 2
