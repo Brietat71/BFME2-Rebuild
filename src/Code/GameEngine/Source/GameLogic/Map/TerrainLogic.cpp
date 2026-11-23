@@ -20,8 +20,62 @@
 
 // The singleton (retail VA 0x00DFEC50).
 TerrainLogic *TheTerrainLogic = NULL;
+static const Real PATHFIND_CELL_SIZE_F = 10.0f;
+Bool LineInRegion(const Coord2D *start, const Coord2D *end, const Region2D *region);
 extern Waypoint *TheWaypointListHead;	// 0x00DFEC54: the head of the waypoint list (TerrainLogic::getFirstWaypoint, slot 33, returns it)
 // FUNCTION: BFME2 0x0027C79C size=447 name=?isCellOnEnd@Bridge@@QAE_NPBURegion2D@@@Z evidence=N:ledger tier=A
+Bool Bridge::isCellOnEnd(const Region2D *cell)
+{
+	Coord3D fromLeft;
+	Coord3D endVector(m_bridgeInfo.fromRight);
+	endVector.sub(&m_bridgeInfo.fromLeft);
+	endVector.normalize();
+	// Offset by 1 pathfind cell.
+	Real offsetX = endVector.x * PATHFIND_CELL_SIZE_F;
+	Real offsetY = endVector.y * PATHFIND_CELL_SIZE_F;
+
+	fromLeft = m_bridgeInfo.fromLeft;
+	fromLeft.x += offsetX;
+	fromLeft.y += offsetY;
+
+	Coord3D fromRight = m_bridgeInfo.fromRight;
+	fromRight.x -= offsetX;
+	fromRight.y -= offsetY;
+
+	if (m_polygonTrigger)
+	{
+		endVector = m_bridgeInfo.toRight;
+		endVector.x -= m_bridgeInfo.toLeft.x;
+		endVector.y -= m_bridgeInfo.toLeft.y;
+		endVector.z -= m_bridgeInfo.toLeft.z;
+		endVector.normalize();
+		offsetX = endVector.x * PATHFIND_CELL_SIZE_F;
+		offsetY = endVector.y * PATHFIND_CELL_SIZE_F;
+	}
+
+	Coord3D toLeft = m_bridgeInfo.toLeft;
+	toLeft.x += offsetX;
+	toLeft.y += offsetY;
+
+	Coord3D toRight = m_bridgeInfo.toRight;
+	toRight.x -= offsetX;
+	toRight.y -= offsetY;
+
+	Coord2D line1, line2;
+	line1.x = fromLeft.x;
+	line1.y = fromLeft.y;
+	line2.x = fromRight.x;
+	line2.y = fromRight.y;
+	if (LineInRegion(&line1, &line2, cell))
+		return true;
+	line1.x = toLeft.x;
+	line1.y = toLeft.y;
+	line2.x = toRight.x;
+	line2.y = toRight.y;
+	if (LineInRegion(&line1, &line2, cell))
+		return true;
+	return false;
+}
 
 // FUNCTION: BFME2 0x0027C95B size=548 name=?isCellOnSide@Bridge@@QAE_NPBURegion2D@@@Z evidence=N:ledger tier=A
 
