@@ -883,6 +883,14 @@ Int *CreateAHeroManager::CreateAHeroClass::rva0021BEC1(Int attribute, Int subCla
 }
 
 // FUNCTION: BFME2 0x0021BEE0 size=49 name=?rva0021BEE0@CreateAHeroManager@@QBEHHII@Z evidence=?:placeholder tier=A
+Int CreateAHeroManager::rva0021BEE0(Int blingKey, UnsignedInt classIndex, UnsignedInt subClassIndex) const
+{
+	if (classIndex < m_classes.size()) {
+		CreateAHeroClass *classes = m_classes.first;
+		return classes[classIndex].GetBlingCount(blingKey, subClassIndex);
+	}
+	return 0;
+}
 
 // FUNCTION: BFME2 0x0021BF11 size=49 name=?GetSubClassDefaultBlingId@CreateAHeroManager@@QBEHHII@Z evidence=N:ledger tier=A
 Int CreateAHeroManager::GetSubClassDefaultBlingId(Int blingKey, UnsignedInt classIndex, UnsignedInt subClassIndex) const
