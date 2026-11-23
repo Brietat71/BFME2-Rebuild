@@ -194,7 +194,6 @@ bool ProcessAnimateWindowSlideFromLeft::updateAnimateWindow(AnimateWindow *animW
 
 	if (curPos.x > endPos.x)
 	{
-		curPos.x = endPos.x;
 		animWin->setFinished(true);
 		return true;
 	}
@@ -238,13 +237,17 @@ bool ProcessAnimateWindowSlideFromLeft::reverseAnimateWindow(AnimateWindow *anim
 	animWin->setCurPos(curPos);
 
 	ICoord2D endPos = animWin->getEndPos();
+	Real speed;
 	if (endPos.x - curPos.x <= m_slowDownThreshold)
-		vel.x *= m_speedUpRatio;
+		speed = vel.x * m_speedUpRatio;
 	else
-		vel.x = -m_maxVel.x;
-	if (vel.x < -m_maxVel.x)
-		vel.x = -m_maxVel.x;
-	animWin->setVel(vel);
+		speed = -m_maxVel.x;
+	if (speed < -m_maxVel.x)
+		speed = -m_maxVel.x;
+	Coord2D newVel;
+	newVel.x = speed;
+	newVel.y = vel.y;
+	animWin->setVel(newVel);
 	return false;
 }
 
@@ -790,13 +793,17 @@ bool ProcessAnimateWindowSlideFromTopFast::reverseAnimateWindow(AnimateWindow *a
 	animWin->setCurPos(curPos);
 
 	ICoord2D endPos = animWin->getEndPos();
+	Real speed;
 	if (endPos.y - curPos.y <= m_slowDownThreshold)
-		vel.y *= m_speedUpRatio;
+		speed = vel.y * m_speedUpRatio;
 	else
-		vel.y = -m_maxVel.y;
-	if (vel.y < -m_maxVel.y)
-		vel.y = -m_maxVel.y;
-	animWin->setVel(vel);
+		speed = -m_maxVel.y;
+	if (speed < -m_maxVel.y)
+		speed = -m_maxVel.y;
+	Coord2D newVel;
+	newVel.y = speed;
+	newVel.x = vel.x;
+	animWin->setVel(newVel);
 	return false;
 }
 
@@ -907,7 +914,6 @@ bool ProcessAnimateWindowSlideFromRight::updateAnimateWindow(AnimateWindow *anim
 
 	if (curPos.x < endPos.x)
 	{
-		curPos.x = endPos.x;
 		animWin->setFinished(true);
 		return true;
 	}
