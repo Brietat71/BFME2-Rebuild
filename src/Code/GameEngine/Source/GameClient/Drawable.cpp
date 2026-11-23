@@ -254,6 +254,17 @@ const GeometryInfo *Drawable::getGeometryInfo(Int index) const
 }
 
 // FUNCTION: BFME2 0x00271058 size=61 name=?setID@Drawable@@QAEXPAX@Z evidence=N:ledger tier=A
+void Drawable::setID(DrawableID id)
+{
+	if (m_id != id)
+	{
+		if (m_id != 0)
+			TheGameClient->removeDrawableFromLookupTable(this);
+		m_id = id;
+		if (id != 0)
+			TheGameClient->addDrawableToLookupTable(this);
+	}
+}
 
 // FUNCTION: BFME2 0x00271095 size=25 name=?rva00271095@Drawable@@UAEXXZ evidence=?:placeholder tier=A
 void Drawable::preloadAssets()
@@ -1593,6 +1604,14 @@ Rva002390CB Drawable::getSoundAmbientRubble()
 // FUNCTION: BFME2 0x00276B32 size=99 name=?rva00276B32@Rva00276B32Host@@QAE_NHH@Z evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x00276B95 size=20 name=?rva00276B95@Drawable@@QAEXXZ evidence=?:placeholder tier=A
+void Drawable::friend_clearSelected()
+{
+	if (m_selected)
+	{
+		m_selected = FALSE;
+		rva00275545();
+	}
+}
 
 // FUNCTION: BFME2 0x00276BA9 size=338 name=?rva00276BA9@Drawable@@QAEX_N@Z evidence=?:placeholder tier=A
 
@@ -1672,6 +1691,11 @@ void Drawable::setFullyObscuredByShroud(Bool fullyObscured)
 }
 
 // FUNCTION: BFME2 0x00278C6B size=17 name=?rva00278C6B@Drawable@@QAEXXZ evidence=?:placeholder tier=A
+void Drawable::rva00278C6B()
+{
+	if (m_unk0x43D[14])
+		startAmbientSound(FALSE);
+}
 
 // FUNCTION: BFME2 0x00278C7C size=381 name=?rva00278C7C@Drawable@@QAEXH@Z evidence=?:placeholder tier=A
 
@@ -1710,6 +1734,15 @@ const char *Drawable::GetSnapshotName() const
 // FUNCTION: BFME2 0x00279677 size=65 name=?rva00279677@Rva00279677@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x002796B8 size=33 name=?rva002796B8@Drawable@@QAEXXZ evidence=?:placeholder tier=A
+void Drawable::friend_setSelected()
+{
+	if (!m_selected)
+	{
+		m_selected = TRUE;
+		rva002754E3();
+	}
+	flashAsSelected(NULL);
+}
 
 // FUNCTION: BFME2 0x002796D9 size=114 name=?drawIconLayer@Rva002796D9Host@@QAEXH@Z evidence=?:placeholder tier=A
 
