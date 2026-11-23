@@ -2,9 +2,19 @@
 // Tier A; object=O0055D741 evidence=F flags=align=U
 // Extent is a hypothesis; only Object VERIFIED establishes recovery.
 // Edges: left=unknown-rows right=unknown-rows
+#include "Common/Coord2D.h"
+#include "Common/Coord3D.h"
 // FUNCTION: BFME2 0x0055D616 size=34 name=?rva0055D616@Rva003AF7FE@@UAEXXZ evidence=?:placeholder tier=B hypothesis:mm1-neighbour-pointers-mixed
 // FUNCTION: BFME2 0x0055D638 size=78 name=?xfer@Rva003AF7FE@@MAEXPAVXfer@@@Z evidence=?:placeholder tier=B hypothesis:mm1-neighbour-pointers-mixed
 // FUNCTION: BFME2 0x0055D686 size=81 name=?computeCylinderEmissionPosition@@YGXPAVCoord3D@@PAVCoord2D@@MM@Z evidence=N:ledger tier=B hypothesis:mm1-contiguity-pointers-mixed
+void __stdcall computeCylinderEmissionPosition(Coord3D *position, Coord2D *direction, Real radius, Real height)
+{
+	Coord2D heading = *direction;
+	heading.normalize();
+	position->x = heading.x * radius;
+	position->y = heading.y * radius;
+	position->z = height;
+}
 // FUNCTION: BFME2 0x0055D6D7 size=106 name=?rva0055D6D7@Rva003AF7FE@@QAEXVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=B hypothesis:mm1-neighbour-pointers-mixed
 // FUNCTION: BFME2 0x0055D741 size=212 name=?getPosition@CylinderEmissionVolumeModule@FXParticleSystem@@UAE?AUCoord3D@2@MMMM@Z evidence=N:ledger
 
