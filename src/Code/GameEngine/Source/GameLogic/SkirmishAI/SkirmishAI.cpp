@@ -85,7 +85,7 @@ void SkirmishAI::doSpecialSlaveAIUpdate()
 	if (skillPoints > 0.0f)
 	{
 		m_player->resetRank();
-		master->addSkillPoints(skillPoints, false);
+		master->rva003805BB(skillPoints, false);
 	}
 }
 
