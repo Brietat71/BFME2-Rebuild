@@ -5,8 +5,13 @@
 
 #include "Common/Snapshot.h"
 #include "Common/Vector.h"
-#include "Common/ICoord2D.h"
 #include "GameLogic/LivingWorldTurnObserver.h"
+
+// The 8-byte pair of the default army placement table (the ledger names the type Pair8).
+struct Pair8 {
+	Int first;
+	Int second;
+};
 
 class LivingWorldLogic;
 class LivingWorldRegion;
@@ -21,7 +26,7 @@ public:
 // The table at +0x8 of the manager; its region vector is at +0x2C. Its own name is not recovered.
 struct RegionOwnershipTable {
 	unsigned char m_unk0x00[0x20];
-	_STL::vector<ICoord2D> m_defaultArmyPositions; // +0x20 (GetDefaultArmyPlacementPos 0x0020EE8F)
+	_STL::vector<Pair8> m_defaultArmyPositions; // +0x20 (GetDefaultArmyPlacementPos 0x0020EE8F)
 	_STL::vector<LivingWorldRegion *> m_regions; // +0x2C
 	void rva0020F5B3(); // 0x0020F5B3 (the loadPostProcess tail; not written)
 };
@@ -51,7 +56,7 @@ public:
 	LivingWorldBattle *SelectPendingBattle(); // The first pending battle whose rva003F4831 is positive
 	LivingWorldRegion *rva0020EAF6(int index); // (LivingWorldLogic::getBattleRegion 0x002B2B2D passes the battle region index)
 	void UpdateBattleMarkers();
-	bool GetDefaultArmyPlacementPos(Int index, ICoord2D *position); // 0x0020EE8F
+	bool GetDefaultArmyPlacementPos(Int index, Pair8 *position); // 0x0020EE8F
 	void SetRegionReinforcements(Int regionIndex, Int a, Int b, Int c, Int d, Int e, Int f); // 0x0020EEC8
 	void rva0020F483(); // 0x0020F483: part of loadPostProcess (not written)
 	void rva0020F685(); // 0x0020F685: frees the entries of the two battle lists (not written)

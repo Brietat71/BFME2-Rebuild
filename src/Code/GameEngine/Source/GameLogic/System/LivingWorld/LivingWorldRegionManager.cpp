@@ -215,11 +215,11 @@ void LivingWorldRegionManager::BeginTurn(Int turn, Int arg)
 // FUNCTION: BFME2 0x0020EE5C size=51 name=?rva0020EE5C@Rva0020EE5C@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0020EE8F size=57 name=?GetDefaultArmyPlacementPos@LivingWorldRegionManager@@QAE_NHPAUPair8@@@Z evidence=N:ledger tier=A
-bool LivingWorldRegionManager::GetDefaultArmyPlacementPos(Int index, ICoord2D *position)
+bool LivingWorldRegionManager::GetDefaultArmyPlacementPos(Int index, Pair8 *position)
 {
 	if (m_table)
 	{
-		_STL::vector<ICoord2D> &positions = m_table->m_defaultArmyPositions;
+		_STL::vector<Pair8> &positions = m_table->m_defaultArmyPositions;
 		if (index >= 0 && (unsigned int)index < positions.size())
 		{
 			*position = positions[index];
