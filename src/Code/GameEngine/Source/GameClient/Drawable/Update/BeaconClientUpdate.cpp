@@ -149,7 +149,8 @@ void BeaconClientUpdate::clientUpdate()
 	{
 		if (m_particleSystemID == 0)
 		{
-			ParticleSystemHandle system = createParticleSystem(draw);
+			ParticleSystemHandle system;
+			system = createParticleSystem(draw);
 			if (system)
 				m_particleSystemID = system->m_systemID;
 		}
