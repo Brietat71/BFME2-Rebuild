@@ -970,8 +970,8 @@ bool Debug::ExecCommand(const char *cmdstart, const char *cmdend)
 		if (*p)
 		{
 			// search for a matching command handler, starting at the group found above
-			CmdInterfaceListEntry *handler = group;
-			for (; handler; handler = handler->next)
+			CmdInterfaceListEntry *handler;
+			for (handler = firstCmdGroup; handler; handler = handler->next)
 			{
 				if (strcmp(curCommandGroup, handler->group))
 					continue;
