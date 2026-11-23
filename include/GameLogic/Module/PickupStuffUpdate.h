@@ -27,6 +27,8 @@ public:
 	// The ledger spells the parameter void *; the body casts it to Object * and starts a temporary state machine that
 	// walks the module's own object to it.
 	void moveToStuff(void *target);
+	// 0x00491EE6: once the module's AI is idle, ends its temporary state machine and clears the active flag.
+	void rva00491EE6();
 
 protected:
 	virtual const char *GetSnapshotName() const;

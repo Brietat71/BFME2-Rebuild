@@ -65,6 +65,15 @@ PickupStuffUpdate::PickupStuffUpdate(Thing *thing, const ModuleData *moduleData)
 }
 
 // FUNCTION: BFME2 0x00491EE6 size=50 name=?rva00491EE6@PickupStuffUpdate@@QAEXXZ evidence=?:placeholder
+void PickupStuffUpdate::rva00491EE6()
+{
+	if (getObject()->getAI()->isIdle())
+	{
+		if (getObject()->getAI()->m_unk0x34)
+			getObject()->getAI()->rva0026331C();
+		m_unk0x20 = false;
+	}
+}
 
 // FUNCTION: BFME2 0x00491F18 size=66 name=?xfer@PickupStuffUpdate@@MAEXPAVXfer@@@Z evidence=N:ledger
 void PickupStuffUpdate::xfer(Xfer *xfer)
