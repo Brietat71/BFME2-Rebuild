@@ -500,13 +500,11 @@ void GameWindowTransitionsHandler::reverse(AsciiString groupName)
 	m_coord2.y = TheDisplay->getHeight();
 
 	TransitionGroup *g = findGroup(groupName);
-	if (g)
+	if (!g)
+		return;
+
+	if (m_currentGroup != g)
 	{
-		if (m_currentGroup == g)
-		{
-			m_currentGroup->reverse();
-			return;
-		}
 		if (m_pendingGroup == g)
 		{
 			m_pendingGroup->retire();
@@ -528,8 +526,8 @@ void GameWindowTransitionsHandler::reverse(AsciiString groupName)
 		m_currentGroup = g;
 		m_currentGroup->init();
 		m_currentGroup->skip();
-		m_currentGroup->reverse();
 	}
+	m_currentGroup->reverse();
 }
 
 
