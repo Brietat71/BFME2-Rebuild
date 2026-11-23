@@ -96,22 +96,22 @@ void TileData::updateMips()
 // FUNCTION: BFME2 0x001118EC size=281 name=_Rva001118ECResampleRgb555 evidence=?:placeholder tier=B hypothesis:Z
 extern "C" void resampleRgb555(const UnsignedByte *src, Int srcPitch, Int step, UnsignedShort *dst)
 {
-	Int area = step * step;
-	Int half = area;
-	half /= 2;
-	Int rowBytes = srcPitch * step;
+	Int blockSize = step;
+	Int area = blockSize * blockSize;
+	step = area / 2;
+	Int rowBytes = srcPitch * blockSize;
 
-	for (Int y = 0; y < 64; y += step)
+	for (Int y = 0; y < 64; y += blockSize)
 	{
 		const UnsignedByte *rowStart = src;
-		for (Int x = 0; x < 64; x += step)
+		for (Int x = 0; x < 64; x += blockSize)
 		{
 			UnsignedShort sum[4] = { 0, 0, 0, 0 };
 			const UnsignedByte *block = rowStart;
-			for (Int r = 0; r < step; r++)
+			for (Int r = 0; r < blockSize; r++)
 			{
 				const UnsignedByte *p = block;
-				for (Int c = 0; c < step; c++)
+				for (Int c = 0; c < blockSize; c++)
 				{
 					for (Int k = 0; k < 4; k++)
 						sum[k] += p[k];
@@ -123,11 +123,11 @@ extern "C" void resampleRgb555(const UnsignedByte *src, Int srcPitch, Int step, 
 			UnsignedByte avg[4];
 			for (Int k = 0; k < 4; k++)
 			{
-				Int v = (sum[k] + half) / area;
+				Int v = (sum[k] + step) / area;
 				avg[k] = _STL::min(v, 255);
 			}
 			*dst++ = (UnsignedShort)((((((avg[2] + 1) * 31 / 256) << 5) | ((avg[1] + 1) * 31 / 256)) << 5) | ((avg[0] + 1) * 31 / 256));
-			rowStart += step * 4;
+			rowStart += blockSize * 4;
 		}
 		src += rowBytes;
 	}
