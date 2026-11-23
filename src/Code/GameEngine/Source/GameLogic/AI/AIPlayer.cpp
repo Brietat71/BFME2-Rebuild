@@ -496,9 +496,8 @@ Int AIPlayer::getPlayerSuperweaponValue(Coord3D *center, Int playerNdx, Real rad
 					if (pObj->isSignificantlyAboveTerrain())
 						continue;
 				}
-				Coord3D pos = *pObj->getPosition();
-				Real dx = center->x - pos.x;
-				Real dy = center->y - pos.y;
+				Real dx = center->x - pObj->getPosition()->x;
+				Real dy = center->y - pObj->getPosition()->y;
 				if (dx * dx + dy * dy < radSqr) {
 					Real dist = sqrt(dx * dx + dy * dy);
 					Real factor = 1.0f - (dist / (2 * radius));
