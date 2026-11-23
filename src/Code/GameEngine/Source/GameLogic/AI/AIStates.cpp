@@ -3813,12 +3813,13 @@ StateReturnType AIWanderInPlaceState::update()
 		Locomotor *locomotor = ai->m_curLocomotor;
 		if (locomotor)
 			delta = Float_To_Long((float)floor(locomotor->m_template->m_wanderAboutPointRadius * 0.1f + 0.5f));
-		Coord3D offset;
-		offset.x = (Real)(GetGameLogicRandomValue(-delta, delta, "C:\projects\bfme2patch103\bfme2\Code\GameEngine\Source\GameLogic\AI\AIStates.cpp", 0x29F3) * 10);
-		offset.y = (Real)(GetGameLogicRandomValue(-delta, delta, "C:\projects\bfme2patch103\bfme2\Code\GameEngine\Source\GameLogic\AI\AIStates.cpp", 0x29F4) * 10);
+		Real offsetX;
+		offsetX = (Real)(GetGameLogicRandomValue(-delta, delta, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\AI\\AIStates.cpp", 0x29F3) * 10);
+		Real offsetY;
+		offsetY = (Real)(GetGameLogicRandomValue(-delta, delta, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\AI\\AIStates.cpp", 0x29F4) * 10);
 		m_goalPosition = m_origin;
-		m_goalPosition.x += offset.x;
-		m_goalPosition.y += offset.y;
+		m_goalPosition.x += offsetX;
+		m_goalPosition.y += offsetY;
 		AIInternalMoveToState::onEnter();
 		return STATE_CONTINUE;
 	}
