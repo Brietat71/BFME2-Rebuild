@@ -21,6 +21,8 @@ class Snapshot;
 class XferLoad : public Xfer
 {
 public:
+	Bool Open(File *file, Int *version);										// 0x0060C3C3: checks the save header, reads the version (0 for the older format) and the string-table flag
+	void Close();																// 0x0060C45E: forgets the file
 	virtual Int BeginBlock(const char *name);									// slot 5, 0x0060C629
 	virtual void EndBlock();													// slot 6, 0x0060C469
 	virtual void SkipBlock(const char *name);									// slot 7, 0x0060C6F6
