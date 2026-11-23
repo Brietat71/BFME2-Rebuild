@@ -2,7 +2,7 @@
 // The Apt random generator: the Mersenne Twister in the form of Cokus's mt19937ar-cok (N = 624, M = 397, the 69069 seeding, `left`/`next` bookkeeping).
 // `random` (the interpreter's action 0x007020B0) draws from bfmeNext1221.
 extern int g_bfmeIndexFA;             // VA 0x00DDCF50: draws left before the state is regenerated (-1 before the first seeding)
-extern int g_bfmeStateFA[624];        // VA 0x00E18658: the state words
+extern unsigned int g_bfmeStateFA[624];        // VA 0x00E18658: the state words
 extern unsigned int *g_bfmeNext1221;  // VA 0x00E1901C: the next state word to draw
 #define N 624
 #define M 397
@@ -23,13 +23,30 @@ unsigned int bfmeNext1221();
 // FUNCTION: BFME2 0x0070F6E0 size=47 name=?bfmeSeed@@YAXH@Z evidence=N:ledger tier=B hypothesis:name:invented
 void bfmeSeed(int seed)
 {
-    unsigned int x = (seed | 1U) & 0xFFFFFFFFU, *s = (unsigned int *)g_bfmeStateFA;
+    unsigned int x = (seed | 1U) & 0xFFFFFFFFU, *s = g_bfmeStateFA;
     int j;
     for (g_bfmeIndexFA = 0, *s++ = x, j = N; --j; *s++ = (x *= 69069U) & 0xFFFFFFFFU)
         ;
 }
 
 // FUNCTION: BFME2 0x0070F710 size=281 name=_bfmeReload1221 evidence=N:ledger tier=B hypothesis:K
+extern "C" unsigned int bfmeReload1221()
+{
+    unsigned int *p0 = g_bfmeStateFA, *p2 = g_bfmeStateFA + 2, *pM = g_bfmeStateFA + M, s0, s1;
+    int j;
+    if (g_bfmeIndexFA < -1)
+        bfmeSeed(4357);
+    g_bfmeIndexFA = N - 1, g_bfmeNext1221 = g_bfmeStateFA + 1;
+    for (s0 = g_bfmeStateFA[0], s1 = g_bfmeStateFA[1], j = N - M + 1; --j; s0 = s1, s1 = *p2++)
+        *p0++ = *pM++ ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
+    for (pM = g_bfmeStateFA, j = M; --j; s0 = s1, s1 = *p2++)
+        *p0++ = *pM++ ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
+    s1 = g_bfmeStateFA[0], *p0 = *pM ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
+    s1 ^= (s1 >> 11);
+    s1 ^= (s1 << 7) & 0x9d2c5680U;
+    s1 ^= (s1 << 15) & 0xefc60000U;
+    return s1 ^ (s1 >> 18);
+}
 
 // FUNCTION: BFME2 0x0070F830 size=68 name=?bfmeNext1221@@YAIXZ evidence=N:ledger tier=B hypothesis:K
 unsigned int bfmeNext1221()
