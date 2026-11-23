@@ -37,6 +37,7 @@ public:
 	void UnRegister(Team *team);
 	void onUnitCreated(Object *factory, Object *unit);
 	void onHordeCreated(Object *factory, Object *unit);
+	Player *getMasterTargetPlayer();	// 0x002C6ACB: the master brain's tactical AI's chooser target player
 	void transferUnitsToPlayer(Player *player);
 	void doSpecialMasterAIDying();
 	void doSpecialSlaveAIDying();
