@@ -114,6 +114,8 @@ public:
 	bool m_isAutoLoaded;				// +0x1C
 	int m_stackingOrder;				// +0x20 order in the drawing. 0 drawn first, then 1 and so on.
 
+	RoadType();							// 0x000D4F2F
+
 	int getStacking() { return m_stackingOrder; }
 	void setStacking(int order) { m_stackingOrder = order; }
 	int getUniqueID() { return m_uniqueID; }
