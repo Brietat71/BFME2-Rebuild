@@ -429,6 +429,13 @@ template Int Pathfinder::iterateCellsAlongLine<FlingStruct>(const ICoord2D *, co
 // FUNCTION: BFME2 0x002E93A7 size=104 name=?cellCallback@Rva002E93A7Info@@QAEHPAVPathfindCell@@0HH@Z evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x002E940F size=51 name=?IsPointOnWall@Pathfinder@@QAE_NH_N@Z evidence=N:ledger tier=A
+Bool Pathfinder::IsPointOnWall(Int pos, Bool requireClear)
+{
+	PathfindCell *cell = getCellAtInt(LAYER_GROUND, pos);
+	if (cell && cell->m_layer > 16 && (!requireClear || cell->m_type == PathfindCell::CELL_CLEAR))
+		return true;
+	return false;
+}
 
 // FUNCTION: BFME2 0x002E9442 size=1071 name=?rva002E9442@Pathfinder@@QAE_NABVVector3@@0PAV2@@Z evidence=?:placeholder tier=A
 
@@ -448,7 +455,7 @@ int Pathfinder::GetGroundLayer(const Coord3D *pos)
 // The cell at the position (the map types the arguments as Int); BFME 2's second water type counts too.
 Bool Pathfinder::IsWaterCell(Int pos, Int layer)
 {
-	PathfindCell *cell = getCell((PathfindLayerEnum)layer, (const Coord3D *)pos);
+	PathfindCell *cell = getCellAtInt((PathfindLayerEnum)layer, pos);
 	if (cell)
 	{
 		UnsignedInt type = cell->getType();
@@ -460,18 +467,32 @@ Bool Pathfinder::IsWaterCell(Int pos, Int layer)
 // FUNCTION: BFME2 0x002E98C6 size=36 name=?IsCliffCell@Pathfinder@@QAE_NHH@Z evidence=N:ledger tier=A
 Bool Pathfinder::IsCliffCell(Int pos, Int layer)
 {
-	PathfindCell *cell = getCell((PathfindLayerEnum)layer, (const Coord3D *)pos);
+	PathfindCell *cell = getCellAtInt((PathfindLayerEnum)layer, pos);
 	return cell ? cell->getType() == PathfindCell::CELL_CLIFF : false;
 }
 
 // FUNCTION: BFME2 0x002E98EA size=47 name=?isBlockedGateObstacleCell@Pathfinder@@QAEHHH@Z evidence=N:ledger tier=A
+Int Pathfinder::isBlockedGateObstacleCell(Int pos, Int layer)
+{
+	PathfindCell *cell = getCellAtInt((PathfindLayerEnum)layer, pos);
+	if (cell && cell->getType() == PathfindCell::CELL_OBSTACLE && (cell->m_unkBits17 & 1))
+		return true;
+	return false;
+}
 
 // FUNCTION: BFME2 0x002E9919 size=47 name=?IsNonPinchedCliffCell@Pathfinder@@QAEHHH@Z evidence=N:ledger tier=A
+Int Pathfinder::IsNonPinchedCliffCell(Int pos, Int layer)
+{
+	PathfindCell *cell = getCellAtInt((PathfindLayerEnum)layer, pos);
+	if (cell && cell->getType() == PathfindCell::CELL_CLIFF && !cell->m_pinched)
+		return true;
+	return false;
+}
 
 // FUNCTION: BFME2 0x002E9948 size=38 name=?IsImpassableCell@Pathfinder@@QAE_NHH@Z evidence=N:ledger tier=A
 Bool Pathfinder::IsImpassableCell(Int pos, Int layer)
 {
-	PathfindCell *cell = getCell((PathfindLayerEnum)layer, (const Coord3D *)pos);
+	PathfindCell *cell = getCellAtInt((PathfindLayerEnum)layer, pos);
 	return cell ? cell->getType() == PathfindCell::CELL_BRIDGE_IMPASSABLE : true;
 }
 
@@ -482,7 +503,7 @@ Bool Pathfinder::IsImpassableCell(Int pos, Int layer)
 // the cell's bit 18.
 void Pathfinder::GetCellType(Int pos, void *found, void *bit18, void *type, Int layer)
 {
-	PathfindCell *cell = getCell((PathfindLayerEnum)layer, (const Coord3D *)pos);
+	PathfindCell *cell = getCellAtInt((PathfindLayerEnum)layer, pos);
 	if (!cell)
 	{
 		*(Bool *)found = false;
