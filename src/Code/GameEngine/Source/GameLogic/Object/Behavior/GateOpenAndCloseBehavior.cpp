@@ -133,7 +133,7 @@ NameKeyType GateOpenAndCloseBehavior::getModuleNameKey() const
 GateOpenAndCloseBehavior::GateOpenAndCloseBehavior(Thing *thing, const ModuleData *moduleData) :
 	UpdateModule(thing, moduleData)
 {
-	const GateOpenAndCloseBehaviorModuleData *data = static_cast<const GateOpenAndCloseBehaviorModuleData *>(getModuleData());
+	const GateOpenAndCloseBehaviorModuleData *data = static_cast<const GateOpenAndCloseBehaviorModuleData *>(m_moduleData);
 	m_wantOpenCount = -1;
 	m_soundHandle = 1;
 	m_soundPlayed = false;
