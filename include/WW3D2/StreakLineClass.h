@@ -59,7 +59,7 @@ public:
 	int Are_End_Caps_Enabled();
 
 	void Reset_Line();											// 0x00741730
-	TextureAsset Get_Texture();									// 0x00741750
+	TextureAsset Get_Texture() throw();							// 0x00741750
 	ShaderClass Get_Shader();									// 0x00741780
 	void Get_Color(Vector3 &color);								// 0x00741790
 	float Get_Opacity();										// 0x007417C0

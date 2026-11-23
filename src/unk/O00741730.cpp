@@ -15,7 +15,7 @@ void StreakLineClass::Reset_Line()
 }
 
 // FUNCTION: BFME2 0x00741750 size=33 name=?Get_Texture@StreakLineClass@@QAE?AVTextureHandleClass@ParticleBufferClass@@XZ evidence=N:ledger tier=B hypothesis:Z
-TextureAsset StreakLineClass::Get_Texture()
+TextureAsset StreakLineClass::Get_Texture() throw()
 {
 	return LineRenderer.Get_Texture();
 }
@@ -29,7 +29,9 @@ ShaderClass StreakLineClass::Get_Shader()
 // FUNCTION: BFME2 0x00741790 size=33 name=?Get_Color@StreakLineClass@@QAEXAAVVector3@@@Z evidence=N:ledger tier=B hypothesis:Z
 void StreakLineClass::Get_Color(Vector3 &color)
 {
-	color = LineRenderer.Get_Color();
+	color.X = LineRenderer.Color.X;
+	color.Y = LineRenderer.Color.Y;
+	color.Z = LineRenderer.Color.Z;
 }
 
 // FUNCTION: BFME2 0x007417C0 size=7 name=?Get_Opacity@StreakLineClass@@QAEMXZ evidence=N:ledger tier=B hypothesis:Z
