@@ -117,16 +117,3 @@ void PickupStuffUpdate::updateInactive()
 }
 
 // FUNCTION: BFME2 0x0049212B size=78 name=?update@PickupStuffUpdate@@UAE?AW4UpdateSleepTime@@XZ evidence=N:ledger tier=B hypothesis:mm1-held-object-encloses-unk-file
-UpdateSleepTime PickupStuffUpdate::update()
-{
-	const PickupStuffUpdateModuleData *data = getPickupStuffUpdateModuleData();
-	if (getObject()->m_ai && (!data->m_skirmishAIOnly || TheSkirmishAIManager->rva002A8AB1(getObject()->getControllingPlayer())))
-	{
-		if (m_unk0x20)
-			rva00491EE6();
-		else
-			updateInactive();
-		return UPDATE_SLEEP_NONE;
-	}
-	return UPDATE_SLEEP_FOREVER;
-}
