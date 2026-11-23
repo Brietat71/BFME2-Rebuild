@@ -21,6 +21,7 @@ public:
     const Image *GetButtonImage(Int size);
     const Image *GetPortraitImage(Int size);
     UnicodeString GetButtonHelp(Int size);
+    Int rva004E1755();    // 0x004E1755: the cost LivingWorldPlayer adds to its queued total
     virtual const char *GetSnapshotName() const;
 
 protected:

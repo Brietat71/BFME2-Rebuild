@@ -17,6 +17,7 @@ struct RevivalUnitRecord
 
 class LivingWorldArmy;
 class ThingTemplate;
+class SpawnArmy;
 class UpgradeTemplate;
 class LivingWorldPlayer
 {
@@ -27,6 +28,8 @@ public:
 	bool rva002E12F3(int id);				// 0x002E12F3: true when a revival record carries the id
 	int GetNumRegionsOwned();				// 0x002E1001: regions whose owner id is this player's id
 	int rva002E199E(const ThingTemplate *unitTemplate);
+	void rva002E074E(SpawnArmy *army);			// 0x002E074E: adds the army's cost to the queued total
+	void OnUnitDequeued(SpawnArmy *army);		// 0x002E0764: takes it off again, never below zero
 	bool rva002E0B30();					// 0x002E0B30 (LivingWorldLogic::rva002B4B83 calls it for each player)
 	LivingWorldArmy *findArmy(int id);			// 0x002E0A9F: the m_armies entry whose +0x20 id matches (LivingWorldLogic::findPlayerArmy 0x002B488E asks each player)
 	void removeArmy(LivingWorldArmy *army);		// 0x002E10BD: erase it from m_armies, then GameLogic::rva0023D007(army +0x78)
@@ -52,7 +55,9 @@ private:
 	unsigned char m_unk0x1C4[0x1D8 - 0x1C4];		// +0x1C4 not yet recovered
 	// The constructor clears all 0x80 bytes, and AddUpgrade indexes by UpgradeTemplate::getMaskIndex.
 	UpgradeMaskType m_upgradeMask;
-	unsigned char m_unk0x258[0x3C4 - 0x258];
+	unsigned char m_unk0x258[0x298 - 0x258];
+	int m_queuedArmyCost;				// +0x298 total cost of the queued armies (rva002E074E adds to it, OnUnitDequeued subtracts)
+	unsigned char m_unk0x29C[0x3C4 - 0x29C];
 	// getNumHumanPlayers includes eliminated players only when requested.
 	bool m_isEliminated;
 };

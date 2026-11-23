@@ -14,13 +14,24 @@
 #include "GameLogic/LivingWorldRegionManager.h"
 #include "GameLogic/LivingWorldRegion.h"
 #include "GameLogic/LivingWorldArmy.h"
+#include "GameLogic/SpawnArmy.h"
 #include "GameLogic/GameLogic.h"
 #include <algorithm>
 
 // The campaign logic singleton (its symbol is ?TheLivingWorldLogic@@3PAVLivingWorldLogic@@A).
 extern LivingWorldLogic *TheLivingWorldLogic;
 // FUNCTION: BFME2 0x002E074E size=22 name=?rva002E074E@LivingWorldPlayer@@QAEXPAVSpawnArmy@@@Z evidence=P:provisional (wb-file) tier=B hypothesis:mm1-held-object-same-path
+void LivingWorldPlayer::rva002E074E(SpawnArmy *army)
+{
+	m_queuedArmyCost += army->rva004E1755();
+}
 // FUNCTION: BFME2 0x002E0764 size=27 name=?OnUnitDequeued@LivingWorldPlayer@@QAEXPAVSpawnArmy@@@Z evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
+void LivingWorldPlayer::OnUnitDequeued(SpawnArmy *army)
+{
+	m_queuedArmyCost -= army->rva004E1755();
+	if (m_queuedArmyCost < 0)
+		m_queuedArmyCost = 0;
+}
 // FUNCTION: BFME2 0x002E07AC size=13 name=?add@Rva002E07AC@@QAEXH@Z evidence=?:placeholder tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x002E07B9 size=13 name=?add@Rva002E07B9@@QAEXH@Z evidence=?:placeholder tier=B hypothesis:mm1-held-object-same-path
 // FUNCTION: BFME2 0x002E07C6 size=6 name=?GetSnapshotName@Rva002E2AAE@@UBEPBDXZ evidence=?:placeholder
