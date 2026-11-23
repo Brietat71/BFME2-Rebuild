@@ -5506,6 +5506,20 @@
    "kind": "trusted-wide",
    "number": 29,
    "tree": "6e6050cc39b072639b6d32a407add68672c2bd1a"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45278348737"
+   },
+   "author": 44365026,
+   "base": "667c100212149a230776a133c3954a40ce202402",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "61003dd684fec23b80737233c5f69b791133d228",
+   "kind": "wide",
+   "number": 49,
+   "tree": "cc4014dbb51c089fc749b200112517b551380522"
   }
  ],
  "version": 2
