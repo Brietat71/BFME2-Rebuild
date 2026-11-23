@@ -2,7 +2,7 @@
 
 How much of the original game (version 1.06) has been rebuilt as source code that compiles back to the same machine code. Measured automatically after every change; nobody edits this page.
 
-Measured **23 November 2026**. The code figures describe commit [`d910812ef906`](https://github.com/Open-BFME/BFME2-Rebuild/commit/d910812ef906028a2c7111921b58cf1b9c8827b3) (23 November 2026, 12:02 UTC); the build checks run every day.
+Measured **23 November 2026**. The code figures describe commit [`cf033cf34be6`](https://github.com/Open-BFME/BFME2-Rebuild/commit/cf033cf34be6dc4d66d58eac9106aa4d35899e69) (23 November 2026, 12:08 UTC); the build checks run every day.
 
 ![Progress](progress.svg)
 
@@ -10,7 +10,7 @@ Measured **23 November 2026**. The code figures describe commit [`d910812ef906`]
 
 ![The four figures](detail.svg)
 
-**Byte match**: `██████░░░░░░░░░░░░░░` 27.6% (1,750,474 of 6,333,616 bytes)  
+**Byte match**: `██████░░░░░░░░░░░░░░` 27.6% (1,751,045 of 6,333,616 bytes)  
 How much of the original game's code, by size, our source code compiles back to byte for byte.
 
 **Linking**: `█████████████░░░░░░░` 64.7% (6,021 of 9,305 names)  
@@ -41,7 +41,7 @@ Byte match, by size, in each part of the source tree, largest part first.
 | --- | ---: | --- |
 | Game engine: GameLogic | 26.3% (399,763 of 1,520,680 bytes) | `█████░░░░░░░░░░░░░░░` |
 | Game libraries | 52.3% (571,288 of 1,092,443 bytes) | `██████████░░░░░░░░░░` |
-| Game engine: GameClient | 20.2% (171,910 of 850,669 bytes) | `████░░░░░░░░░░░░░░░░` |
+| Game engine: GameClient | 20.3% (172,481 of 850,669 bytes) | `████░░░░░░░░░░░░░░░░` |
 | Platform layer: W3DDevice | 8.7% (46,344 of 531,429 bytes) | `██░░░░░░░░░░░░░░░░░░` |
 | Game engine: Common | 35.3% (108,929 of 308,675 bytes) | `███████░░░░░░░░░░░░░` |
 | Game engine: GameNetwork | 51.6% (112,226 of 217,464 bytes) | `██████████░░░░░░░░░░` |
@@ -66,6 +66,7 @@ Provisional class declarations still in use (files under `include/Draft/` that s
 
 | Commit | Date | Byte match | Linking | Proven | Finished |
 | --- | --- | ---: | ---: | ---: | ---: |
+| [`cf033cf34be6`](https://github.com/Open-BFME/BFME2-Rebuild/commit/cf033cf34be6dc4d66d58eac9106aa4d35899e69) | 23 November 2026, 12:08 UTC | 27.65% | 64.71% (build `4ae67ee`) | 19.41% | 26.55% |
 | [`d910812ef906`](https://github.com/Open-BFME/BFME2-Rebuild/commit/d910812ef906028a2c7111921b58cf1b9c8827b3) | 23 November 2026, 12:02 UTC | 27.64% | 64.71% (build `4ae67ee`) | 19.41% | 26.55% |
 | [`aa022f492189`](https://github.com/Open-BFME/BFME2-Rebuild/commit/aa022f4921899e02fff3beb8cff702c4b501dbbc) | 23 November 2026, 11:12 UTC | 27.64% | 64.71% (build `4ae67ee`) | 19.41% | 26.55% |
 | [`03d25dad113a`](https://github.com/Open-BFME/BFME2-Rebuild/commit/03d25dad113aae1fa8a88398291d12adbb877923) | 23 November 2026, 11:05 UTC | 27.64% | 64.71% (build `4ae67ee`) | 19.41% | 26.55% |
