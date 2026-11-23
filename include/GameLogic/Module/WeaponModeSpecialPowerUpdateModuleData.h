@@ -19,7 +19,6 @@ public:
 	static void buildFieldParse(MultiIniFieldParse &parse);
 	static ModuleData *friend_newModuleData(INI *ini);
 	WeaponModeSpecialPowerUpdateModuleData();
-	virtual ~WeaponModeSpecialPowerUpdateModuleData();
 
 	AsciiString m_attributeModifier;
 	UnsignedInt m_duration;

@@ -16,6 +16,3 @@ WeaponModeSpecialPowerUpdateModuleData::WeaponModeSpecialPowerUpdateModuleData()
 }
 
 // FUNCTION: BFME2 0x00494D7C size=53 name=??1WeaponModeSpecialPowerUpdateModuleData@@UAE@XZ evidence=N:ledger tier=B hypothesis:name:invented
-WeaponModeSpecialPowerUpdateModuleData::~WeaponModeSpecialPowerUpdateModuleData()
-{
-}
