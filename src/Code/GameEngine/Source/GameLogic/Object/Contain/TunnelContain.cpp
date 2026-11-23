@@ -298,8 +298,6 @@ void TunnelContain::removeAllContained(Bool exposeStealthUnits)
 		{
 			Object *obj = *it;
 			it++;
-			if (obj->getTemplate()->isKindOf0x115())
-				obj->getContain()->iterateContained(removeRiderVisitor, this, 1);
 			removeFromContain(obj, exposeStealthUnits);
 		}
 	}
