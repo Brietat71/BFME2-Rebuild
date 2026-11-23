@@ -70,6 +70,26 @@ WaterTracksObj *WaterTracksRenderSystem::bindTrack(waveType type)
 }
 
 // FUNCTION: BFME2 0x000FE001 size=100 name=?releaseTrack@WaterTracksRenderSystem@@QAEXPAUFeNode@@@Z evidence=N:ledger tier=B hypothesis:Z
+void WaterTracksRenderSystem::releaseTrack(WaterTracksObj *mod)
+{
+	if (mod == NULL)
+		return;
+
+	// remove module from used list
+	if (mod->m_nextSystem)
+		mod->m_nextSystem->m_prevSystem = mod->m_prevSystem;
+	if (mod->m_prevSystem)
+		mod->m_prevSystem->m_nextSystem = mod->m_nextSystem;
+	else
+		m_usedModules = mod->m_nextSystem;
+
+	// add module to free list
+	mod->m_prevSystem = NULL;
+	mod->m_nextSystem = m_freeModules;
+	if (m_freeModules)
+		m_freeModules->m_prevSystem = mod;
+	m_freeModules = mod;
+}
 
 // FUNCTION: BFME2 0x000FE065 size=291 name=?ReAcquireResources@WaterTracksRenderSystem@@QAEXXZ evidence=N:ledger tier=B hypothesis:Z
 
@@ -78,6 +98,20 @@ WaterTracksObj *WaterTracksRenderSystem::bindTrack(waveType type)
 // FUNCTION: BFME2 0x000FE1AC size=91 name=?rva000FE1AC@WaterTracksRenderSystem@@QAEXXZ evidence=?:placeholder tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x000FE207 size=137 name=?findTrack@WaterTracksRenderSystem@@QAEPAUFeNode@@PBM0H@Z evidence=N:ledger tier=B hypothesis:K
+WaterTracksObj *WaterTracksRenderSystem::findTrack(Vector2 &start, Vector2 &end, waveType type)
+{
+	WaterTracksObj *mod = m_usedModules;
+
+	while (mod)
+	{
+		if (mod->m_initEndPos == end &&
+			mod->m_initStartPos == start &&
+			mod->m_type == type)
+			return mod;
+		mod = mod->m_nextSystem;
+	}
+	return NULL;
+}
 
 // FUNCTION: BFME2 0x000FE290 size=19 name=?bfmeResetSH@BfmeThingSH@@QAEXXZ evidence=N:ledger tier=B hypothesis:K
 

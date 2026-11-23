@@ -85,6 +85,8 @@ public:
 	~WaterTracksRenderSystem(void);
 	WaterTracksObj *bindTrack(waveType type);		// Track object to be controlled by owner
 	void shutdown(void);
+	void releaseTrack(WaterTracksObj *mod);			// 0x000FE001: returns a track to the free list
+	WaterTracksObj *findTrack(Vector2 &start, Vector2 &end, waveType type);	// 0x000FE207
 
 protected:
 	VertexBufferClass *m_vertexBuffer;				// +0x00 vertex buffer used to draw all tracks
