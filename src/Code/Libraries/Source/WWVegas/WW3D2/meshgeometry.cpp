@@ -25,6 +25,13 @@
 #include "WW3D2/inttest.h"
 #include "WW3D2/RayCollisionTestClass.h"
 
+struct Gen_p12pod
+{
+	int a;
+	int b;
+	int c;
+};
+
 // FUNCTION: BFME2 0x00168F30 size=168 name=??0MeshGeometryClass@@QAE@XZ evidence=N:ledger tier=B hypothesis:Z
 MeshGeometryClass::MeshGeometryClass(void) :
 	MeshName(NULL),
@@ -513,6 +520,18 @@ void *Rva0016CB40(char *p)
 // FUNCTION: BFME2 0x0016CB90 size=31 name=?assign@Rva0016CB90IntView@@QAEPAV1@PBURva0016CB90FloatView@@@Z evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0016CBB0 size=50 name=??M@YA_NABUGen_p12pod@@0@Z evidence=N:ledger tier=A
+bool operator<(const Gen_p12pod &lhs, const Gen_p12pod &rhs)
+{
+	if (lhs.a < rhs.a)
+		return true;
+	if (lhs.a > rhs.a)
+		return false;
+	if (lhs.b < rhs.b)
+		return true;
+	if (lhs.b > rhs.b)
+		return false;
+	return lhs.c < rhs.c;
+}
 
 // FUNCTION: BFME2 0x0016CCC0 size=101 name=??1MeshGeometryClass@@UAE@XZ evidence=N:ledger tier=A
 MeshGeometryClass::~MeshGeometryClass(void)
