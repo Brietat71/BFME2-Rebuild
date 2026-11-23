@@ -3817,10 +3817,8 @@ StateReturnType AIWanderInPlaceState::update()
 		offset.x = (Real)(GetGameLogicRandomValue(-delta, delta, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\AI\\AIStates.cpp", 0x29F3) * 10);
 		offset.y = (Real)(GetGameLogicRandomValue(-delta, delta, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\AI\\AIStates.cpp", 0x29F4) * 10);
 		m_goalPosition = m_origin;
-		Real goalX = m_goalPosition.x + offset.x;
-		Real goalY = offset.y + m_goalPosition.y;
-		m_goalPosition.x = goalX;
-		m_goalPosition.y = goalY;
+		m_goalPosition.x = m_goalPosition.x + offset.x;
+		m_goalPosition.y = offset.y + m_goalPosition.y;
 		AIInternalMoveToState::onEnter();
 		return STATE_CONTINUE;
 	}
