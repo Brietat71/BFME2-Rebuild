@@ -79,7 +79,7 @@ WaterTracksObj *WaterTracksRenderSystem::bindTrack(waveType type)
 }
 
 // FUNCTION: BFME2 0x000FE001 size=100 name=?releaseTrack@WaterTracksRenderSystem@@QAEXPAUFeNode@@@Z evidence=N:ledger tier=B hypothesis:Z
-void WaterTracksRenderSystem::releaseTrack(WaterTracksObj *mod)
+void WaterTracksRenderSystem::unbindTrack(WaterTracksObj *mod)
 {
 	if (mod == NULL)
 		return;
@@ -147,7 +147,7 @@ void WaterTracksRenderSystem::ReAcquireResources(void)
 }
 
 // FUNCTION: BFME2 0x000FE188 size=36 name=?rva000FE188@WaterTracksRenderSystem@@QAEXXZ evidence=?:placeholder tier=B hypothesis:Z
-void WaterTracksRenderSystem::reset(void)
+void WaterTracksRenderSystem::rva000FE188(void)
 {
 	WaterTracksObj *nextMod;
 	WaterTracksObj *mod = m_usedModules;
@@ -157,14 +157,14 @@ void WaterTracksRenderSystem::reset(void)
 	{
 		nextMod = mod->m_nextSystem;
 		mod->m_bound = false;
-		releaseTrack(mod);
+		unbindTrack(mod);
 		mod = nextMod;
 	}
 	m_usedModules = NULL;
 }
 
 // FUNCTION: BFME2 0x000FE1AC size=91 name=?rva000FE1AC@WaterTracksRenderSystem@@QAEXXZ evidence=?:placeholder tier=B hypothesis:K
-void WaterTracksRenderSystem::update(void)
+void WaterTracksRenderSystem::rva000FE1AC(void)
 {
 	static int iLastTime = timeGetTime();
 	WaterTracksObj *mod = m_usedModules;
@@ -179,7 +179,7 @@ void WaterTracksRenderSystem::update(void)
 		if (mod->m_bound)
 			mod->m_elapsedMs += 33;
 		else
-			releaseTrack(mod);
+			unbindTrack(mod);
 		mod = nextMod;
 	}
 }
@@ -201,38 +201,8 @@ WaterTracksObj *WaterTracksRenderSystem::findTrack(Vector2 &start, Vector2 &end,
 }
 
 // FUNCTION: BFME2 0x000FE290 size=19 name=?bfmeResetSH@BfmeThingSH@@QAEXXZ evidence=N:ledger tier=B hypothesis:K
-WaterTracksObj::~WaterTracksObj(void)
-{
-}
 
 // FUNCTION: BFME2 0x000FE2A3 size=182 name=??0BfmeThingSH@@QAE@XZ evidence=N:ledger tier=B hypothesis:K
-WaterTracksObj::WaterTracksObj(void)
-{
-	m_type = (waveType)0;
-	m_x = 2;
-	m_y = 2;
-	m_bound = false;
-	m_initTimeOffset = 0;
-	m_fadeMs = 1;
-	m_totalMs = 0;
-	m_elapsedMs = 0;
-	m_waveInitialWidth = 0.0f;
-	m_waveInitialHeight = 0.0f;
-	m_waveFinalWidth = 1.0f;
-	m_waveFinalWidthPeakFrac = 0.0f;
-	m_waveFinalHeight = 1.0f;
-	m_initialVelocity = 1.0f;
-	m_waveDistance = 0.0f;
-	m_timeToReachBeach = 1.0f;
-	m_frontSlowDownAcc = -1.0f;
-	m_timeToStop = 1.0f;
-	m_timeToRetreat = 1.0f;
-	m_backSlowDownAcc = 0.0f;
-	m_timeToCompress = 0.0f;
-	m_flipU = 0.0f;
-	m_nextSystem = NULL;
-	m_prevSystem = NULL;
-}
 
 // FUNCTION: BFME2 0x000FE359 size=16 name=?Get_Obj_Space_Bounding_Sphere@WaterTracksObj@@UBEXAAVSphereClass@@@Z evidence=N:ledger tier=B hypothesis:K
 void WaterTracksObj::Get_Obj_Space_Bounding_Sphere(SphereClass &sphere) const
@@ -241,19 +211,14 @@ void WaterTracksObj::Get_Obj_Space_Bounding_Sphere(SphereClass &sphere) const
 }
 
 // FUNCTION: BFME2 0x000FE369 size=16 name=?Get_Obj_Space_Bounding_Box@WaterTracksObj@@UBEXAAURegion3D@@@Z evidence=N:ledger tier=B hypothesis:K
-void WaterTracksObj::Get_Obj_Space_Bounding_Box(AABoxClass &aabox) const
+void WaterTracksObj::Get_Obj_Space_Bounding_Box(Region3D &box) const
 {
-	aabox = m_boundingBox;
+	box = m_boundingBox;
 }
 
 // FUNCTION: BFME2 0x000FE379 size=1411 name=?init@WaterTracksObj@@QAEXMMAAVVector2@@0PADHPAX@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x000FE8FC size=17 name=?rva000FE8FC@WaterTracksRenderSystem@@QAEXPAUFeNode@@@Z evidence=?:placeholder tier=A
-void WaterTracksRenderSystem::unbindTrack(WaterTracksObj *mod)
-{
-	mod->m_bound = false;
-	releaseTrack(mod);
-}
 
 // FUNCTION: BFME2 0x000FE90D size=46 name=??0WaterTracksRenderSystem@@QAE@XZ evidence=N:ledger tier=A
 WaterTracksRenderSystem::WaterTracksRenderSystem(void)
@@ -276,45 +241,6 @@ WaterTracksRenderSystem::WaterTracksRenderSystem(void)
 // FUNCTION: BFME2 0x000FEADB size=2413 name=?render@WaterTracksObj@@QAEHPAVDX8VertexBufferClass@@HAAVRenderInfoClass@@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x000FF448 size=142 name=?shutdown@WaterTracksRenderSystem@@QAEXXZ evidence=N:ledger tier=A
-void WaterTracksRenderSystem::shutdown(void)
-{
-	WaterTracksObj *mod, *nextMod;
-
-	// release unbound tracks that may still be fading out
-	mod = m_usedModules;
-	while (mod)
-	{
-		nextMod = mod->m_nextSystem;
-		if (!mod->m_bound)
-			releaseTrack(mod);
-		mod = nextMod;
-	}
-	m_usedModules = NULL;
-
-	// free all modules
-	while (m_freeModules)
-	{
-		nextMod = m_freeModules->m_nextSystem;
-		delete m_freeModules;
-		m_freeModules = nextMod;
-	}
-
-	if (m_indexBuffer)
-	{
-		m_indexBuffer->Release_Ref();
-		m_indexBuffer = NULL;
-	}
-	if (m_vertexMaterialClass)
-	{
-		m_vertexMaterialClass->Release_Ref();
-		m_vertexMaterialClass = NULL;
-	}
-	if (m_vertexBuffer)
-	{
-		m_vertexBuffer->Release_Ref();
-		m_vertexBuffer = NULL;
-	}
-}
 
 // FUNCTION: BFME2 0x000FF4D6 size=55 name=??1WaterTracksRenderSystem@@QAE@XZ evidence=N:ledger tier=A
 WaterTracksRenderSystem::~WaterTracksRenderSystem(void)
