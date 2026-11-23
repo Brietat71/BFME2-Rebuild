@@ -2203,6 +2203,20 @@
    "kind": "trusted-narrow",
    "number": 356,
    "tree": "d195b75d201b47060c80535a7ea96a56aa8f421a"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45143088897"
+   },
+   "author": 1760627,
+   "base": "ae9bb893a44fd8d2f597ea925d846882b5cc2072",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "dd62d308c062a9610372076652a54878a70529ac",
+   "kind": "trusted-narrow",
+   "number": 238,
+   "tree": "a55c8fe5cacf1ee87a39a99c9a74b00dbf379be5"
   }
  ],
  "version": 2
