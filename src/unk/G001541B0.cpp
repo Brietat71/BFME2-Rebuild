@@ -4,4 +4,9 @@
 // FUNCTION: BFME2 0x001541B0 size=18 name=??9ShaderClass@@QAE_NABV0@@Z evidence=N:ledger tier=B hypothesis:mm1-gap-unit
 // FUNCTION: BFME2 0x001541D0 size=16 name=?Set@Vector2i@@QAEXHH@Z evidence=N:ledger tier=B hypothesis:mm1-gap-unit
 // FUNCTION: BFME2 0x00154230 size=109 name=_rva0093D050 evidence=?:placeholder tier=B hypothesis:mm1-gap-unit
+#include "Common/GameType.h"
 // FUNCTION: BFME2 0x001542A0 size=38 name=?isThaiCharacter@@YAHG@Z evidence=N:ledger tier=B hypothesis:mm1-gap-unit
+int isThaiCharacter(WideChar ch)
+{
+	return (ch >= 0xE01 && ch <= 0xE3A) || (ch >= 0xE3F && ch <= 0xE5B);
+}
