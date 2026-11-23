@@ -13,6 +13,7 @@
 #include "GameClient/AptPlayer.h"
 #include "GameClient/Mouse.h"
 #include "GameClient/AptTranslator.h"
+#include "Common/GlobalData.h"
 extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
 
 // The byte flag at VA 0x00E0302C (the data ledger's name; the map has not proven it).
@@ -21,6 +22,13 @@ extern unsigned char g_Va00E0302C;
 extern int g_Va00E032C8;
 // The C runtime's multibyte copy, called directly in the image.
 extern "C" unsigned char *__cdecl _mbscpy(unsigned char *dest, const unsigned char *src);
+extern GlobalData *TheWritableGlobalData;
+
+// The text results of the query functions below go to the caller's buffer through the multibyte copy.
+static void copyAnswer(char *dest, const char *src)
+{
+	_mbscpy((unsigned char *)dest, (const unsigned char *)src);
+}
 
 // FUNCTION: BFME2 0x00412689 size=29 name=?Rva00412689SkipSpaces@@YAXPAPBD@Z evidence=?:placeholder tier=B hypothesis:mm1-neighbour-callers
 // FUNCTION: BFME2 0x004126A6 size=23 name=?skipPastEquals@@YAXPAPBD@Z evidence=N:ledger tier=B hypothesis:mm1-contiguity-callers
@@ -39,13 +47,26 @@ void CloseWindow(const char *)
 }
 
 // FUNCTION: BFME2 0x0041273C size=75 name=?Rva0041273C@@YAXHPAD_N@Z evidence=?:placeholder tier=B hypothesis:K
+void Rva0041273C(int which, char *text, bool quiet)
+{
+	if (text == 0 || quiet)
+		return;
+	bool answer;
+	if (which == 1)
+		answer = TheWritableGlobalData->m_unk0x9D4 == 1;
+	else if (which == 2)
+		answer = TheWritableGlobalData->m_unk0x9D4 == 2;
+	else
+		return;
+	copyAnswer(text, answer ? "1" : "0");
+}
 
 // FUNCTION: BFME2 0x00412787 size=31 name=?InGame@@YAXHPAD_N@Z evidence=N:ledger tier=B hypothesis:K
 void InGame(int, char *text, bool quiet)
 {
 	if (text == 0 || quiet)
 		return;
-	_mbscpy((unsigned char *)text, (const unsigned char *)"1");
+	copyAnswer(text, "1");
 }
 
 
@@ -54,7 +75,7 @@ void DoTrace(int, char *text, bool quiet)
 {
 	if (text == 0 || quiet)
 		return;
-	_mbscpy((unsigned char *)text, (const unsigned char *)(g_Va00E0302C ? "1" : "0"));
+	copyAnswer(text, g_Va00E0302C ? "1" : "0");
 }
 
 
