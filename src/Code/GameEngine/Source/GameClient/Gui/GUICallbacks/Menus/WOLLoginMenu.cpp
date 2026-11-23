@@ -10,7 +10,7 @@
 // Edges: left=unknown-rows right=unknown-rows; proof_first=false
 // Hypothesis rules: hypothesis:K, hypothesis:Z, hypothesis:cohesion, hypothesis:name:Z
 // FUNCTION: BFME2 0x005C9CDE size=202 name=?obfuscate@@YA?AVAsciiString@@V1@@Z evidence=N:ledger tier=B hypothesis:mm1-neighbour-callers
-static AsciiString obfuscate(AsciiString in)
+AsciiString obfuscate(AsciiString in)
 {
 	char *buf = new char[in.getLength() + 1];
 	strcpy(buf, in.str());
