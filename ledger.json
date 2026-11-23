@@ -5129,6 +5129,20 @@
    "kind": "wide",
    "number": 51,
    "tree": "40cd116e57a74a96325ec509aff36671cc0b3621"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45260891393"
+   },
+   "author": 44365026,
+   "base": "2e2b1be063d7d8faa61174ea51bab6db0f8b10c5",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "931672ab99c1c9801bafc37d4999ea23f96bcf1c",
+   "kind": "narrow",
+   "number": 50,
+   "tree": "124335c13e13d7c5b275b8a6da07d6e9b05cb6df"
   }
  ],
  "version": 2
