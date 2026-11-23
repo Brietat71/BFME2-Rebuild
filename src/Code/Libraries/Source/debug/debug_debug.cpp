@@ -761,6 +761,7 @@ void Debug::AddOutput(const char *str, unsigned int remainingLen)
 
 	while (remainingLen)
 	{
+		unsigned int numLF = 0;
 		// when stamping, split at each '\n'
 		unsigned int len;
 		if (timeStamp)
@@ -793,7 +794,6 @@ void Debug::AddOutput(const char *str, unsigned int remainingLen)
 			len = remainingLen;
 
 		// every '\n' is stored as a carriage return and a line feed
-		unsigned int numLF = 0;
 		for (unsigned int i = 0; i < len; i++)
 		{
 			if (str[i] == '\n')
