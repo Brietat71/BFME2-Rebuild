@@ -9,7 +9,7 @@
 #include "Common/XferException.h"
 #include "Common/File.h"
 // FUNCTION: BFME2 0x0060C3C3 size=155 name=?Open@XferLoad@@QAE_NPAURva0060C3C3Stream@@PAH@Z evidence=N:ledger tier=B hypothesis:mm1-neighbour-class
-Bool XferLoad::Open(File *file, Int *version)
+Bool XferLoad::Open(Rva0060C3C3Stream *file, Int *version)
 {
 	if (m_file != 0)
 		return false;
@@ -35,11 +35,6 @@ Bool XferLoad::Open(File *file, Int *version)
 	return true;
 }
 // FUNCTION: BFME2 0x0060C45E size=11 name=?clear@Rva0060C45E@@QAEXXZ evidence=?:placeholder tier=B hypothesis:mm1-contiguity-class
-void XferLoad::Close()
-{
-	if (m_file)
-		m_file = 0;
-}
 // FUNCTION: BFME2 0x0060C469 size=129 name=?endBlock@Xfer@@UAEXXZ evidence=N:ledger tier=A
 void XferLoad::EndBlock()
 {
