@@ -305,7 +305,12 @@ public:
     int m_selectCount;
     int m_maxSelectCount;
     unsigned int m_frameSelectionChanged;
-    char opaque574[0x5C4 - 0x574];
+    char opaque574[0x59C - 0x574];
+    int m_59C;
+    char opaque5A0[0x5AC - 0x5A0];
+    unsigned int m_5AC;
+    bool m_5B0;
+    char opaque5B1[0x5C4 - 0x5B1];
     VideoStreamInterface *m_videoStream;
     VideoBuffer *m_cameoVideoBuffer;
     VideoStreamInterface *m_5CC;
@@ -340,7 +345,9 @@ public:
     float m_namedTimerFlashDuration;
     char opaque770[0x774 - 0x770];
     int m_namedTimerFlashColor;
-    char opaque778[0x77C - 0x778];
+    bool m_778;
+    bool m_namedTimerDisplayShown;
+    char opaque77A[0x77C - 0x77A];
     AsciiString m_namedTimerNormalFont;
     int m_namedTimerNormalPointSize;
     bool m_namedTimerNormalBold;
@@ -424,7 +431,12 @@ public:
     unsigned int m_984;
     unsigned int m_unknown988;
     bool m_formationPreviewActive;
-    char opaque98D[0x9B4 - 0x98D];
+    bool m_98D;
+    char opaque98E[0x990 - 0x98E];
+    Coord3D m_formationPreviewStart;
+    Coord3D m_formationPreviewEnd;
+    char opaque9A8[0x9B0 - 0x9A8];
+    int m_9B0;
     unsigned char m_9B4;
     char opaque9B5[0x9B8 - 0x9B5];
     Coord3D m_9B8;

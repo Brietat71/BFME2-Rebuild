@@ -139,6 +139,10 @@ void InGameUI::setMouseCursor(Mouse::MouseCursor cursor)
 // FUNCTION: BFME2 0x0029A60C size=14 name=?rva0029A60C@Rva0029A60C@@QAEX_N@Z evidence=?:placeholder tier=B hypothesis:Z
 
 // FUNCTION: BFME2 0x0029A61A size=13 name=?set@Rva0029A61AByteSlot@@QAEXE@Z evidence=?:placeholder tier=B hypothesis:Z
+void InGameUI::showNamedTimerDisplay(Bool show)
+{
+	m_namedTimerDisplayShown = show;
+}
 
 // FUNCTION: BFME2 0x0029A627 size=35 name=?parseInGameUIDefinition@INI@@SAXPAV1@@Z evidence=N:ledger tier=B hypothesis:Z
 void INI::parseInGameUIDefinition(INI *ini)
@@ -285,8 +289,30 @@ void InGameUI::setPlacementStart( const ICoord2D *start )
 // FUNCTION: BFME2 0x0029AA3F size=35 name=?rva0029AA3F@Rva0029AA3F@@QAEXXZ evidence=?:placeholder tier=B hypothesis:Z
 
 // FUNCTION: BFME2 0x0029AA62 size=102 name=?rva0029AA62@Rva0029AA3F@@QAEXPBVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=B hypothesis:Z
+void InGameUI::beginFormationPreview(const Coord3D *start)
+{
+	if (start)
+	{
+		m_formationPreviewStart = *start;
+		m_formationPreviewEnd = *start;
+		m_formationPreviewActive = true;
+		m_5AC = TheGameClient->getFrame();
+		m_59C = 0;
+		m_98D = false;
+	}
+	else
+		m_formationPreviewActive = false;
+
+	m_9B0 = -1;
+	m_5B0 = false;
+}
 
 // FUNCTION: BFME2 0x0029AAC8 size=24 name=?rva0029AAC8@Rva0029AA3F@@QAEXPBVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=B hypothesis:Z
+void InGameUI::setFormationPreviewEnd(const Coord3D *end)
+{
+	if (end)
+		m_formationPreviewEnd = *end;
+}
 
 // FUNCTION: BFME2 0x0029AAE0 size=28 name=?setPlacementEnd@InGameUI@@UAEXPBUICoord2D@@@Z evidence=N:ledger tier=B hypothesis:Z
 void InGameUI::setPlacementEnd( const ICoord2D *end )
