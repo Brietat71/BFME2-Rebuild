@@ -155,16 +155,7 @@ void LivingWorldRegionManager::EnumeratePendingBattles(PendingBattleVisitor &vis
 }
 
 // FUNCTION: BFME2 0x0020E7E8 size=43 name=?EnumerateCompletedBattles@LivingWorldRegionManager@@QAEXPAVRva0020E7E8Callback@@@Z evidence=N:ledger tier=A
-void LivingWorldRegionManager::EnumerateCompletedBattles(PendingBattleVisitor *visitor)
-{
-	LivingWorldBattle **end = m_completedBattles.end();
-	for (LivingWorldBattle **it = m_completedBattles.begin(); it != end; ++it)
-	{
-		LivingWorldBattle *battle = *it;
-		if (!visitor->call(battle))
-			break;
-	}
-}
+
 
 // FUNCTION: BFME2 0x0020E813 size=87 name=?rva0020E813@LivingWorldRegionManager@@QBE_NPAURegionBattleView@@@Z evidence=?:placeholder tier=A
 
@@ -189,12 +180,7 @@ void LivingWorldRegionManager::EnumerateCompletedBattles(PendingBattleVisitor *v
 // FUNCTION: BFME2 0x0020EAF6 size=17 name=?rva0020EAF6@Rva0020EAF6View@@QAEPAVRva0020E89C@@H@Z evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0020EB07 size=58 name=?BeginTurn@LivingWorldRegionManager@@UAEXHH@Z evidence=N:ledger tier=A
-void LivingWorldRegionManager::BeginTurn(Int turn, Int arg)
-{
-	_STL::vector<LivingWorldRegion *> &regions = m_table->m_regions;
-	for (unsigned int i = 0; i < regions.size(); ++i)
-		regions[i]->rva003F1044(turn, arg);
-}
+
 
 // FUNCTION: BFME2 0x0020EB41 size=13 name=?rva0020EB41@Rva0020EB41@@QAEXXZ evidence=?:placeholder tier=A
 
@@ -215,27 +201,10 @@ void LivingWorldRegionManager::BeginTurn(Int turn, Int arg)
 // FUNCTION: BFME2 0x0020EE5C size=51 name=?rva0020EE5C@Rva0020EE5C@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0020EE8F size=57 name=?GetDefaultArmyPlacementPos@LivingWorldRegionManager@@QAE_NHPAUPair8@@@Z evidence=N:ledger tier=A
-bool LivingWorldRegionManager::GetDefaultArmyPlacementPos(Int index, Pair8 *position)
-{
-	if (m_table)
-	{
-		_STL::vector<Pair8> &positions = m_table->m_defaultArmyPositions;
-		if (index >= 0 && (unsigned int)index < positions.size())
-		{
-			*position = positions[index];
-			return true;
-		}
-	}
-	return false;
-}
+
 
 // FUNCTION: BFME2 0x0020EEC8 size=44 name=?SetRegionReinforcements@LivingWorldRegionManager@@QAEXHHHHHHH@Z evidence=N:ledger tier=A
-void LivingWorldRegionManager::SetRegionReinforcements(Int regionIndex, Int a, Int b, Int c, Int d, Int e, Int f)
-{
-	LivingWorldRegion *region = rva0020EAF6(regionIndex);
-	if (region)
-		region->rva003F1AB9(a, b, c, d, e, f);
-}
+
 
 // FUNCTION: BFME2 0x0020EEF4 size=74 name=?rva0020EEF4@Rva0020EEF4Outer@@QAEHH@Z evidence=?:placeholder tier=A
 
@@ -292,15 +261,7 @@ void LivingWorldRegionManager::SetRegionReinforcements(Int regionIndex, Int a, I
 // FUNCTION: BFME2 0x0020FAEA size=87 name=?rva0020FAEA@Rva0020EE29@@QAEPAXPAMPAX@Z evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0020FB41 size=74 name=?OnTurnEnding@LivingWorldRegionManager@@UAEXHH@Z evidence=N:ledger tier=A
-void LivingWorldRegionManager::OnTurnEnding(Int turn, Int arg)
-{
-	rva0020F685();
-	m_activeBattleID = 0;
-	m_selectedBattleKey = 0;
-	_STL::vector<LivingWorldRegion *> &regions = m_table->m_regions;
-	for (unsigned int i = 0; i < regions.size(); ++i)
-		regions[i]->rva003F20E5(turn, arg);
-}
+
 
 // FUNCTION: BFME2 0x0020FB8B size=132 name=?rva0020FB8B@LivingWorldRegionManager@@QAEXPAVLivingWorldBattle@@@Z evidence=?:placeholder tier=A
 
@@ -315,14 +276,7 @@ void LivingWorldRegionManager::OnTurnEnding(Int turn, Int arg)
 // FUNCTION: BFME2 0x00210202 size=200 name=?xfer@LivingWorldRegionManager@@UAEXPAVXfer@@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x002102CA size=68 name=?loadPostProcess@LivingWorldRegionManager@@UAEXXZ evidence=N:ledger tier=A
-void LivingWorldRegionManager::loadPostProcess()
-{
-	_STL::vector<LivingWorldRegion *> &regions = m_table->m_regions;
-	for (unsigned int i = 0; i < regions.size(); ++i)
-		regions[i]->loadPostProcess();
-	rva0020F483();
-	m_table->rva0020F5B3();
-}
+
 
 // FUNCTION: BFME2 0x00210390 size=38 name=?rva00210390@Rva00210390@@QAEPAXPBVAsciiString@@@Z evidence=?:placeholder tier=A
 
