@@ -15,7 +15,7 @@
 int Rva0073B6D0NextIndex(int index, int count)
 {
 	++index;
-	return index == count ? 0 : index;
+	return index & ((index == count) - 1);
 }
 
 // FUNCTION: BFME2 0x0073B6F0 size=14 name=?Rva0073B6F0PrevIndex@@YAHHH@Z evidence=?:placeholder tier=B hypothesis:K
@@ -23,7 +23,7 @@ int Rva0073B6F0PrevIndex(int index, int count)
 {
 	if (index == 0)
 		index = count;
-	return index - 1;
+	return --index;
 }
 
 // FUNCTION: BFME2 0x0073B750 size=140 name=?bfmeStepsEU@BfmeHostEU@@QAEHPBVBfmeShapeEU@@@Z evidence=N:ledger tier=A
