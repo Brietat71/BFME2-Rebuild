@@ -276,7 +276,8 @@ UpdateSleepTime PropagandaTowerBehavior::update()
 				prev->next = next;
 			else
 				m_insideList = next;
-			::delete curr;
+			curr->~ObjectTracker();
+			::operator delete(curr);
 		}
 		curr = next;
 	}
