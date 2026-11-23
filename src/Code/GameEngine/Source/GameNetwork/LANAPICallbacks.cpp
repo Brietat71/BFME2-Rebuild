@@ -346,7 +346,8 @@ void LANAPI::OnHasMap(const BfmeNetAddress *address, Bool hasMap)
 	{
 		if (m_currentGame->m_LANSlot[slot].m_address.Rva00248CBF(address))
 		{
-			m_currentGame->getLANSlot(slot)->setMapAvailability(hasMap);
+			const LANGameSlot *gameSlot = m_currentGame->getLANSlot(slot);
+			const_cast<LANGameSlot *>(gameSlot)->setMapAvailability(hasMap);
 			break;
 		}
 	}
@@ -357,7 +358,10 @@ void LANAPI::OnHasMap(const BfmeNetAddress *address, Bool hasMap)
 	const MapMetaData *mapData = TheMapCache->findMap(m_currentGame->getMap());
 	Bool willTransfer = Rva00300E42Check(m_currentGame);
 	if (mapData)
-		mapDisplayName.format(L"%ls", mapData->bfme_getDisplayName(true).str());
+	{
+		MapMetaData *displayData = const_cast<MapMetaData *>(mapData);
+		mapDisplayName.format(L"%ls", displayData->bfme_getDisplayName(true).str());
+	}
 	else
 		mapDisplayName.format(L"%hs", m_currentGame->getMap().str());
 
