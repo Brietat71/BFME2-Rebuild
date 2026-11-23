@@ -1080,7 +1080,7 @@ TextureMapperClass *BumpEnvTextureMapperClass::Clone(void) const
 // FUNCTION: BFME2 0x00187660 size=44 name=?Clone@GridWSEnvironmentMapperClass@@UBEPAVTextureMapperClass@@XZ evidence=N:ledger tier=B hypothesis:mm1-fragment-path-elsewhere
 TextureMapperClass *GridWSEnvironmentMapperClass::Clone(void) const
 {
-	return new GridWSEnvironmentMapperClass(*this);
+	return new GridWSEnvironmentMapperClass(static_cast<const GridWSEnvMapperClass &>(*this));
 }
 
 
