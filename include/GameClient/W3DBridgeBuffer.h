@@ -23,7 +23,7 @@
 
 class CameraClass;
 class DX8IndexBufferClass;
-class BfmeDynamicNativeVB;
+class DX8VertexBufferClass;
 
 typedef enum {
 	FIXED_BRIDGE = 0,
@@ -85,7 +85,7 @@ public:
 	enum { MAX_BRIDGE_VERTEX = 8000,MAX_BRIDGE_INDEX = 2 * MAX_BRIDGE_VERTEX, MAX_BRIDGES = 200 };
 
 protected:
-	BfmeDynamicNativeVB *m_vertexBridge;	// +0x00
+	DX8VertexBufferClass *m_vertexBridge;	// +0x00
 	DX8IndexBufferClass *m_indexBridge;		// +0x04
 	Int m_curNumBridgeVertices;				// +0x08
 	Int m_curNumBridgeIndices;				// +0x0C
