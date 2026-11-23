@@ -71,12 +71,10 @@ Int CreateAHeroManager::GetRequiredButtonCount()
 // FUNCTION: BFME2 0x0021933E size=50 name=?GetRequiredButton@CreateAHeroManager@@QAEPBVCommandButton@@I@Z evidence=N:ledger tier=B hypothesis:K
 const CommandButton *CreateAHeroManager::GetRequiredButton(UnsignedInt index)
 {
-	if (index >= GetRequiredButtonCount())
-		return NULL;
-	const CommandSet *set = TheControlBar->findCommandSet(m_commandSetName);
-	if (set == NULL)
-		return NULL;
-	return set->getCommandButton(index);
+	const CommandSet *set;
+	if (index < GetRequiredButtonCount() && (set = TheControlBar->findCommandSet(m_commandSetName)) != NULL)
+		return set->getCommandButton(index);
+	return NULL;
 }
 
 // FUNCTION: BFME2 0x00219370 size=13 name=?set@Rva00219370DwordSlot@@QAEXH@Z evidence=?:placeholder tier=B hypothesis:K
