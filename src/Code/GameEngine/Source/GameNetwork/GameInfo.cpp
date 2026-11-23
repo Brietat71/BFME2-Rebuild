@@ -25,7 +25,7 @@ AsciiString GetAssetUsageFromMap(AsciiString path);	// 0x0044CF2F
 AsciiString GetReadmeFromMap(AsciiString path);		// 0x0044CFCE
 AsciiString GetArtPreviewFromMap(AsciiString path);	// 0x0044CB8A
 AsciiString GetPicPreviewFromMap(AsciiString path);	// 0x0044CC6E
-void xferMapName(Xfer *xfer, AsciiString *mapName);	// 0x00306327
+void xferMapName(Xfer *xfer, AsciiString *mapName);
 Int Rva00559EDCCompare(Int *defaults, Int *rules);
 UnsignedByte Rva0056BD91Pack(UnsignedByte kind, UnsignedByte first, char second, char third);	// 0x0056BD91 (packs a hero choice into the byte the lobby sends)
 Int NET_CRC_INTERVAL = 100;		// VA 0x00DBC800: frames between the network CRC checks

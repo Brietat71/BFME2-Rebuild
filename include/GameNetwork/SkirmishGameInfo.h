@@ -24,7 +24,7 @@ public:
 	const char *name() const;					// 0x0022C4D9
 
 protected:
-	virtual void xfer(Xfer *xfer);				// slot 3, 0x003FFA3C (the map spells the shared body with this class)
+	virtual void xfer(Xfer *xfer);				// slot 3 (the map spells the shared body with this class)
 
 public:
 
