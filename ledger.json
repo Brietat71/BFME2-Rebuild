@@ -19,10 +19,10 @@
    "authors": {},
    "total": 0,
    "wide_authors": {
-    "1399571": 1,
+    "1399571": 2,
     "44365026": 1
    },
-   "wide_total": 2
+   "wide_total": 3
   }
  },
  "reservations": [
@@ -1776,6 +1776,20 @@
    "kind": "wide",
    "number": 49,
    "tree": "844419e98e169298ab5d8da2f99dea2bc28d2303"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45103127375"
+   },
+   "author": 1399571,
+   "base": "f386b86ad82ba0f6f74b78e5d454ef81bd356972",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "2eff9f2efa0e60de348cdfc2c0c125bd0e152f82",
+   "kind": "wide",
+   "number": 13,
+   "tree": "05892066c09e2c6d651e05bea7fb0838067fe366"
   }
  ],
  "version": 2
