@@ -332,7 +332,7 @@ void SegmentedLineClass::Get_Obj_Space_Bounding_Box(AABoxClass &box) const
 		Vector3 enlarge_offset;
 		enlarge_offset.Set(enlarge_factor, enlarge_factor, enlarge_factor);
 		max_coords += enlarge_offset;
-		min_coords = min_coords - enlarge_offset;
+		Vector3::Subtract(min_coords, enlarge_offset, &min_coords);
 
 		if (MaxSubdivisionLevels > 0) {
 			Vector3 max_coords2;
@@ -349,7 +349,7 @@ void SegmentedLineClass::Get_Obj_Space_Bounding_Box(AABoxClass &box) const
 			enlarge_factor += (2 * LineRenderer.Get_Noise_Amplitude());
 			enlarge_offset.Set(enlarge_factor, enlarge_factor, enlarge_factor);
 			max_coords2 += enlarge_offset;
-			min_coords2 = min_coords2 - enlarge_offset;
+			Vector3::Subtract(min_coords2, enlarge_offset, &min_coords2);
 
 			max_coords.Update_Max(max_coords2);
 			min_coords.Update_Min(min_coords2);
