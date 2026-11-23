@@ -15,6 +15,7 @@
 #include "GameLogic/Module/AIUpdate.h"
 #include "GameLogic/AICommandInterface.h"
 #include "GameLogic/Object.h"
+#include "GameLogic/GameLogic.h"
 #include "Common/NameKeyGenerator.h"
 #include "GameLogic/Object.h"
 #include "Common/ThingTemplate.h"
@@ -160,6 +161,20 @@ void SlaughterHordeContain::onRemoving(Object *obj)
 // FUNCTION: BFME2 0x0048071D size=170 name=?isValidContainerFor@CitadelSlaughterHordeContain@@UAE_NPAVObject@@_N1@Z evidence=N:ledger tier=B hypothesis:cohesion
 
 // FUNCTION: BFME2 0x004807C7 size=90 name=?rva004807C7@CitadelSlaughterHordeContain@@UAE_NPAVObject@@@Z evidence=?:placeholder tier=B hypothesis:cohesion
+Bool CitadelSlaughterHordeContain::rva004807C7(Object *unit)
+{
+	const ModuleData *base = m_moduleData;
+	const CitadelSlaughterHordeContainModuleData *data = static_cast<const CitadelSlaughterHordeContainModuleData *>(base);
+	if (data->m_statusForRingEntry.test(&unit->m_status))
+		return FALSE;
+	if (unit->isProducedByHorde())
+	{
+		Object *producer = TheGameLogic->findObjectByID(unit->m_producerID);
+		if (producer && data->m_statusForRingEntry.test(&producer->m_status))
+			return FALSE;
+	}
+	return TRUE;
+}
 
 // FUNCTION: BFME2 0x00480821 size=199 name=?onDie@CitadelSlaughterHordeContain@@UAEXPBVDamageInfo@@@Z evidence=N:ledger tier=B hypothesis:cohesion
 
