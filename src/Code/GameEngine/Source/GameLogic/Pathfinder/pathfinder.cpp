@@ -63,8 +63,19 @@ Bool PathfindCell::IsObstaclePresent(ObjectID objID) const
 // FUNCTION: BFME2 0x002E6D2F size=19 name=?rva002E6D2F@Rva002E6CFE@@QAE_NXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x002E6D42 size=18 name=?rva002E6D42@@YAHHH@Z evidence=?:placeholder tier=A
+Int rva002E6D42(Int index, Int count)
+{
+	Int next = index + 1;
+	return next == count ? 0 : next;
+}
 
 // FUNCTION: BFME2 0x002E6D54 size=14 name=?rva002E6D54@@YAHHH@Z evidence=?:placeholder tier=A
+Int rva002E6D54(Int index, Int count)
+{
+	if (index == 0)
+		return count - 1;
+	return index - 1;
+}
 
 // FUNCTION: BFME2 0x002E6D62 size=86 name=?getCell@Pathfinder@@QAEPAVPathfindCell@@W4PathfindLayerEnum@@HH@Z evidence=N:ledger tier=A
 PathfindCell *Pathfinder::getCell(PathfindLayerEnum layer, Int x, Int y)
@@ -190,6 +201,13 @@ template Int Pathfinder::iterateCellsAlongLine<ObstacleRunStruct>(const Coord3D 
 template Int Pathfinder::iterateCellsAlongLine<GroundPathPositionStruct>(const Coord3D *, const Coord3D *, PathfindLayerEnum, GroundPathPositionStruct *);
 
 // FUNCTION: BFME2 0x002E6DB8 size=12 name=?Rva002E6DB8@@YAIH@Z evidence=?:placeholder tier=A
+// The locomotor surfaces each cell type allows, indexed by PathfindCell::CellType.
+static UnsignedInt s_surfacesForCellType[PathfindCell::CELL_WATER_7 + 1] = { 0x09, 0x0A, 0x0C, 0x18, 0x28, 0x48, 0x48, 0x88 };
+
+UnsignedInt Rva002E6DB8(Int cellType)
+{
+	return s_surfacesForCellType[cellType];
+}
 
 // FUNCTION: BFME2 0x002E6DC4 size=168 name=?rva002E6DC4@Rva002E6DC4@@QAE_NPAX0@Z evidence=?:placeholder tier=A
 
@@ -476,6 +494,19 @@ Bool Pathfinder::IsImpassableCell(Int pos, Int layer)
 }
 
 // FUNCTION: BFME2 0x002E996E size=79 name=?IsBuildRestrictedCell@Pathfinder@@QAE_NPBVCoord3D@@_N1H@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
+Bool Pathfinder::IsBuildRestrictedCell(const Coord3D *pos, Bool allowWater, Bool allowBridgeImpassable, Int layer)
+{
+	PathfindCell *cell = getCell((PathfindLayerEnum)layer, pos);
+	if (!cell)
+		return true;
+
+	Bool restricted = cell->getType() == PathfindCell::CELL_CLIFF;
+	if (!allowWater)
+		restricted = restricted || cell->getType() == PathfindCell::CELL_WATER || cell->getType() == PathfindCell::CELL_WATER_7;
+	if (!allowBridgeImpassable)
+		restricted = restricted || cell->getType() == PathfindCell::CELL_BRIDGE_IMPASSABLE;
+	return restricted;
+}
 
 // FUNCTION: BFME2 0x002E99BD size=60 name=?GetCellType@Pathfinder@@QAEXHPAX00H@Z evidence=N:ledger tier=A
 // The cell at the position (the map types the out-parameters as void *): whether there is one, its type and
