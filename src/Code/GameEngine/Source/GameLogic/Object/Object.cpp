@@ -43,6 +43,7 @@
 #include "GameClient/ControlBar.h"
 #include "GameLogic/LuaScriptEngine.h"
 #include "GameLogic/Module/HordeContainInterface.h"
+#include "GameLogic/Module/SlavedUpdateInterface.h"
 #include "Common/Energy.h"
 #include "GameLogic/Module/FiringTracker.h"
 #include "GameLogic/Module/ToppleUpdate.h"
@@ -212,6 +213,11 @@ void Object::rva0028AD7C()
 }
 
 // FUNCTION: BFME2 0x0028AD8C size=16 name=?rva0028AD8C@Object@@QAEXXZ evidence=?:placeholder tier=A
+void Object::rva0028AD8C()
+{
+	if (m_pathfinderPosGoalManager)
+		m_pathfinderPosGoalManager->rva004DDD92();
+}
 
 // FUNCTION: BFME2 0x0028AD9C size=20 name=?GetPathfinderPos@Object@@QBE_NPAVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 Bool Object::GetPathfinderPos(Coord3D *pos) const
@@ -685,6 +691,11 @@ Module *Object::findModule(NameKeyType wanted) const
 }
 
 // FUNCTION: BFME2 0x0028B701 size=41 name=?rva0028B701@Object@@QAEXM@Z evidence=?:placeholder tier=A
+void Object::rva0028B701(Real readyFraction)
+{
+	for (BehaviorModule **b = m_behaviors; *b; ++b)
+		(*b)->slot43(readyFraction);
+}
 
 // FUNCTION: BFME2 0x0028B72A size=31 name=?rva0028B72A@Object@@QBEXXZ evidence=?:placeholder tier=A
 void Object::rva0028B72A() const
@@ -767,8 +778,38 @@ Real Object::rva0028B842() const
 }
 
 // FUNCTION: BFME2 0x0028B85B size=26 name=?rva0028B85B@Object@@QBE?AW4ObjectID@@XZ evidence=?:placeholder tier=A
+ObjectID Object::rva0028B85B() const
+{
+	BodyModuleInterface *body = m_body;
+	if (body)
+	{
+		const DamageInfo *info = body->getLastDamageInfo();
+		if (info)
+			return info->in.m_sourceID;
+	}
+	return INVALID_ID;
+}
 
 // FUNCTION: BFME2 0x0028B875 size=49 name=?rva0028B875@Object@@QBEHXZ evidence=?:placeholder tier=A
+Int Object::rva0028B875() const
+{
+	BodyModuleInterface *body = m_body;
+	if (body)
+	{
+		const DamageInfo *info = body->getLastDamageInfo();
+		if (info)
+		{
+			Int playerMask = info->in.m_sourcePlayerMask;
+			if (playerMask)
+			{
+				Player *player = ThePlayerList->getPlayerFromMask(playerMask);
+				if (player)
+					return player->getPlayerIndex();
+			}
+		}
+	}
+	return 0;
+}
 
 // FUNCTION: BFME2 0x0028B8A6 size=185 name=?rva0028B8A6@Object@@QAEX_N@Z evidence=?:placeholder tier=A
 
@@ -1092,6 +1133,17 @@ Bool Object::rva0028C15E(Int a, Real *value, Int b, Int c)
 }
 
 // FUNCTION: BFME2 0x0028C173 size=36 name=?rva0028C173@Object@@QBEHXZ evidence=?:placeholder tier=A
+Int Object::rva0028C173() const
+{
+	ContainModuleInterface *contain = m_contain;
+	if (contain)
+	{
+		HordeContainInterface *horde = contain->getHordeContainInterface();
+		if (horde)
+			return horde->rva0046D3FC(0);
+	}
+	return 1;
+}
 
 // FUNCTION: BFME2 0x0028C197 size=18 name=?rva0028C197@Object@@QBEPAXXZ evidence=?:placeholder tier=A
 HordeContainInterface *Object::rva0028C197() const
@@ -1144,6 +1196,16 @@ Bool Object::isSlaved() const
 }
 
 // FUNCTION: BFME2 0x0028C513 size=39 name=?rva0028C513@Object@@QBE?AW4ObjectID@@XZ evidence=?:placeholder tier=A
+ObjectID Object::rva0028C513() const
+{
+	for (BehaviorModule **b = m_behaviors; *b; ++b)
+	{
+		SlavedUpdateInterface *slaved = (*b)->getSlavedUpdateInterface();
+		if (slaved)
+			return slaved->getSlaverID();
+	}
+	return INVALID_ID;
+}
 
 // FUNCTION: BFME2 0x0028C53A size=4 name=?get@Rva0028C53AConst@@SAHXZ evidence=?:placeholder tier=A
 
@@ -1260,6 +1322,18 @@ const char *ObjectWeaponStatusHelper::GetSnapshotName() const
 // FUNCTION: BFME2 0x0028CBFD size=127 name=?rva0028CBFD@Rva0028CBFD@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0028CC7C size=61 name=?rva0028CC7C@Object@@QAE_NH@Z evidence=?:placeholder tier=A
+Bool Object::rva0028CC7C(Int arg)
+{
+	Object *container = m_containedBy;
+	if (container)
+	{
+		ContainModuleInterface *contain = container->m_contain;
+		HordeContainInterface *horde = contain ? contain->getHordeContainInterface() : 0;
+		if (horde && !horde->canEngageInMelee(this, arg))
+			return false;
+	}
+	return true;
+}
 
 // FUNCTION: BFME2 0x0028CCB9 size=253 name=?adjustVictim@Object@@QAEPAV1@PAV1@_NH@Z evidence=N:ledger tier=A
 
@@ -2093,6 +2167,11 @@ void Object::setBusyUntilFrame(Int frame)
 }
 
 // FUNCTION: BFME2 0x002900FA size=26 name=?rva002900FA@Object@@QAEXH@Z evidence=?:placeholder tier=A
+void Object::rva002900FA(Int value)
+{
+	setStatus((ObjectStatusTypes)4, true);
+	m_430 = value;
+}
 
 // FUNCTION: BFME2 0x00290114 size=579 name=?setDisabledUntil@Object@@QAEXW4DisabledType@@I@Z evidence=N:ledger tier=A
 
@@ -2113,8 +2192,26 @@ void Object::checkDisabledStatus()
 }
 
 // FUNCTION: BFME2 0x002903C3 size=44 name=?rva002903C3@Object@@QAEXXZ evidence=?:placeholder tier=A
+void Object::rva002903C3()
+{
+	UnsignedInt until = m_42c;
+	if (until > 0 && TheGameLogic->getFrame() > until)
+	{
+		setStatus((ObjectStatusTypes)0x4A, false);
+		m_42c = 0;
+	}
+}
 
 // FUNCTION: BFME2 0x002903EF size=44 name=?rva002903EF@Object@@QAEXXZ evidence=?:placeholder tier=A
+void Object::rva002903EF()
+{
+	UnsignedInt until = m_430;
+	if (until > 0 && TheGameLogic->getFrame() > until)
+	{
+		setStatus((ObjectStatusTypes)4, false);
+		m_430 = 0;
+	}
+}
 
 // FUNCTION: BFME2 0x0029041B size=123 name=?rva0029041B@Object@@QAEXPAVPlayer@@@Z evidence=?:placeholder tier=A
 

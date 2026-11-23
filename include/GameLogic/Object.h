@@ -285,6 +285,15 @@ public:
 	// byte), else STRUCTURE for a garrisonable contain or KindOf bit 49 (RadarObject 0x00050125).
 	RadarPriorityType getRadarPriority() const;
 	Bool isSelectable() const;												// 0x0028D7FD
+	ObjectID rva0028B85B() const;											// 0x0028B85B: the source of the body's last damage, 0 without a body or a record
+	Int rva0028B875() const;												// 0x0028B875: the index of the player that dealt the body's last damage, 0 without one
+	Bool rva0028CC7C(Int arg);												// 0x0028CC7C: false when the containing horde cannot engage this object in melee
+	Int rva0028C173() const;												// 0x0028C173: the horde's count (slot 96) with a null filter, 1 without a horde
+	ObjectID rva0028C513() const;											// 0x0028C513: the slaver of the first slaved update, 0 without one
+	void rva0028B701(Real readyFraction);									// 0x0028B701: every behavior's slot 43
+	void rva002900FA(Int value);											// 0x002900FA: setStatus(4, true), stores the value at +0x430
+	void rva002903C3();														// 0x002903C3: once the frame in +0x42C has passed, clears status 0x4A and the frame
+	void rva002903EF();														// 0x002903EF: once the frame in +0x430 has passed, clears status 4 and the frame
 	Bool isMassSelectable() const;											// 0x00292FAC
 	// Walkers over the behavior modules (+0x244) through BehaviorModuleInterface slots.
 	void rva0028AB4E() const;							// 0x0028AB4E: each create interface's slot 2
@@ -335,6 +344,7 @@ public:
 	Real GetGoalAngle() const;						// 0x0028AD56
 	Int GetGoalLayer() const;						// 0x0028AD6C (1 without a goal record)
 	void rva0028AD7C();								// 0x0028AD7C
+	void rva0028AD8C();								// 0x0028AD8C
 	Bool GetPathfinderPos(Coord3D *pos) const;		// 0x0028AD9C
 	Bool IsAtGoalPosition() const;					// 0x0028ADB0
 	void restartAllSpecialPowerRecharges() const;						// 0x0028B265: every special power restarts its recharge (1.0f)

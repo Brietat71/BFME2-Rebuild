@@ -21,6 +21,7 @@ public:
 	Bool rva004DD84D(Coord3D *pos);						// (Object::GetPathfinderPos)
 	void rva004DDD6E();
 	void rva004DDD80();
+	void rva004DDD92();
 	void SetGoal(Int a, Real angle, Int b);
 	void rva004DE24B(Int a);
 	Bool rva004DE2ED();
