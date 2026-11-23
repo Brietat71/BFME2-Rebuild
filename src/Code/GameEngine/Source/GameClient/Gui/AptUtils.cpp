@@ -51,14 +51,19 @@ void Rva0041273C(int which, char *text, bool quiet)
 {
 	if (text == 0 || quiet)
 		return;
-	bool answer;
-	if (which == 1)
-		answer = TheWritableGlobalData->m_unk0x9D4 == 1;
-	else if (which == 2)
-		answer = TheWritableGlobalData->m_unk0x9D4 == 2;
-	else
-		return;
-	copyAnswer(text, answer ? "1" : "0");
+	Int expected;
+	switch (which)
+	{
+		case 1:
+			expected = 1;
+			break;
+		case 2:
+			expected = 2;
+			break;
+		default:
+			return;
+	}
+	copyAnswer(text, TheWritableGlobalData->m_unk0x9D4 == expected ? "1" : "0");
 }
 
 // FUNCTION: BFME2 0x00412787 size=31 name=?InGame@@YAXHPAD_N@Z evidence=N:ledger tier=B hypothesis:K
