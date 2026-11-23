@@ -2,13 +2,18 @@
 // Tier B; object=O001DB68C evidence=Z flags=align=U;ehform=EH_prolog
 // Extent is a hypothesis; only Object VERIFIED establishes recovery.
 // Edges: left=unknown-rows right=unknown-rows
-// FUNCTION: BFME2 0x001DB686 size=6 name=?Rva001DB686Get@@YAHXZ evidence=?:placeholder tier=B hypothesis:mm1-neighbour-shared-data
-// FUNCTION: BFME2 0x001DB68C size=113 name=?parseControlBarSchemeDefinition@INI@@SAXPAV1@@Z evidence=N:ledger
-
-
 #include "Common/INI.h"
 #include "GameClient/ControlBar.h"
 #include "GameClient/ControlBarScheme.h"
+// FUNCTION: BFME2 0x001DB686 size=6 name=?Rva001DB686Get@@YAHXZ evidence=?:placeholder tier=B hypothesis:mm1-neighbour-shared-data
+// Returns the address of the control bar scheme field table (the table's address is the int the ledger types the row as).
+int Rva001DB686Get()
+{
+	return (int)ControlBarSchemeManager::m_controlBarSchemeFieldParseTable;
+}
+// FUNCTION: BFME2 0x001DB68C size=113 name=?parseControlBarSchemeDefinition@INI@@SAXPAV1@@Z evidence=N:ledger
+
+
 extern ControlBar *TheControlBar;
 void INI::parseControlBarSchemeDefinition(INI *ini)
 {
