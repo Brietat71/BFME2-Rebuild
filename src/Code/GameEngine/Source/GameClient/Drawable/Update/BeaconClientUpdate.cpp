@@ -11,6 +11,11 @@
 #include "Common/Xfer.h"
 #include "GameLogic/GameLogic.h"
 #include "GameClient/ParticleSys.h"
+#include "GameClient/Drawable.h"
+#include "GameClient/InGameUI.h"
+#include "Common/Radar.h"
+#include "GameLogic/Object.h"
+extern float g_secondsPerLogicFrame;
 
 // The table retail passes to MultiIniFieldParse::add (VA 0x00C5EB94), read back
 // entry by entry from the image.
