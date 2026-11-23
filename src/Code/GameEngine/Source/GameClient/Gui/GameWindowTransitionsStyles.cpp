@@ -688,9 +688,9 @@ void ButtonFlashTransition::skip()
 void PushButtonImageDrawThree(GameWindow *window, Int alpha)
 {
 	WinInstanceData *instData = window->winGetInstanceData();
+	Int xOffset, yOffset;
 	const Image *leftImage, *rightImage, *centerImage;
 	ICoord2D origin, size, start, end;
-	Int xOffset, yOffset;
 	Int i;
 	Int color = GameMakeColor(255, 255, 255, (unsigned char)alpha);
 
