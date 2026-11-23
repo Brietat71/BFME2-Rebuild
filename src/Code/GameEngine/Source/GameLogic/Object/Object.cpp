@@ -1125,27 +1125,6 @@ void Object::rva0028C24C()
 }
 
 // FUNCTION: BFME2 0x0028C264 size=121 name=?rva0028C264@Object@@QAE_NPAHH@Z evidence=?:placeholder tier=A
-Bool Object::rva0028C264(Int *out, Int value)
-{
-	UnsignedInt frames = BfmeLogicFramesPerSecond * value;
-	HordeContainInterface *horde = getHordeContainInterface();
-	if (horde)
-		return horde->rva0046BB6F(out, frames);
-
-	BodyModuleInterface *body = m_body;
-	if (body)
-	{
-		UnsignedInt timestamp = body->getLastDamageTimestamp();
-		if (timestamp != 0xFFFFFFFF && timestamp + frames >= TheGameLogic->getFrame())
-		{
-			const DamageInfo *info = body->getLastDamageInfo();
-			if (info)
-				*out = info->in.m_sourceID;
-			return true;
-		}
-	}
-	return false;
-}
 
 // FUNCTION: BFME2 0x0028C2DD size=331 name=?rva0028C2DD@Object@@QBEXPAVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 
