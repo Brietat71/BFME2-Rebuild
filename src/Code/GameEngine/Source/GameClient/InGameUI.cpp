@@ -305,6 +305,10 @@ bool InGameUI::isPlacementAnchored( void )
 }
 
 // FUNCTION: BFME2 0x0029AB03 size=8 name=?disable@Rva0029AB03ByteZeroSetter@@QAEXXZ evidence=?:placeholder tier=B hypothesis:Z
+void InGameUI::clearPlacementAnchor()
+{
+	m_placeAnchorInProgress = false;
+}
 
 // FUNCTION: BFME2 0x0029AB0B size=23 name=?getPlacementAngle@InGameUI@@UAEMXZ evidence=N:ledger tier=B hypothesis:Z
 float InGameUI::getPlacementAngle()
@@ -377,6 +381,12 @@ void InGameUI::expireAllHints(int type)
 // FUNCTION: BFME2 0x0029ACE3 size=24 name=?bfmeGoBLD@@YGXPAX@Z evidence=N:ledger tier=B hypothesis:Z
 
 // FUNCTION: BFME2 0x0029ACFB size=23 name=?rva0029ACFB@Rva0029ACFB@@UAEHXZ evidence=?:placeholder tier=B hypothesis:Z
+VideoBuffer *InGameUI::videoBuffer()
+{
+	if (m_videoStream)
+		return m_videoStream->videoBuffer();
+	return 0;
+}
 
 // FUNCTION: BFME2 0x0029AD12 size=487 name=?drawMilitarySubtitle@InGameUI@@UAEXXZ evidence=N:ledger tier=B hypothesis:Z
 
