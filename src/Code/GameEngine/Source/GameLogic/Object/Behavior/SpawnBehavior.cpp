@@ -432,9 +432,10 @@ void SpawnBehavior::computeAggregateStates()
 
 	Int spawnCount = 0;
 	Int spawnCountMax = data->m_spawnNumber;
-	Real avgX = 0.0f;
-	Real avgY = 0.0f;
-	Real avgZ = 0.0f;
+	Coord3D avgSpawnPos;
+	avgSpawnPos.x = 0.0f;
+	avgSpawnPos.y = 0.0f;
+	avgSpawnPos.z = 0.0f;
 	Real health = 0.0f;
 	Real avgHealthMax = 0.0f;
 	Bool somebodyIsSelected = false;
@@ -453,9 +454,9 @@ void SpawnBehavior::computeAggregateStates()
 				}
 			}
 
-			avgX += slave->m_cachedPos.x;
-			avgY += slave->m_cachedPos.y;
-			avgZ += slave->m_cachedPos.z;
+			avgSpawnPos.x += slave->m_cachedPos.x;
+			avgSpawnPos.y += slave->m_cachedPos.y;
+			avgSpawnPos.z += slave->m_cachedPos.z;
 
 			BodyModuleInterface *body = slave->m_body;
 			health += body->getHealth();
@@ -499,11 +500,10 @@ void SpawnBehavior::computeAggregateStates()
 
 	// Draw the health box at the centre of the spawns.
 	Real scale = 1.0f / spawnCount;
-	Coord3D offset;
-	offset.x = avgX * scale - obj->m_cachedPos.x;
-	offset.y = avgY * scale - obj->m_cachedPos.y;
-	offset.z = avgZ * scale - obj->m_cachedPos.z;
-	obj->m_healthBoxOffset = offset;
+	avgSpawnPos.x = avgSpawnPos.x * scale - obj->m_cachedPos.x;
+	avgSpawnPos.y = avgSpawnPos.y * scale - obj->m_cachedPos.y;
+	avgSpawnPos.z = avgSpawnPos.z * scale - obj->m_cachedPos.z;
+	obj->m_healthBoxOffset = avgSpawnPos;
 
 	// The spawner's health is the aggregate of its spawns'.
 	if (spawnCount) {
