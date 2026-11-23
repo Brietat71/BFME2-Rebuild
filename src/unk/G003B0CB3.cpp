@@ -1,4 +1,5 @@
 // cl: /O1
+// Portions derived from Command & Conquer Generals Zero Hour, (c) Electronic Arts Inc., GPL-3.0-or-later; see LICENSE and NOTICE.
 #include "Common/Money.h"
 #include "Common/GameAudio.h"
 #include "Common/MiscAudio.h"
