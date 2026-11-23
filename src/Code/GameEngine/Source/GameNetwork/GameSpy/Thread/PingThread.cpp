@@ -16,6 +16,7 @@ extern "C" int (__cdecl *__imp__isdigit)(int);
 // .bss 0x00A05FB8, after GSConfig.cpp's TheGameSpyConfig (Zero Hour's PingThread.cpp global).
 PingerInterface *ThePinger = 0;
 
+typedef in_addr *HostAddressPtr;
 typedef HANDLE (WINAPI *IcmpCreateFileProc)(void);
 typedef BOOL (WINAPI *IcmpCloseHandleProc)(HANDLE);
 typedef DWORD (WINAPI *IcmpSendEchoProc)(HANDLE, UnsignedInt, void *, WORD, PingIpOptionInfo *, void *, DWORD, DWORD);
@@ -150,12 +151,100 @@ void Pinger::clearPingMap()
 // FUNCTION: BFME2 0x005501D3 size=33 name=??4BfmeNarrowRecord0054FEF1@@QAEAAU0@ABU0@@Z evidence=N:ledger tier=B hypothesis:cohesion
 
 // FUNCTION: BFME2 0x005501F4 size=400 name=?Thread_Function@PingThreadClass@@UAEXXZ evidence=N:ledger tier=B hypothesis:name:Z
+void PingThreadClass::Thread_Function()
+{
+	PingRequest req;
+	try {
+		WSADATA wsaData;
+		WSAStartup(MAKEWORD(1, 1), &wsaData);
+
+		for (;;)
+		{
+			MutexClass::LockClass runLock(*m_runMutex, 1);
+			if (!runLock.Failed())
+				break;
+
+			if (ThePinger->getRequest(req))
+			{
+				const char *hostnameBuffer = req.hostname.c_str();
+				UnsignedInt IP = 0xFFFFFFFF;
+				if (__imp__isdigit(hostnameBuffer[0]))
+				{
+					IP = inet_addr(hostnameBuffer);
+				}
+				else
+				{
+					HOSTENT *hostStruct = gethostbyname(hostnameBuffer);
+					HostAddressPtr hostNode = (HostAddressPtr)hostStruct->h_addr;
+					IP = hostNode->s_addr;
+				}
+
+				Int totalPing = 0;
+				Int goodReps = 0;
+				Int reps = req.repetitions;
+				while (reps-- && IP != 0xFFFFFFFF)
+				{
+					MutexClass::LockClass stillRunning(*m_runMutex, 1);
+					if (!stillRunning.Failed())
+						break;
+
+					Int ping = doPing(IP, req.timeout);
+					if (ping >= 0)
+					{
+						totalPing += ping;
+						++goodReps;
+					}
+				}
+				if (!goodReps)
+					totalPing = -1;
+				else
+					totalPing = totalPing / goodReps;
+
+				PingResponse resp;
+				resp.hostname = req.hostname;
+				resp.avgPing = totalPing;
+				resp.repetitions = goodReps;
+				ThePinger->addResponse(resp);
+			}
+		}
+
+		WSACleanup();
+	} catch (...) {
+	}
+}
+
 
 // FUNCTION: BFME2 0x005503B1 size=53 name=?rva005503B1@Rva005503B1@@SAPAVRva0055011A@@XZ evidence=?:placeholder tier=B hypothesis:cohesion
 
 // FUNCTION: BFME2 0x005503E6 size=98 name=?getRequest@Pinger@@UAE_NAAVPingRequest@@@Z evidence=N:ledger tier=B hypothesis:cohesion
+Bool Pinger::getRequest(PingRequest &req)
+{
+	MutexClass::LockClass m(m_requestMutex, 0);
+	if (m.Failed())
+		return false;
+
+	if (m_requests.empty())
+		return false;
+	req = m_requests.front();
+	m_requests.pop();
+	return true;
+}
+
 
 // FUNCTION: BFME2 0x00550448 size=98 name=?getResponse@Pinger@@UAE_NAAVPingResponse@@@Z evidence=N:ledger tier=B hypothesis:cohesion
+Bool Pinger::getResponse(PingResponse &resp)
+{
+	MutexClass::LockClass m(m_responseMutex, 0);
+	if (m.Failed())
+		return false;
+
+	if (m_responses.empty())
+		return false;
+	resp = m_responses.front();
+	m_responses.pop();
+	return true;
+}
+
 
 // FUNCTION: BFME2 0x005504AF size=74 name=?addRequest@Pinger@@UAEXABVPingRequest@@@Z evidence=N:ledger tier=B hypothesis:cohesion
 void Pinger::addRequest(const PingRequest &req)
