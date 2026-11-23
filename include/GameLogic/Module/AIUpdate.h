@@ -234,6 +234,7 @@ public:
 	void setLocomotorUpgrade(Bool set);	// 0x00262804 (Zero Hour's name; placeholder row): stores m_upgradedLocomotors and re-chooses the normal set (slot 142) when the normal or upgraded set is current
 	Bool isMoving() const;					// 0x00264688
 	void restartWaypointPath();				// 0x0026293E
+	void setAllowedToChase(Bool allowed) { m_unk0x3C1 = allowed; }	// +0x3C1: AssaultTransportAIUpdate::giveFinalOrders 0x0048F6EE clears it on each member it releases
 	void setDesiredSpeed(Real speed);	// 0x002628F9 (+0x44 m_desiredSpeed; role name on a placeholder-class row)
 	ObjectID getIgnoredObstacleID() const;	// 0x0006E009 (+0x164 m_ignoreObstacleID; role name on a placeholder row)
 	void destroyPathAndIdle();				// 0x00262D2D
