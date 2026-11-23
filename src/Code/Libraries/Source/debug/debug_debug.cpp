@@ -969,8 +969,8 @@ bool Debug::ExecCommand(const char *cmdstart, const char *cmdend)
 
 		if (*p)
 		{
-			// search for a matching command handler, starting at the group found above
-			for (; group; group = group->next)
+			// search for a matching command handler
+			for (group = firstCmdGroup; group; group = group->next)
 			{
 				if (strcmp(curCommandGroup, group->group))
 					continue;
