@@ -31,6 +31,23 @@ __declspec(dllimport) int __stdcall EndDialog(void *, int);
 // Extent is a hypothesis; only Object VERIFIED establishes recovery.
 // Edges: left=unknown-rows right=unknown-rows
 // FUNCTION: BFME2 0x0003C730 size=112 name=?DebugCopyToClipboard@@YAXPBD@Z evidence=N:ledger tier=B hypothesis:mm1-neighbour-callers
+void DebugCopyToClipboard(const char *text)
+{
+	if (text && OpenClipboard(NULL))
+	{
+		HGLOBAL memory = GlobalAlloc(GHND | GMEM_DDESHARE, strlen(text) + 1);
+		if (memory)
+		{
+			LPVOID locked = GlobalLock(memory);
+			strcpy(static_cast<char *>(locked), text);
+			GlobalUnlock(memory);
+			EmptyClipboard();
+			SetClipboardData(CF_TEXT, memory);
+		}
+		CloseClipboard();
+	}
+}
+
 // FUNCTION: BFME2 0x0003C7A0 size=848 name=?GetExceptionType@DebugExceptionhandler@@SAPBDPAU_EXCEPTION_POINTERS@@PAD@Z evidence=N:ledger
 const char *DebugExceptionhandler::GetExceptionType(struct _EXCEPTION_POINTERS *exptr, char *explanation)
 {
