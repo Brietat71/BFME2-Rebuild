@@ -1953,6 +1953,20 @@
    "kind": "wide",
    "number": 15,
    "tree": "623e35c169301d4550da666371b30f91881db420"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45106780820"
+   },
+   "author": 44365026,
+   "base": "9ca1ebfa8e85c16678c563d79a14a9a26eced878",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "61003dd684fec23b80737233c5f69b791133d228",
+   "kind": "wide",
+   "number": 49,
+   "tree": "2e66712c54df313b15dad25ca165723df5b08451"
   }
  ],
  "version": 2
