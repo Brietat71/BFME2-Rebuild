@@ -147,6 +147,10 @@ void GameWindowTransitionsHandler::lock()
 // FUNCTION: BFME2 0x001DBBC8 size=67 name=?unlock@Rva001DBAA4@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x001DBC2D size=52 name=?setTemplateName@BuildListInfo@@QAEXVAsciiString@@@Z evidence=N:ledger tier=A
+void TransitionGroup::setName(AsciiString name)
+{
+	m_name = name;
+}
 
 // FUNCTION: BFME2 0x001DBD24 size=57 name=?rva001DBD24@Rva00489360@@QAE_NXZ evidence=?:placeholder tier=A
 bool TransitionWindow::init()
@@ -414,6 +418,14 @@ void GameWindowTransitionsHandler::waitUntilFinished()
 }
 
 
+TransitionGroup::TransitionGroup()
+{
+	m_currentFrame = 0;
+	m_fireOnce = false;
+	m_directionMultiplier = 1;
+}
+
+
 // FUNCTION: BFME2 0x001DC164 size=59 name=?rva001DC164@Rva001DBDA4@@QAEXXZ evidence=?:placeholder tier=A
 void TransitionGroup::init()
 {
@@ -561,6 +573,19 @@ void GameWindowTransitionsHandler::remove(AsciiString groupName, bool skipPendin
 
 
 // FUNCTION: BFME2 0x001DC4D2 size=170 name=?getNewGroup@GameWindowTransitionsHandler@@QAEPAVTransitionGroup@@VAsciiString@@@Z evidence=N:ledger tier=A
+TransitionGroup *GameWindowTransitionsHandler::getNewGroup(AsciiString name)
+{
+	if (name.isEmpty())
+		return 0;
+
+	if (findGroup(name))
+		return 0;
+
+	TransitionGroup *group = new TransitionGroup;
+	group->setName(name);
+	m_transitionGroupList.push_back(group);
+	return group;
+}
 
 // FUNCTION: BFME2 0x001DC5EC size=74 name=?rva001DC5EC@GameWindowTransitionsHandler@@QAEXXZ evidence=?:placeholder tier=A
 void GameWindowTransitionsHandler::finishTransitions()

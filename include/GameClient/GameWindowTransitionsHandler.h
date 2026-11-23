@@ -39,6 +39,7 @@ typedef _STL::list<TransitionWindow *> TransitionWindowList;
 // list first; name at +0xC (findGroup 0x001DC01C compares it), fire-once byte at +0x10 (setGroup 0x001DC252 and update 0x001DBEB6).
 class TransitionGroup {
 public:
+    TransitionGroup();                // 0x001DC0C7
     void init();                    // 0x001DC164: also tells the handler the group's length plus three frames
     void update();                  // 0x001DBD5D
     bool isFinished() const;        // 0x001DBD83
@@ -49,6 +50,7 @@ public:
     void draw();                    // 0x001DBE51
     bool isReversed() const;        // 0x001DBB54
     void addWindow(TransitionWindow *window);
+    void setName(AsciiString name);    // 0x001DBC2D
     bool isFireOnce() const { return m_fireOnce; }
     const AsciiString &getName() const { return m_name; }
     TransitionWindowList m_transitionWindowList;    // +0
@@ -76,6 +78,7 @@ public:
     bool isFinished();
     void remove(AsciiString,bool);
     void reverse(AsciiString);
+    TransitionGroup *getNewGroup(AsciiString name);    // 0x001DC4D2
     void setGroup(AsciiString,bool);
     void lock();
     void unlock();
