@@ -120,6 +120,20 @@ void ObjectCreationUpgrade::upgradeImplementation()
 }
 
 // FUNCTION: BFME2 0x004B4130 size=121 name=?rva004B4130@Rva004B4130@@QAE_NPAVRva00406F9C@@@Z evidence=?:placeholder tier=B hypothesis:cohesion
+Bool ObjectCreationUpgrade::wouldUpgrade(const BitFlags<128> &keyMask) const
+{
+	const UpgradeMaskType *mask = (const UpgradeMaskType *)&keyMask;
+	UpgradeMaskType activation;
+	UpgradeMaskType conflicting;
+	getUpgradeActivationMasks(activation, conflicting);
+	if (!activation.any())
+		return false;
+	if (conflicting.rva00406F9C(mask))
+		return false;
+	if (requiresAllActivationUpgrades())
+		return mask->hasAllBitsOf(&activation);
+	return mask->rva00406F9C(&activation);
+}
 
 // FUNCTION: BFME2 0x004B41A9 size=91 name=?rva004B41A9@Rva004B4130@@QAEXXZ evidence=?:placeholder tier=B hypothesis:cohesion
 
