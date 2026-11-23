@@ -318,12 +318,14 @@ Bool Pathfinder::IsValidMovementTerrain(PathfindLayerEnum layer, const Locomotor
 	if (toCell == NULL)
 		return false;
 
+	Bool valid;
 	if (toCell->getType() == PathfindCell::CELL_OBSTACLE)
-		return true;
-	if (toCell->getType() == PathfindCell::CELL_BRIDGE_IMPASSABLE || (toCell->getLayer() != LAYER_GROUND && toCell->getType() == PathfindCell::CELL_CLEAR))
-		return true;
-
-	return (s_surfacesForCellType[toCell->getType()] & locomotor->m_template->m_surfaces) != 0;
+		valid = true;
+	else if (toCell->getType() == PathfindCell::CELL_BRIDGE_IMPASSABLE || (toCell->getLayer() != LAYER_GROUND && toCell->getType() == PathfindCell::CELL_CLEAR))
+		valid = true;
+	else
+		valid = (s_surfacesForCellType[toCell->getType()] & locomotor->m_template->m_surfaces) != 0;
+	return valid;
 }
 
 // FUNCTION: BFME2 0x002E734E size=58 name=?rva002E734E@Rva002E7334@@QAEHPAURva002E734ECell@@0HH@Z evidence=?:placeholder tier=A
