@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "WWMath/FloatToLong.h"
+#include "GameLogic/Object/Locomotor.h"
 #include "GameLogic/Object/LocomotorTemplate.h"
 
 // floor is msvcr71's import.
