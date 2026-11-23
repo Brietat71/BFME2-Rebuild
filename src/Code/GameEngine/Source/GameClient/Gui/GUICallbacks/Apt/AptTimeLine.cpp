@@ -115,6 +115,16 @@ void AptTimeLine::GraphFocus(int index, const char *value, bool query)
 // FUNCTION: BFME2 0x0051EC31 size=29 name=?Rva0051EC31RangeForward@@YAPAURva0051EC31Output@@PAURva0051EC31Input@@0PAU1@ABURva0051EC31IteratorTag@@@Z evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x0051EC4E size=117 name=?PlayerFaction@AptTimeLine@@QAEXHPAD_N@Z evidence=N:ledger tier=A
+void AptTimeLine::PlayerFaction(int index, char *buffer, bool query)
+{
+	if (query)
+		return;
+	_mbscpy((unsigned char *)buffer, (const unsigned char *)"");
+	if (m_players.empty())
+		return;
+	if (index >= 0 && (unsigned int)index < m_players.size())
+		_mbscpy((unsigned char *)buffer, (const unsigned char *)m_players[index].m_faction.str());
+}
 
 // FUNCTION: BFME2 0x0051ED51 size=45 name=?rva0051ED51@Rva0051ED51Holder@@QAEPAVRva0039B893@@IPAV2@0@Z evidence=?:placeholder tier=A
 
