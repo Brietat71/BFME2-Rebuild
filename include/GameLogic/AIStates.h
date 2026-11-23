@@ -268,9 +268,9 @@ public:
 	virtual StateReturnType update();
 	virtual void onExit(StateExitType status);
 	void rva00351949();
+	StateReturnType updateInternal(Bool unk);
 
 protected:
-	StateReturnType updateInternal(Bool unk);
 	virtual const char *GetSnapshotName() const;		// slot 2
 	virtual void xfer(Xfer *xfer);
 
