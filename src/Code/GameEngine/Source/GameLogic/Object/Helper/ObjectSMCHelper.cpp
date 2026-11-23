@@ -69,25 +69,22 @@ void ObjectSMCHelper::setModelConditionState(ModelConditionFlagType flag, Unsign
 	if (flag < 0 || flag >= 0x24F)
 		return;
 	UnsignedInt now = TheGameLogic->getFrame();
-	_STL::list<Entry>::iterator it;
-	for (it = m_entries.begin(); it != m_entries.end(); ++it)
+	for (_STL::list<Entry>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
 	{
 		if (it->m_flag == flag)
-			break;
+		{
+			UnsignedInt endFrame = now + frames;
+			it->m_frame = _STL::max(endFrame, it->m_frame);
+			Int wake = framesUntilNext();
+			setWakeFrame(getObject(), (UpdateSleepTime)wake);
+			return;
+		}
 	}
-	if (it != m_entries.end())
-	{
-		UnsignedInt endFrame = now + frames;
-		it->m_frame = _STL::max(it->m_frame, endFrame);
-	}
-	else
-	{
-		Entry entry;
-		entry.m_flag = flag;
-		entry.m_frame = now + frames;
-		m_entries.push_back(entry);
-		getObject()->setModelConditionState(flag);
-	}
+	Entry entry;
+	entry.m_flag = flag;
+	entry.m_frame = now + frames;
+	m_entries.push_back(entry);
+	getObject()->setModelConditionState(flag);
 	Int wake = framesUntilNext();
 	setWakeFrame(getObject(), (UpdateSleepTime)wake);
 }
