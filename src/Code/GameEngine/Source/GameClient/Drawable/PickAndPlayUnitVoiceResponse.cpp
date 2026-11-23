@@ -9,7 +9,6 @@
 #include "Common/Rva004D94EEDivMovField.h"
 #include "Common/Rva004D9645SubImm32Field.h"
 #include "Common/Rva004D99F4.h"
-#include "Common/Rva004D9A35Fields.h"
 // FUNCTION: BFME2 0x004D93F7 size=92 name=?countsAsMoveIntoCamp@@YAEIPBUBfmePointFD@@0@Z evidence=N:ledger tier=B hypothesis:mm1-neighbour-callers
 // FUNCTION: BFME2 0x004D9453 size=76 name=?getVictimAndEnterMessage@@YAXPBVDrawableList@@W4Type@GameMessage@@PAVPickAndPlayInfo@@PAPAVObject@@PAW423@PA_N@Z evidence=N:ledger tier=B hypothesis:mm1-neighbour-callers
 // FUNCTION: BFME2 0x004D949F size=6 name=?Rva004D949FGet@@YAHXZ evidence=?:placeholder tier=B hypothesis:mm1-contiguity-callers
@@ -66,11 +65,6 @@ Rva004D99F4 *Rva004D99F4::rva004D99F4()
 }
 
 // FUNCTION: BFME2 0x004D9A35 size=7 name=?clear@Rva004D9A35Fields@@QAEPAU1@XZ evidence=?:placeholder tier=B hypothesis:K
-Rva004D9A35Fields *Rva004D9A35Fields::clear()
-{
-	m_unk0x14 = 0;
-	return this;
-}
 
 // FUNCTION: BFME2 0x004D9A62 size=41 name=?rva004D9A62@Rva004D9A62@@QAEXXZ evidence=?:placeholder tier=B hypothesis:K
 
