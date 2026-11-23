@@ -3821,7 +3821,7 @@ StateReturnType AIWanderInPlaceState::update()
 		Coord3D *goal = &m_goalPosition;
 		*goal = m_origin;
 		goal->x += offset.x;
-		m_goalPosition.y += offset.y;
+		m_goalPosition.y = offset.y + m_goalPosition.y;
 		AIInternalMoveToState::onEnter();
 		return STATE_CONTINUE;
 	}
