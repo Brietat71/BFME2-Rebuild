@@ -13,7 +13,7 @@ void AptValueVector::PushValue(AptValue *pValue)
 {
     char releaseAtEnd = pValue->IsReleaseAtEnd();
     if (!releaseAtEnd) {
-        g_bfmeAptAssertAtE17734("pValue->IsReleaseAtEnd()", ".\AptValue/AptValueVector.inl", 0x35);
+        g_bfmeAptAssertAtE17734("pValue->IsReleaseAtEnd()", ".\\AptValue/AptValueVector.inl", 0x35);
         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
     }
     if (mCurrentNum >= field00) {
@@ -21,7 +21,7 @@ void AptValueVector::PushValue(AptValue *pValue)
         return;
     }
     if (pValue == 0) {
-        g_bfmeAptAssertAtE17734("pValue != NULL", ".\AptValue/AptValueVector.inl", 0x43);
+        g_bfmeAptAssertAtE17734("pValue != NULL", ".\\AptValue/AptValueVector.inl", 0x43);
         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
     }
     mpValues[mCurrentNum] = pValue;
