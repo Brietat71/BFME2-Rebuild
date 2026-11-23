@@ -155,6 +155,21 @@ protected:
     int m_drawState; //20
 };
 typedef char FlashTransitionSize[sizeof(FlashTransition)==0x24?1:-1];
+// ButtonFlash: pos10, size18, drawState20 and the gradient image24 that init 0x0035E97E looks up by name; its update
+// 0x0035E387 walks frames 0..17 and skip 0x0035E603 runs update(17).
+class ButtonFlashTransition : public Transition {
+public:
+    virtual ~ButtonFlashTransition();
+    virtual void init(GameWindow *);
+    virtual void update(int);
+    virtual void draw();
+    virtual void skip();
+protected:
+    ICoord2D m_pos,m_size; //10,18
+    int m_drawState; //20
+    const Image *m_gradient; //24
+};
+typedef char ButtonFlashTransitionSize[sizeof(ButtonFlashTransition)==0x28?1:-1];
 typedef char ControlBarArrowTransitionSize[sizeof(ControlBarArrowTransition)==0x38?1:-1];
 typedef char MainMenuSmallScaleDownTransitionSize[sizeof(MainMenuSmallScaleDownTransition)==0x40?1:-1];
 typedef char MainMenuMediumScaleUpTransitionSize[sizeof(MainMenuMediumScaleUpTransition)==0x48?1:-1];

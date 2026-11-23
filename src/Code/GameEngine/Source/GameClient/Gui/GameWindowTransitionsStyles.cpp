@@ -505,14 +505,199 @@ void MainMenuSmallScaleDownTransition::skip()
 // FUNCTION: BFME2 0x0035E327 size=81 name=?Rva0035E327Parse@@YAXPAVINI@@PAVRva0035E327Holder@@@Z evidence=?:placeholder
 
 // FUNCTION: BFME2 0x0035E387 size=564 name=?update@ButtonFlashTransition@@UAEXH@Z evidence=N:ledger
+void ButtonFlashTransition::update(int frame)
+{
+	m_drawState = -1;
+	if (frame < 0 || frame > 17)
+		return;
+	switch (frame)
+	{
+	case 0:
+		if (m_isForward || !m_win)
+			break;
+		m_win->winHide(true);
+		m_isFinished = true;
+		break;
+	case 1:
+		if (!m_win)
+			break;
+		m_win->winHide(true);
+		if (m_isForward)
+			m_drawState = 1;
+		else
+			m_drawState = 7;
+		break;
+	case 2:
+		if (!m_win)
+			break;
+		m_win->winHide(true);
+		if (m_isForward)
+			m_drawState = 2;
+		else
+			m_drawState = 6;
+		break;
+	case 3:
+		if (!m_win)
+			break;
+		m_win->winHide(true);
+		if (m_isForward)
+			m_drawState = 3;
+		else
+			m_drawState = 5;
+		break;
+	case 4:
+		if (!m_win)
+			break;
+		m_win->winHide(true);
+		m_drawState = 4;
+		break;
+	case 5:
+		if (!m_win)
+			break;
+		m_win->winHide(true);
+		if (m_isForward)
+			m_drawState = 5;
+		else
+			m_drawState = 3;
+		break;
+	case 6:
+		if (!m_win)
+			break;
+		m_win->winHide(true);
+		if (m_isForward)
+			m_drawState = 6;
+		else
+			m_drawState = 2;
+		break;
+	case 7:
+		if (!m_win)
+			break;
+		m_win->winHide(true);
+		if (m_isForward)
+			m_drawState = 7;
+		else
+			m_drawState = 1;
+		break;
+	case 11:
+		if (!m_win)
+			break;
+		if (m_isForward)
+		{
+			m_win->winHide(false);
+			m_drawState = 11;
+		}
+		else
+		{
+			m_win->winHide(true);
+			m_drawState = 16;
+		}
+		break;
+	case 12:
+		if (!m_win)
+			break;
+		if (m_isForward)
+		{
+			m_win->winHide(false);
+			m_drawState = 12;
+		}
+		else
+		{
+			m_win->winHide(true);
+			m_drawState = 15;
+		}
+		break;
+	case 13:
+		if (!m_win)
+			break;
+		if (m_isForward)
+		{
+			m_win->winHide(false);
+			m_drawState = 13;
+		}
+		else
+		{
+			m_win->winHide(true);
+			m_drawState = 14;
+		}
+		break;
+	case 14:
+		if (!m_win)
+			break;
+		if (m_isForward)
+		{
+			m_win->winHide(false);
+			m_drawState = 14;
+		}
+		else
+		{
+			m_win->winHide(true);
+			m_drawState = 13;
+		}
+		break;
+	case 15:
+		if (!m_win)
+			break;
+		if (m_isForward)
+		{
+			m_win->winHide(false);
+			m_drawState = 15;
+		}
+		else
+		{
+			m_win->winHide(false);
+			m_drawState = 12;
+		}
+		break;
+	case 16:
+		if (!m_win)
+			break;
+		if (m_isForward)
+		{
+			m_win->winHide(false);
+			m_drawState = 16;
+		}
+		else
+		{
+			m_win->winHide(false);
+			m_drawState = 11;
+		}
+		break;
+	case 17:
+		if (!m_isForward || !m_win)
+			break;
+		m_win->winHide(false);
+		m_isFinished = true;
+		break;
+	}
+	if (frame > 7 && frame < 11)
+		m_drawState = 18;
+}
 
 // FUNCTION: BFME2 0x0035E603 size=8 name=?rva0035E603@Rva0035D781Self@@QAEXXZ evidence=?:placeholder
+void ButtonFlashTransition::skip()
+{
+	update(17);
+}
 
 // FUNCTION: BFME2 0x0035E650 size=81 name=?Rva0035E650Parse@@YAXPAVINI@@PAVRva0035E650Holder@@@Z evidence=?:placeholder
 
 // FUNCTION: BFME2 0x0035E6A1 size=733 name=?PushButtonImageDrawThree@@YAXPAVGameWindow@@H@Z evidence=N:ledger
 
 // FUNCTION: BFME2 0x0035E97E size=135 name=?init@ButtonFlashTransition@@UAEXPAVGameWindow@@@Z evidence=N:ledger
+void ButtonFlashTransition::init(GameWindow *win)
+{
+	if (win)
+	{
+		m_win = win;
+		m_win->winGetSize(&m_size.x, &m_size.y);
+		m_win->winGetScreenPosition(&m_pos.x, &m_pos.y);
+	}
+	m_isForward = false;
+	update(0);
+	m_isFinished = false;
+	m_isForward = true;
+	m_gradient = TheMappedImageCollection->findImageByName(AsciiString("Gradient"));
+}
 
 // FUNCTION: BFME2 0x0035EA05 size=837 name=?draw@ButtonFlashTransition@@UAEXXZ evidence=N:ledger
 
