@@ -625,10 +625,17 @@ void Debug::AddPatternEntry(unsigned int types, bool isActive, const char *patte
 bool Debug::SimpleMatch(const char *str, const char *pattern)
 {
 	// the text is compared case-insensitively, the pattern is already lower case
-	while (*str && *pattern && *pattern != '*')
+	for (;;)
 	{
+		if (!*str || !*pattern || *pattern == '*')
+			break;
 		char c = *str++;
-		if ((c >= 'A' && c <= 'Z' ? c + ('a' - 'A') : c) != *pattern++)
+		if (c >= 'A' && c <= 'Z')
+		{
+			if (c + ('a' - 'A') != *pattern++)
+				return false;
+		}
+		else if (c != *pattern++)
 			return false;
 	}
 
