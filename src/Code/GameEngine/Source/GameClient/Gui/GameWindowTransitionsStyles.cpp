@@ -714,9 +714,9 @@ void PushButtonImageDrawThree(GameWindow *window, Int alpha)
 	rightSize.y = rightImage->getImageHeight();
 
 	ICoord2D leftEnd, rightStart;
-	leftEnd.x = origin.x + leftSize.x + xOffset;
+	leftEnd.x = leftSize.x + xOffset + origin.x;
 	leftEnd.y = origin.y + size.y + yOffset;
-	rightStart.x = origin.x + size.x - rightSize.x + xOffset;
+	rightStart.x = xOffset - rightSize.x + size.x + origin.x;
 	rightStart.y = origin.y + yOffset;
 
 	Int centerWidth, pieces;
@@ -725,10 +725,10 @@ void PushButtonImageDrawThree(GameWindow *window, Int alpha)
 
 	if (centerWidth <= 0)
 	{
-		start.x = origin.x + xOffset;
+		start.x = xOffset + origin.x;
 		start.y = origin.y + yOffset;
 		end.y = leftEnd.y;
-		end.x = origin.x + xOffset + size.x / 2;
+		end.x = size.x / 2 + xOffset + origin.x;
 		w3dDisplay()->rva0004D6B3(const_cast<Image *>(leftImage), (float)start.x, (float)start.y, (float)end.x, (float)end.y, color, 2);
 
 		start.y = rightStart.y;
