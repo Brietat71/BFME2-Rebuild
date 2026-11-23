@@ -222,3 +222,18 @@ void RadiusDecalTemplate::createRadiusDecal(const Coord3D &pos, Real radius,
 }
 
 // FUNCTION: BFME2 0x00331578 size=179 name=?rva00331578@RadiusDecalTemplate@@QBE_NABV1@@Z evidence=?:placeholder
+Bool RadiusDecalTemplate::equals(const RadiusDecalTemplate &that) const
+{
+	return m_style == that.m_style
+		&& m_opacityMin == that.m_opacityMin
+		&& m_opacityMax == that.m_opacityMax
+		&& m_opacityThrobTime == that.m_opacityThrobTime
+		&& m_color == that.m_color
+		&& m_texture.compare(that.m_texture) == 0
+		&& m_texture2.compare(that.m_texture2) == 0
+		&& m_maxRadius == that.m_maxRadius
+		&& m_minRadius == that.m_minRadius
+		&& m_maxSelectedUnits == that.m_maxSelectedUnits
+		&& m_rotationsPerMinute == that.m_rotationsPerMinute
+		&& m_spiralAcceleration == that.m_spiralAcceleration;
+}
