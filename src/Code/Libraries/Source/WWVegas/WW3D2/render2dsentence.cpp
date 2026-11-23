@@ -109,26 +109,27 @@ FontCharsClassGdiState::~FontCharsClassGdiState()
 // FUNCTION: BFME2 0x00154630 size=488 name=?Create_GDI_Font@FontCharsClass@@AAEXPBD@Z evidence=N:ledger tier=A
 void FontCharsClass::Create_GDI_Font(const char *face)
 {
-	bool generals = strcmp(face, "Generals") == 0;
-	if (generals)
+	bool generals = false;
+	if (strcmp(face, "Generals") == 0) {
 		face = "Arial";
+		generals = true;
+	}
 
-	float widthScale = 0.0f;
+	float fontWidth = 0.0f;
 	if (generals)
-		widthScale = PointSize * 0.4f;
+		fontWidth = PointSize * 0.4f;
 
-	PixelOverlap = (int)floor(PointSize * 0.125 + 0.5);
+	PixelOverlap = (int)floor(PointSize * 0.125f + 0.5f);
 	if (PixelOverlap < 0)
 		PixelOverlap = 0;
 	if (PixelOverlap > 4)
 		PixelOverlap = 4;
 
 	int weight = IsBold ? FW_BOLD : FW_NORMAL;
-	float grid = (float)Grid;
-	int width = (int)floor(grid * widthScale + 0.5f);
-	int height = -(int)floor(grid * PointSize + 0.5f);
-	GDIFont = CreateFontA(height, width, 0, 0, weight, 0, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
-		CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, 0, face);
+	float scaledHeight = floor(Grid * PointSize + 0.5f);
+	float scaledWidth = floor(Grid * fontWidth + 0.5f);
+	GDIFont = CreateFontA(-(int)scaledHeight, (int)scaledWidth, 0, 0, weight, 0, FALSE, FALSE, DEFAULT_CHARSET,
+		OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, 0, face);
 
 	HDC dc = g_fontCharsGdiState->DeviceContext;
 	HGDIOBJ previous = SelectObject(dc, GDIFont);
