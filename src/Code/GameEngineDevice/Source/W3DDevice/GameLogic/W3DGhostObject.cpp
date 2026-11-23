@@ -207,6 +207,19 @@ W3DRenderObjectSnapshot::~W3DRenderObjectSnapshot()
 }
 
 // FUNCTION: BFME2 0x00063912 size=162 name=??0W3DGhostObject@@QAE@XZ evidence=N:ledger tier=B hypothesis:cohesion
+W3DGhostObject::W3DGhostObject()
+{
+	for (Int i = 0; i < MAX_PLAYER_COUNT; i++)
+		m_parentSnapshots[i] = 0;
+
+	m_drawableInfo.m_drawable = 0;
+	m_drawableInfo.m_flags = 0;
+	m_drawableInfo.m_ghostObject = 0;
+	m_drawableInfo.m_shroudStatusObjectID = INVALID_ID;
+
+	m_nextSystem = 0;
+	m_prevSystem = 0;
+}
 
 // FUNCTION: BFME2 0x000639D0 size=77 name=?freeAllSnapShots@W3DGhostObject@@IAEXXZ evidence=N:ledger tier=B hypothesis:cohesion
 void W3DGhostObject::freeAllSnapShots()
@@ -296,6 +309,29 @@ void W3DGhostObjectManager::removeGhostObject(GhostObject *ghost)
 }
 
 // FUNCTION: BFME2 0x00063B1E size=148 name=?addGhostObject@W3DGhostObjectManager@@UAEPAVGhostObject@@PAVObject@@@Z evidence=N:ledger tier=B hypothesis:cohesion
+GhostObject *W3DGhostObjectManager::addGhostObject(Object *object)
+{
+	if (m_lockGhostObjects || m_saveLockGhostObjects)
+		return 0;
+
+	W3DGhostObject *mod = m_freeModules;
+	if (mod)
+		m_freeModules = mod->m_nextSystem;
+	else
+		mod = new W3DGhostObject;
+
+	mod->m_prevSystem = 0;
+	mod->m_nextSystem = m_usedModules;
+	if (m_usedModules)
+		m_usedModules->m_prevSystem = mod;
+	m_usedModules = mod;
+
+	mod->m_parentObject = object;
+	mod->m_drawableInfo.m_drawable = 0;
+	mod->m_drawableInfo.m_ghostObject = mod;
+
+	return mod;
+}
 
 // FUNCTION: BFME2 0x00063C33 size=21 name=?detach@Rva006BD6C0@@QAEXXZ evidence=?:placeholder tier=B hypothesis:cohesion
 
@@ -306,6 +342,19 @@ void W3DGhostObjectManager::removeGhostObject(GhostObject *ghost)
 // FUNCTION: BFME2 0x00063F78 size=694 name=?xfer@W3DGhostObject@@MAEXPAVXfer@@@Z evidence=N:ledger tier=B hypothesis:cohesion
 
 // FUNCTION: BFME2 0x0006422F size=90 name=??1W3DGhostObjectManager@@UAE@XZ evidence=N:ledger tier=B hypothesis:cohesion
+W3DGhostObjectManager::~W3DGhostObjectManager()
+{
+	reset();
+
+	W3DGhostObject *mod = m_freeModules;
+	W3DGhostObject *nextMod;
+	while (mod)
+	{
+		nextMod = mod->m_nextSystem;
+		::delete mod;
+		mod = nextMod;
+	}
+}
 
 // FUNCTION: BFME2 0x000642F1 size=276 name=?xfer@W3DGhostObjectManager@@MAEXPAVXfer@@@Z evidence=N:ledger tier=B hypothesis:cohesion
 
