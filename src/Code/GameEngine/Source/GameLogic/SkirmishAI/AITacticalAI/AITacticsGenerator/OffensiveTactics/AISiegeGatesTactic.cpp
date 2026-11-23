@@ -65,6 +65,11 @@ void AISiegeGatesTactic::xfer(Xfer *xfer)
 }
 
 // FUNCTION: BFME2 0x005A9C1E size=83 name=??0AISiegeGatesTactic@@QAE@XZ evidence=N:ledger tier=A
+AISiegeGatesTactic::AISiegeGatesTactic()
+	: AITacticSiege(AsciiString("SiegeGates"))
+{
+	m_unk0x5C = false;
+}
 
 // FUNCTION: BFME2 0x005A9C71 size=50 name=?create@AISiegeGatesTactic@@UAEPAVAITactic@@XZ evidence=N:ledger tier=A
 AITactic *AISiegeGatesTactic::create()
