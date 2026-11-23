@@ -30,6 +30,7 @@ public:
 	unsigned char canFireWeapon(const Object *obj, WeaponSlotType slot, CommandSourceType commandSource); // 0x0041BB26
 	bool rva0041BAD2(const Object *obj, const Object *victim, CommandSourceType commandSource, WeaponSlotType slot); // 0x0041BAD2 (fire at an object target; the map has no real name yet)
 	bool canFireWeaponAtLocation(const Object *obj, const Coord3D *pos, CommandSourceType commandSource, WeaponSlotType slot, const Object *victim); // 0x0041C085
+	CanAttackResult bfmeGetCanAttackContained(const Object *obj, const Object *victim, CommandSourceType commandSource, AbleToAttackType attackType); // 0x0041BFA2: the best result the victim's attackers inside the object's contain module can reach
 	CanAttackResult getCanAttackObject(const Object *obj, const Object *victim, CommandSourceType commandSource, AbleToAttackType attackType); // 0x0041C6CF
 	bool canPlayerGarrison(const Player *player, const Object *target, CommandSourceType commandSource); // 0x0041C21B
 	bool canResumeConstructionOf(const Object *object, const Object *b, CommandSourceType commandSource); // 0x0041BF47
