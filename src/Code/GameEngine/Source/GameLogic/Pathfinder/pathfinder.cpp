@@ -72,9 +72,7 @@ Int rva002E6D42(Int index, Int count)
 // FUNCTION: BFME2 0x002E6D54 size=14 name=?rva002E6D54@@YAHHH@Z evidence=?:placeholder tier=A
 Int rva002E6D54(Int index, Int count)
 {
-	if (index == 0)
-		index = count;
-	return index - 1;
+	return (index ? index : count) - 1;
 }
 
 // FUNCTION: BFME2 0x002E6D62 size=86 name=?getCell@Pathfinder@@QAEPAVPathfindCell@@W4PathfindLayerEnum@@HH@Z evidence=N:ledger tier=A
