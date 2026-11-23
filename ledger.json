@@ -3983,6 +3983,20 @@
    "kind": "wide",
    "number": 17,
    "tree": "4234d3dbc5e104b333eff036126b5a55891e557c"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45236955457"
+   },
+   "author": 1399571,
+   "base": "3abb78d0758d664ac4d0368963deeb949abf9a9c",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "f3a5981c2d1abb7e669bafc9e4b1d52b270d44be",
+   "kind": "wide",
+   "number": 15,
+   "tree": "568befad6bbc9a2bd11d28a811f15690c7a793c9"
   }
  ],
  "version": 2
