@@ -38,7 +38,7 @@ class AABTreeClass;
 class RayCollisionTestClass;
 class OBBoxIntersectionTestClass;
 
-// Three-int key ordered by operator< (0x0016CBB0).
+// Three-int key with a lexicographic operator<.
 struct Gen_p12pod
 {
 	int a;
