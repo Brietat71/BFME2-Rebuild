@@ -432,7 +432,7 @@ template Int Pathfinder::iterateCellsAlongLine<FlingStruct>(const ICoord2D *, co
 Bool Pathfinder::IsPointOnWall(Int pos, Bool requireClear)
 {
 	PathfindCell *cell = getCellAtInt(LAYER_GROUND, pos);
-	if (cell && cell->m_layer > 16 && (!requireClear || cell->m_type == PathfindCell::CELL_CLEAR))
+	if (cell && (Int)cell->getLayer() > 16 && (!requireClear || cell->getType() == PathfindCell::CELL_CLEAR))
 		return true;
 	return false;
 }
@@ -475,8 +475,8 @@ Bool Pathfinder::IsCliffCell(Int pos, Int layer)
 Int Pathfinder::isBlockedGateObstacleCell(Int pos, Int layer)
 {
 	PathfindCell *cell = getCellAtInt((PathfindLayerEnum)layer, pos);
-	if (cell && cell->getType() == PathfindCell::CELL_OBSTACLE && (cell->m_unkBits17 & 1))
-		return true;
+	if (cell && cell->getType() == PathfindCell::CELL_OBSTACLE)
+		return cell->m_unkBits17 & 1;
 	return false;
 }
 
@@ -484,8 +484,8 @@ Int Pathfinder::isBlockedGateObstacleCell(Int pos, Int layer)
 Int Pathfinder::IsNonPinchedCliffCell(Int pos, Int layer)
 {
 	PathfindCell *cell = getCellAtInt((PathfindLayerEnum)layer, pos);
-	if (cell && cell->getType() == PathfindCell::CELL_CLIFF && !cell->m_pinched)
-		return true;
+	if (cell && cell->getType() == PathfindCell::CELL_CLIFF)
+		return !cell->m_pinched;
 	return false;
 }
 
