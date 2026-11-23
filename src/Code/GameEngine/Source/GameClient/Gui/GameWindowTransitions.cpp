@@ -598,8 +598,7 @@ void INI::parseWindowTransitions(INI *ini)
 void INI::Rva001DCAED_ParseTransition(INI *ini, void *instance, void *store, const void *userData)
 {
 	NameKeyType key = TheNameKeyGenerator->nameToKey(ini->getNextToken(0));
-	WindowTransitionFactory factory = TheTransitionHandler->m_transitionMap[key];
-	factory(ini, instance, store, userData);
+	TheTransitionHandler->m_transitionMap[key](ini, instance, store, userData);
 }
 
 // FUNCTION: BFME2 0x001DCB2F size=53 name=?parseWindow@GameWindowTransitionsHandler@@SAXPAVINI@@PAX1PBX@Z evidence=N:ledger tier=B hypothesis:K
