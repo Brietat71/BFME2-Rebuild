@@ -210,13 +210,14 @@ Bool TunnelTracker::onTunnelDestroyed(const Object *deadTunnel)
 	--m_tunnelCount;
 	m_tunnelIDs.remove(deadTunnel->getID());
 
-	if (m_tunnelCount != 0)
+	if (m_tunnelCount > 0)
 	{
 		// riders of the dead tunnel move on to a surviving one
 		Object *newTunnel = TheGameLogic->findObjectByID(m_tunnelIDs.front());
 		ContainmentListView view = getContainedItemsList();
-		std::list<Object *>::const_iterator it = view.objects().begin();
-		while (it != view.objects().end())
+		const std::list<Object *> &riders = view.objects();
+		std::list<Object *>::const_iterator it = riders.begin();
+		while (it != riders.end())
 		{
 			Object *rider = *it;
 			++it;
