@@ -42,6 +42,7 @@ public:
 	int Shader_Count(void) const;							// 0x00188730
 	int Vertex_Material_Count(void) const;						// 0x00188740
 	int Texture_Count(void) const;							// 0x00188750
+	int Add_Texture(const TextureAsset &texture);			// 0x0018A350
 private:
 
 	// The DIG chunk flag (+0x248): the first diffuse-illumination chunk of a mesh goes to the default description, a second one to
@@ -61,6 +62,7 @@ private:
 	ShaderClass Peek_Legacy_Shader(int legacy_material_index);
 	Vector2 *Get_Temporary_UV_Array(int elementcount);				// 0x00189400 (grows TempUVArray and returns its data)
 	VertexMaterialClass *Peek_Legacy_Vertex_Material(int legacy_material_index);
+	TextureAsset Peek_Legacy_Texture(int legacy_material_index);	// 0x001893C0
 
 	struct LegacyMaterialClass
 	{
