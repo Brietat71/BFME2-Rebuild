@@ -49,14 +49,6 @@ void GlobalWeatherSystem::parseWeatherData(INI *ini)
 // FUNCTION: BFME2 0x0031852F size=42 name=?rva0031852F@Rva0031852F@@QAEPAXI@Z evidence=?:placeholder tier=B hypothesis:mm1-held-object-same-path
 
 // FUNCTION: BFME2 0x00318588 size=133 name=??0GlobalWeatherSystem@@QAE@XZ evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
-GlobalWeatherSystem::GlobalWeatherSystem() :
-	m_unk0x10(0),
-	m_unk0x14(1),
-	m_unk0x18(0),
-	m_unk0x28(0),
-	m_unk0x2C(0)
-{
-}
 
 // FUNCTION: BFME2 0x0031860D size=6 name=?name@Rva0031860DNamed@@QBEPBDXZ evidence=?:placeholder tier=B hypothesis:mm1-held-object-same-path
 
