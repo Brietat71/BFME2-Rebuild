@@ -115,8 +115,8 @@ void FontCharsClass::Create_GDI_Font(const char *face)
 		generals = true;
 	}
 
-	float pointSize = PointSize;
 	float fontWidth = 0.0f;
+	float pointSize = PointSize;
 	if (generals)
 		fontWidth = pointSize * 0.4f;
 
