@@ -85,7 +85,7 @@ referrers	state	rva	file	symbol	first_referrer
 3	owned:MISSING	0x003533BF	src/Code/GameEngine/Source/GameLogic/AI/AIStates.cpp	?doXfer@AIStoredCommand@@QAEXPAVXfer@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp
 3	owned:MISSING	0x00278C7C	src/Code/GameEngine/Source/GameClient/Drawable.cpp	?flashAsSelected@Drawable@@QAEXPBURGBColor@@@Z	src/Code/GameEngine/Source/GameClient/MessageStream/CommandXlat.cpp
 3	owned:MISSING	0x00507877	src/unk/O00507C0F.cpp	?friend_postProcessLoad@WeaponEffectNugget@@UAEXXZ	src/Code/GameEngine/Source/GameLogic/Object/WeaponEffects/MetaImpactNugget.cpp
-3	owned:MISSING	0x002AA22A	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?get@Rva002AA22AByteField@@QBEEXZ	src/Code/GameEngine/Source/Common/RTS/PlayerList.cpp
+3	owned:MATCH	0x002AA22A	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?get@Rva002AA22AByteField@@QBEEXZ	src/Code/GameEngine/Source/Common/RTS/PlayerList.cpp
 3	owned:MISSING	0x002EE7EE	src/Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp	?getClosestPointOnLand@Pathfinder@@QAE_NPBVCoord3D@@PAVObject@@PAV2@@Z	src/Code/GameEngine/Source/GameLogic/AI/AIStates.cpp
 3	owned:MATCH	0x004D5767	src/Code/GameEngine/Source/GameNetwork/NetCommandMsg.cpp	?getCommandID@NetAckStage2CommandMsg@@QBEGXZ	src/Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp
 3	owned:MATCH	0x004543C6	src/Code/GameEngine/Source/GameLogic/Object/Behavior/GettingBuiltBehavior.cpp	?getOriginalPlayerID@NetAckStage2CommandMsg@@QBEEXZ	src/Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp
@@ -1255,7 +1255,7 @@ referrers	state	rva	file	symbol	first_referrer
 1	owned:MISSING	0x00619880	src/unk/G00619880.cpp	?nstrdup@@YAPADPBD@Z	src/Code/Libraries/Source/WWVegas/WWLib/ini.cpp
 1	owned:MISSING	0x002805C1	src/Code/GameEngine/Source/GameLogic/Map/TerrainLogic.cpp	?objectInteractsWithBridgeEnd@TerrainLogic@@UBE_NPAVObject@@H@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp
 1	owned:MISSING	0x002804B2	src/Code/GameEngine/Source/GameLogic/Map/TerrainLogic.cpp	?objectInteractsWithBridgeLayer@TerrainLogic@@UBE_NPAVObject@@H_N@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp
-1	owned:MISSING	0x002AA04C	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?okToPlayRadarEdgeSound@Player@@QAE_NXZ	src/Code/GameEngine/Source/Common/RTS/Player.cpp
+1	owned:MATCH	0x002AA04C	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?okToPlayRadarEdgeSound@Player@@QAE_NXZ	src/Code/GameEngine/Source/Common/RTS/Player.cpp
 1	owned:MISSING	0x004AB3EB	src/unk/G004AB3AE.cpp	?onBodyDamageStateChange@WallUpgradeUpdate@@UAEXPBVDamageInfo@@W4BodyDamageType@@1@Z	src/unk/O004AB246.cpp
 1	owned:MISSING	0x004B96A9	src/unk/G004B9508.cpp	?onBuildComplete@InheritUpgradeCreate@@UAEXXZ	src/unk/O004B9452.cpp
 1	owned:MISSING	0x004B8CC9	src/unk/G004B8CC9.cpp	?onBuildComplete@LockWeaponCreate@@UAEXXZ	src/Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp

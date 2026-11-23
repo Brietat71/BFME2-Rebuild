@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=d072bf9fb0 left_out_written=45
+# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=03d25dad11 left_out_written=46
 referrers	state	rva	file	symbol	first_referrer	body_check
 63	owned:MISSING	0x00253390	src/unk/O0024EEBB.cpp	??0UpdateModule@@QAE@PAVThing@@PBVModuleData@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp	none-found
 17	owned:MISSING	0x0004233A	src/unk/G000421F2.cpp	?Inv_Sqrt@WWMath@@SIMM@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowMapManager.cpp	none-found
@@ -79,7 +79,7 @@ referrers	state	rva	file	symbol	first_referrer	body_check
 3	owned:MISSING	0x0028BAC0	src/Code/GameEngine/Source/GameLogic/Object/Object.cpp	?rva0028BAC0@Object@@QAEXXZ	src/Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DozerAIUpdate.cpp	none-found
 3	owned:MISSING	0x0028C1CC	src/Code/GameEngine/Source/GameLogic/Object/Object.cpp	?rva0028C1CC@Object@@QBE_NXZ	src/Code/GameEngine/Source/GameLogic/Object/Object.cpp	none-found
 3	owned:MISSING	0x0028FCD9	src/Code/GameEngine/Source/GameLogic/Object/Object.cpp	?rva0028FCD9@Object@@QAEXHH@Z	src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	none-found
-3	owned:MISSING	0x002AA22A	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?get@Rva002AA22AByteField@@QBEEXZ	src/Code/GameEngine/Source/Common/RTS/PlayerList.cpp	none-found
+3	owned:MATCH	0x002AA22A	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?get@Rva002AA22AByteField@@QBEEXZ	src/Code/GameEngine/Source/Common/RTS/PlayerList.cpp	none-found
 3	owned:MISSING	0x002CF21B	src/Code/GameEngine/Source/Common/Thing/ThingFactory.cpp	?newDrawable@ThingFactory@@QAEPAVDrawable@@PBVThingTemplate@@HH@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DGameClient.cpp	none-found
 3	owned:MISSING	0x002EE7EE	src/Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp	?getClosestPointOnLand@Pathfinder@@QAE_NPBVCoord3D@@PAVObject@@PAV2@@Z	src/Code/GameEngine/Source/GameLogic/AI/AIStates.cpp	none-found
 3	owned:PARTIAL	0x003393DF	src/Code/GameEngine/Source/Common/INI/inihelp.cpp	?Rva003393DFParse@@YAXPAVINI@@PAX1PBX@Z	src/Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdate.cpp	none-found
@@ -706,7 +706,6 @@ referrers	state	rva	file	symbol	first_referrer	body_check
 1	owned:MISSING	0x002A9B35	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?addCommandPoints@Player@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Object.cpp	none-found
 1	owned:MISSING	0x002A9B58	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?removeCommandPoints@Player@@QAEXPAVObject@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Object.cpp	none-found
 1	owned:PARTIAL	0x002A9ED9	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?rva002A9ED9@Player@@QAE_NPBVSpecialPowerTemplate@@@Z	src/Code/GameEngine/Source/Common/RTS/SpecialPower.cpp	none-found
-1	owned:MISSING	0x002AA04C	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?okToPlayRadarEdgeSound@Player@@QAE_NXZ	src/Code/GameEngine/Source/Common/RTS/Player.cpp	none-found
 1	owned:MISSING	0x002AA497	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?Rva002AA497Compare@@YAHPBVObject@@0@Z	src/Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions.cpp	none-found
 1	owned:MISSING	0x002AA5E1	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?addSkillPointsForDamage@Player@@QAE_NPAVObject@@PBV2@M@Z	src/Code/GameEngine/Source/GameLogic/Object/Object.cpp	none-found
 1	owned:MISSING	0x002AA756	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?rva002AA756@Player@@QAEXH@Z	src/Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions.cpp	none-found

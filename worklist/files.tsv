@@ -1,4 +1,4 @@
-# measured_utc=2026-11-23T10:03:15Z revision=d072bf9fb0 finished_files=530
+# measured_utc=2026-11-23T11:05:11Z revision=03d25dad11 finished_files=530
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -586,6 +586,7 @@ src/Code/GameEngine/Source/GameClient/Gui/InGame/Strategic/StrategicHUDDynamicAu
 src/Code/Libraries/Source/collisionmanager/collisionmanager_impl.cpp	30	30	4543	0	none	0
 src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptCreateAHeroPowers.cpp	32	30	5782	0	real	0
 src/Code/Libraries/Source/WWVegas/WW3D2/texture.cpp	55	30	6405	0	real	5
+src/Code/GameEngine/Source/GameClient/Gui/ControlBar/ControlBar.cpp	70	31	10862	19	real	2
 src/Code/Libraries/Source/WWVegas/WW3D2/fxshaderasset.cpp	44	31	3384	2	real	7
 src/Code/GameEngine/Source/GameClient/Gui/InGame/Tactical/SpellStore.cpp	37	31	4618	2	real	0
 src/Code/GameEngine/Source/GameClient/Gui/GameFont.cpp	48	31	2475	1	real	15
@@ -598,7 +599,6 @@ src/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer.cpp	31	31	1
 src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptLanLobby.cpp	63	32	8330	4	real	3
 src/Code/GameEngine/Source/GameLogic/Map/PolygonTrigger.cpp	42	32	2172	1	real	1
 src/Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIBattleResolver.cpp	34	32	2747	0	none	1
-src/Code/GameEngine/Source/GameClient/Gui/ControlBar/ControlBar.cpp	70	33	10933	19	real	2
 src/Code/Libraries/Source/debug/debug_debug.cpp	75	33	6764	12	real	8
 src/Code/GameEngine/Source/Common/RTS/ActionManager.cpp	48	33	9033	8	real	4
 src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptMyHero.cpp	53	33	6613	6	real	6
@@ -716,8 +716,8 @@ src/Code/GameEngine/Source/GameClient/InGameUI.cpp	216	121	36312	10	real	29
 src/Code/GameEngine/Source/GameClient/Gui/InGame/Tactical/Palantir.cpp	129	122	13618	8	real	0
 src/Code/GameEngine/Source/GameLogic/Map/TerrainLogic.cpp	145	123	31299	33	real	5
 src/Code/Libraries/Source/core/source/proto/protossl.c	123	123	41517	0	none	0
+src/Code/GameEngine/Source/Common/RTS/Player.cpp	265	128	22554	36	real	52
 src/fesl/source/gamebrowser/gamebrowser.cpp	129	129	11251	0	none	0
-src/Code/GameEngine/Source/Common/RTS/Player.cpp	265	131	22633	40	real	52
 src/Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegion.cpp	155	136	12615	3	real	27
 src/Code/GameEngine/Source/GameClient/Drawable.cpp	260	141	41737	35	real	10
 src/Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeContain.cpp	246	158	43015	7	real	29
