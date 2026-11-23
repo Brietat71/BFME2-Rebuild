@@ -2010,7 +2010,10 @@
    },
    "author": 87946970,
    "base": "4a34cb25f7e9b42e819157e032d87eddcd34db7f",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45114442943"
+   },
    "day": "2026-11-23",
    "head": "af64353b9ccfc83a02a7d29da7ea8dc2404cc71d",
    "kind": "narrow",
