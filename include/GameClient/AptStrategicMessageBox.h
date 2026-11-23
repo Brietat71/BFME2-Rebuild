@@ -11,6 +11,9 @@ public:
 	virtual ~AptStrategicMessageBox();
 
 	static void CreateSingleton();
+
+private:
+	static AptStrategicMessageBox *s_instance;	// 0x00A05FAC (the destructor clears it)
 };
 
 typedef char AptStrategicMessageBoxSizeCheck[sizeof(AptStrategicMessageBox) == 0x08 ? 1 : -1];

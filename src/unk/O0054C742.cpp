@@ -5,5 +5,10 @@
 // Extents and edges are hypotheses; byte verification alone does not establish original TU boundaries.
 // Edges: left=unknown-rows right=no-edge-evidence; proof_first=false
 // Hypothesis rules: hypothesis:K, hypothesis:name:invented
+#include "GameClient/AptStrategicMessageBox.h"
 // FUNCTION: BFME2 0x0054C742 size=18 name=??1AptStrategicMessageBox@@UAE@XZ evidence=N:ledger tier=B hypothesis:name:invented
 
+AptStrategicMessageBox::~AptStrategicMessageBox()
+{
+	s_instance = NULL;
+}
