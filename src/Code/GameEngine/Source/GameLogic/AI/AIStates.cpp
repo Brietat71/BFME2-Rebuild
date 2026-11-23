@@ -2927,6 +2927,25 @@ void AIAttackMeleeEngageState::onExit(StateExitType status)
 }
 
 // FUNCTION: BFME2 0x00349D92 size=131 name=?onExit@AIFollowPathState@@UAEXW4StateExitType@@@Z evidence=N:ledger tier=A
+void AIFollowPathState::onExit(StateExitType status)
+{
+	AIInternalMoveToState::onExit(status);
+	AIUpdateInterface *ai = getMachine()->getOwner()->getAI();
+	if (ai != NULL)
+	{
+		ai->setCanPathThroughUnits(false);
+		ai->ignoreObstacle(NULL);
+		Locomotor *locomotor = ai->m_curLocomotor;
+		if (locomotor != NULL)
+			locomotor->m_flags &= ~8;
+		ai->m_unk0x194 = -1;
+	}
+	Object *owner = getMachine()->getOwner();
+	if (!owner->getTemplate()->isKindOf0x115())
+		owner->setStatus((ObjectStatusTypes)0x5A, false);
+	if (owner->getCurrentLocomotor() != NULL)
+		owner->getCurrentLocomotor()->m_unk0x2C = -1.0f;
+}
 
 // FUNCTION: BFME2 0x00349E15 size=95 name=?onExit@AIFollowPathAsTeamState@@UAEXW4StateExitType@@@Z evidence=N:ledger tier=A
 void AIFollowPathAsTeamState::onExit(StateExitType status)
