@@ -175,8 +175,9 @@ void LivingWorldRegionManager::EnumeratePendingBattles(PendingBattleVisitor &vis
 // FUNCTION: BFME2 0x0020EB07 size=58 name=?BeginTurn@LivingWorldRegionManager@@UAEXHH@Z evidence=N:ledger tier=A
 void LivingWorldRegionManager::BeginTurn(Int turn, Int arg)
 {
-	for (unsigned int i = 0; i < m_table->m_regions.size(); ++i)
-		m_table->m_regions[i]->rva003F1044(turn, arg);
+	_STL::vector<LivingWorldRegion *> &regions = m_table->m_regions;
+	for (unsigned int i = 0; i < regions.size(); ++i)
+		regions[i]->rva003F1044(turn, arg);
 }
 
 // FUNCTION: BFME2 0x0020EB41 size=13 name=?rva0020EB41@Rva0020EB41@@QAEXXZ evidence=?:placeholder tier=A
@@ -267,8 +268,9 @@ void LivingWorldRegionManager::OnTurnEnding(Int turn, Int arg)
 	rva0020F685();
 	m_activeBattleID = 0;
 	m_selectedBattleKey = 0;
-	for (unsigned int i = 0; i < m_table->m_regions.size(); ++i)
-		m_table->m_regions[i]->rva003F20E5(turn, arg);
+	_STL::vector<LivingWorldRegion *> &regions = m_table->m_regions;
+	for (unsigned int i = 0; i < regions.size(); ++i)
+		regions[i]->rva003F20E5(turn, arg);
 }
 
 // FUNCTION: BFME2 0x0020FB8B size=132 name=?rva0020FB8B@LivingWorldRegionManager@@QAEXPAVLivingWorldBattle@@@Z evidence=?:placeholder tier=A
@@ -286,8 +288,9 @@ void LivingWorldRegionManager::OnTurnEnding(Int turn, Int arg)
 // FUNCTION: BFME2 0x002102CA size=68 name=?loadPostProcess@LivingWorldRegionManager@@UAEXXZ evidence=N:ledger tier=A
 void LivingWorldRegionManager::loadPostProcess()
 {
-	for (unsigned int i = 0; i < m_table->m_regions.size(); ++i)
-		m_table->m_regions[i]->loadPostProcess();
+	_STL::vector<LivingWorldRegion *> &regions = m_table->m_regions;
+	for (unsigned int i = 0; i < regions.size(); ++i)
+		regions[i]->loadPostProcess();
 	rva0020F483();
 	m_table->rva0020F5B3();
 }
