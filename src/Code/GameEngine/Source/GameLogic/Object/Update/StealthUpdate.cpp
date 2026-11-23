@@ -26,6 +26,7 @@
 #include "Common/Team.h"
 #include "Common/Upgrade.h"
 #include "GameClient/Drawable.h"
+#include "Common/Rva002390CB.h"
 #include "GameClient/ControlBar.h"
 #include "Common/INI.h"
 #include "Common/BitFlags.h"
