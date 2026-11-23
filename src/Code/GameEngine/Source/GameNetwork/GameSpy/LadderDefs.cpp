@@ -4,6 +4,7 @@
 #include "GameNetwork/GameSpy/GameSpyConfig.h"
 #include "Common/File.h"
 #include "Common/FileSystem.h"
+#include "Common/GlobalData.h"
 
 // Defined in this unit's parser row; the line parser takes the text by value.
 LadderInfo *parseLadder(AsciiString raw);
@@ -97,6 +98,24 @@ void LadderList::checkLadder(AsciiString fname, Int index)
 }
 
 // FUNCTION: BFME2 0x0054E426 size=288 name=?loadLocalLadders@LadderList@@AAEXXZ evidence=N:ledger tier=B hypothesis:K
+void LadderList::loadLocalLadders()
+{
+	AsciiString dirname;
+	dirname.format("%s%s\\Ladders\\", TheGlobalData->rva002360DE().str(), "Online Files");
+	FilenameList filenameList;
+	TheFileSystem->getFileListInDirectory(dirname, AsciiString("*.ini"), filenameList, true);
+
+	Int index = -1;
+
+	FilenameList::iterator it = filenameList.begin();
+	while (it != filenameList.end())
+	{
+		AsciiString filename = *it;
+		filename.toLower();
+		checkLadder(filename, index--);
+		++it;
+	}
+}
 
 // FUNCTION: BFME2 0x0054E546 size=592 name=??0LadderList@@QAE@XZ evidence=N:ledger tier=B hypothesis:K
 LadderList::LadderList()

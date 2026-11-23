@@ -1,10 +1,18 @@
 #pragma once
+#include <set>
+#include "Common/AsciiString.h"
 class File;
-class AsciiString;
 struct FileInfo;
 // Native factory225F44 allocates4; ctor600611 stores table87A660, whose
 // only slot is deleting dtor6006BD. No SubsystemInterface or members.
 // openFile600C34/getFileInfo600E3A use the global disk/archive services.
+// The ordered, case-blind file name set the directory listings fill (the ledger's comparator is a struct of this name).
+struct BfmeStringNoCaseLess
+{
+	bool operator()(const AsciiString &left, const AsciiString &right) const;
+};
+typedef _STL::set<AsciiString, BfmeStringNoCaseLess> FilenameList;
+
 class FileSystem {
 public:
     FileSystem();
@@ -15,6 +23,7 @@ public:
     File *rva000783A1(const char *filename, int access, int first, int second);	// 0x000783A1 (the map spells it rva000783A1@FileSystem): openFile with the two ints passed as a pair (GetGameFilePart 0x0007882F)
     File *openFile(const unsigned short *path, int access);	// 0x002DBA07 (map: rva002DBA07@FileSystem): rva00600676 with flags 0
     bool createDirectory(const AsciiString &); // 0x003006C4 (the map spells it rva003006C4@Rva003006C4); ignores this, passes the path to 0x00600695
+    void getFileListInDirectory(const AsciiString &directory, const AsciiString &filter, FilenameList &filenames, bool searchSubdirectories) const;	// 0x00600FC9
     bool doesFileExist(const char *) const;
     bool getFileInfo(const char *, FileInfo *) const;
     bool getFileInfo(const AsciiString &, FileInfo *) const;
