@@ -385,6 +385,16 @@ ICoord2D *Rva002E7875WorldToCell(ICoord2D *cell, Bool floorOnly, const Coord3D *
 // FUNCTION: BFME2 0x002E7B29 size=143 name=?cellCallback@Rva002E7B29Info@@QAEHPAVPathfindCell@@0HH@Z evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x002E7BB8 size=56 name=?Rva002E7BB8Get@@YAMXZ evidence=?:placeholder tier=A
+// A phase that advances by a fixed step each call and wraps at one.
+static Real s_phase;
+
+Real Rva002E7BB8Get()
+{
+	s_phase += 0.18409087f;
+	if (s_phase > 1.0f)
+		s_phase -= 1.0f;
+	return s_phase;
+}
 
 // FUNCTION: BFME2 0x002E7BF0 size=169 name=?rva002E7BF0@Rva002EC3CEProbes@@QAE_NHH_NHHHPAX0@Z evidence=?:placeholder tier=A
 
