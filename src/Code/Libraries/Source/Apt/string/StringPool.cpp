@@ -139,9 +139,9 @@ void StringPool::Teardown()
 AptString *Rva0070DBB0Intern(const char *text)
 {
     unsigned short uHash = hashLower(text);
-    unsigned short uIndex = uHash % g_nStringBucketCount;
     if (++sStringPoolCurrentUsers > sStringPoolMaxUsers)
         sStringPoolMaxUsers = sStringPoolCurrentUsers;
+    unsigned short uIndex = uHash % g_nStringBucketCount;
     for (AptString *pString = g_ppStringBuckets[uIndex]; pString; pString = pString->mpNextFree) {
         if (pString->mString.GetHashValue() == uHash && pString->mString.EqualsText(text)) {
             if (pString->getGCRootCount() != 0x7f)
