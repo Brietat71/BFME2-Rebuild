@@ -88,7 +88,8 @@ void ObjectSMCHelper::setModelConditionState(ModelConditionFlagType flag, Unsign
 		m_entries.push_back(entry);
 		getObject()->setModelConditionState(flag);
 	}
-	setWakeFrame(getObject(), (UpdateSleepTime)framesUntilNext());
+	Int wake = framesUntilNext();
+	setWakeFrame(getObject(), (UpdateSleepTime)wake);
 }
 
 // FUNCTION: BFME2 0x004DE906 size=189 name=?xfer@ObjectSMCHelper@@MAEXPAVXfer@@@Z evidence=N:ledger tier=B hypothesis:Z
