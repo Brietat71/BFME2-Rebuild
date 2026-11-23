@@ -321,9 +321,7 @@ Bool Pathfinder::IsValidMovementTerrain(PathfindLayerEnum layer, const Locomotor
 	UnsignedInt type = toCell->getType();
 	if (type == PathfindCell::CELL_OBSTACLE)
 		return true;
-	if (type == PathfindCell::CELL_BRIDGE_IMPASSABLE)
-		return true;
-	if (toCell->getLayer() != LAYER_GROUND && type == PathfindCell::CELL_CLEAR)
+	if (type == PathfindCell::CELL_BRIDGE_IMPASSABLE || (toCell->getLayer() != LAYER_GROUND && type == PathfindCell::CELL_CLEAR))
 		return true;
 
 	return (s_surfacesForCellType[type] & locomotor->m_template->m_surfaces) != 0;
