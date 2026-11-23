@@ -494,12 +494,13 @@ void GameWindowTransitionsHandler::setGroup(AsciiString groupName, bool immediat
 void GameWindowTransitionsHandler::reverse(AsciiString groupName)
 {
 	ScopedWin32Lock guard((LPCRITICAL_SECTION)m_criticalSectionStorage);
+	TransitionGroup *g;
 	m_coord1.x = 0;
 	m_coord1.y = 0;
 	m_coord2.x = TheDisplay->getWidth();
 	m_coord2.y = TheDisplay->getHeight();
 
-	TransitionGroup *g = findGroup(groupName);
+	g = findGroup(groupName);
 	if (g)
 	{
 		if (m_currentGroup == g)
