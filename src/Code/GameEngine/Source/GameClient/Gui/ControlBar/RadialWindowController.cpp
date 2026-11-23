@@ -6,6 +6,13 @@
 // Edges: left=unknown-rows right=rests-on:name; proof_first=false
 // Hypothesis rules: none; hard membership, hypothetical extent
 // FUNCTION: BFME2 0x0053EC42 size=21 name=?setIgnoreCollisionsWith@PhysicsBehavior@@QAEXPBVObject@@@Z evidence=N:ledger tier=A
+#include "GameLogic/Module/PhysicsBehavior.h"
+#include "GameLogic/Object.h"
+
+void PhysicsBehavior::setIgnoreCollisionsWith(const Object *obj)
+{
+	m_bfme58 = obj ? obj->getID() : INVALID_ID;
+}
 
 // FUNCTION: BFME2 0x0053EC7D size=47 name=?PositionButton@RadialWindowController@@UAEXHPBURva0053EC7DPair@@0@Z evidence=N:ledger tier=A
 
