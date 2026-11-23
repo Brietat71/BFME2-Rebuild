@@ -53,10 +53,6 @@ void GlobalWeatherSystem::parseWeatherData(INI *ini)
 // FUNCTION: BFME2 0x0031860D size=6 name=?name@Rva0031860DNamed@@QBEPBDXZ evidence=?:placeholder tier=B hypothesis:mm1-held-object-same-path
 
 // FUNCTION: BFME2 0x00318637 size=110 name=??1GlobalWeatherSystem@@UAE@XZ evidence=N:ledger tier=B hypothesis:mm1-held-object-same-path
-GlobalWeatherSystem::~GlobalWeatherSystem()
-{
-}
-
 // FUNCTION: BFME2 0x003186A5 size=73 name=?reset@GlobalWeatherSystem@@UAEXXZ evidence=X:proven (vtable+position) tier=B hypothesis:mm1-held-object-same-path
 void GlobalWeatherSystem::reset()
 {
