@@ -41,12 +41,13 @@ Object *ElvenWoodSpecialPower::addObject(const Coord3D *position, const AsciiStr
 	}
 
 	Matrix3D transform(true);
+	Real scale = tmpl->m_scale;
 	if (tmpl->isKindOf(KINDOF_TREE))
-		TheTerrainLogic->addTree(tmpl, position, &transform, tmpl->m_scale);
+		TheTerrainLogic->addTree(tmpl, position, &transform, scale);
 	else if (tmpl->isKindOf(KINDOF_SHRUB))
-		TheTerrainLogic->rva00280176(tmpl, position, &transform, tmpl->m_scale);
+		TheTerrainLogic->rva00280176(tmpl, position, &transform, scale);
 	else
-		TheTerrainLogic->rva0027D3D9(tmpl, position, &transform, tmpl->m_scale);
+		TheTerrainLogic->rva0027D3D9(tmpl, position, &transform, scale);
 	return 0;
 }
 // FUNCTION: BFME2 0x004C3A9F size=45 name=?Rva004C3A9FConstruct@@YAXPAXPBX@Z evidence=?:placeholder tier=B hypothesis:mm1-neighbour-callers
