@@ -4813,6 +4813,20 @@
    "kind": "wide",
    "number": 15,
    "tree": "b90c6300181797c6dd7941562ba3153fba572c22"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45252143552"
+   },
+   "author": 1760627,
+   "base": "ccf01afaaf1580a3ff9c355eb2af80bc97641f7b",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "1de2504eb0b82dee65ea10c9298b65dbc2408e74",
+   "kind": "trusted-wide",
+   "number": 144,
+   "tree": "a3c13ddde59ae26d476f7558682af1ce2268ec24"
   }
  ],
  "version": 2
