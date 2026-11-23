@@ -2019,6 +2019,20 @@
    "kind": "narrow",
    "number": 60,
    "tree": "97b605c3442d1ea028d390657ea085869c60f78a"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45128455861"
+   },
+   "author": 1760627,
+   "base": "38e2ce704e8a3df65ad545bb6f3dcdde41a47310",
+   "claimed_by": null,
+   "day": "2026-11-23",
+   "head": "51dcbbd2cc73f38744309dc212ac6272bfdafa19",
+   "kind": "trusted-narrow",
+   "number": 498,
+   "tree": "1875f3877ec36ae3cfacc14c80a1815ff35c20a7"
   }
  ],
  "version": 2
