@@ -438,5 +438,45 @@ void Matrix3D::Re_Orthogonalize(void)
 	Row[2][2] = z.Z;
 }
 
-// FUNCTION: BFME2 0x00713AB0 size=1049 name=?Lerp@Matrix3D@@SAXABV1@0MAAV1@@Z evidence=N:ledger tier=B hypothesis:Z
+// Uniformly scales the three axes, translation untouched.
+static inline void scaleRotation(Matrix3D &m, float scale)
+{
+	m.Row[0][0] *= scale;
+	m.Row[1][0] *= scale;
+	m.Row[2][0] *= scale;
+	m.Row[0][1] *= scale;
+	m.Row[1][1] *= scale;
+	m.Row[2][1] *= scale;
+	m.Row[0][2] *= scale;
+	m.Row[1][2] *= scale;
+	m.Row[2][2] *= scale;
+}
 
+// FUNCTION: BFME2 0x00713AB0 size=1049 name=?Lerp@Matrix3D@@SAXABV1@0MAAV1@@Z evidence=N:ledger tier=B hypothesis:Z
+void Matrix3D::Lerp(const Matrix3D &A, const Matrix3D &B, float factor, Matrix3D &result)
+{
+	Vector3 pos;
+	pos.X = A.Row[0][3] + (B.Row[0][3] - A.Row[0][3]) * factor;
+	pos.Y = A.Row[1][3] + (B.Row[1][3] - A.Row[1][3]) * factor;
+	pos.Z = A.Row[2][3] + (B.Row[2][3] - A.Row[2][3]) * factor;
+
+	// Build_Quaternion needs an unscaled rotation, so a scaled source is
+	// normalized first and its scale is put back on the result.
+	float scale = Vector3(A.Row[2][0], A.Row[2][1], A.Row[2][2]).Length();
+	Quaternion rot;
+	if (fabs(scale - 1.0f) > 0.000001f) {
+		Matrix3D a = A;
+		Matrix3D b = B;
+		float inverse = 1.0f / scale;
+		scaleRotation(a, inverse);
+		scaleRotation(b, inverse);
+		Slerp(rot, Build_Quaternion(a), Build_Quaternion(b), factor);
+		result.Set_Rotation(rot);
+		result.Set_Translation(pos);
+		scaleRotation(result, scale);
+	} else {
+		Slerp(rot, Build_Quaternion(A), Build_Quaternion(B), factor);
+		result.Set_Rotation(rot);
+		result.Set_Translation(pos);
+	}
+}
