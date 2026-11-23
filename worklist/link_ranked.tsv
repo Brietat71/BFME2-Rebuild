@@ -1,4 +1,4 @@
-# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=38e2ce704e left_out_written=42
+# measured_utc=2026-11-22 revision=4ae67eed04400d4cc8b4d80aa4521a89d1750bb2 body_checked_against=1ba2c4209b left_out_written=44
 referrers	state	rva	file	symbol	first_referrer	body_check
 63	owned:MISSING	0x00253390	src/unk/O0024EEBB.cpp	??0UpdateModule@@QAE@PAVThing@@PBVModuleData@@@Z	src/Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp	none-found
 17	owned:MISSING	0x0004233A	src/unk/G000421F2.cpp	?Inv_Sqrt@WWMath@@SIMM@Z	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowMapManager.cpp	none-found
@@ -928,7 +928,6 @@ referrers	state	rva	file	symbol	first_referrer	body_check
 1	owned:MATCH	0x0035E2DE	src/Code/GameEngine/Source/GameClient/Gui/GameWindowTransitionsStyles.cpp	?skip@ScoreScaleUpTransition@@UAEXXZ	src/Code/GameEngine/Source/GameClient/Gui/GameWindowTransitionsStyles.cpp	none-found
 1	owned:MISSING	0x0035F369	src/Code/GameEngine/Source/GameClient/Gui/GameWindowTransitionsStyles.cpp	?draw@FullFadeTransition@@UAEXXZ	src/Code/GameEngine/Source/GameClient/Gui/GameWindowTransitionsStyles.cpp	none-found
 1	owned:MATCH	0x0035F63B	src/Code/GameEngine/Source/GameClient/Gui/GameWindowTransitionsStyles.cpp	?skip@TextOnFrameTransition@@UAEXXZ	src/Code/GameEngine/Source/GameClient/Gui/GameWindowTransitionsStyles.cpp	none-found
-1	owned:MISSING	0x003605D5	src/unk/G0036059C.cpp	?rva003605D5@DamageFX@@QAEHHH@Z	src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	none-found
 1	owned:MISSING	0x00360CB0	src/Code/GameEngine/Source/GameLogic/System/ObjectFilter.cpp	?releaseObjectFilterRecord@@YAXPAH@Z	src/Code/GameEngine/Source/GameLogic/System/ObjectFilter.cpp	none-found
 1	owned:MISSING	0x0036173F	src/Code/GameEngine/Source/GameLogic/System/ObjectFilter.cpp	?bfmeGoEBL@@YAXXZ	src/Code/GameEngine/Source/Common/Thing/ThingFactory.cpp	none-found
 1	owned:MISSING	0x0036276F	src/Code/GameEngine/Source/GameClient/BuffManager.cpp	?rva0036276F@Rva0036276F@@QAEXXZ	src/Code/GameEngine/Source/GameClient/BuffManager.cpp	none-found
@@ -1658,7 +1657,6 @@ referrers	state	rva	file	symbol	first_referrer	body_check
 1	owned:MISSING	0x00548C1A	src/unk/O00548B70.cpp	?Rva00548C1ACleanup@@YAXXZ	src/Code/GameEngine/Source/GameClient/Gui/Shell/Shell.cpp	none-found
 1	owned:MISSING	0x00548C59	src/unk/O00548B70.cpp	?GSMessageBoxOk@@YAXVUnicodeString@@0P6AXXZ@Z	src/Code/GameEngine/Source/GameNetwork/GameSpy/PeerDefs.cpp	none-found
 1	owned:MISSING	0x005494A0	src/unk/O00548FAC.cpp	?createFormation@AIGroup@@QAEXHH@Z	src/Code/GameEngine/Source/GameLogic/AI/AIGroup.cpp	none-found
-1	owned:MISSING	0x0055059A	src/unk/G0055059A.cpp	?init@NetCommandWrapperList@@QAEXXZ	src/Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp	none-found
 1	owned:MISSING	0x00552CB8	src/Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PersistentStorageThread.cpp	?reset@PSPlayerStats@@QAEXXZ	src/Code/GameEngine/Source/GameNetwork/GameSpy/PeerDefs.cpp	none-found
 1	owned:MISSING	0x00559AC1	src/unk/G00559A11.cpp	?rva00559AC1@Rva00559AC1@@QAEHH@Z	src/Code/GameEngine/Source/GameNetwork/RankPointValue.cpp	none-found
 1	owned:MISSING	0x0055A04C	src/Code/GameEngine/Source/Common/RTS/MpGameRules.cpp	?GetRuleString@MpGameRules@@SA?AVUnicodeString@@H@Z	src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptMpGameSetup.cpp	none-found

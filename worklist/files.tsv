@@ -1,4 +1,4 @@
-# measured_utc=2026-11-23T06:59:59Z revision=38e2ce704e finished_files=527
+# measured_utc=2026-11-23T07:53:50Z revision=1ba2c4209b finished_files=528
 file	owned_functions	not_yet_matched	bytes_not_yet_matched	link_referrers_waiting	class_header	tried_not_matching
 src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp	53	1	2107	5	real	0
 src/stlport-4.6/STLport-4.6/src/ios.cpp	15	1	157	4	draft	0
@@ -736,7 +736,6 @@ src/Code/GameEngine/Source/GameLogic/Object/Update/FireWeaponUpdate.cpp	14	1	58	
 src/Code/GameEngine/Source/GameLogic/Object/SpecialPower/CashHackSpecialPower.cpp	8	1	61	1	real	1
 src/Code/GameEngine/Source/Common/INI/INIControlBarScheme.cpp	2	1	6	0	real	1
 src/Code/GameEngine/Source/Common/INI/INITerrainBridge.cpp	2	1	6	0	real	1
-src/Code/GameEngine/Source/GameClient/Gui/HeaderTemplate.cpp	11	1	6	0	real	1
 src/stlport-4.6/STLport-4.6/src/fstream.cpp	26	1	6	0	none	1
 src/Code/GameEngine/Source/Common/RTS/Energy.cpp	11	1	7	0	real	1
 src/Code/Libraries/Source/GameSpy/GameSpy/peer/peerMain.c	52	1	7	0	real	1
@@ -1530,6 +1529,7 @@ src/unk/G004ECD9F.cpp	2	2	8	0	address-named	0
 src/unk/O0049CB57.cpp	2	2	8	0	address-named	0
 src/unk/O004F5F92.cpp	3	2	8	0	address-named	0
 src/unk/G006005CB.cpp	2	2	10	0	address-named	0
+src/unk/G0055059A.cpp	3	2	11	0	address-named	0
 src/unk/G002009F5.cpp	2	2	12	0	address-named	0
 src/unk/G000D1A7A.cpp	2	2	14	0	address-named	0
 src/unk/G000EF26A.cpp	2	2	14	0	address-named	0
@@ -1645,6 +1645,7 @@ src/unk/O0048515D.cpp	4	2	54	0	address-named	0
 src/unk/O005E8892.cpp	2	2	54	0	address-named	0
 src/unk/O0053FA0A.cpp	2	2	55	0	address-named	0
 src/unk/G0074011F.cpp	2	2	56	0	address-named	0
+src/unk/G0036059C.cpp	3	2	57	0	address-named	0
 src/unk/G006A4590.cpp	2	2	57	0	address-named	0
 src/unk/O0065CE50.cpp	2	2	57	0	address-named	0
 src/unk/G00549C91.cpp	2	2	58	0	address-named	0
@@ -1861,11 +1862,9 @@ src/unk/G0048104D.cpp	3	3	353	2	address-named	0
 src/unk/O004B837F.cpp	3	3	363	2	address-named	0
 src/unk/O004AC93C.cpp	10	3	470	2	address-named	1
 src/unk/G004C1395.cpp	4	3	493	2	address-named	0
-src/unk/G0055059A.cpp	3	3	16	1	address-named	0
 src/unk/G0041FDDE.cpp	3	3	26	1	address-named	0
 src/unk/G004E3FF0.cpp	3	3	59	1	address-named	0
 src/unk/O002654C8.cpp	4	3	62	1	address-named	0
-src/unk/G0036059C.cpp	3	3	71	1	address-named	0
 src/unk/G005088C8.cpp	3	3	93	1	address-named	0
 src/unk/O0050B5CF.cpp	3	3	93	1	address-named	0
 src/unk/G00456489.cpp	3	3	152	1	address-named	0

@@ -1,4 +1,4 @@
-# measured_utc=2026-11-21T08:51:16Z revision=3c9a31dc201b3cf9bc7c4554c387e9f633d96c7e body_checked_against=38e2ce704e left_out_written=13
+# measured_utc=2026-11-21T08:51:16Z revision=3c9a31dc201b3cf9bc7c4554c387e9f633d96c7e body_checked_against=1ba2c4209b left_out_written=14
 rva	function	owner_file	size_bytes	zero_hour_file	zero_hour_line	zero_hour_function	reference_kind	link_referrers	ready_at_snapshot	body_check
 0x000EFB4C	RenderObjClass::Set_Native_Screen_Size	src/unk/O000EFB3E.cpp	14	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/rendobj.h	489	RenderObjClass::Set_Native_Screen_Size	decl	0	no	none-found
 0x003EFCA4	RenderObjClass::Get_Render_Hook	src/unk/O003EFCA4.cpp	7	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/rendobj.h	512	RenderObjClass::Get_Render_Hook	decl	0	no	none-found
@@ -1487,7 +1487,6 @@ rva	function	owner_file	size_bytes	zero_hour_file	zero_hour_line	zero_hour_funct
 0x001703D0	MaterialCollectorClass::Collect_Materials	src/Code/Libraries/Source/WWVegas/WW3D2/matinfo.cpp	1238	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/matinfo.cpp	280	MaterialCollectorClass::Collect_Materials	def	0	no	none-found
 0x00257CB8	ModuleFactory::init	src/Code/GameEngine/Source/Common/Thing/ModuleFactory.cpp	17032	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/Common/Thing/ModuleFactory.cpp	324	ModuleFactory::init	def	0	no	none-found
 0x00098DF2	MouseThreadClass::Thread_Function	src/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse.cpp	119	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse.cpp	75	MouseThreadClass::Thread_Function	def	0	no	none-found
-0x0055059A	NetCommandWrapperList::init	src/unk/G0055059A.cpp	5	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/GameNetwork/NetCommandWrapperList.cpp	136	NetCommandWrapperList::init	def	1	no	none-found
 0x00591EA6	NetPacket::readGameMessage	src/Code/GameEngine/Source/GameNetwork/NetPacket.cpp	438	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/GameNetwork/NetPacket.cpp	5202	NetPacket::readGameMessage	def	1	no	none-found
 0x004C3365	OCLSpecialPower::doSpecialPowerAtLocation	src/Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPower.cpp	1051	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPower.cpp	153	OCLSpecialPower::doSpecialPowerAtLocation	def	1	no	none-found
 0x004DF897	ObjectRepulsorHelper::update	src/unk/G004DF7DB.cpp	18	reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/GameLogic/Object/Helper/ObjectRepulsorHelper.cpp	45	ObjectRepulsorHelper::update	def	1	no	none-found

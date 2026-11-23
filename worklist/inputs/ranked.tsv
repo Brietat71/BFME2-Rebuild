@@ -1170,7 +1170,7 @@ referrers	state	rva	file	symbol	first_referrer
 1	owned:MISSING	0x0031ED2C	src/Code/GameEngine/Source/GameClient/Gui/ControlBar/ControlBarScheme.cpp	?init@ControlBarScheme@@QAEXXZ	src/Code/GameEngine/Source/GameClient/Gui/ControlBar/ControlBarScheme.cpp
 1	owned:MISSING	0x002DE641	src/Code/GameEngine/Source/Common/System/SaveGame/GameState.cpp	?init@GameState@@UAEXXZ	src/Code/GameEngine/Source/Common/System/SaveGame/GameState.cpp
 1	owned:MISSING	0x002E698B	src/Code/GameEngine/Source/GameClient/GameText.cpp	?init@GameTextManager@@UAEXXZ	src/Code/GameEngine/Source/GameClient/GameText.cpp
-1	owned:MISSING	0x0055059A	src/unk/G0055059A.cpp	?init@NetCommandWrapperList@@QAEXXZ	src/Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp
+1	owned:MATCH	0x0055059A	src/unk/G0055059A.cpp	?init@NetCommandWrapperList@@QAEXXZ	src/Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp
 1	owned:MISSING	0x002AF729	src/Code/GameEngine/Source/Common/RTS/Player.cpp	?init@Player@@QAEXPBVPlayerTemplate@@@Z	src/Code/GameEngine/Source/Common/RTS/PlayerList.cpp
 1	owned:MISSING	0x001FF223	src/Code/GameEngine/Source/Common/RTS/PlayerTemplate.cpp	?init@PlayerTemplateStore@@UAEXXZ	src/Code/GameEngine/Source/Common/RTS/PlayerTemplate.cpp
 1	owned:MATCH	0x0035BD00	src/Code/GameEngine/Source/GameClient/Gui/Shell/Shell.cpp	?init@Shell@@UAEXXZ	src/Code/GameEngine/Source/GameClient/Gui/Shell/Shell.cpp
@@ -1521,7 +1521,7 @@ referrers	state	rva	file	symbol	first_referrer
 1	owned:MISSING	0x00358076	src/Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngineSupport.cpp	?rva00358076@ScriptEngine@@QAE_NABVAsciiString@@_N@Z	src/Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions.cpp
 1	owned:MISSING	0x0035B570	src/Code/GameEngine/Source/GameClient/Gui/ControlBar/CommandButton.cpp	?rva0035B570@CommandButton@@QBEPBVThingTemplate@@XZ	src/Code/GameEngine/Source/Common/System/BuildAssistant.cpp
 1	owned:MISSING	0x0035C2B9	src/Code/GameEngine/Source/GameClient/Gui/Shell/Shell.cpp	?rva0035C2B9@Shell@@QAEXXZ	src/Code/GameEngine/Source/GameClient/Gui/GUICallbacks/Apt/AptMainMenu.cpp
-1	owned:MISSING	0x003605D5	src/unk/G0036059C.cpp	?rva003605D5@DamageFX@@QAEHHH@Z	src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp
+1	owned:MATCH	0x003605D5	src/unk/G0036059C.cpp	?rva003605D5@DamageFX@@QAEHHH@Z	src/Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp
 1	owned:MISSING	0x0036276F	src/Code/GameEngine/Source/GameClient/BuffManager.cpp	?rva0036276F@Rva0036276F@@QAEXXZ	src/Code/GameEngine/Source/GameClient/BuffManager.cpp
 1	owned:MISSING	0x0036E357	src/Code/GameEngine/Source/GameLogic/AI/AIGroup.cpp	?rva0036E357@AIGroup@@QAE_NXZ	src/Code/GameEngine/Source/GameLogic/AI/AIGroup.cpp
 1	owned:PARTIAL	0x00372BB9	src/Code/GameEngine/Source/GameLogic/AI/AIGroup.cpp	?rva00372BB9@AIGroup@@QAEXPBXH@Z	src/Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/AITactic.cpp
