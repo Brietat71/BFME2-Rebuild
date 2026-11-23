@@ -17,6 +17,10 @@
 #include "GameLogic/GameLogic.h"
 #include "GameLogic/Object.h"
 #include "GameClient/TerrainRoadType.h"
+#include "GameLogic/AI.h"
+#include "GameLogic/Damage.h"
+#include "GameLogic/Module/BodyModule.h"
+#include "GameLogic/Module/BridgeBehavior.h"
 
 // The singleton (retail VA 0x00DFEC50).
 TerrainLogic *TheTerrainLogic = NULL;
@@ -452,6 +456,56 @@ Waypoint *TerrainLogic::getClosestWaypointOnPath(const Coord3D *pos, const Ascii
 // FUNCTION: BFME2 0x00281BF7 size=28 name=?rva00281BF7@Rva00281BF7@@QAEHXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x00281C13 size=308 name=?updateDamageState@Bridge@@QAEXXZ evidence=N:ledger tier=A
+void Bridge::updateDamageState()
+{
+	m_bridgeInfo.damageStateChanged = false;
+	if (m_bridgeInfo.bridgeObjectID == 0)
+		return;
+
+	Object *bridge = TheGameLogic->findObjectByID(m_bridgeInfo.bridgeObjectID);
+	if (bridge)
+	{
+		BodyDamageType damageState = bridge->getBodyModule()->getDamageState();
+		Int curState = m_bridgeInfo.curDamageState;
+		if (damageState != curState)
+		{
+			m_bridgeInfo.curDamageState = damageState;
+			if (damageState == BODY_RUBBLE)
+			{
+				TheAI->pathfinder()->SetBridgeStateRepaired(m_layer, false);
+				m_bridgeInfo.damageStateChanged = true;
+				for (Object *obj = TheGameLogic->getFirstObject(); obj; obj = obj->getNextObject())
+				{
+					if (obj->rva0028B511() == m_layer)
+					{
+						// the bridge is already dead, so its health does not matter here
+						if (TheTerrainLogic->objectInteractsWithBridgeLayer(obj, obj->rva0028B511(), false))
+						{
+							DamageInfo extraDamageInfo;
+							extraDamageInfo.in.m_damageType = DAMAGE_FALLING;
+							extraDamageInfo.in.m_deathType = DEATH_SPLATTED;
+							extraDamageInfo.in.m_sourceID = obj->getID();
+							extraDamageInfo.in.m_amount = 999999.0f;
+							obj->attemptDamage(&extraDamageInfo);
+						}
+					}
+				}
+			}
+			if (curState == BODY_RUBBLE)
+			{
+				// scaffolding handles the repaired bridge itself while it is up
+				BridgeBehaviorInterface *bbi = BridgeBehavior::getBridgeBehaviorInterfaceFromObject(bridge);
+				if (bbi == NULL || bbi->isScaffoldPresent() == false)
+					TheAI->pathfinder()->SetBridgeStateRepaired(m_layer, true);
+				m_bridgeInfo.damageStateChanged = true;
+			}
+		}
+	}
+	else
+	{
+		m_bridgeInfo.bridgeObjectID = INVALID_ID;
+	}
+}
 
 // FUNCTION: BFME2 0x00281D4C size=59 name=?getWaypointByName@TerrainLogic@@UAEPAVWaypoint@@ABVAsciiString@@@Z evidence=N:ledger tier=A
 Waypoint *TerrainLogic::getWaypointByName(const AsciiString &name)
@@ -499,6 +553,39 @@ void TerrainLogic::updateBridgeDamageStates()
 // FUNCTION: BFME2 0x00281ECA size=181 name=?pickBridge@TerrainLogic@@UAE_NABVVector3@@0PAV2@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x00281F7F size=162 name=?deleteBridge@TerrainLogic@@UAEXPAVBridge@@@Z evidence=N:ledger tier=A
+void TerrainLogic::deleteBridge(Bridge *bridge)
+{
+	if (bridge == NULL)
+		return;
+
+	if (m_bridgeListHead == bridge)
+	{
+		m_bridgeListHead = bridge->getNext();
+	}
+	else
+	{
+		for (Bridge *otherBridge = getFirstBridge(); otherBridge; otherBridge = otherBridge->getNext())
+		{
+			// the bridge that points at the deleted one takes over its next pointer
+			if (otherBridge->getNext() == bridge)
+			{
+				otherBridge->setNext(bridge->getNext());
+				break;
+			}
+		}
+	}
+
+	BridgeInfo bridgeInfo;
+	bridgeInfo = *bridge->peekBridgeInfo();
+	TheAI->pathfinder()->SetBridgeStateRepaired(bridge->getLayer(), false);
+
+	GameLogic *logic = TheGameLogic;
+	Object *bridgeObj = logic->findObjectByID(bridgeInfo.bridgeObjectID);
+	if (bridgeObj)
+		logic->destroyObject(bridgeObj);
+
+	::delete bridge;
+}
 
 // FUNCTION: BFME2 0x002820A0 size=61 name=?loadPostProcess@TerrainLogic@@MAEXXZ evidence=N:ledger tier=A
 void TerrainLogic::loadPostProcess()
