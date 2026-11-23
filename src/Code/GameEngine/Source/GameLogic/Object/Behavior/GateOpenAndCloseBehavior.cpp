@@ -140,7 +140,7 @@ GateOpenAndCloseBehavior::GateOpenAndCloseBehavior(Thing *thing, const ModuleDat
 	m_30 = true;
 	m_state = data->m_openByDefault ? 1 : 3;
 	m_transitionProgress = 100.0f;
-	m_38 = 100.0f / (Real)data->m_resetTimeInMilliseconds;
+	m_38 = 100.0f / data->m_resetTimeInMilliseconds;
 	m_stateFrame = TheGameLogic->getFrame();
 	m_2C = 0;
 	m_linkedObjectId = INVALID_ID;
