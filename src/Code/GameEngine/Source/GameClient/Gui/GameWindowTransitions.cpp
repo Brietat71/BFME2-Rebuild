@@ -563,6 +563,43 @@ void GameWindowTransitionsHandler::finishTransitions()
 // FUNCTION: BFME2 0x001DC66F size=112 name=?parseWindowTransitions@INI@@SAXPAV1@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x001DC6E4 size=225 name=??1GameWindowTransitionsHandler@@UAE@XZ evidence=N:ledger tier=A
+GameWindowTransitionsHandler::~GameWindowTransitionsHandler()
+{
+	if (m_currentGroup)
+	{
+		m_currentGroup->retire();
+		m_currentGroup = NULL;
+	}
+	if (m_pendingGroup)
+	{
+		m_pendingGroup->retire();
+		m_pendingGroup = NULL;
+	}
+	if (m_drawGroup)
+	{
+		m_drawGroup->retire();
+		m_drawGroup = NULL;
+	}
+	if (m_secondaryDrawGroup)
+	{
+		m_secondaryDrawGroup->retire();
+		m_secondaryDrawGroup = NULL;
+	}
+
+	if (m_lockInitialized)
+	{
+		DeleteCriticalSection((LPCRITICAL_SECTION)m_criticalSectionStorage);
+		m_lockInitialized = false;
+	}
+
+	_STL::list<TransitionGroup *>::iterator it = m_transitionGroupList.begin();
+	while (it != m_transitionGroupList.end())
+	{
+		TransitionGroup *g = *it;
+		delete g;
+		it = m_transitionGroupList.erase(it);
+	}
+}
 
 // FUNCTION: BFME2 0x001DC7E1 size=780 name=?load@GameWindowTransitionsHandler@@QAEXXZ evidence=N:ledger tier=A
 
@@ -571,4 +608,18 @@ void GameWindowTransitionsHandler::finishTransitions()
 // FUNCTION: BFME2 0x001DCB2F size=53 name=?parseWindow@GameWindowTransitionsHandler@@SAXPAVINI@@PAX1PBX@Z evidence=N:ledger tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x001DCBC3 size=124 name=??0GameWindowTransitionsHandler@@QAE@XZ evidence=N:ledger tier=B hypothesis:Z
+GameWindowTransitionsHandler::GameWindowTransitionsHandler()
+{
+	m_currentGroup = NULL;
+	m_pendingGroup = NULL;
+	m_drawGroup = NULL;
+	m_secondaryDrawGroup = NULL;
+	m_unknown64 = 33;
+	m_groupsHeld = false;
+	m_waiting = false;
+	m_lockInitialized = false;
+	m_unknown51 = false;
+	m_lockCount = 0;
+	m_transitionGroupList.clear();
+}
 
