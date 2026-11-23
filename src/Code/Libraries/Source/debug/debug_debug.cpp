@@ -869,10 +869,11 @@ bool Debug::ExecCommand(const char *cmdstart, const char *cmdend)
 
 	// for simplicity a fixed size argv array; excess arguments are dropped
 	char *parts[100];
+	bool doneCommand;
 	int numParts = 0;
-	bool doneCommand = false;
 	char *lastNonWhitespace = NULL;
 	char *cur = strbuf;
+	doneCommand = false;
 
 	// regular reply or structured reply?
 	DebugIOInterface::StringType reply;
