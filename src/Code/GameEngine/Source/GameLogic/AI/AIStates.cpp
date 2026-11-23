@@ -2280,7 +2280,7 @@ StateReturnType AIAttackMeleeHordeWaitPathState::onEnter()
 	m_unk0x20 = frame;
 	Object *owner = getMachineOwner();
 	if (owner->testStatus((ObjectStatusTypes)0x44) || owner->m_ai->m_unk0x3CC)
-		m_unk0x20 = frame + BfmeLogicFramesPerSecond + 2;
+		m_unk0x20 = BfmeLogicFramesPerSecond + frame + 2;
 	return STATE_CONTINUE;
 }
 
