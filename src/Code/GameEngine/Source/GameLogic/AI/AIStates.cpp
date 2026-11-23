@@ -145,6 +145,10 @@ const char *AIAttackPositionFireWeaponState::GetSnapshotName() const
 
 
 // FUNCTION: BFME2 0x0033F504 size=19 name=?rva0033F504@Rva0033F504@@QAEHXZ evidence=?:placeholder tier=B hypothesis:cohesion
+Bool AIAttackSquadState::unknownQuery15() const
+{
+	return m_attackSquadMachine ? m_attackSquadMachine->bfmeQuery932C() : 0;
+}
 
 // FUNCTION: BFME2 0x0033F517 size=6 name=?name@Rva0033F517Named@@QBEPBDXZ evidence=?:placeholder tier=B hypothesis:cohesion
 const char *AIAttackSquadState::GetSnapshotName() const
