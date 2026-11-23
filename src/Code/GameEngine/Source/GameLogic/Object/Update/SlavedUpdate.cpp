@@ -203,17 +203,13 @@ void SlavedUpdate::doAttackLogic(const Object *target)
 
 	const Coord3D *targetPos = target->getPosition();
 	Real dist = me->rva002C97E8(me->getPosition(), targetPos);
+	attackPosition.set(targetPos);
 	if (dist > data->m_attackRange * data->m_attackRange)
 	{
-		attackPosition.set(targetPos);
 		attackPosition.sub(master->getPosition());
 		attackPosition.normalize();
 		attackPosition.scale(data->m_attackRange);
 		attackPosition.add(master->getPosition());
-	}
-	else
-	{
-		attackPosition.set(targetPos);
 	}
 
 	if (data->m_attackWanderRange)
