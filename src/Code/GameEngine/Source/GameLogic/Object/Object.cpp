@@ -1782,17 +1782,6 @@ void Object::enterGroup(AIGroup *group)
 // FUNCTION: BFME2 0x0028E775 size=131 name=?ShroudHideIfFogged@Object@@UBE_NH@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0028E7F8 size=82 name=?PartitionGetPlayerIndex@Object@@UBEHXZ evidence=N:ledger tier=A
-Int Object::PartitionGetPlayerIndex() const
-{
-	Player *player = getControllingPlayer();
-	if (player && !(m_privateStatus & UNDETECTED_DEFECTOR) && !isKindOf(KINDOF_MINE))
-	{
-		Team *team = m_team;
-		if (team && !team->rva0039F0D2() && !team->rva0039F824())
-			return player->getPlayerIndex();
-	}
-	return -1;
-}
 
 // FUNCTION: BFME2 0x0028E84A size=30 name=?rva0028E84A@Object@@UBEIXZ evidence=?:placeholder tier=A
 
