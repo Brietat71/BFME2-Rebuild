@@ -81,7 +81,7 @@ SlavedUpdate::SlavedUpdate(Thing *thing, const ModuleData *moduleData)
 // FUNCTION: BFME2 0x004A1950 size=45 name=?rva004A1950@Rva004A1950@@UAEXXZ evidence=?:placeholder tier=B hypothesis:cohesion
 void SlavedUpdate::onObjectCreated()
 {
-	const SlavedUpdateModuleData *data = static_cast<const SlavedUpdateModuleData *>(getModuleData());
+	const SlavedUpdateModuleData *data = getSlavedUpdateModuleData();
 	if (data->m_repairRatePerSecond > 0.0f)
 		getObject()->setModelConditionState((ModelConditionFlagType)MC_PACKING);
 }
@@ -107,7 +107,7 @@ void SlavedUpdate::startSlavedEffects(const Object *slaver)
 	if (!slaver)
 		return;
 	m_slaverID = slaver->getID();
-	const SlavedUpdateModuleData *data = static_cast<const SlavedUpdateModuleData *>(getModuleData());
+	const SlavedUpdateModuleData *data = getSlavedUpdateModuleData();
 	Real randomDirection = GetGameLogicRandomValueReal(0.0f, TWO_PI, const_cast<char *>(SLAVED_UPDATE_FILE), 862);
 	m_goalPos.zero();
 	m_goalPos.x += data->m_guardMaxRange * Cos(randomDirection);
@@ -122,7 +122,7 @@ void SlavedUpdate::startSlavedEffects(const Object *slaver)
 // FUNCTION: BFME2 0x004A1B17 size=61 name=?stopSlavedEffects@SlavedUpdate@@QAEXXZ evidence=N:ledger tier=A
 void SlavedUpdate::stopSlavedEffects()
 {
-	const SlavedUpdateModuleData *data = static_cast<const SlavedUpdateModuleData *>(getModuleData());
+	const SlavedUpdateModuleData *data = getSlavedUpdateModuleData();
 	if (data != NULL && data->m_dieOnMastersDeath)
 		return;
 	m_slaverID = INVALID_ID;
@@ -192,8 +192,89 @@ void SlavedUpdate::onSlaverDamage(const DamageInfo *info)
 }
 
 // FUNCTION: BFME2 0x004A1C77 size=452 name=?doAttackLogic@SlavedUpdate@@QAEXPBVObject@@@Z evidence=N:ledger tier=A
+// Closes on the master's target: the spot within the attack range of the master that is nearest the
+// target, offset by a random wander, and grants the master the spotting weapon bonus once close enough.
+void SlavedUpdate::doAttackLogic(const Object *target)
+{
+	const SlavedUpdateModuleData *data = getSlavedUpdateModuleData();
+	Object *me = getObject();
+	Object *master = TheGameLogic->findObjectByID(m_slaverID);
+	Coord3D attackPosition;
+
+	const Coord3D *targetPos = target->getPosition();
+	Real dist = me->rva002C97E8(me->getPosition(), targetPos);
+	if (dist > data->m_attackRange * data->m_attackRange)
+	{
+		attackPosition.set(targetPos);
+		attackPosition.sub(master->getPosition());
+		attackPosition.normalize();
+		attackPosition.scale(data->m_attackRange);
+		attackPosition.add(master->getPosition());
+	}
+	else
+	{
+		attackPosition.set(targetPos);
+	}
+
+	if (data->m_attackWanderRange)
+	{
+		Real randomDirection = GetGameLogicRandomValueReal(0.0f, TWO_PI, const_cast<char *>(SLAVED_UPDATE_FILE), 437);
+		m_goalPos.zero();
+		m_goalPos.x += data->m_attackWanderRange * Cos(randomDirection);
+		m_goalPos.y += data->m_attackWanderRange * Sin(randomDirection);
+
+		attackPosition.x += m_goalPos.x;
+		attackPosition.y += m_goalPos.y;
+		m_goalPos.z = TheTerrainLogic->getGroundHeight(attackPosition.x, attackPosition.y);
+	}
+
+	AIUpdateInterface *ai = me->getAIUpdateInterface();
+	if (ai)
+		ai->getAICommandInterface()->aiMoveToPosition(&attackPosition, CMD_FROM_AI);
+
+	if (dist < data->m_distToTargetToGrantRangeBonus * data->m_distToTargetToGrantRangeBonus)
+		master->setWeaponBonusCondition(6);
+}
 
 // FUNCTION: BFME2 0x004A1E3B size=417 name=?doScoutLogic@SlavedUpdate@@QAEXPBVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
+// Closes on the master's destination, like doAttackLogic without the weapon bonus.
+void SlavedUpdate::doScoutLogic(const Coord3D *mastersDestination)
+{
+	const SlavedUpdateModuleData *data = getSlavedUpdateModuleData();
+	Object *me = getObject();
+	Object *master = TheGameLogic->findObjectByID(m_slaverID);
+	Coord3D scoutPosition;
+
+	Real dist = me->rva002C97E8(me->getPosition(), mastersDestination);
+	if (dist > data->m_scoutRange * data->m_scoutRange)
+	{
+		scoutPosition.set(mastersDestination);
+		scoutPosition.sub(master->getPosition());
+		scoutPosition.normalize();
+		scoutPosition.scale(data->m_scoutRange);
+		scoutPosition.add(master->getPosition());
+	}
+	else
+	{
+		scoutPosition.set(mastersDestination);
+	}
+
+	if (data->m_scoutWanderRange)
+	{
+		Real randomDirection = GetGameLogicRandomValueReal(0.0f, TWO_PI, const_cast<char *>(SLAVED_UPDATE_FILE), 500);
+		m_goalPos.zero();
+		m_goalPos.x += data->m_scoutWanderRange * Cos(randomDirection);
+		m_goalPos.y += data->m_scoutWanderRange * Sin(randomDirection);
+
+		scoutPosition.x += m_goalPos.x;
+		scoutPosition.y += m_goalPos.y;
+		m_goalPos.z = TheTerrainLogic->getGroundHeight(scoutPosition.x, scoutPosition.y);
+	}
+
+	AIUpdateInterface *ai = me->getAIUpdateInterface();
+	if (ai)
+		ai->getAICommandInterface()->aiMoveToPosition(&scoutPosition, CMD_FROM_AI);
+}
 
 // FUNCTION: BFME2 0x004A1FDC size=360 name=?doGuardLogic@SlavedUpdate@@QAEXPAVCoord3D@@_N@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 
@@ -201,7 +282,7 @@ void SlavedUpdate::onSlaverDamage(const DamageInfo *info)
 // Picks a new spot within the repair range of the master (at a random altitude) and flies there.
 void SlavedUpdate::moveToNewRepairSpot()
 {
-	const SlavedUpdateModuleData *data = static_cast<const SlavedUpdateModuleData *>(getModuleData());
+	const SlavedUpdateModuleData *data = getSlavedUpdateModuleData();
 	Object *me = getObject();
 	Object *master = TheGameLogic->findObjectByID(m_slaverID);
 	if (data->m_repairRange)

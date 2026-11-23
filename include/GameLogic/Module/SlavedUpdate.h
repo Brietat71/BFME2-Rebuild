@@ -84,9 +84,13 @@ public:
 	virtual Bool vslot07() const { return m_unk0x44; }	// slot 7, folded into 0x0009D6ED
 	virtual Bool vslot08() const { return static_cast<const SlavedUpdateModuleData *>(getModuleData())->m_dieOnMastersDeath; }	// slot 8, 0x004A1949
 
+	const SlavedUpdateModuleData *getSlavedUpdateModuleData() const { return static_cast<const SlavedUpdateModuleData *>(getModuleData()); }
+
 	void startSlavedEffects(const Object *slaver);
 	void stopSlavedEffects();
 	void endRepair();
+	void doAttackLogic(const Object *target);
+	void doScoutLogic(const Coord3D *mastersDestination);
 	void setRepairModelConditionStates(ModelConditionFlagType flag);
 	void moveToNewRepairSpot();							// (Zero Hour's name): a new spot within the repair range of the master
 
