@@ -5218,7 +5218,10 @@
    },
    "author": 128750908,
    "base": "56a7419852e8913b7f4c7f5dd61ca0c5c9d7e0c1",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45295775645"
+   },
    "day": "2026-11-24",
    "head": "7473afa0d86a342d6fbc40a21125eb5ab88f768c",
    "kind": "narrow",
