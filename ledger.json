@@ -7811,6 +7811,20 @@
    "kind": "trusted-wide",
    "number": 492,
    "tree": "7bec08740007724eb90ff1b2e0f224951da92dfd"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45326704737"
+   },
+   "author": 1760627,
+   "base": "15d1bc0bb821e65b1cb0afa0ac7d869e01e35b6b",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "fcdb4d932732e98f16e0a75dabe78ff0a8164322",
+   "kind": "trusted-narrow",
+   "number": 547,
+   "tree": "84f4d185b74a20680ce1cb9be7c4a53431b7cb1a"
   }
  ],
  "version": 2
