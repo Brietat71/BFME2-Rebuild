@@ -8443,6 +8443,20 @@
    "kind": "trusted-wide",
    "number": 276,
    "tree": "9ad77bd366e94a5b0be70d73b965301c44cd4e23"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45328594332"
+   },
+   "author": 1760627,
+   "base": "bfa815b8153666572b4c3b1da7bbbbb94955cc52",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "99079edd52f38b7e8e762521bff2181071d51a87",
+   "kind": "trusted-wide",
+   "number": 155,
+   "tree": "daed01cd48553eae22b733ffb9b917fcd5ac053a"
   }
  ],
  "version": 2
