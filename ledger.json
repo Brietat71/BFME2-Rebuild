@@ -17,9 +17,9 @@
   },
   "2026-11-24": {
    "authors": {
-    "110029876": 2
+    "110029876": 3
    },
-   "total": 2,
+   "total": 3,
    "wide_authors": {
     "128750908": 1
    },
@@ -5141,6 +5141,20 @@
    "kind": "trusted-narrow",
    "number": 360,
    "tree": "60c5b928dfdf7c0245b3bc3e77d8b554ce927b6e"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45295695867"
+   },
+   "author": 110029876,
+   "base": "56a7419852e8913b7f4c7f5dd61ca0c5c9d7e0c1",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "cd0072223546f1628424a6b95c9657cc3b535f6b",
+   "kind": "narrow",
+   "number": 573,
+   "tree": "be833c76d3fae0cd6e15cda2c303cb2d49cd7e30"
   }
  ],
  "version": 2
