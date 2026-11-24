@@ -9176,7 +9176,10 @@
    },
    "author": 60122146,
    "base": "d8151b61ae38d79c99654e9bbb28d4d8a0c0dca4",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45349250221"
+   },
    "day": "2026-11-24",
    "head": "355caa99c3892f0c902308716bc739fd9d74a634",
    "kind": "wide",
