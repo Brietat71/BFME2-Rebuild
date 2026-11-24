@@ -8030,6 +8030,20 @@
    "kind": "trusted-narrow",
    "number": 497,
    "tree": "2386c1310b7c9130bd525b13c7269c6c7927a4f7"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45327338502"
+   },
+   "author": 1760627,
+   "base": "1674aa0cfa84bb3b4b24f784773df7d0c8361c50",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "a6557a60ae8728450fb991e1509e539709bb3c3e",
+   "kind": "trusted-narrow",
+   "number": 256,
+   "tree": "4afa3697f2236d0aa8c2135e32f32f511cb3a503"
   }
  ],
  "version": 2
