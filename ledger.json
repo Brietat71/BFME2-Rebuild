@@ -5661,7 +5661,10 @@
    },
    "author": 1760627,
    "base": "936111531b75c254cd0224fd31cad377b68e8139",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45302767881"
+   },
    "day": "2026-11-24",
    "head": "998ddeec5788fb9ba002e80f443327396ed69b08",
    "kind": "trusted-wide",
