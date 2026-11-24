@@ -5,8 +5,8 @@ Visual C++ 7.1 (`cl.exe 13.10.3077`).
 
 **Read exactly three files: this one, [RULES.md](RULES.md) and [docs/anti-patterns.md](docs/anti-patterns.md).**
 Do not read `docs/maintainers/`, `ci/` or `tools/` internals; they describe the machinery, not your task.
-[docs/hard_rows.md](docs/hard_rows.md) is a log: read the entry for your item if one exists, and append to it
-when you reach a dead end.
+[docs/hard_rows.md](docs/hard_rows.md) is the dead-end log: read the entry for your item if one exists.
+Maintainers add to it; you report a dead end on your pull request (step 15).
 
 Facts: `baseline/game.dat` is the ground truth (`VA = RVA + 0x400000`). `reference/` is Zero Hour source,
 evidence for names, types and shape only; where it and the bytes differ, the bytes win. You edit `src/` and
@@ -80,10 +80,11 @@ evidence for names, types and shape only; where it and the bytes differ, the byt
 14. **Landing.** When source rules and Boat pass (and Header rules for `include/` changes), the pull request
     joins the merge queue and lands by itself. Nothing else to do.
 15. **Close or hand off.** If it does not match after three Boat rounds, or only matches with an anti-pattern:
-    append a dead end to [docs/hard_rows.md](docs/hard_rows.md) (RVA, what you tried, the smallest open
-    question) in its own pull request, then close the source one:
+    close the pull request with a dead-end comment (RVA, what you tried, the smallest open question).
+    The source rules accept only `src/` and `include/`, so do not edit `docs/hard_rows.md` yourself;
+    a maintainer copies the comment there:
     ```sh
-    gh pr close <number> -R Open-BFME/BFME2-Rebuild -c "Dead end recorded in docs/hard_rows.md. Confidence: 3/10 — <reason>"
+    gh pr close <number> -R Open-BFME/BFME2-Rebuild -c "Dead end: <rva>. Tried: <...>. Open question: <...>. Confidence: 3/10 — <reason>"
     ```
     Hand-off report, last line: `PR <url>, head <sha>, checks <state>, Confidence: N/10`.
 

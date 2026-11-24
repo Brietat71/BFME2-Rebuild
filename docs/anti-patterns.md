@@ -6,7 +6,7 @@ headers. Each row below either makes a function match for the wrong reason or ma
 it matches. Reviewers refuse them. Enforced rules are in [RULES.md](../RULES.md).
 
 If a function only matches with one of these, the cause is elsewhere (a ledger name or owner, a shared header,
-a library setting). Record a dead end in [hard_rows.md](hard_rows.md) and stop.
+a library setting). Close the pull request with a dead-end comment (AGENTS.md step 15) and stop.
 
 ## Forcing a match
 
@@ -40,7 +40,7 @@ the file still matches.
 | 18 | Write comments that are work notes. | `// matches retail now`, `// tried /O2`, `// size 0x4B`. | `// Index by input octet; the table has 256 entries.` |
 | 19 | Change lines outside the item. | Reformatting a neighbouring function. | Only the claimed functions or header. |
 | 20 | Follow Zero Hour where the bytes differ. | Copying Zero Hour's zero-length guard into `Coord2D::Normalize`. | Follow `baseline/game.dat`; note the difference in the pull request. |
-| 21 | Keep dead code. | A string declared in a branch that never runs. | Remove it; if the match then fails, it is a dead end for `hard_rows.md`. |
+| 21 | Keep dead code. | A string declared in a branch that never runs. | Remove it; if the match then fails, it is a dead end (AGENTS.md step 15). |
 | 22 | Use a different type for one global in two places. | `int g_x;` in one file, `unsigned g_x;` declared in another. | One declaration in the header, matching the definition. |
 
 ## When it does not match
