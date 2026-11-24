@@ -7881,6 +7881,20 @@
    "kind": "trusted-narrow",
    "number": 546,
    "tree": "5cc9705beaf021183bb3f83870975781413e59f6"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45326716863"
+   },
+   "author": 1760627,
+   "base": "15d1bc0bb821e65b1cb0afa0ac7d869e01e35b6b",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "7df4417fabc779da7db4a7397f3d181ba7977c0b",
+   "kind": "trusted-narrow",
+   "number": 558,
+   "tree": "1c5df7b47e08010231c736dcefdea0dd71e54758"
   }
  ],
  "version": 2
