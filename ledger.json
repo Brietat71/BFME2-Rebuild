@@ -7528,6 +7528,20 @@
    "kind": "trusted-narrow",
    "number": 513,
    "tree": "dadc51f05a836294b76e927cd228a89056f5ac93"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45318872983"
+   },
+   "author": 1760627,
+   "base": "b89d32945a55a54127cbcc1a6e178fa2b51ea2d0",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "b9180ecbc9a68e795a6ab76b457ad1aa6536380f",
+   "kind": "trusted-narrow",
+   "number": 508,
+   "tree": "cb263c9b573327b963307492020d0cb1d3ffa6d3"
   }
  ],
  "version": 2
