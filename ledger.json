@@ -18,10 +18,10 @@
   "2026-11-24": {
    "authors": {
     "110029876": 6,
-    "128750908": 11,
+    "128750908": 12,
     "39365564": 2
    },
-   "total": 19,
+   "total": 20,
    "wide_authors": {
     "128750908": 9,
     "60122146": 1
@@ -9345,6 +9345,20 @@
    "kind": "trusted-wide",
    "number": 561,
    "tree": "2f599321f109df0265f2cd4e204278e5d1f87ac1"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45350340664"
+   },
+   "author": 128750908,
+   "base": "d8151b61ae38d79c99654e9bbb28d4d8a0c0dca4",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "59f0fb6917f7db948ce1b91d078738ee135719e7",
+   "kind": "narrow",
+   "number": 649,
+   "tree": "dad28a061f6bac05dc07e36617460612ce7bc831"
   }
  ],
  "version": 2
