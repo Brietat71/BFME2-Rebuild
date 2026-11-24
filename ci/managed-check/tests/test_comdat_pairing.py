@@ -10,6 +10,7 @@ import sys
 import tempfile
 import types
 import unittest
+from unittest.mock import Mock, patch
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -342,6 +343,73 @@ class ComdatPairingTests(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls._tmp.cleanup()
+
+    def test_state_records_emitted_provider_only_on_match(self):
+        from state_evidence import native_record, validate_native
+        outcome = {"object_verified": True, "gates": [], "rows": [],
+                   "expected": [{"rva": "0x1000", "status": "MATCH"}],
+                   "select_any_providers": [{"rva": 0x1000}]}
+        saved = native_record(outcome)
+        self.assertEqual(saved["rows"], [])
+        self.assertEqual(saved["select_any_matches"], [0x1000])
+        validate_native(saved, {"status": "compiled"})
+        outcome["expected"][0]["status"] = "PARTIAL"
+        self.assertNotIn("select_any_matches", native_record(outcome))
+
+    def test_exact_state_provider_in_single_unit_pr(self):
+        from provider_state import for_plan
+        from state_evidence import header, native_record
+        owner, loser = "src/a.cpp", "src/b.cpp"
+        rows = [make_row(0x1000, 1, "owned", "_shared", "first"),
+                make_row(0x1010, 1, "owned", "_other", "second")]
+        pe = make_pe_layout(0x1000, [(0x1000, b"\xc3"), (0x1010, b"\xc3")])
+        objects = [dict(tu=owner, object_id="first", link_index="1"),
+                   dict(tu=loser, object_id="second", link_index="2")]
+        base, tree = "a" * 40, "b" * 40
+        git = Mock()
+        git.value.return_value = tree
+        for variant, judge in self.judges.items():
+            def measure(tu, specs):
+                i = int(tu == loser)
+                return run_judge_case(judge, self.tmp, tu=tu, object_id=objects[i]["object_id"],
+                                      rows=rows, pe_bytes=pe, obj_bytes=build_coff_obj(specs),
+                                      objects=objects, source_text=f"// FUNCTION: BFME2 {rows[i]['rva']}\n")[0]
+            keeper = measure(owner, [dict(symbol="_shared", data=b"\xc3", selection=2)])
+            extra = measure(loser, [dict(symbol="_other", data=b"\xc3", selection=1),
+                                    dict(symbol="_shared", data=b"\x90\xc3", selection=2)])
+            native = native_record(keeper)
+            identity = header(base, tree)
+            artifact = self.tmp / "base-state.json"
+            entry = {"native": native, "compiler": {"tu": owner, "status": "compiled",
+                                                     "dependencies": [["include/a.h", "digest"]]}}
+            def verdict(affected=(loser,), changed=(loser,), batch=None, **binding):
+                artifact.write_text(json.dumps(identity | binding | {"evidence": {owner: entry}}))
+                with patch.dict(os.environ, BFME_PROVIDER_STATE=str(artifact)):
+                    plan = for_plan(git, base, affected, changed)
+                    git.value.assert_called_with("rev-parse", base + "^{tree}")
+                result = copy.deepcopy(extra)
+                measured = {loser: result, **(batch or {})}
+                with patch.object(compare, "_measure_pair", return_value=({}, measured)):
+                    compare.measure_pair(None, judge, plan, None, None, None)
+                self.assertEqual(result["rows"], extra["rows"])
+                return result
+
+            with self.subTest(variant=variant):
+                accepted = verdict()
+                self.assertTrue(accepted["object_verified"])
+                self.assertIs(accepted["accepted_extras"][-1]["credited"], False)
+                self.assertFalse(verdict(sha="0" * 40)["object_verified"])
+                self.assertFalse(verdict(affected=(owner, loser))["object_verified"])
+                self.assertFalse(verdict(batch={owner: {"object_verified": False}})["object_verified"])
+                self.assertFalse(verdict(changed=("include/a.h",))["object_verified"])
+                native["object_verified"] = False
+                self.assertFalse(verdict()["object_verified"])
+                native["object_verified"] = True
+                native["rows"][0]["status"] = "PARTIAL"
+                self.assertFalse(verdict()["object_verified"])
+                native["rows"][0]["status"] = "MATCH"
+                del native["select_any_matches"]
+                self.assertFalse(verdict()["object_verified"])
 
     def test_verified_select_any_provider(self):
         owner, loser = "first", "second"

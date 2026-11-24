@@ -27,6 +27,7 @@ from gateway import projection as public_projection
 from progress_delta import drafts_in_use, progress
 from reporting import GATES, SYMBOL, from_landing
 from emitted_data import record_pairs
+from provider_state import witnesses
 
 
 def native_commands(git, judge, revision, paths, tools):
@@ -621,17 +622,22 @@ def measure_batch(git, judge, side, plan, tools, job, *, timing=None):
             )
         else:
             results = canary_measure.measure(git, judge, side, plan, tools, job, timing=timing)
-        judge.resolve_batch_extras(results)
+        resolve_extras(judge, plan, results)
         return results
 
 
 def measure_pair(git, judge, plan, tools, base_job, head_job, **options):
     old, new = _measure_pair(git, judge, plan, tools, base_job, head_job, **options)
-    # Each side now includes its compiled misses and authenticated cache hits.
     for results in (old, new):
-        if any(res.get('select_any_providers') for res in results.values()):
-            judge.resolve_batch_extras(results)
+        resolve_extras(judge, plan, results)
     return old, new
+
+
+def resolve_extras(judge, plan, results):
+    if any(extra.get("select_any_candidate") for result in results.values()
+           for extra in result.get("rejected_extras", ())):
+        providers = witnesses(plan["select_any"], judge) if plan.get("select_any") else ()
+        judge.resolve_batch_extras(results, providers)
 
 
 def _measure_pair(git, judge, plan, tools, base_job, head_job, *,

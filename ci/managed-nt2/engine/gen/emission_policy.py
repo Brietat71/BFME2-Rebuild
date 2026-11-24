@@ -173,7 +173,7 @@ def extra_blocker(records):
         r['symbol'] + ' (' + r['why'] + ')' for r in records)
 
 
-def resolve_batch_extras(results):
+def resolve_batch_extras(results, state_providers=()):
     """Join independent verdicts from one revision after cache lookup, without changing row credit."""
     providers = {}
     for result in results.values():
@@ -181,6 +181,11 @@ def resolve_batch_extras(results):
             for key in result.get('select_any_providers', ()):
                 identity = (key['owner'], key['rva'], key['symbol'])
                 providers.setdefault(identity, []).append((result['tu'], key))
+
+    for tu, key in state_providers:
+        if tu not in results:
+            identity = (key['owner'], key['rva'], key['symbol'])
+            providers.setdefault(identity, []).append((tu, key))
 
     for result in results.values():
         rejected = result.get('rejected_extras', [])
