@@ -6113,6 +6113,20 @@
    "kind": "trusted-wide",
    "number": 391,
    "tree": "1cc690dd0f36ec4eae0d9086b6fad196f0a349eb"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45303953337"
+   },
+   "author": 1760627,
+   "base": "cf72a407a4b81c60b7c1e5eea9da0241203dcb3b",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "1cf1004ab6cb4b6fbd5caa76aecd3d8fbd1dfc2f",
+   "kind": "trusted-wide",
+   "number": 540,
+   "tree": "ca36e8af19766a47b17f4023fe6f0f405b365b1b"
   }
  ],
  "version": 2
