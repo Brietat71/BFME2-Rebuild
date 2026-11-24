@@ -6228,6 +6228,20 @@
    "kind": "trusted-wide",
    "number": 346,
    "tree": "982db45ff9ddd1360083aee48a3098a29978ab57"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45304021261"
+   },
+   "author": 1760627,
+   "base": "cf72a407a4b81c60b7c1e5eea9da0241203dcb3b",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "94504ab032149f0e0f0da2671be8a2899dd9cec7",
+   "kind": "trusted-wide",
+   "number": 422,
+   "tree": "e2b7c59690867a614f9d5e104629ce69ece1a103"
   }
  ],
  "version": 2
