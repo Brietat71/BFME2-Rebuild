@@ -8763,6 +8763,20 @@
    "kind": "trusted-wide",
    "number": 346,
    "tree": "4198da44d5702e202fc299d012a9cdfeece48afb"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45336988853"
+   },
+   "author": 1760627,
+   "base": "15200c121cfc2f290f5d65ad248a67d6c8bf661a",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "7cc1281566b75d7897fc768dd127cf6b63f1bf7c",
+   "kind": "trusted-narrow",
+   "number": 451,
+   "tree": "bf61e167a4e5b411d1da215afd6a4bcab1b8b156"
   }
  ],
  "version": 2
