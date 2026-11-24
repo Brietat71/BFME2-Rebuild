@@ -14,6 +14,14 @@
     "44365026": 2
    },
    "wide_total": 5
+  },
+  "2026-11-24": {
+   "authors": {},
+   "total": 0,
+   "wide_authors": {
+    "128750908": 1
+   },
+   "wide_total": 1
   }
  },
  "reservations": [
@@ -5047,6 +5055,20 @@
    "kind": "trusted-narrow",
    "number": 429,
    "tree": "b373357417d10b4826a1c7afd9d4e675a3363d9d"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45295200290"
+   },
+   "author": 128750908,
+   "base": "8047c36ae5268c8d778a99e4be2dd8e805cf7e95",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "d0c6509484b38b60bd796717b1600379fcbe9b43",
+   "kind": "wide",
+   "number": 609,
+   "tree": "5ec18668b8da491b5aac055bbd6c4640ce827866"
   }
  ],
  "version": 2
