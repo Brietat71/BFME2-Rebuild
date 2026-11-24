@@ -6015,6 +6015,20 @@
    "kind": "trusted-narrow",
    "number": 386,
    "tree": "02a627718087a3c5fa6011992c53ac584e28ebca"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45303916960"
+   },
+   "author": 1760627,
+   "base": "cf72a407a4b81c60b7c1e5eea9da0241203dcb3b",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "88988bd19dd9bcbf452a44b080d449146195d3bd",
+   "kind": "trusted-wide",
+   "number": 368,
+   "tree": "9455479113864447a5b1c718383a3f4c177795f0"
   }
  ],
  "version": 2
