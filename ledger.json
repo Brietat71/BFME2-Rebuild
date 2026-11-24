@@ -5310,6 +5310,20 @@
    "kind": "trusted-narrow",
    "number": 375,
    "tree": "b808794f5605571e80fcf52b339a5a0cf7e92f2b"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45295773689"
+   },
+   "author": 1760627,
+   "base": "56a7419852e8913b7f4c7f5dd61ca0c5c9d7e0c1",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "c4fe46a215780f2eef5bdda93ab28a8004db2456",
+   "kind": "trusted-wide",
+   "number": 249,
+   "tree": "21f5c36b28a5fe49a3ac0e81c96195c7ffe6e2a0"
   }
  ],
  "version": 2
