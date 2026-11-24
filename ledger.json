@@ -8240,6 +8240,20 @@
    "kind": "trusted-wide",
    "number": 410,
    "tree": "4139fc9328a95b398290dd569583b6ab1a8708dc"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45327653501"
+   },
+   "author": 1760627,
+   "base": "d94f74b78f68d6d77a19da6930e39869d7f4811a",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "e5d9fecb2480484cc1ff61e6207c0b0db4048419",
+   "kind": "trusted-wide",
+   "number": 90,
+   "tree": "8ec52f7c94bfdcde1f301a6212dc6f837d327249"
   }
  ],
  "version": 2
