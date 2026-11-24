@@ -9014,6 +9014,20 @@
    "kind": "trusted-narrow",
    "number": 520,
    "tree": "a2bfb6ee14697421df6ced6239a03701010a3534"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45338345801"
+   },
+   "author": 1760627,
+   "base": "0f9053574f6c3649820574bd71a44ed0f8bd7244",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "531cba88b56c9f18adc8184ef27c1b128b60be4a",
+   "kind": "trusted-wide",
+   "number": 154,
+   "tree": "7abbbc6342bcd2ad725ffeb6d512c8b5e7c1e561"
   }
  ],
  "version": 2
