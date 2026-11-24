@@ -6450,6 +6450,20 @@
    "kind": "trusted-narrow",
    "number": 458,
    "tree": "74c386cdcf981ee4a44d06a45e8a1ccdde589196"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45309881858"
+   },
+   "author": 1760627,
+   "base": "6ff0257a9067cdcca84395b8d9038b2b28bbfe19",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "2636b209abb67618bd969b68bc41b7063aca2257",
+   "kind": "trusted-wide",
+   "number": 421,
+   "tree": "37b3d641711dbffdf68db8d522bb68b36ef5facb"
   }
  ],
  "version": 2
