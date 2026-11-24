@@ -7923,6 +7923,20 @@
    "kind": "trusted-narrow",
    "number": 336,
    "tree": "ce71d845fde427b3c5b3db2f437c7b90a45f8da6"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45326722029"
+   },
+   "author": 128750908,
+   "base": "15d1bc0bb821e65b1cb0afa0ac7d869e01e35b6b",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "d0c6509484b38b60bd796717b1600379fcbe9b43",
+   "kind": "wide",
+   "number": 609,
+   "tree": "e30f2e081c5062f4d1bdb1ea81e252345fe8af83"
   }
  ],
  "version": 2
