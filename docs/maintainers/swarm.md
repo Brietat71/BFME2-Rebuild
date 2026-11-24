@@ -73,7 +73,7 @@ Workflow:
    - If `Landing` says `Held: merge-forbidden` (HTTP 403) on a green PR, merge
      upstream `main` into your branch and push once.
    - If `Boat` refuses the patch, inspect the diff report, refine the C++, re-run
-     `gate.py`, and push — at most 3 Boat rounds total.
+     `gate.py`, re-run `precheck.py` locally as often as needed (no limit), and push — at most 3 hosted Boat rounds.
    - Eligible green PRs auto-merge without human approval. If still blocked after
      3 rounds, record the concrete blocker in an issue or `docs/hard_rows.md`,
      close the PR, and report the outcome.
@@ -180,5 +180,6 @@ Rules for H1-H10 auto-landing:
    - Never add forced inlining (`__forceinline` / `WWINLINE`) unless it corresponds
      to an existing Zero Hour inline declaration (H8).
 5. Run `python3 tools/gates/gate.py . <upstream-main-ref> HEAD --json /tmp/gate-<slug>.json`
-   until it passes, mark the PR Ready with full evidence, and iterate at most 3 rounds.
+   and `python3 tools/local_check/precheck.py --base upstream/main` until both pass (local retries are
+   unlimited), mark the PR Ready with full evidence, and use at most 3 hosted Boat rounds.
 ```

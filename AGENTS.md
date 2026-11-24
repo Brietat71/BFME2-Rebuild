@@ -52,8 +52,8 @@ evidence for names, types and shape only; where it and the bytes differ, the byt
    ```sh
    python3 tools/gates/gate.py . upstream/main HEAD --json /tmp/gate.json
    ```
-9. **Run the local match check.** Local runs are unlimited: iterate steps 6–9 until every function prints
-   `PASS` and the exit status is `0`. Only then push.
+9. **Run the local match check.** There is no limit on local runs, turns or retries. Repeat steps 6–9 as
+   many times as you need, until every function prints `PASS` and the exit status is `0`. Only then push.
    ```sh
    git branch -f main upstream/main && python3 tools/local_check/precheck.py --base upstream/main
    ```
