@@ -10,6 +10,7 @@ import tempfile
 from common import HEX40, PIN, REPO, REPO_ID, digest, policy, read, write
 from gitrepo import Git, GitFailure, Refusal, safe_path
 from intake import affected, blob, tu
+import mq_cache
 from pool_compare import projection
 from pool_protocol import compiler_source_problem, encode
 
@@ -29,13 +30,16 @@ def _allowed_path(path):
     return path.startswith("src/") or path.startswith("include/")
 
 
-def _write_outputs(env, shards, has_shards):
+def _write_outputs(env, shards, has_shards, deferred=()):
     out_path = env.get("GITHUB_OUTPUT")
     if not out_path:
         return
+    deferred = list(deferred)
     with Path(out_path).open("a", encoding="utf-8", newline="\n") as stream:
         stream.write(f"shards={json.dumps(shards, separators=(',', ':'))}\n")
         stream.write(f"has_shards={'yes' if has_shards else 'no'}\n")
+        stream.write(f"deferred_shards={json.dumps(deferred, separators=(',', ':'))}\n")
+        stream.write(f"has_deferred={'yes' if deferred else 'no'}\n")
 
 
 def _refuse(out_dir, env, base, head, tree, reason, *, total_tus=0):
@@ -77,6 +81,42 @@ def parse_event(env):
             raise ValueError("Expected 40-hex BFME_MQ_MAIN_SHA.")
         base_sha = main_sha
     return base_sha, head_sha, head_ref
+
+
+def event_base(env):
+    """The queue's own base: main for the first entry, the previous entry's head after it."""
+    group = read(env["GITHUB_EVENT_PATH"], 2 * 1024**2).get("merge_group") or {}
+    base = group.get("base_sha", "")
+    return base if isinstance(base, str) and HEX40.fullmatch(base) else ""
+
+
+def _ancestor(git, older, newer):
+    return git.run("merge-base", "--is-ancestor", older, newer, check=False).returncode == 0
+
+
+def _deferrable(git, base_sha, head_sha, predecessor, old_files, environment, base_side, tu_digests,
+                include_cache):
+    """Units the predecessor entry compared with exactly these inputs, so its receipts can cover them."""
+    if (not predecessor or predecessor in {base_sha, head_sha}
+            or not _ancestor(git, base_sha, predecessor) or not _ancestor(git, predecessor, head_sha)):
+        return set()
+    paths = sorted(change.path for change in git.changes(base_sha, predecessor, validate=False))
+    if not paths or len(paths) > MAX_CHANGED or not all(_allowed_path(path) for path in paths):
+        return set()
+    pred_files, pred_hashes = projection(git, predecessor)
+    covered = (affected(old_files, paths, include_cache=include_cache)
+               | affected(pred_files, paths, include_cache=include_cache))
+    if len(covered) > MAX_AFFECTED_TUS:
+        return set()
+    pred_side = mq_cache.SourceSide(pred_files, pred_hashes, include_cache=include_cache)
+    result = set()
+    for path in covered & set(tu_digests):
+        try:
+            if mq_cache.tu_digest(environment, path, base_side, pred_side) == tu_digests[path]:
+                result.add(path)
+        except ValueError:
+            continue
+    return result
 
 
 def _prepare_git(work_dir, repo_dir, base_sha, head_sha, head_ref, remote):
@@ -177,8 +217,8 @@ def plan_merge_group(out_dir, *, env=None, repo_dir=None, remote=None):
                            "Reconstructed source tree does not match merge group tree")
 
         changed_paths = sorted(row["path"] for row in changes_payload)
-        old_files, _ = projection(git, base_sha)
-        new_files, _ = projection(git, head_sha)
+        old_files, old_hashes = projection(git, base_sha)
+        new_files, new_hashes = projection(git, head_sha)
         include_cache = {}
         affected_tus = sorted(
             affected(old_files, changed_paths, include_cache=include_cache)
@@ -216,9 +256,34 @@ def plan_merge_group(out_dir, *, env=None, repo_dir=None, remote=None):
                 if git.run("cat-file", "-e", f"{rev}:{name}", check=False).returncode != 0:
                     return _refuse(out_dir, env, base_sha, head_sha, head_tree, label, total_tus=len(affected_tus))
 
+        environment, tu_digests, cached, deferred = "", {}, {}, set()
+        try:
+            base_side = mq_cache.SourceSide(old_files, old_hashes, include_cache=include_cache)
+            head_side = mq_cache.SourceSide(new_files, new_hashes, include_cache=include_cache)
+            environment = mq_cache.environment_digest(git, base_sha)
+            tu_digests = {path: mq_cache.tu_digest(environment, path, base_side, head_side)
+                          for path in affected_tus}
+            if env.get("BFME_MQ_RECEIPTS", "") != "no":
+                store = env.get("BFME_MQ_STORE", "")
+                if store:
+                    cached = mq_cache.accept(mq_cache.load_receipts(Path(store) / mq_cache.RECEIPTS_FILE),
+                                             tu_digests)
+                deferred = _deferrable(git, base_sha, head_sha, event_base(env), old_files, environment,
+                                       base_side, tu_digests, include_cache) - set(cached)
+        except Exception as exc:  # noqa: BLE001 - receipts are optional; compile every unit on Boat
+            print(f"Receipt digests unavailable ({type(exc).__name__}); compiling every unit.", file=sys.stderr)
+            environment, tu_digests, cached, deferred = "", {}, {}, set()
+
         cur_policy = policy()
-        chunks = [affected_tus[i:i + SHARD_SIZE] for i in range(0, len(affected_tus), SHARD_SIZE)]
-        shard_ids = list(range(len(chunks)))
+        immediate = [path for path in affected_tus if path not in deferred and path not in cached]
+        later = [path for path in affected_tus if path in deferred]
+        if cached:
+            mq_cache.write_receipts(out_dir / "cached" / mq_cache.RECEIPTS_FILE, cached.values())
+        chunks = ([immediate[i:i + SHARD_SIZE] for i in range(0, len(immediate), SHARD_SIZE)]
+                  + [later[i:i + SHARD_SIZE] for i in range(0, len(later), SHARD_SIZE)])
+        immediate_count = (len(immediate) + SHARD_SIZE - 1) // SHARD_SIZE
+        shard_ids = list(range(immediate_count))
+        deferred_ids = list(range(immediate_count, len(chunks)))
         shard_plans = {}
         for idx, shard_tus in enumerate(chunks):
             shard_dir = out_dir / f"shard-{idx}"
@@ -261,9 +326,15 @@ def plan_merge_group(out_dir, *, env=None, repo_dir=None, remote=None):
             "total_tus": len(affected_tus),
             "changed_count": len(changed_paths),
             "shard_plans": shard_plans,
+            "shard_tus": {str(idx): shard_tus for idx, shard_tus in enumerate(chunks)},
+            "environment": environment,
+            "tu_digests": tu_digests,
+            "cached": sorted(cached),
         }
+        if deferred_ids:
+            manifest["deferred"] = {"predecessor": event_base(env), "shards": deferred_ids}
         write(out_dir / "manifest.json", manifest)
-        _write_outputs(env, shard_ids, True)
+        _write_outputs(env, shard_ids, bool(shard_ids), deferred_ids)
         return manifest
 
 

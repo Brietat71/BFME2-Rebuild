@@ -21,6 +21,8 @@ jobs:
     outputs:
       shards: '${{ steps.plan.outputs.shards }}'
       has_shards: '${{ steps.plan.outputs.has_shards }}'
+      deferred_shards: '${{ steps.plan.outputs.deferred_shards }}'
+      has_deferred: '${{ steps.plan.outputs.has_deferred }}'
       main_sha: '${{ steps.main.outputs.sha }}'
     steps:
       - name: Resolve current protected main
@@ -55,11 +57,20 @@ jobs:
           set -Eeuo pipefail
           (cd ci/managed-check && sha256sum -c --quiet bundle.sha256)
           (cd ci/managed-nt2 && sha256sum -c --quiet bundle.sha256)
+      - name: Restore main-scoped translation unit receipts
+        continue-on-error: true
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: '${{ runner.temp }}/bfme-tu-verdicts'
+          key: bfme-tu-verdict-v1-${{ steps.main.outputs.sha }}
+          restore-keys: |
+            bfme-tu-verdict-v1-
       - name: Build sharded Boat comparison plans
         id: plan
         shell: bash
         env:
           BFME_MQ_MAIN_SHA: '${{ steps.main.outputs.sha }}'
+          BFME_MQ_RECEIPTS: '${{ vars.BFME_MQ_RECEIPTS }}'
         run: |
           set -Eeuo pipefail
           env -i PATH=/usr/bin:/bin HOME="$HOME" LANG=C LC_ALL=C TMPDIR="$RUNNER_TEMP" \
@@ -67,6 +78,7 @@ jobs:
             GITHUB_OUTPUT="$GITHUB_OUTPUT" GITHUB_REPOSITORY="$GITHUB_REPOSITORY" \
             GITHUB_REPOSITORY_ID="$GITHUB_REPOSITORY_ID" GITHUB_REF="$GITHUB_REF" \
             GITHUB_SHA="$GITHUB_SHA" BFME_MQ_MAIN_SHA="$BFME_MQ_MAIN_SHA" \
+            BFME_MQ_RECEIPTS="$BFME_MQ_RECEIPTS" BFME_MQ_STORE="$RUNNER_TEMP/bfme-tu-verdicts" \
             python3 -B ci/managed-check/merge_queue_plan.py "$RUNNER_TEMP/bfme-mq-plans"
       - name: Upload merge group plans
         if: always()
@@ -189,8 +201,171 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
+  reuse:
+    needs: plan
+    if: needs.plan.result == 'success' && needs.plan.outputs.has_deferred == 'yes'
+    name: Reuse predecessor entry receipts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      shards: '${{ steps.collect.outputs.shards }}'
+      has_shards: '${{ steps.collect.outputs.has_shards }}'
+    steps:
+      - name: Check out trusted receipt reader
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: '${{ needs.plan.outputs.main_sha }}'
+          persist-credentials: false
+          sparse-checkout: |
+            ci/managed-check
+      - name: Verify receipt reader bundle
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          (cd ci/managed-check && sha256sum -c --quiet bundle.sha256)
+      - name: Download merge group plans
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: bfme-mq-plans
+          path: '${{ runner.temp }}/bfme-mq-plans'
+      - name: Collect digest-bound receipts from the predecessor entry
+        id: collect
+        shell: bash
+        env:
+          BFME_MQ_READ_TOKEN: '${{ github.token }}'
+        run: |
+          set -Eeuo pipefail
+          env -i PATH=/usr/bin:/bin HOME="$HOME" LANG=C LC_ALL=C TMPDIR="$RUNNER_TEMP" \
+            GITHUB_OUTPUT="$GITHUB_OUTPUT" BFME_MQ_READ_TOKEN="$BFME_MQ_READ_TOKEN" \
+            python3 -B ci/managed-check/mq_cache.py collect \
+            "$RUNNER_TEMP/bfme-mq-plans" "$RUNNER_TEMP/bfme-mq-reused"
+      - name: Upload reused receipts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfme-mq-reused
+          path: '${{ runner.temp }}/bfme-mq-reused/receipts.json'
+          if-no-files-found: error
+          retention-days: 1
+
+  boat-fallback:
+    needs: [plan, reuse]
+    if: >-
+      !cancelled() && needs.plan.result == 'success' && needs.plan.outputs.has_deferred == 'yes' &&
+      (needs.reuse.result != 'success' || needs.reuse.outputs.has_shards == 'yes')
+    name: Boat fallback shard ${{ matrix.shard }}
+    runs-on: boat-small/from=bfme2-compiler-v1
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        shard: ${{ fromJSON(needs.reuse.result == 'success' && needs.reuse.outputs.shards || needs.plan.outputs.deferred_shards) }}
+    permissions:
+      contents: read
+    steps:
+      - name: Wait for runner filesystem hydration
+        shell: bash
+        run: |
+          set -euo pipefail
+          deadline=$((SECONDS + 90))
+          runner_grace=$((SECONDS + 15))
+          waited=0
+          while true; do
+            pending=$(awk '
+              {
+                for (i = 7; i <= NF - 2; i++) {
+                  if ($i == "-") {
+                    if ($(i + 1) ~ /^fuse(\.|$)/ && ($(i + 1) ~ /^fuse\.ascii-lazyfs(-|$)/ || $(i + 2) ~ /^ascii-lazyfs(-|$)/) && $5 !~ /^\/var\/lib\/ascii-lazy\/retired(\/|$)/) {
+                      print $5
+                    }
+                    break
+                  }
+                }
+              }
+            ' /proc/self/mountinfo)
+            if [ -z "$pending" ]; then
+              if [ "$waited" -eq 1 ]; then
+                printf 'Runner filesystem hydration finished after %ss.\n' "$SECONDS"
+              fi
+              exit 0
+            fi
+            home_dir="${HOME%/}"
+            if [ -n "$home_dir" ] && [ "$pending" = "$home_dir" ] \
+              && [ "${pending#/opt/boat-compiler}" = "$pending" ] \
+              && [ "${pending#/var/}" = "$pending" ] \
+              && [ "${pending#/usr}" = "$pending" ] \
+              && [ "$SECONDS" -ge "$runner_grace" ]; then
+              printf 'Proceeding after %ss with persistent lazy mount %s (all other mounts retired).\n' "$SECONDS" "$home_dir"
+              exit 0
+            fi
+            waited=1
+            if [ "$SECONDS" -ge "$deadline" ]; then
+              printf 'Expected lazy runner mounts to retire within 90s; still mounted:\n%s\n' "$pending" >&2
+              exit 1
+            fi
+            sleep 0.5
+          done
+      - name: Check out trusted main base
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: '${{ needs.plan.outputs.main_sha }}'
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Download merge group plans
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: bfme-mq-plans
+          path: '${{ runner.temp }}/bfme-mq-plans'
+      - name: Verify image and comparison inputs
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          (cd ci/managed-check && sha256sum -c --quiet bundle.sha256)
+          (cd ci/header-witness && sha256sum -c --quiet bundle.sha256)
+          (
+            cd ci/managed-nt2
+            sha256sum -c --quiet bundle.sha256
+            got=$(printf '%s\n' '?f@X@@QAEHXZ' | engine/gen/bin/demangle)
+            test "$got" = 'public: int __thiscall X::f(void)'
+          )
+          cd /opt/boat-compiler
+          sudo -n sha256sum -c --quiet input.sha256 runtime-files.sha256
+          sudo -n systemd-tmpfiles --create /etc/tmpfiles.d/boat-compiler.conf
+      - name: Restore trusted base object cache
+        continue-on-error: true
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: '${{ runner.temp }}/bfme-base-cache'
+          key: bfme-base-obj-v1-n-${{ needs.plan.outputs.main_sha }}
+          restore-keys: |
+            bfme-base-obj-v1-n-
+            bfme-base-obj-v1-
+      - name: Compile and compare shard
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -z "${BFME_READ_TOKEN:-}${BFME_STATUS_TOKEN:-}${GITHUB_TOKEN:-}"
+          env -i PATH=/usr/bin:/bin HOME="$HOME" LANG=C LC_ALL=C \
+            TMPDIR="$RUNNER_TEMP" GITHUB_SHA="${{ needs.plan.outputs.main_sha }}" \
+            GITHUB_OUTPUT="$GITHUB_OUTPUT" GITHUB_RUN_ID="$GITHUB_RUN_ID" \
+            GITHUB_RUN_ATTEMPT="$GITHUB_RUN_ATTEMPT" \
+            BFME_BASE_CACHE="$RUNNER_TEMP/bfme-base-cache" \
+            python3 -B ci/managed-check/compare.py \
+            "$RUNNER_TEMP/bfme-mq-plans/shard-${{ matrix.shard }}" \
+            "$RUNNER_TEMP/bfme-mq-verdict"
+      - name: Upload shard verdict
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfme-mq-verdict-${{ matrix.shard }}
+          path: '${{ runner.temp }}/bfme-mq-verdict/verdict.json'
+          if-no-files-found: error
+          retention-days: 1
+
   report:
-    needs: [plan, boat]
+    needs: [plan, boat, reuse, boat-fallback]
     if: >-
       always() && !cancelled() &&
       needs.plan.result != 'skipped' &&
@@ -228,6 +403,13 @@ jobs:
         with:
           pattern: bfme-mq-verdict-*
           path: '${{ runner.temp }}/bfme-mq-verdicts'
+      - name: Download reused receipts
+        if: needs.reuse.result == 'success'
+        continue-on-error: true
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: bfme-mq-reused
+          path: '${{ runner.temp }}/bfme-mq-reused'
       - name: Publish aggregate BFME II / Boat status
         shell: bash
         env:
@@ -236,4 +418,13 @@ jobs:
         run: |
           set -Eeuo pipefail
           python3 -B ci/managed-check/merge_queue_report.py \
-            "$RUNNER_TEMP/bfme-mq-plans" "$RUNNER_TEMP/bfme-mq-verdicts"
+            "$RUNNER_TEMP/bfme-mq-plans" "$RUNNER_TEMP/bfme-mq-verdicts" \
+            "$RUNNER_TEMP/bfme-mq-reused" "$RUNNER_TEMP/bfme-mq-receipts"
+      - name: Upload digest-bound receipts for later queue entries
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfme-mq-receipts
+          path: '${{ runner.temp }}/bfme-mq-receipts/receipts.json'
+          if-no-files-found: ignore
+          retention-days: 1

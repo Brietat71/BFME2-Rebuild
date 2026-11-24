@@ -292,7 +292,8 @@ class MergeQueuePlanTests(unittest.TestCase):
 
             out = root / "plans"
             # Event's merge_group.base_sha is q1_sha, while BFME_MQ_MAIN_SHA is main_sha.
-            env = mq_env(root, q1_sha, head_sha) | {"BFME_MQ_MAIN_SHA": main_sha}
+            # Receipt deferral is off here; test_mq_cache covers stacked reuse.
+            env = mq_env(root, q1_sha, head_sha) | {"BFME_MQ_MAIN_SHA": main_sha, "BFME_MQ_RECEIPTS": "no"}
             manifest = mq_plan.plan_merge_group(out, env=env, repo_dir=checkout, remote=str(remote))
 
             self.assertEqual(manifest["status"], "planned")
@@ -460,6 +461,8 @@ class WorkflowSafetyTests(unittest.TestCase):
             "ci/managed-check/compare.py",
             "ci/managed-check/merge_queue_plan.py",
             "ci/managed-check/merge_queue_report.py",
+            "ci/managed-check/mq_cache.py collect",
+            "name: bfme-mq-receipts",
             "boat-small/from=bfme2-compiler-v1",
         ):
             self.assertIn(required, wf)
