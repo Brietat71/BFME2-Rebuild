@@ -8128,6 +8128,20 @@
    "kind": "trusted-narrow",
    "number": 278,
    "tree": "aee6bebc3b77b108097775c01179b8920a8dfe53"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45327377466"
+   },
+   "author": 1760627,
+   "base": "1674aa0cfa84bb3b4b24f784773df7d0c8361c50",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "f77513a14f5c7b2ff25b2e7fcec0f7bb8127c4d3",
+   "kind": "trusted-narrow",
+   "number": 286,
+   "tree": "bd92ba4dc4efde9a3a956fd72f78489582abff83"
   }
  ],
  "version": 2
