@@ -615,16 +615,26 @@ def measure_batch(git, judge, side, plan, tools, job, *, timing=None):
         cache_dir = os.environ.get("BFME_BASE_CACHE") if side == "base" else None
         if cache_dir:
             import base_cache
-            return base_cache.measure_base_with_cache(
+            results = base_cache.measure_base_with_cache(
                 git, judge, plan, tools, job, cache_dir,
                 measure_fn=canary_measure.measure, timing=timing,
             )
-        if timing is None:
-            return canary_measure.measure(git, judge, side, plan, tools, job)
-        return canary_measure.measure(git, judge, side, plan, tools, job, timing=timing)
+        else:
+            results = canary_measure.measure(git, judge, side, plan, tools, job, timing=timing)
+        judge.resolve_batch_extras(results)
+        return results
 
 
-def measure_pair(git, judge, plan, tools, base_job, head_job, *,
+def measure_pair(git, judge, plan, tools, base_job, head_job, **options):
+    old, new = _measure_pair(git, judge, plan, tools, base_job, head_job, **options)
+    # Each side now includes its compiled misses and authenticated cache hits.
+    for results in (old, new):
+        if any(res.get('select_any_providers') for res in results.values()):
+            judge.resolve_batch_extras(results)
+    return old, new
+
+
+def _measure_pair(git, judge, plan, tools, base_job, head_job, *,
                  cache_dir=None, base_timing=None, head_timing=None):
     """Compile uncached base and head sides concurrently across host vCPUs, then judge sequentially."""
     if cache_dir is None:

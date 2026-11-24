@@ -37,7 +37,7 @@ RUNNER_LABEL = active_runner()
 PIN = {
     "image_sha256": APPROVED_RUNNERS[RUNNER_LABEL]["image_sha256"],
     "profile_sha256": APPROVED_RUNNERS[RUNNER_LABEL]["profile_sha256"],
-    "checker": "97bdf95bb916dd07f873f9083316e7fc8d21991afc696a9781515041cdaaa44e",
+    "checker": "15ab6359a6b10a5ddba3b4a3429a88f244071e5c7581588260f700cce0e393dd",
     "baseline_sha256": "f008b587570bad693981dc7218588c81d192a1e064b0f7f861539c51156a7640",
 }
 APPROVED_IMAGE_PROFILES = frozenset(
