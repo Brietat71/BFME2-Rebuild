@@ -6989,7 +6989,10 @@
    },
    "author": 128750908,
    "base": "65a84a5b0c4c65f25920105b104cc26e569afe59",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45315521109"
+   },
    "day": "2026-11-24",
    "head": "f57984fe107a745a53fcc6ebba25bf55b708b137",
    "kind": "narrow",
