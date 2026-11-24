@@ -520,16 +520,11 @@ def start_viewer(args, status_factory=None, **fields):
 
 
 def judge_units(judge, revision, units, status, *, label):
-    """One judge call, or one per unit while the viewer runs so the page fills in unit by unit."""
-    if isinstance(status, NoStatus) or len(units) == 1:
-        status.step(f"judge {label} ({len(units)} unit(s))")
-        return judge(revision, units)
-    merged = {"summary": {}, "results": []}
+    """One judge call for all units: the judge prepares the revision once and compiles in parallel."""
+    status.step(f"judge {label} ({len(units)} unit(s))")
     for tu in units:
-        status.step(f"judge {label}: {tu}")
         status.unit(tu, state="running")
-        merged["results"] += judge(revision, [tu])["results"]
-    return merged
+    return judge(revision, units)
 
 
 def object_paths(directory, tu):

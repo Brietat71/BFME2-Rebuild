@@ -22,6 +22,7 @@ import random
 import subprocess
 import sys
 import tarfile
+import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -192,11 +193,11 @@ def main(argv=None, *, repo=REPO_ROOT, judge_factory=precheck.JudgeRunner, toolc
         judge = judge_factory(backend, config, work, image=args.image, git_dir=gitdir, mounts=mounts)
         hosted = {tu: state_record(repo, args.state_ref, tu) for tu in units}
         print(f"Judging {len(units)} units locally on {main_commit[:12]} with backend {backend} ...")
-        items = {}
-        for tu in units:
-            document = judge(main_commit, [tu])
-            items.update(precheck.results_table(document))
-            print(f"  judged {tu}")
+        # One call: the judge prepares the revision once and compiles the units in parallel
+        # (JUDGE_WORKERS, default 12); a call per unit pays that set-up and runs one compiler at a time.
+        started = time.time()
+        items = precheck.results_table(judge(main_commit, units))
+        print(f"  judged {len(items)} units in {time.time() - started:.0f} s")
     except precheck.SetupError as error:
         print(f"parity: {error}", file=sys.stderr)
         return 2
