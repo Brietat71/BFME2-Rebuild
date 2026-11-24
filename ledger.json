@@ -5005,6 +5005,20 @@
    "kind": "trusted-narrow",
    "number": 345,
    "tree": "a8804eeb0151011a26d86bd8f386c6778888acbf"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45295036835"
+   },
+   "author": 1760627,
+   "base": "f5338b58da737d9005b8f0df5d18d5439c92a8e1",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "26214244356faa440aa75577b4a9e0a5556eabc8",
+   "kind": "trusted-narrow",
+   "number": 289,
+   "tree": "6fe384f523d9a454093020b4695bbe3471305a1c"
   }
  ],
  "version": 2
