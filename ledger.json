@@ -9028,6 +9028,20 @@
    "kind": "trusted-wide",
    "number": 154,
    "tree": "7abbbc6342bcd2ad725ffeb6d512c8b5e7c1e561"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45338357063"
+   },
+   "author": 1760627,
+   "base": "0f9053574f6c3649820574bd71a44ed0f8bd7244",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "634360e73773e6a2818df9830111769d1b3ec5d9",
+   "kind": "trusted-wide",
+   "number": 452,
+   "tree": "3642ef5f12f76b674af0fc7fe23844097beadb10"
   }
  ],
  "version": 2
