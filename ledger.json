@@ -8044,6 +8044,20 @@
    "kind": "trusted-narrow",
    "number": 256,
    "tree": "4afa3697f2236d0aa8c2135e32f32f511cb3a503"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45327354487"
+   },
+   "author": 1760627,
+   "base": "1674aa0cfa84bb3b4b24f784773df7d0c8361c50",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "e30b0d809751c5cb7164e6bc540c9800cb86fcad",
+   "kind": "trusted-narrow",
+   "number": 274,
+   "tree": "9bcb75d019e4e29115d9e71ad153722a6a4b2721"
   }
  ],
  "version": 2
