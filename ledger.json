@@ -17,11 +17,11 @@
   },
   "2026-11-24": {
    "authors": {
-    "110029876": 5,
+    "110029876": 6,
     "128750908": 9,
     "39365564": 2
    },
-   "total": 16,
+   "total": 17,
    "wide_authors": {
     "128750908": 8
    },
@@ -9144,6 +9144,20 @@
    "kind": "narrow",
    "number": 567,
    "tree": "3f25317a2a4fd4d0558e28d76eb19f9603abdd72"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45349112809"
+   },
+   "author": 110029876,
+   "base": "d8151b61ae38d79c99654e9bbb28d4d8a0c0dca4",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "7b76bc9607c5352447b870f0c475ea08450e56c3",
+   "kind": "narrow",
+   "number": 568,
+   "tree": "63cbd93bdac4a9e98fb485c7107adb6df7f016fe"
   }
  ],
  "version": 2
