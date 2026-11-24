@@ -1,0 +1,252 @@
+{
+ "checks": {
+  "control": "not run",
+  "maps": "not run",
+  "menu": "not run",
+  "save_load": "not run",
+  "starts": "not run"
+ },
+ "commit": "0fc7d30e48cfd0424b96d4582bce4db53e2d5b1b",
+ "compile": {
+  "compile_errors": 0,
+  "compiled": 2843,
+  "expected_shards": 16,
+  "fastest_shard_s": 571.6,
+  "files": 2843,
+  "fully_matching": 482,
+  "per_shard": [
+   {
+    "batch_median_s": 69.5,
+    "busy_pct": 35.6,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 201,
+    "seconds": 1893.2,
+    "shard": 0,
+    "steal_pct": 3.4
+   },
+   {
+    "batch_median_s": 86.0,
+    "busy_pct": 32.5,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 2113.7,
+    "shard": 2,
+    "steal_pct": 3.3
+   },
+   {
+    "batch_median_s": 77.2,
+    "busy_pct": 33.5,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 202,
+    "seconds": 2029.9,
+    "shard": 4,
+    "steal_pct": 3.4
+   },
+   {
+    "batch_median_s": 25.7,
+    "busy_pct": 61.3,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 202,
+    "seconds": 676.0,
+    "shard": 5,
+    "steal_pct": 0.5
+   },
+   {
+    "batch_median_s": 22.6,
+    "busy_pct": 64.0,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 571.6,
+    "shard": 6,
+    "steal_pct": 0.3
+   },
+   {
+    "batch_median_s": 25.8,
+    "busy_pct": 60.8,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 690.3,
+    "shard": 7,
+    "steal_pct": 0.5
+   },
+   {
+    "batch_median_s": 24.3,
+    "busy_pct": 64.3,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 647.8,
+    "shard": 8,
+    "steal_pct": 0.6
+   },
+   {
+    "batch_median_s": 22.3,
+    "busy_pct": 66.6,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 572.2,
+    "shard": 9,
+    "steal_pct": 0.2
+   },
+   {
+    "batch_median_s": 78.9,
+    "busy_pct": 34.5,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 2042.9,
+    "shard": 10,
+    "steal_pct": 3.4
+   },
+   {
+    "batch_median_s": 76.6,
+    "busy_pct": 33.3,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 2063.1,
+    "shard": 11,
+    "steal_pct": 3.3
+   },
+   {
+    "batch_median_s": 75.2,
+    "busy_pct": 32.9,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 204,
+    "seconds": 2060.4,
+    "shard": 12,
+    "steal_pct": 3.3
+   },
+   {
+    "batch_median_s": 78.6,
+    "busy_pct": 33.9,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 2046.8,
+    "shard": 13,
+    "steal_pct": 3.2
+   },
+   {
+    "batch_median_s": 82.9,
+    "busy_pct": 31.8,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 2111.7,
+    "shard": 14,
+    "steal_pct": 3.2
+   },
+   {
+    "batch_median_s": 81.7,
+    "busy_pct": 33.4,
+    "cpu_model": "AMD EPYC 4585PX 16-Core Processor",
+    "cpus": 2,
+    "files": 203,
+    "seconds": 2047.2,
+    "shard": 15,
+    "steal_pct": 3.4
+   }
+  ],
+  "problem": "expected shard indices 0 to 15 once each; found [0, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]",
+  "shards": 14,
+  "slowest_shard_s": 2113.7
+ },
+ "compile_ok": false,
+ "control_caught": null,
+ "date": "2026-11-24",
+ "equal_frames": null,
+ "event": "schedule",
+ "files_substituted": null,
+ "frames": {
+  "compared": 0,
+  "equal": 0,
+  "first_divergent": {}
+ },
+ "functions": null,
+ "games_skipped": false,
+ "headline": "compile stage failed: expected shard indices 0 to 15 once each; found [0, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]",
+ "image_manifest_sha256": null,
+ "image_sha256": null,
+ "link": null,
+ "link_census": {
+  "duplicate_names": [
+   "??0RainOfFireUpdateModuleData@@QAE@XZ",
+   "?Equals@EAStringC@@QBE_NPBV1@@Z",
+   "?GetSnapshotName@RainOfFireUpdate@@MBEPBDXZ",
+   "?buildFieldParse@AutoPickUpUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z",
+   "?buildFieldParse@DetachableRiderUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z",
+   "?buildFieldParse@RainOfFireUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z",
+   "?getModuleNameKey@RainOfFireUpdate@@UBE?AW4NameKeyType@@XZ",
+   "?loadPostProcess@RainOfFireUpdate@@MAEXXZ",
+   "?rva004AC135@RainOfFireUpdate@@UAEXM@Z",
+   "?rva004AC18D@RainOfFireUpdate@@QAEXM@Z",
+   "?xfer@RainOfFireUpdate@@MAEXPAVXfer@@@Z",
+   "_XMP_Bits_To_Digits",
+   "_XMP_Digits_To_Bits"
+  ],
+  "duplicates": 13,
+  "missing": 3243,
+  "missing_by_kind": {
+   "c": 88,
+   "c++": 3153,
+   "import": 2
+  },
+  "needed": 8253,
+  "objects": 2843,
+  "program_functions": [
+   13996,
+   41566
+  ],
+  "provided": 5010
+ },
+ "linking_headline": "referenced",
+ "linking_measured": {
+  "date": "2026-11-24",
+  "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/45316803520",
+  "sha": "0fc7d30e48cfd0424b96d4582bce4db53e2d5b1b",
+  "this_run": true
+ },
+ "linking_unit": "names",
+ "menu": null,
+ "plan": null,
+ "provided_required_symbols": [
+  5010,
+  8253
+ ],
+ "result": "fail",
+ "run_id": "45316803520",
+ "run_url": "https://github.com/Open-BFME/BFME2-Rebuild/actions/runs/45316803520",
+ "save_load": null,
+ "schema": "bfme2-nightly/1",
+ "sha": "0fc7d30e48cfd0424b96d4582bce4db53e2d5b1b",
+ "simulation_equal": null,
+ "size_check": null,
+ "skirmish": null,
+ "stages": {
+  "compile": "failure",
+  "link_and_play": "not live"
+ },
+ "starts": null,
+ "stopped": null,
+ "tests": {},
+ "timings": {
+  "compile_slowest_shard_s": 2113.7,
+  "link_and_play": null,
+  "run": {
+   "jobs": 18,
+   "runner_minutes": {
+    "compile": 433.8
+   },
+   "wall_minutes": 36.7
+  }
+ }
+}
