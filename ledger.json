@@ -8389,7 +8389,10 @@
    },
    "author": 39365564,
    "base": "d94f74b78f68d6d77a19da6930e39869d7f4811a",
-   "claimed_by": null,
+   "claimed_by": {
+    "attempt": "1",
+    "run": "45327776139"
+   },
    "day": "2026-11-24",
    "head": "39012b724441571ad76af5b972fc6d41b02c82eb",
    "kind": "narrow",
