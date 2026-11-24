@@ -5033,6 +5033,20 @@
    "kind": "trusted-narrow",
    "number": 484,
    "tree": "944bdcbc3b7e56e57382dd372c1e4f87b33e45b8"
+  },
+  {
+   "admitted_by": {
+    "attempt": "1",
+    "run": "45295036773"
+   },
+   "author": 1760627,
+   "base": "f5338b58da737d9005b8f0df5d18d5439c92a8e1",
+   "claimed_by": null,
+   "day": "2026-11-24",
+   "head": "dbcf6e21461c158322e6af83b58f01c90e777a3a",
+   "kind": "trusted-narrow",
+   "number": 429,
+   "tree": "b373357417d10b4826a1c7afd9d4e675a3363d9d"
   }
  ],
  "version": 2
