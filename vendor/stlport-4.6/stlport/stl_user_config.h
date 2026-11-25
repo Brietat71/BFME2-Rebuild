@@ -197,6 +197,46 @@
 
 //==========================================================
 
+//==========================================================
+// Battle for Middle-earth II: the configuration Electronic Arts
+// built the library and the game with.
+//==========================================================
+
+/*
+ * The library is linked into the program (its objects are in game.dat
+ * and the program imports no STLport DLL).
+ */
+# define _STLP_USE_STATIC_LIB 1
+
+/*
+ * STLport's own try blocks are compiled out: no node constructor or
+ * container insert in the program registers an unwind handler for them.
+ */
+# define _STLP_NO_EXCEPTIONS 1
+
+/*
+ * Every allocator<T> takes its memory from the game heap: allocate is
+ * allocateBlock(bytes, 0) and deallocate is freeBlock(p), the game's
+ * replacements for malloc and free (Common/GameMemory.h).
+ * _STLP_USE_CUSTOM_NEWALLOC names the class <stl/_alloc.h> uses as
+ * __sgi_alloc.
+ */
+# ifdef __cplusplus
+void *allocateBlock(unsigned int size, unsigned int heap);
+void freeBlock(void *block);
+
+class STLSpecialAlloc
+{
+public:
+  static void *allocate(unsigned int __n) { return ::allocateBlock(__n, 0); }
+  static void deallocate(void *__p, unsigned int) { ::freeBlock(__p); }
+};
+
+#  define _STLP_USE_CUSTOM_NEWALLOC STLSpecialAlloc
+# endif
+
+//==========================================================
+
 // Local Variables:
 // mode:C++
 // End:

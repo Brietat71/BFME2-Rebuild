@@ -282,7 +282,13 @@ typedef __pthread_alloc __multithreaded_alloc;
 
 # else
 
-# if defined ( _STLP_USE_NEWALLOC )
+# if defined ( _STLP_USE_CUSTOM_NEWALLOC )
+
+typedef _STLP_USE_CUSTOM_NEWALLOC __sgi_alloc;
+typedef _STLP_USE_CUSTOM_NEWALLOC __single_client_alloc;
+typedef _STLP_USE_CUSTOM_NEWALLOC __multithreaded_alloc;
+
+# elif defined ( _STLP_USE_NEWALLOC )
 
 #  if defined ( _STLP_DEBUG_ALLOC )
 typedef __debug_alloc<__new_alloc> __sgi_alloc;
