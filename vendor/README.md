@@ -3,7 +3,8 @@
 ## `stlport-4.6/`: STLport 4.6, as released
 
 `stlport-4.6/` is the complete contents of the STLport 4.6 release archive (its top
-directory `STLport-4.6/`), byte for byte.
+directory `STLport-4.6/`), byte for byte, except for the changes listed under
+"Changes made by Electronic Arts" below.
 
 | | |
 |---|---|
@@ -19,12 +20,28 @@ Git does not store directories, so the archive's two empty directories
 (`lib/obj/`, `test/eh/obj/`) are absent. The seven files the archive marks as
 executable are executable here.
 
-Check the tree against the archive's contents:
+Check the tree against the archive's contents (the two files EA changed, below,
+are the only ones reported as differing):
 
 ```sh
-cd vendor/stlport-4.6 && sha256sum -c ../stlport-4.6.SHA256SUMS
+cd vendor/stlport-4.6 && sha256sum -c --quiet ../stlport-4.6.SHA256SUMS
 ```
 
 Retail `game.dat` 1.06 linked this release (not 4.6.1 or 4.6.2): see
 `include/upstream/stlport-4.6/PROVENANCE.md` for the `ios_base::Init` and
 `locale` bodies that tell the three releases apart.
+
+### Changes made by Electronic Arts
+
+The release is changed only where `game.dat` shows that the library and the game
+were built differently from it. Every change sits in STLport's own configuration
+and applies to every unit that includes STLport. No source file sets an STLport
+macro. `docs/stlport-ea-configuration.md` gives the evidence for each change and
+for each patch-layer change left out.
+
+- `stlport/stl_user_config.h`, the release's user-settings header:
+  `_STLP_USE_STATIC_LIB`, `_STLP_NO_EXCEPTIONS`, and the game-heap allocator
+  class `STLSpecialAlloc` selected through `_STLP_USE_CUSTOM_NEWALLOC`.
+- `stlport/stl/_alloc.h`: the `_STLP_USE_CUSTOM_NEWALLOC` choice of `__sgi_alloc`.
+  Zero Hour's `PreRTS.h` and `STLTypedefs.h` name this switch beside
+  `_STLP_USE_NEWALLOC`, and the 4.6 release does not have it.
