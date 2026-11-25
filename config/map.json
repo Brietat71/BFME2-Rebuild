@@ -70694,8 +70694,7 @@
       "parent": null,
       "object": "O0002BABA",
       "accepted_names": [
-        "?scanIndexListChecked@@YAHPBDPBQBDPA_N_N@Z",
-        "_rva002bcab_scanIndex"
+        "?scanIndexListChecked@@YAHPBDPBQBDPA_N_N@Z"
       ],
       "seed_tier": "A",
       "membership_hypothesis": null
@@ -96238,10 +96237,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_Rva0088E090ResumeOtherThreads",
+      "name": "?Rva0088E090ResumeOtherThreads@@YAXP6GPAXKHK@ZPAXKK@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O0003C7A0",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -96251,7 +96250,7 @@
       "parent": null,
       "object": "O0003C7A0",
       "accepted_names": [
-        "_Rva0088E090ResumeOtherThreads"
+        "?Rva0088E090ResumeOtherThreads@@YAXP6GPAXKHK@ZPAXKK@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:K"
@@ -96334,10 +96333,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_Rva0088E190TimerTick@16",
+      "name": "?Rva0088E190TimerTick@@YGXPAXIIK@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O0003C7A0",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -96347,7 +96346,7 @@
       "parent": null,
       "object": "O0003C7A0",
       "accepted_names": [
-        "_Rva0088E190TimerTick@16"
+        "?Rva0088E190TimerTick@@YGXPAXIIK@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:K"
@@ -248844,10 +248843,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_downsampleRgb555",
+      "name": "?downsampleRgb555@@YAXPBGHPAG@Z",
       "name_evidence": "H:harvest (credited body in src/Code/GameEngineDevice/Source/W3DDevice/GameClient/TileData.cpp)",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O0011172A",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -248857,8 +248856,7 @@
       "parent": null,
       "object": "O0011172A",
       "accepted_names": [
-        "_downsampleRgb555",
-        "_Rva001117E3Downsample"
+        "?downsampleRgb555@@YAXPBGHPAG@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:K"
@@ -248945,10 +248943,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_Rva001118ECResampleRgb555",
+      "name": "?resampleRgb555@@YAXPBEHHPAG@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O0011172A",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -248958,7 +248956,7 @@
       "parent": null,
       "object": "O0011172A",
       "accepted_names": [
-        "_Rva001118ECResampleRgb555"
+        "?resampleRgb555@@YAXPBEHHPAG@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:Z"
@@ -945717,14 +945715,14 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_Rva004097AFWorker",
+      "name": "?Rva004097AFWorker@@YAPAVFile@@ABVAsciiString@@_NH1@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "retained:O00406DE3",
       "object_evidence": "X:closure",
       "accepted_names": [
-        "_Rva004097AFWorker"
+        "?Rva004097AFWorker@@YAPAVFile@@ABVAsciiString@@_NH1@Z"
       ],
       "parent": null,
       "object": "retained:O00406DE3",
@@ -1469326,10 +1469324,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_BFMENetworkBackendThreadStart@4",
+      "name": "?BFMENetworkBackendThreadStart@@YGIPAX@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O00610430",
       "object_evidence": "W",
       "parent_rvas": "",
@@ -1469339,7 +1469337,7 @@
       "parent": null,
       "object": "O00610430",
       "accepted_names": [
-        "_BFMENetworkBackendThreadStart@4"
+        "?BFMENetworkBackendThreadStart@@YGIPAX@Z"
       ],
       "seed_tier": "A",
       "membership_hypothesis": null
@@ -1488797,10 +1488795,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_XMP_Digits_To_Bits",
+      "name": "?XMP_Digits_To_Bits@@YAHH@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed);N:Zero Hour MPMATH.H declares XMP_Digits_To_Bits inline after its extern \"C\" block (C++ linkage)",
       "object_id": "unknown",
       "object_evidence": "gap-unit",
       "parent_rvas": "",
@@ -1488810,7 +1488808,7 @@
       "parent": null,
       "object": "G0061B600",
       "accepted_names": [
-        "_XMP_Digits_To_Bits"
+        "?XMP_Digits_To_Bits@@YAHH@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:mm1-gap-unit",
@@ -1488846,10 +1488844,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_XMP_Bits_To_Digits",
+      "name": "?XMP_Bits_To_Digits@@YAHH@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed);N:Zero Hour MPMATH.H declares XMP_Bits_To_Digits inline after its extern \"C\" block (C++ linkage)",
       "object_id": "unknown",
       "object_evidence": "gap-unit",
       "parent_rvas": "",
@@ -1488859,7 +1488857,7 @@
       "parent": null,
       "object": "G0061B600",
       "accepted_names": [
-        "_XMP_Bits_To_Digits"
+        "?XMP_Bits_To_Digits@@YAHH@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:mm1-gap-unit",
@@ -1488895,10 +1488893,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_XMP_Bits_To_Mask",
+      "name": "?XMP_Bits_To_Mask@@YAIH@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed);N:Zero Hour MPMATH.H declares XMP_Bits_To_Mask inline after its extern \"C\" block (C++ linkage)",
       "object_id": "O0061B710",
       "object_evidence": "held-object-same-path",
       "parent_rvas": "",
@@ -1488908,7 +1488906,7 @@
       "parent": null,
       "object": "G0061B710",
       "accepted_names": [
-        "_XMP_Bits_To_Mask"
+        "?XMP_Bits_To_Mask@@YAIH@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:mm1-held-object-same-path",
@@ -1488944,10 +1488942,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_XMP_Is_Negative",
+      "name": "?XMP_Is_Negative@@YA_NPBIH@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed);N:Zero Hour MPMATH.H declares XMP_Is_Negative inline after its extern \"C\" block (C++ linkage)",
       "object_id": "O0061B710",
       "object_evidence": "held-object-same-path",
       "parent_rvas": "",
@@ -1488957,7 +1488955,7 @@
       "parent": null,
       "object": "G0061B740",
       "accepted_names": [
-        "_XMP_Is_Negative"
+        "?XMP_Is_Negative@@YA_NPBIH@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:mm1-held-object-same-path",
@@ -1488993,10 +1488991,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_XMP_Set_Bit",
+      "name": "?XMP_Set_Bit@@YAXPAII@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed);N:Zero Hour MPMATH.H declares XMP_Set_Bit inline after its extern \"C\" block (C++ linkage)",
       "object_id": "O0061B710",
       "object_evidence": "held-object-same-path",
       "parent_rvas": "",
@@ -1489006,7 +1489004,7 @@
       "parent": null,
       "object": "G0061B760",
       "accepted_names": [
-        "_XMP_Set_Bit"
+        "?XMP_Set_Bit@@YAXPAII@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:mm1-held-object-same-path",
@@ -1489042,10 +1489040,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_XMP_Test_Bit",
+      "name": "?XMP_Test_Bit@@YA_NPBII@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed);N:Zero Hour MPMATH.H declares XMP_Test_Bit inline after its extern \"C\" block (C++ linkage)",
       "object_id": "O0061B710",
       "object_evidence": "held-object-same-path",
       "parent_rvas": "",
@@ -1489055,7 +1489053,7 @@
       "parent": null,
       "object": "G0061B780",
       "accepted_names": [
-        "_XMP_Test_Bit"
+        "?XMP_Test_Bit@@YA_NPBII@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:mm1-held-object-same-path",
@@ -1681112,10 +1681110,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_Rva006CD070Atof",
+      "name": "?Rva006CD070Atof@@YANPBD@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O006CBC40",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -1681125,7 +1681123,7 @@
       "parent": null,
       "object": "O006CBC40",
       "accepted_names": [
-        "_Rva006CD070Atof"
+        "?Rva006CD070Atof@@YANPBD@Z"
       ],
       "seed_tier": "A",
       "membership_hypothesis": null
@@ -1697823,10 +1697821,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_rva006D9D70Comparator",
+      "name": "?rva006D9D70Comparator@@YAHPBX0@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O006D8B60",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -1697836,7 +1697834,7 @@
       "parent": null,
       "object": "O006D8B60",
       "accepted_names": [
-        "_rva006D9D70Comparator"
+        "?rva006D9D70Comparator@@YAHPBX0@Z"
       ],
       "seed_tier": "A",
       "membership_hypothesis": null
@@ -1697871,10 +1697869,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_rva006D9E40Comparator",
+      "name": "?rva006D9E40Comparator@@YAHPBX0@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O006D8B60",
       "object_evidence": "W",
       "parent_rvas": "",
@@ -1697884,7 +1697882,7 @@
       "parent": null,
       "object": "O006D8B60",
       "accepted_names": [
-        "_rva006D9E40Comparator"
+        "?rva006D9E40Comparator@@YAHPBX0@Z"
       ],
       "seed_tier": "A",
       "membership_hypothesis": null
@@ -1697968,10 +1697966,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_rva006DA0C0Comparator",
+      "name": "?rva006DA0C0Comparator@@YAHPBX0@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O006D8B60",
       "object_evidence": "F",
       "parent_rvas": "",
@@ -1697981,7 +1697979,7 @@
       "parent": null,
       "object": "O006D8B60",
       "accepted_names": [
-        "_rva006DA0C0Comparator"
+        "?rva006DA0C0Comparator@@YAHPBX0@Z"
       ],
       "seed_tier": "A",
       "membership_hypothesis": null
@@ -1712817,10 +1712815,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_bfmeHash1229",
+      "name": "?bfmeHash1229@@YAHPBDI@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O006E7050",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -1712830,7 +1712828,7 @@
       "parent": null,
       "object": "O006E7050",
       "accepted_names": [
-        "_bfmeHash1229"
+        "?bfmeHash1229@@YAHPBDI@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:K"
@@ -1729185,14 +1729183,14 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_BfmeAux006FC670",
+      "name": "?BfmeAux006FC670@@YAXPBEHPAXPAH@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "retained:O006FC240",
       "object_evidence": "F",
       "accepted_names": [
-        "_BfmeAux006FC670"
+        "?BfmeAux006FC670@@YAXPBEHPAXPAH@Z"
       ],
       "parent": null,
       "object": "retained:O006FC240",
@@ -1729244,14 +1729242,14 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_Rva006FD040",
+      "name": "?Rva006FD040@@YAXPAX00@Z",
       "name_evidence": "?:placeholder",
       "confidence": "low",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "retained:O006FC240",
       "object_evidence": "X:closure",
       "accepted_names": [
-        "_Rva006FD040"
+        "?Rva006FD040@@YAXPAX00@Z"
       ],
       "parent": null,
       "object": "retained:O006FC240",
@@ -1741796,10 +1741794,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_bfmeReload1221",
+      "name": "?bfmeReload1221@@YAIXZ",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O0070F6E0",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -1741809,7 +1741807,7 @@
       "parent": null,
       "object": "O0070F6E0",
       "accepted_names": [
-        "_bfmeReload1221"
+        "?bfmeReload1221@@YAIXZ"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:K"
@@ -1741892,10 +1741890,10 @@
       "role": "owned",
       "parent_rva": "",
       "fold_group": "",
-      "name": "_bfmeHash1228",
+      "name": "?bfmeHash1228@@YAHPBDI@Z",
       "name_evidence": "N:ledger",
       "confidence": "medium",
-      "evidence": "?:no-compiler-generated-signal",
+      "evidence": "?:no-compiler-generated-signal;X:C++ object with no evidence of C linkage; the earlier C spelling made source use extern \"C\" (retail has no symbol table, so the decoration was never observed)",
       "object_id": "O0070F880",
       "object_evidence": "X:closure",
       "parent_rvas": "",
@@ -1741905,7 +1741903,7 @@
       "parent": null,
       "object": "O0070F880",
       "accepted_names": [
-        "_bfmeHash1228"
+        "?bfmeHash1228@@YAHPBDI@Z"
       ],
       "seed_tier": "B",
       "membership_hypothesis": "hypothesis:name:invented"
