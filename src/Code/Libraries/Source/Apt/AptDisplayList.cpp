@@ -590,20 +590,19 @@ void AptPseudoDisplayList::Clear()
 {
     AptPseudoCIH_t *pItem = pHead->pNext;
     while (pItem != 0) {
-        AptPseudoCIH_t *pNext = pItem->pNext;
-        pItem->pControl = 0;
-        pItem->pNext = 0;
-        pItem->pPrev = 0;
-        if (pItem->pControlInfo != 0) {
-            AptControlInfo *data = pItem->pControlInfo;
-            data->pCharacter = 0;
-            data->pMatrix = 0;
-            data->pCxform = 0;
-            g_pDogmaPoolManager->freeBlock(data, 0x1C);
-            pItem->pControlInfo = 0;
+        AptPseudoCIH_t *pDel = pItem;
+        pItem = pItem->pNext;
+        pDel->pControl = 0;
+        pDel->pNext = 0;
+        pDel->pPrev = 0;
+        if (pDel->pControlInfo != 0) {
+            pDel->pControlInfo->pCharacter = 0;
+            pDel->pControlInfo->pMatrix = 0;
+            pDel->pControlInfo->pCxform = 0;
+            g_pDogmaPoolManager->freeBlock(pDel->pControlInfo, 0x1C);
+            pDel->pControlInfo = 0;
         }
-        g_pDogmaPoolManager->freeBlock(pItem, 0x14);
-        pItem = pNext;
+        g_pDogmaPoolManager->freeBlock(pDel, 0x14);
     }
 }
 
