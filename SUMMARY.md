@@ -1,4 +1,4 @@
-# Nightly build of main 834e59d646: **FAIL**
+# Nightly build of main 9dd2e2d4ee: **FAIL**
 
 The nightly job compiles every source file, substitutes each file whose functions all match the original into the original program's link, links that image, plays it and compares the game state with the original program's recording, frame by frame.
 
@@ -9,4 +9,4 @@ The nightly job compiles every source file, substitutes each file whose function
 | Linking shown | 5,010 of 8,253 from the earlier run of 2026-11-24 (commit 0fc7d30e48); the newest run did not measure it |
 | Link and play | not live yet: the private game image for this stage is not configured |
 
-Wall time 26.1 min; runner minutes by stage {"compile": 25.3, "publish": 0.0}.
+Wall time 3.0 min; runner minutes by stage {"compile": 1.6}.
