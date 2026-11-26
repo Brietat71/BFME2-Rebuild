@@ -27,9 +27,9 @@ int AptConnectionScreen::GetPingImageEnum(PortNegotiationPing *ping)
 {
 	if (!TheGameSpyConfig)
 		return 0;
-	if (ping->hasSamples() == 0.0f)
-		return 0;
-	return Rva005DB335Get(ping->getLatency());
+	if (ping->hasSamples() != 0.0f)
+		return Rva005DB335Get(ping->getLatency());
+	return 0;
 }
 
 // FUNCTION: BFME2 0x005DB3B3 size=351 name=?UpdateSlotName@AptConnectionScreen@@QAEXH@Z evidence=N:ledger tier=A
