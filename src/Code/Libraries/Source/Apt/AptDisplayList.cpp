@@ -591,11 +591,11 @@ void AptPseudoDisplayList::Clear()
     AptPseudoCIH_t *pItem = pHead->pNext;
     while (pItem != 0) {
         AptPseudoCIH_t *pNext = pItem->pNext;
-        AptControlInfo *data = pItem->pControlInfo;
         pItem->pControl = 0;
         pItem->pNext = 0;
         pItem->pPrev = 0;
-        if (data != 0) {
+        if (pItem->pControlInfo != 0) {
+            AptControlInfo *data = pItem->pControlInfo;
             data->pCharacter = 0;
             data->pMatrix = 0;
             data->pCxform = 0;
