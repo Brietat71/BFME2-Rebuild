@@ -38,6 +38,10 @@ void AIBasePenetrationTroopsTactic::cleanUp()
 }
 
 // FUNCTION: BFME2 0x005A9988 size=79 name=??0AIBasePenetrationTroopsTactic@@QAE@XZ evidence=N:ledger tier=A
+AIBasePenetrationTroopsTactic::AIBasePenetrationTroopsTactic()
+	: AITacticOffensive(AsciiString("AIBasePenetrationTroopsTactic"))
+{
+}
 
 // FUNCTION: BFME2 0x005A99D7 size=128 name=?canRun@AIBasePenetrationTroopsTactic@@UAE_NPAX@Z evidence=N:ledger tier=A
 
