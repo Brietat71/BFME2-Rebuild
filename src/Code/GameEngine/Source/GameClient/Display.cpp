@@ -44,7 +44,7 @@ bool Display::setDisplayMode(unsigned int xres, unsigned int yres, unsigned int 
 	return true;
 }
 
-// FUNCTION: BFME2 0x0025C378 size=25 name=?setHeight@Display@@UAEXI@Z evidence=N:ledger tier=B hypothesis:cohesion
+// FUNCTION: BFME2 0x0025C378 size=25 name=?setWidth@Display@@UAEXI@Z evidence=N:ledger tier=B hypothesis:cohesion
 void Display::setWidth(unsigned int width)
 {
 	m_width = width;
@@ -53,7 +53,7 @@ void Display::setWidth(unsigned int width)
 		mouse->setMouseLimits();
 }
 
-// FUNCTION: BFME2 0x0025C391 size=25 name=?setWidth@Display@@UAEXI@Z evidence=N:ledger tier=B hypothesis:cohesion
+// FUNCTION: BFME2 0x0025C391 size=25 name=?setHeight@Display@@UAEXI@Z evidence=N:ledger tier=B hypothesis:cohesion
 void Display::setHeight(unsigned int height)
 {
 	m_height = height;
