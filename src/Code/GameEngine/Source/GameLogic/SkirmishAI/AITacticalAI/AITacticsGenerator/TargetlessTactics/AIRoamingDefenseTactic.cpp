@@ -29,6 +29,11 @@ void AIRoamingDefenseTactic::xfer(Xfer *xfer)
 }
 
 // FUNCTION: BFME2 0x005AABC6 size=83 name=??0AIRoamingDefenseTactic@@QAE@XZ evidence=N:ledger tier=B hypothesis:cohesion
+AIRoamingDefenseTactic::AIRoamingDefenseTactic()
+	: Rva005DCC24(AsciiString("AIRoamingDefenseTactic"))
+{
+	m_flag58 = false;
+}
 
 // FUNCTION: BFME2 0x005AAC35 size=241 name=?canRun@AIRoamingDefenseTactic@@UAE_NPAX@Z evidence=N:ledger tier=B hypothesis:cohesion
 
