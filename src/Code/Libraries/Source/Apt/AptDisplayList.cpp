@@ -586,6 +586,27 @@ AptDisplayListState::~AptDisplayListState()
 }
 
 // FUNCTION: BFME2 0x006F7C10 size=83 name=?rva006F7C10@Rva006F7C10@@QAEXXZ evidence=?:placeholder tier=A
+void AptPseudoDisplayList::Clear()
+{
+    AptPseudoCIH_t *pItem = pHead->pNext;
+    while (pItem != 0) {
+        AptPseudoCIH_t *pNext = pItem->pNext;
+        AptControlInfo *data = pItem->pControlInfo;
+        pItem->pControl = 0;
+        pItem->pNext = 0;
+        pItem->pPrev = 0;
+        if (data != 0) {
+            data->pCharacter = 0;
+            data->pMatrix = 0;
+            data->pCxform = 0;
+            g_pDogmaPoolManager->freeBlock(data, 0x1C);
+            pItem->pControlInfo = 0;
+        }
+        g_pDogmaPoolManager->freeBlock(pItem, 0x14);
+        pItem = pNext;
+    }
+}
+
 // FUNCTION: BFME2 0x006F7C70 size=215 name=?Rva006F7C70Free@@YGXPAURva006F7C70Item@@@Z evidence=?:placeholder tier=A
 void AptPseudoDisplayList::Remove(AptPseudoCIH_t *pItem)
 {
