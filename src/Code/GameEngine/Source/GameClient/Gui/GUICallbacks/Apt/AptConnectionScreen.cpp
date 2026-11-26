@@ -23,6 +23,14 @@ void AptConnectionScreen::OnRetryConnections(const char *)
 }
 
 // FUNCTION: BFME2 0x005DB37C size=55 name=?GetPingImageEnum@AptConnectionScreen@@SAHPAUElem005DB98E@@@Z evidence=N:ledger tier=B hypothesis:K
+int AptConnectionScreen::GetPingImageEnum(PortNegotiationPing *ping)
+{
+	if (!TheGameSpyConfig)
+		return 0;
+	if (ping->hasSamples() == 0.0f)
+		return 0;
+	return Rva005DB335Get(ping->getLatency());
+}
 
 // FUNCTION: BFME2 0x005DB3B3 size=351 name=?UpdateSlotName@AptConnectionScreen@@QAEXH@Z evidence=N:ledger tier=A
 void AptConnectionScreen::UpdateSlotName(int slot)
